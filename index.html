@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>蝴蝶坞 · 六色人格测试</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg: #F7F4ED;
+  --card: #FFFFFF;
+  --text: #2C2416;
+  --text2: #8B8178;
+  --text3: #B5AEA5;
+  --accent: #8B6B7D;
+  --accent-light: #F0E8EC;
+  --border: #E8E3DC;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-cn: "PingFang SC", "Noto Serif SC", "Hiragino Mincho ProN", "Songti SC", serif;
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex; justify-content: center; align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+#app {
+  width: 100%; max-width: 480px; min-height: 100vh;
+  position: relative; overflow: hidden;
+}
+.screen {
+  position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh;
+  display: none; flex-direction: column; align-items: center;
+  padding: 60px 28px 40px;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.screen.active { display: flex; opacity: 1; position: relative; }
+
+/* ---- HOME ---- */
+.home-top { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+.home-logo {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 32px;
+}
+.home-logo-svg { width: 40px; height: 40px; }
+.home-title {
+  font-family: var(--font-cn); font-size: 28px; font-weight: 400;
+  color: var(--text); text-align: center; line-height: 1.5;
+  margin-bottom: 12px; letter-spacing: 0.05em;
+}
+.home-subtitle {
+  font-size: 14px; color: var(--text2); text-align: center;
+  line-height: 1.8; margin-bottom: 8px;
+}
+.home-features {
+  display: flex; gap: 24px; margin: 32px 0;
+}
+.home-feat {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.home-feat-num { font-size: 20px; font-weight: 500; color: var(--accent); font-family: var(--font-cn); }
+.home-feat-label { font-size: 12px; color: var(--text3); }
+.home-bottom { width: 100%; padding-bottom: 20px; }
+.btn-start {
+  width: 100%; padding: 16px; border: none; border-radius: var(--radius);
+  background: var(--accent); color: #FFF; font-size: 17px;
+  font-family: var(--font-cn); letter-spacing: 0.08em;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.btn-start:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-start:active { transform: scale(0.98); }
+.home-disclaimer { font-size: 11px; color: var(--text3); text-align: center; margin-top: 16px; line-height: 1.6; }
+
+/* ---- PROGRESS ---- */
+.progress-wrap { width: 100%; margin-bottom: 40px; }
+.progress-bar {
+  width: 100%; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden;
+}
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+.progress-text { font-size: 11px; color: var(--text3); margin-top: 8px; text-align: right; }
+
+/* ---- QUESTION ---- */
+.q-num { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 20px; font-weight: 500; }
+.q-text {
+  font-family: var(--font-cn); font-size: 22px; font-weight: 400; color: var(--text);
+  line-height: 1.6; margin-bottom: 36px; text-align: center; width: 100%;
+}
+.q-options { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.q-option {
+  width: 100%; padding: 18px 20px; background: var(--card);
+  border: 0.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 15px; color: var(--text); text-align: left; line-height: 1.5;
+  cursor: pointer; transition: all 0.25s ease;
+  font-family: var(--font-sans);
+}
+.q-option:hover { border-color: var(--accent); background: #FDF8FA; }
+.q-option:active { transform: scale(0.985); }
+.q-option.selected {
+  border-color: var(--accent); background: var(--accent-light);
+  color: var(--accent); font-weight: 500;
+}
+.q-hint { font-size: 12px; color: var(--text3); margin-top: 32px; text-align: center; }
+
+/* ---- RESULT ---- */
+.result-scroll { width: 100%; max-width: 420px; }
+.result-header { text-align: center; margin-bottom: 28px; }
+.result-badge {
+  display: inline-block; padding: 6px 20px; border-radius: 20px;
+  font-size: 13px; letter-spacing: 0.06em; margin-bottom: 16px;
+}
+.result-type {
+  font-family: var(--font-cn); font-size: 36px; font-weight: 400;
+  margin-bottom: 12px; letter-spacing: 0.06em;
+}
+.result-declaration {
+  font-family: var(--font-cn); font-size: 16px; color: var(--text2);
+  line-height: 1.6; font-style: italic;
+}
+
+.radar-wrap {
+  background: var(--card); border-radius: var(--radius);
+  border: 0.5px solid var(--border); padding: 24px 16px 16px;
+  margin-bottom: 24px;
+}
+.radar-label { font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 12px; }
+
+.zhaoli-wrap {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--card); border-radius: var(--radius); border: 0.5px solid var(--border);
+  padding: 20px; margin-bottom: 16px;
+}
+.zhaoli-img {
+  width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--border); flex-shrink: 0;
+}
+.zhaoli-info { flex: 1; }
+.zhaoli-name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+.zhaoli-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+.info-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.info-card {
+  background: var(--card); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
+  padding: 18px 20px;
+}
+.info-card-label { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; margin-bottom: 8px; }
+.info-card-title { font-family: var(--font-cn); font-size: 17px; color: var(--text); margin-bottom: 6px; }
+.info-card-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+.poem-card {
+  background: transparent; border: none; padding: 24px 20px;
+  text-align: center; margin-bottom: 16px;
+}
+.poem-text {
+  font-family: var(--font-cn); font-size: 17px; color: var(--text);
+  line-height: 2; letter-spacing: 0.04em; font-style: italic;
+}
+.poem-author { font-size: 12px; color: var(--text3); margin-top: 8px; }
+
+.share-section { margin-bottom: 32px; width: 100%; }
+.btn-share {
+  width: 100%; padding: 16px; border: 1px solid var(--accent); border-radius: var(--radius);
+  background: transparent; color: var(--accent); font-size: 16px;
+  font-family: var(--font-cn); letter-spacing: 0.06em;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.btn-share:hover { background: var(--accent-light); }
+.btn-share:active { transform: scale(0.98); }
+
+.wecom-section {
+  width: 100%; background: var(--card); border-radius: var(--radius);
+  border: 1px dashed var(--border); padding: 24px 20px;
+  text-align: center; margin-bottom: 16px;
+}
+.wecom-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+.wecom-desc { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+.wecom-qr {
+  width: 120px; height: 120px; background: var(--bg); border-radius: 8px;
+  margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--text3);
+}
+.wecom-hint { font-size: 12px; color: var(--text3); }
+
+.retest-btn {
+  width: 100%; padding: 14px; border: 0.5px solid var(--border); border-radius: var(--radius);
+  background: var(--card); color: var(--text2); font-size: 14px;
+  cursor: pointer; transition: all 0.3s ease; text-align: center;
+  font-family: var(--font-sans);
+}
+.retest-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---- POSTER OVERLAY ---- */
+.poster-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.75); z-index: 1000;
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.poster-overlay.show { display: flex; }
+.poster-card {
+  background: var(--card); border-radius: var(--radius);
+  overflow: hidden; max-width: 360px; width: 100%;
+}
+.poster-canvas-wrap { position: relative; width: 100%; }
+#posterCanvas { width: 100%; height: auto; display: block; }
+.poster-actions {
+  display: flex; gap: 12px; padding: 16px;
+}
+.poster-btn {
+  flex: 1; padding: 14px; border-radius: var(--radius-sm);
+  font-size: 14px; cursor: pointer; transition: all 0.3s ease;
+  border: 0.5px solid var(--border); background: var(--card);
+  color: var(--text); text-align: center; font-family: var(--font-sans);
+}
+.poster-btn.primary { background: var(--accent); color: #FFF; border: none; }
+.poster-close {
+  color: #FFF; font-size: 14px; margin-top: 16px;
+  cursor: pointer; opacity: 0.8;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.anim-up { animation: fadeInUp 0.6s ease forwards; }
+
+@media (max-width: 380px) {
+  .screen { padding: 40px 20px 32px; }
+  .home-title { font-size: 24px; }
+  .q-text { font-size: 20px; }
+  .result-type { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== HOME ===== -->
+  <div class="screen active" id="screen-home">
+    <div class="home-top">
+      <div class="home-logo">
+        <svg class="home-logo-svg" viewBox="0 0 40 40" fill="none">
+          <path d="M20 5C20 5 12 15 8 22C4 29 6 35 12 36C18 37 20 30 20 30C20 30 22 37 28 36C34 35 36 29 32 22C28 15 20 5 20 5Z" fill="#8B6B7D" opacity="0.3"/>
+          <path d="M20 36C20 36 14 28 10 18C6 8 20 2 20 2C20 2 34 8 30 18C26 28 20 36 20 36Z" fill="#8B6B7D" opacity="0.15"/>
+          <circle cx="20" cy="22" r="3" fill="#8B6B7D" opacity="0.4"/>
+        </svg>
+      </div>
+      <h1 class="home-title">测一测<br>闻见此刻的自己</h1>
+      <p class="home-subtitle">六色香水人格 · 发现你的专属香型</p>
+      <div class="home-features">
+        <div class="home-feat"><span class="home-feat-num">18</span><span class="home-feat-label">道题目</span></div>
+        <div class="home-feat"><span class="home-feat-num">2</span><span class="home-feat-label">分钟完成</span></div>
+        <div class="home-feat"><span class="home-feat-num">6</span><span class="home-feat-label">种人格</span></div>
+      </div>
+    </div>
+    <div class="home-bottom">
+      <button class="btn-start" onclick="startTest()">开始测试</button>
+      <p class="home-disclaimer">凭第一感觉选择即可，没有标准答案。<br>测试结果仅供娱乐和香水推荐参考。</p>
+    </div>
+  </div>
+
+  <!-- ===== QUESTION ===== -->
+  <div class="screen" id="screen-question">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">1 / 18</div>
+    </div>
+    <div class="q-num" id="qNumLabel"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-options" id="qOptions"></div>
+    <p class="q-hint">点击选项继续</p>
+  </div>
+
+  <!-- ===== RESULT ===== -->
+  <div class="screen" id="screen-result">
+    <div class="result-scroll">
+      <div class="result-header anim-up">
+        <div class="result-badge" id="resultBadge"></div>
+        <div class="result-type" id="resultType"></div>
+        <div class="result-declaration" id="resultDeclare"></div>
+      </div>
+
+      <div class="radar-wrap anim-up">
+        <div class="radar-label">你的六边形正在生长</div>
+        <div style="position:relative;width:100%;height:280px">
+          <canvas id="radarChart" role="img" aria-label="六色人格雷达图"></canvas>
+        </div>
+      </div>
+
+      <div class="zhaoli-wrap anim-up">
+        <img class="zhaoli-img" id="zhaoliImg" src="" alt="照狸">
+        <div class="zhaoli-info">
+          <div class="zhaoli-name" id="zhaoliName"></div>
+          <div class="zhaoli-desc" id="zhaoliDesc"></div>
+        </div>
+      </div>
+
+      <div class="info-cards anim-up">
+        <div class="info-card" id="descCard1">
+          <div class="info-card-label">你眼中的自己</div>
+          <div class="info-card-desc" id="descSelf"></div>
+        </div>
+        <div class="info-card" id="descCard2">
+          <div class="info-card-label">别人看到的你</div>
+          <div class="info-card-desc" id="descOthers"></div>
+        </div>
+        <div class="info-card" id="descCard3">
+          <div class="info-card-label">你尚未察觉的天赋</div>
+          <div class="info-card-desc" id="descHidden"></div>
+        </div>
+      </div>
+
+      <div class="info-card anim-up" id="fragranceCard">
+        <div class="info-card-label">你的主香</div>
+        <div class="info-card-title" id="fragranceName"></div>
+        <div class="info-card-desc" id="fragranceDesc"></div>
+      </div>
+
+      <div class="poem-card anim-up">
+        <div class="poem-text" id="poemText"></div>
+        <div class="poem-author">—— 李清照</div>
+      </div>
+
+      <div class="share-section anim-up">
+        <button class="btn-share" onclick="showPoster()">生成专属海报 · 分享你的六边形</button>
+      </div>
+
+      <div class="wecom-section anim-up">
+        <div class="wecom-title">添加香氛顾问</div>
+        <div class="wecom-desc">免费领取你的专属香型2ml小样<br>首单复购享8折会员权益</div>
+        <div class="wecom-qr">企业微信<br>二维码</div>
+        <div class="wecom-hint">长按扫码添加</div>
+      </div>
+
+      <button class="retest-btn" onclick="retest()">重新测试</button>
+      <div style="height:40px"></div>
+    </div>
+  </div>
+
+  <!-- ===== POSTER OVERLAY ===== -->
+  <div class="poster-overlay" id="posterOverlay">
+    <div class="poster-card">
+      <div class="poster-canvas-wrap">
+        <canvas id="posterCanvas" width="750" height="1334"></canvas>
+      </div>
+      <div class="poster-actions">
+        <div class="poster-btn" onclick="closePoster()">关闭</div>
+        <div class="poster-btn primary" onclick="savePoster()">保存海报</div>
+      </div>
+    </div>
+    <div class="poster-close" onclick="closePoster()">✕ 关闭</div>
+  </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const personalities = [
+  {
+    id: 'xiehou', name: '邂逅', color: '#C4827C', bgColor: '#F5E8E6',
+    badge: '柔光粉', phrase: '你仍然有被世界打动的能力',
+    declare: '我愿意重新被世界打动',
+    self: '你此刻更容易被美好、关系、细节和新鲜感触动。你不是幼稚，而是仍然保有感受世界的能力。',
+    others: '在旁人眼中，你温柔、细腻、容易亲近，像是春天里的第一缕暖风，让人不自觉地放下防备。',
+    hidden: '你以为自己只是敏感，其实那是一种高阶的感知力——你能看见别人忽略的美好，这是你的天赋，不是弱点。',
+    fragrance: '暗香', fragranceDesc: '清冷栀子调，初闻清冽，细品温柔。像你一样，需要靠近才能读懂。',
+    zhaoli: '柔光照狸', zhaoliDesc: '陪你重新被世界打动',
+    zhaoliImg: 'images/zhaoli-xiehou.jpg',
+    poem: '和羞走，倚门回首，却把青梅嗅。'
+  },
+  {
+    id: 'juexing', name: '觉醒', color: '#7B9E7D', bgColor: '#E8F0E8',
+    badge: '清醒绿', phrase: '清醒不是冷漠，是终于把自己也算进去',
+    declare: '我终于把自己也算进去',
+    self: '你正在更清楚地看见自己、关系和真正重要的东西。清醒不是变得冷漠，而是终于不再只活在别人的期待里。',
+    others: '别人会觉得你最近有些"不一样"——更笃定、更不讨好、更难被随便说服。他们未必理解，但会开始尊重。',
+    hidden: '你内心深处有一种"看透但不拆穿"的智慧。这种冷静不是无情，而是一种深层的保护力。',
+    fragrance: '醒木', fragranceDesc: '雨后苔藓与雪松交织，干净利落，带着刚刚好的距离感。像一场清醒的呼吸。',
+    zhaoli: '清醒照狸', zhaoliDesc: '陪你看见真实的自己',
+    zhaoliImg: 'images/zhaoli-juexing.jpg',
+    poem: '知否？知否？应是绿肥红瘦。'
+  },
+  {
+    id: 'diebian', name: '蝶变', color: '#8B7EAC', bgColor: '#EDEAF5',
+    badge: '深邃紫', phrase: '你不是坏掉了，你是在重组',
+    declare: '我允许自己慢慢重组',
+    self: '你可能正处在变化、调整、转型的阶段。不必急着证明自己已经完成改变——重组本身就是一种力量。',
+    others: '别人会注意到你的"不同"，但未必能准确描述。你身上有一种正在酝酿的东西，让人好奇又不敢轻易打扰。',
+    hidden: '你比别人想象中更坚韧。重组期的你表面脆弱，底层却在生长出从未有过的结构。',
+    fragrance: '破茧', fragranceDesc: '鸢尾与檀木的交叠，前调低沉，中后调逐渐明亮。像一只正在展翅的蝶，不急不缓。',
+    zhaoli: '破茧照狸', zhaoliDesc: '陪你穿过旧我',
+    zhaoliImg: 'images/zhaoli-diebian.jpg',
+    poem: '清露洗、蘋花汀草，眠沙鸥鹭不回头。'
+  },
+  {
+    id: 'zhanfang', name: '绽放', color: '#C4A45A', bgColor: '#F7F2E3',
+    badge: '明耀黄', phrase: '绽放不是炫耀，而是不再压低自己的光',
+    declare: '我不再压低自己的光',
+    self: '你此刻更需要表达、庆祝和被看见。你不再是那种躲在角落里的状态——你有光，而且你值得让它亮出来。',
+    others: '别人会被你的能量吸引。你不一定是最大声的那个，但你出现的时候，空气会变得不一样。',
+    hidden: '你以为自己只是"状态好"，其实你正在活出一种感染力。你让身边的人也想变得更好——这是领袖气质的前兆。',
+    fragrance: '耀光', fragranceDesc: '柑橘与琥珀的碰撞，明亮而有层次。第一秒就抓人，越久越有故事。',
+    zhaoli: '光芒照狸', zhaoliDesc: '陪你不再压低自己的光',
+    zhaoliImg: 'images/zhaoli-zhanfang.jpg',
+    poem: '梅定妒，菊应羞。'
+  },
+  {
+    id: 'shouhu', name: '守护', color: '#C4967A', bgColor: '#F5EDE6',
+    badge: '温暖橙', phrase: '真正的守护，是温柔但有边界',
+    declare: '我温柔，但我有边界',
+    self: '你重视责任、安全感和承诺。你很会照顾别人，但也正在学习一件重要的事——把自己的能量也算进去。',
+    others: '别人依赖你，因为你可靠、温暖、不会轻易放弃一段关系。但有时候他们也会忘记，你同样需要被照顾。',
+    hidden: '你以为自己只是"付出型人格"，其实你拥有罕见的构建能力——你能创造让所有人都感到安全的空间。',
+    fragrance: '暖岸', fragranceDesc: '琥珀与零陵香豆的温暖组合，像一个让人安心的拥抱。不张扬，但久久不散。',
+    zhaoli: '骑士照狸', zhaoliDesc: '陪你温柔但坚定地守住边界',
+    zhaoliImg: 'images/zhaoli-shouhu.jpg',
+    poem: '风休住，蓬舟吹取三山去。'
+  },
+  {
+    id: 'gongsheng', name: '共生', color: '#7B94B5', bgColor: '#E8EEF5',
+    badge: '静境蓝', phrase: '共生不是妥协，而是不再把人生变成一场对抗',
+    declare: '我不再和自己对抗',
+    self: '你正在走向更平静、更成熟、更长期的关系状态。你不再需要赢过谁，也不再需要证明什么。',
+    others: '别人会觉得你越来越"稳"了。你不争不抢，但你说的话越来越有分量。你身上有一种让人安静下来的力量。',
+    hidden: '你以为自己只是"看开了"，其实你已经抵达了很多人一辈子都在追求的境界——内心秩序的自洽。',
+    fragrance: '静泊', fragranceDesc: '白麝香与雪松木的沉静组合，不争不抢，却有无法忽视的存在感。越久越醇。',
+    zhaoli: '静境照狸', zhaoliDesc: '陪你走向平静共生',
+    zhaoliImg: 'images/zhaoli-gongsheng.jpg',
+    poem: '枕上诗书闲处好，门前风景雨来佳。'
+  }
+];
+
+const personalityLabels = ['邂逅', '觉醒', '蝶变', '绽放', '守护', '共生'];
+
+const questions = [
+  { q: '最近最能吸引你的一种旅行是？', opts: [
+    { t: '去一个陌生城市，随意走走，看看会遇见什么', s: [2,0,0,0,0,0] },
+    { t: '找一个安静地方，把最近的自己重新整理一下', s: [0,1,1,0,0,0] },
+    { t: '去一个很有仪式感的地方，好好拍照、庆祝一次', s: [0,0,0,2,0,0] },
+    { t: '找一个舒服的地方，让家人都能放松下来', s: [0,0,0,0,2,0] }
+  ]},
+  { q: '当你很累的时候，你最想做什么？', opts: [
+    { t: '一个人安静待着，不解释', s: [0,0,0,0,0,2] },
+    { t: '找朋友聊聊，重新感受生活的温度', s: [2,0,0,0,0,0] },
+    { t: '整理房间、换香氛、让秩序回来', s: [0,1,0,0,1,0] },
+    { t: '睡一觉，慢慢把自己从旧状态里捡回来', s: [0,0,2,0,0,0] }
+  ]},
+  { q: '朋友临时情绪崩溃找你，你第一反应是？', opts: [
+    { t: '先听她说完，不急着评价', s: [0,0,0,0,0,2] },
+    { t: '帮她分析问题，找出关键', s: [0,2,0,0,0,0] },
+    { t: '立刻陪她，尽量让她安心', s: [0,0,0,0,2,0] },
+    { t: '提醒她不要一直消耗自己', s: [0,1,0,0,1,0] }
+  ]},
+  { q: '你更喜欢哪一种空间？', opts: [
+    { t: '有花、有光、有风，像一次初见', s: [2,0,0,0,0,0] },
+    { t: '清爽、干净、有镜面和绿意', s: [0,2,0,0,0,0] },
+    { t: '深色、安静、有一点神秘', s: [0,0,2,0,0,0] },
+    { t: '明亮、热烈、有庆祝感', s: [0,0,0,2,0,0] }
+  ]},
+  { q: '你最不希望自己被别人说成？', opts: [
+    { t: '太敏感', s: [2,0,0,0,0,0] },
+    { t: '太冷静', s: [0,2,0,0,0,0] },
+    { t: '变了', s: [0,0,2,0,0,0] },
+    { t: '太强势或太爱表现', s: [0,0,0,2,0,0] }
+  ]},
+  { q: '如果今天收到一束花，你更希望它代表什么？', opts: [
+    { t: '一次温柔的心动', s: [2,0,0,0,0,0] },
+    { t: '对自己的一次奖励', s: [0,0,0,2,0,0] },
+    { t: '从低谷里慢慢开出来', s: [0,0,2,0,0,0] },
+    { t: '对某个人或某段关系的守护', s: [0,0,0,0,2,0] }
+  ]},
+  { q: '面对人生变化，你通常会？', opts: [
+    { t: '先感受，等心里有答案', s: [1,0,0,0,0,1] },
+    { t: '分析利弊，重新判断', s: [0,2,0,0,0,0] },
+    { t: '先沉下去，慢慢重组', s: [0,0,2,0,0,0] },
+    { t: '尽量稳住身边重要的人和事', s: [0,0,0,0,2,0] }
+  ]},
+  { q: '哪句话更像现在的你？', opts: [
+    { t: '我还想重新被生活打动', s: [2,0,0,0,0,0] },
+    { t: '我终于开始看清一些事', s: [0,2,0,0,0,0] },
+    { t: '我正在经历一次重组', s: [0,0,2,0,0,0] },
+    { t: '我希望不再和自己对抗', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '你买香水时更在意？', opts: [
+    { t: '它有没有让我心动', s: [2,0,0,0,0,0] },
+    { t: '它像不像现在的我', s: [0,1,0,1,0,0] },
+    { t: '它有没有层次和故事', s: [0,0,2,0,0,0] },
+    { t: '它是否适合长期陪伴', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '你更愿意分享哪种朋友圈？', opts: [
+    { t: '一个偶然遇见的美好瞬间', s: [2,0,0,0,0,0] },
+    { t: '一段让自己清醒的感悟', s: [0,2,0,0,0,0] },
+    { t: '一张状态很好的照片', s: [0,0,0,2,0,0] },
+    { t: '一次和家人朋友安稳相处的时刻', s: [0,0,0,0,1,1] }
+  ]},
+  { q: '如果有一天完全属于自己，你会？', opts: [
+    { t: '去看展、喝咖啡、随意走走', s: [2,0,0,0,0,0] },
+    { t: '读书、写东西、重新规划', s: [0,2,0,0,0,0] },
+    { t: '换造型、拍照、认真庆祝自己', s: [0,0,0,2,0,0] },
+    { t: '关掉手机，安静休息', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '关系里你最看重？', opts: [
+    { t: '心动和新鲜感', s: [2,0,0,0,0,0] },
+    { t: '真实和边界', s: [0,2,0,0,0,0] },
+    { t: '能一起经历变化', s: [0,0,2,0,0,0] },
+    { t: '长久、安心和彼此成全', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '你最想对过去的自己说？', opts: [
+    { t: '你值得被温柔对待', s: [2,0,0,0,0,0] },
+    { t: '你可以把自己也算进去', s: [0,2,0,0,0,0] },
+    { t: '你不是坏掉了，你是在重组', s: [0,0,2,0,0,0] },
+    { t: '谢谢你一直守住了重要的人和事', s: [0,0,0,0,2,0] }
+  ]},
+  { q: '哪一种颜色最像你最近的状态？', opts: [
+    { t: '柔和的粉', s: [2,0,0,0,0,0] },
+    { t: '清醒的绿', s: [0,2,0,0,0,0] },
+    { t: '深处的紫', s: [0,0,2,0,0,0] },
+    { t: '安静的蓝', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '当别人夸你时，你最希望听到？', opts: [
+    { t: '你让人觉得很舒服', s: [1,0,0,0,0,1] },
+    { t: '你真的很清醒', s: [0,2,0,0,0,0] },
+    { t: '你变化很大，但更像自己了', s: [0,0,2,0,0,0] },
+    { t: '你很有光', s: [0,0,0,2,0,0] }
+  ]},
+  { q: '如果选择一间城堡房间，你会选？', opts: [
+    { t: '有花影和柔光的房间', s: [2,0,0,0,0,0] },
+    { t: '清爽安静、适合独处的房间', s: [0,2,0,0,0,0] },
+    { t: '深色艺术感、适合沉思的房间', s: [0,0,2,0,0,0] },
+    { t: '明亮华丽、适合庆祝的房间', s: [0,0,0,2,0,0] }
+  ]},
+  { q: '你更希望香水帮你表达？', opts: [
+    { t: '温柔和心动', s: [2,0,0,0,0,0] },
+    { t: '清醒和自我', s: [0,2,0,0,0,0] },
+    { t: '转变和深度', s: [0,0,2,0,0,0] },
+    { t: '安定和成熟', s: [0,0,0,0,0,2] }
+  ]},
+  { q: '此刻你最想认领哪句话？', opts: [
+    { t: '我愿意重新被世界打动', s: [2,0,0,0,0,0] },
+    { t: '我终于把自己也算进去', s: [0,2,0,0,0,0] },
+    { t: '我不再压低自己的光', s: [0,0,0,2,0,0] },
+    { t: '我温柔，但我有边界', s: [0,0,0,0,2,0] }
+  ]}
+];
+
+// ===== STATE =====
+let currentQuestion = 0;
+let scores = [0, 0, 0, 0, 0, 0];
+let resultPersonality = null;
+
+// ===== NAVIGATION =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('screen-' + id);
+  if (target) {
+    target.classList.add('active');
+    target.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+}
+
+function startTest() {
+  currentQuestion = 0;
+  scores = [0, 0, 0, 0, 0, 0];
+  resultPersonality = null;
+  showScreen('question');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+  
+  document.getElementById('progressFill').style.width = ((currentQuestion + 1) / total * 100) + '%';
+  document.getElementById('progressText').textContent = (currentQuestion + 1) + ' / ' + total;
+  
+  const labels = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十',
+    '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八'];
+  document.getElementById('qNumLabel').textContent = '第' + labels[currentQuestion] + '题';
+  document.getElementById('qText').textContent = q.q;
+  
+  const optsContainer = document.getElementById('qOptions');
+  optsContainer.innerHTML = '';
+  
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-option';
+    btn.textContent = letters[i] + '. ' + opt.t;
+    btn.onclick = () => selectAnswer(i);
+    optsContainer.appendChild(btn);
+  });
+}
+
+function selectAnswer(index) {
+  const btns = document.querySelectorAll('.q-option');
+  btns.forEach(b => b.classList.remove('selected'));
+  btns[index].classList.add('selected');
+  
+  const scores_add = questions[currentQuestion].opts[index].s;
+  for (let i = 0; i < 6; i++) scores[i] += scores_add[i];
+  
+  setTimeout(() => {
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 350);
+}
+
+function calculateResult() {
+  let maxScore = -1, maxIdx = 0;
+  for (let i = 0; i < 6; i++) {
+    if (scores[i] > maxScore) { maxScore = scores[i]; maxIdx = i; }
+  }
+  return maxIdx;
+}
+
+function showResult() {
+  const idx = calculateResult();
+  resultPersonality = personalities[idx];
+  const p = resultPersonality;
+  
+  showScreen('result');
+  
+  document.getElementById('resultBadge').textContent = p.badge;
+  document.getElementById('resultBadge').style.background = p.bgColor;
+  document.getElementById('resultBadge').style.color = p.color;
+  document.getElementById('resultType').textContent = p.name;
+  document.getElementById('resultType').style.color = p.color;
+  document.getElementById('resultDeclare').textContent = '「' + p.declare + '」';
+  
+  document.getElementById('zhaoliImg').src = p.zhaoliImg;
+  document.getElementById('zhaoliName').textContent = p.zhaoli;
+  document.getElementById('zhaoliDesc').textContent = p.zhaoliDesc;
+  
+  document.getElementById('descSelf').textContent = p.self;
+  document.getElementById('descOthers').textContent = p.others;
+  document.getElementById('descHidden').textContent = p.hidden;
+  
+  document.getElementById('fragranceName').textContent = '「' + p.fragrance + '」';
+  document.getElementById('fragranceDesc').textContent = p.fragranceDesc;
+  
+  document.getElementById('poemText').textContent = p.poem;
+  
+  setTimeout(() => {
+    document.querySelectorAll('#screen-result .anim-up').forEach((el, i) => {
+      el.style.animationDelay = (i * 0.1) + 's';
+    });
+    drawRadarChart();
+  }, 100);
+}
+
+let radarChartInstance = null;
+function drawRadarChart() {
+  if (radarChartInstance) radarChartInstance.destroy();
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  const maxScore = Math.max(...scores, 1);
+  const normalizedScores = scores.map(s => Math.round(s / maxScore * 100));
+  
+  const colors6 = ['#C4827C', '#7B9E7D', '#8B7EAC', '#C4A45A', '#C4967A', '#7B94B5'];
+  
+  radarChartInstance = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: personalityLabels,
+      datasets: [{
+        data: normalizedScores,
+        backgroundColor: 'rgba(139,107,125,0.12)',
+        borderColor: 'rgba(139,107,125,0.6)',
+        borderWidth: 1.5,
+        pointBackgroundColor: colors6,
+        pointBorderColor: colors6,
+        pointRadius: 5,
+        pointHoverRadius: 7
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 100,
+          ticks: { display: false, stepSize: 20 },
+          pointLabels: { font: { size: 13, family: '"PingFang SC","Hiragino Sans GB",sans-serif' }, color: '#555' },
+          grid: { color: 'rgba(0,0,0,0.06)' },
+          angleLines: { color: 'rgba(0,0,0,0.06)' }
+        }
+      }
+    }
+  });
+}
+
+// ===== POSTER =====
+function showPoster() {
+  document.getElementById('posterOverlay').classList.add('show');
+  setTimeout(drawPoster, 100);
+}
+
+function closePoster() {
+  document.getElementById('posterOverlay').classList.remove('show');
+}
+
+function drawPoster() {
+  const canvas = document.getElementById('posterCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 750, H = 1334;
+  canvas.width = W; canvas.height = H;
+  const p = resultPersonality;
+  
+  // Background
+  ctx.fillStyle = '#F7F4ED';
+  ctx.fillRect(0, 0, W, H);
+  
+  // Top decorative area with personality color
+  ctx.fillStyle = p.bgColor;
+  ctx.fillRect(0, 0, W, 480);
+  
+  // Subtle pattern overlay
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  for (let i = 0; i < 12; i++) {
+    const cx = 80 + Math.random() * (W - 160);
+    const cy = 80 + Math.random() * 320;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 40 + Math.random() * 60, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  
+  // Brand name
+  ctx.fillStyle = p.color;
+  ctx.font = '400 28px "PingFang SC","Noto Serif SC",serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('蝴蝶坞 · 六色人格', W/2, 100);
+  
+  // Personality type
+  ctx.fillStyle = p.color;
+  ctx.font = '400 72px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText(p.name, W/2, 220);
+  
+  // Badge
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  const badgeW = 120, badgeH = 36;
+  const badgeX = W/2 - badgeW/2, badgeY = 260;
+  ctx.beginPath();
+  ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 18);
+  ctx.fill();
+  ctx.fillStyle = p.color;
+  ctx.font = '400 16px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.badge, W/2, badgeY + 25);
+  
+  // Declaration
+  ctx.fillStyle = '#FFFFFF';
+  ctx.font = 'italic 400 24px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('「' + p.declare + '」', W/2, 340);
+  
+  // Core phrase
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.font = '400 18px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.phrase, W/2, 390);
+  
+  // Decorative line
+  ctx.strokeStyle = p.color;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(W/2 - 80, 430);
+  ctx.lineTo(W/2 + 80, 430);
+  ctx.stroke();
+  
+  // 照狸 image
+  const zhaoliImgEl = document.getElementById('zhaoliImg');
+  if (zhaoliImgEl && zhaoliImgEl.complete && zhaoliImgEl.naturalWidth > 0) {
+    const imgSize = 180;
+    const imgX = W/2 - imgSize/2;
+    const imgY = 490;
+    // Draw circular clip
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(W/2, imgY + imgSize/2, imgSize/2, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(zhaoliImgEl, imgX, imgY, imgSize, imgSize);
+    ctx.restore();
+    ctx.strokeStyle = p.color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(W/2, imgY + imgSize/2, imgSize/2, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  
+  let yPos = 710;
+  
+  // 照狸 name
+  ctx.fillStyle = p.color;
+  ctx.font = '500 22px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('专属照狸：' + p.zhaoli, W/2, yPos);
+  yPos += 36;
+  ctx.fillStyle = '#8B8178';
+  ctx.font = '400 15px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.zhaoliDesc, W/2, yPos);
+  yPos += 48;
+  
+  // Fragrance section
+  ctx.fillStyle = p.bgColor;
+  ctx.fillRect(60, yPos, W - 120, 80);
+  ctx.fillStyle = p.color;
+  ctx.font = '500 20px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('你的主香：「' + p.fragrance + '」', W/2, yPos + 36);
+  ctx.fillStyle = '#8B8178';
+  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.fragranceDesc, W/2, yPos + 62);
+  yPos += 120;
+  
+  // Poem
+  ctx.fillStyle = '#2C2416';
+  ctx.font = 'italic 400 22px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText(p.poem, W/2, yPos);
+  yPos += 36;
+  ctx.fillStyle = '#B5AEA5';
+  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('—— 李清照', W/2, yPos);
+  yPos += 60;
+  
+  // CTA
+  ctx.fillStyle = p.color;
+  ctx.font = '500 18px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('在蝴蝶坞，认领不被定义的自己', W/2, yPos);
+  yPos += 48;
+  
+  // QR placeholder
+  ctx.fillStyle = '#E8E3DC';
+  ctx.fillRect(W/2 - 50, yPos, 100, 100);
+  ctx.fillStyle = '#B5AEA5';
+  ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('扫码测试', W/2, yPos + 55);
+  
+  yPos += 130;
+  
+  // Bottom text
+  ctx.fillStyle = '#B5AEA5';
+  ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('测一测，闻见此刻的自己', W/2, yPos);
+}
+
+function savePoster() {
+  const canvas = document.getElementById('posterCanvas');
+  const link = document.createElement('a');
+  link.download = '蝴蝶坞六色人格_' + resultPersonality.name + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function retest() {
+  showScreen('home');
+  window.scrollTo(0, 0);
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  showScreen('home');
+});
+</script>
+</body>
+</html>
