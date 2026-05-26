@@ -1,0 +1,77 @@
+<svg viewBox="0 0 680 680" width="680" height="680" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>蝴蝶坞六色人格测试 — 公域到私域全链路转化流程</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="680" height="680" fill="#FAFAF8"/>
+<!-- 背景分区：公域 -->
+<rect x="40" y="30" width="600" height="76" rx="10" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="56" y="52" fill="#888780">公域流量入口</text>
+<!-- 公域平台 4个 -->
+<rect x="60" y="54" width="108" height="38" rx="7" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="114" y="73" text-anchor="middle" dominant-baseline="central" fill="#185FA5">小红书</text>
+<rect x="183" y="54" width="108" height="38" rx="7" fill="#C0DD97" stroke="#639922" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="237" y="73" text-anchor="middle" dominant-baseline="central" fill="#3B6D11">抖音 / 视频号</text>
+<rect x="306" y="54" width="108" height="38" rx="7" fill="#F4C0D1" stroke="#D4537E" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="360" y="73" text-anchor="middle" dominant-baseline="central" fill="#993556">朋友圈/公众号</text>
+<rect x="429" y="54" width="108" height="38" rx="7" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="483" y="73" text-anchor="middle" dominant-baseline="central" fill="#854F0B">KOL/合作博主</text>
+<!-- 箭头 -->
+<line x1="340" y1="108" x2="340" y2="126" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤1 -->
+<rect x="220" y="128" width="240" height="52" rx="10" fill="#534AB7"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="148" text-anchor="middle" dominant-baseline="central" fill="white">第一步：点击H5，开始测试</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="166" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">零门槛 · 18道题 · 约2分钟完成</text>
+<line x1="340" y1="182" x2="340" y2="200" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤2 -->
+<rect x="220" y="202" width="240" height="52" rx="10" fill="#0F6E56"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="222" text-anchor="middle" dominant-baseline="central" fill="white">第二步：完成18题测试</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="240" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">场景化题目 · 感官化选项 · 即时反馈</text>
+<line x1="340" y1="256" x2="340" y2="274" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤3 -->
+<rect x="220" y="276" width="240" height="52" rx="10" fill="#993556"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="296" text-anchor="middle" dominant-baseline="central" fill="white">第三步：查看专属结果页</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="314" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">六色雷达图 · 照狸 · 诗词 · 主香推荐</text>
+<!-- 分叉 -->
+<line x1="340" y1="330" x2="340" y2="348" stroke="#888780" stroke-width="1.5"/>
+<line x1="180" y1="348" x2="500" y2="348" stroke="#888780" stroke-width="1.5"/>
+<line x1="180" y1="348" x2="180" y2="366" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="500" y1="348" x2="500" y2="366" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 左支：分享裂变 -->
+<rect x="80" y="368" width="200" height="52" rx="10" fill="#BA7517"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="180" y="388" text-anchor="middle" dominant-baseline="central" fill="white">分享海报 · 裂变传播</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="180" y="406" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">好友看到→点击测试→循环裂变</text>
+<!-- 右支：企微引流 -->
+<rect x="400" y="368" width="200" height="52" rx="10" fill="#185FA5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="500" y="388" text-anchor="middle" dominant-baseline="central" fill="white">扫码添加企业微信</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="500" y="406" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">20秒后弹出 · 免费领专属香型</text>
+<!-- 回流虚线 -->
+<path d="M 180 422 Q 180 460 340 460 Q 500 460 500 422" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="4,3"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="456" text-anchor="middle" fill="#BA7517">裂变回流</text>
+<line x1="500" y1="422" x2="500" y2="440" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤5 -->
+<rect x="400" y="442" width="200" height="52" rx="10" fill="#3B6D11"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="500" y="462" text-anchor="middle" dominant-baseline="central" fill="white">领取2ml专属香型小样</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="500" y="480" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">按人格匹配 · 收集地址寄送</text>
+<line x1="500" y1="496" x2="500" y2="514" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤6 -->
+<rect x="400" y="516" width="200" height="52" rx="10" fill="#534AB7"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="500" y="536" text-anchor="middle" dominant-baseline="central" fill="white">注册小程序私域会员</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="500" y="554" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">入会礼 · 复购8折 · 会员档案</text>
+<line x1="500" y1="570" x2="500" y2="588" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- 步骤7 -->
+<rect x="400" y="590" width="200" height="52" rx="10" fill="#A32D2D"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="500" y="610" text-anchor="middle" dominant-baseline="central" fill="white">复购 · 进阶测试 · 酒店体验</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="500" y="628" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)">LTV提升 · 30天复测提醒</text>
+<!-- 层级标注 -->
+<rect x="612" y="128" width="58" height="24" rx="4" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="641" y="140" text-anchor="middle" dominant-baseline="central" fill="#534AB7">引流层</text>
+<rect x="612" y="276" width="58" height="24" rx="4" fill="#FBEAF0" stroke="#ED93B1" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="641" y="288" text-anchor="middle" dominant-baseline="central" fill="#993556">情绪峰值</text>
+<rect x="612" y="442" width="58" height="24" rx="4" fill="#EAF3DE" stroke="#97C459" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="641" y="454" text-anchor="middle" dominant-baseline="central" fill="#3B6D11">私域沉淀</text>
+<rect x="612" y="590" width="58" height="24" rx="4" fill="#FCEBEB" stroke="#F09595" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="641" y="602" text-anchor="middle" dominant-baseline="central" fill="#A32D2D">LTV增长</text>
+</svg>

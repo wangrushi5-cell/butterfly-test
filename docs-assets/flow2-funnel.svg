@@ -1,0 +1,43 @@
+<svg viewBox="0 0 680 520" width="680" height="520" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>蝴蝶坞 — 用户转化漏斗模型</title>
+<rect width="680" height="520" fill="#FAFAF8"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="340" y="30" text-anchor="middle" fill="#2C2C2A">用户转化漏斗模型</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="340" y="50" text-anchor="middle" fill="#5F5E5A">以5000次测试为基数的目标漏斗</text>
+<polygon points="100,70 580,70 560,128 120,128" fill="#534AB7"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="94" text-anchor="middle" dominant-baseline="central" fill="white">公域曝光 · 看到链接</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="114" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">小红书 / 抖音 / 朋友圈 / KOL推广</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="100" text-anchor="end" fill="#534AB7">50,000</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="117" text-anchor="end" fill="#5F5E5A">次曝光</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" font-weight="500" x="630" y="108" fill="#A32D2D">点击率10%</text>
+<polygon points="120,132 560,132 536,190 144,190" fill="#185FA5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="155" text-anchor="middle" dominant-baseline="central" fill="white">点击进入 · 开始测试</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="173" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">完成率目标 >80%</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="155" text-anchor="end" fill="#185FA5">5,000</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="172" text-anchor="end" fill="#5F5E5A">次开始</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" font-weight="500" x="630" y="171" fill="#A32D2D">完成率80%</text>
+<polygon points="144,194 536,194 510,252 170,252" fill="#0F6E56"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="217" text-anchor="middle" dominant-baseline="central" fill="white">完成测试 · 查看结果页</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="235" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">分享海报或扫码企微</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="217" text-anchor="end" fill="#0F6E56">4,000</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="234" text-anchor="end" fill="#5F5E5A">人看结果</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" font-weight="500" x="630" y="233" fill="#A32D2D">分享率25%</text>
+<polygon points="170,256 510,256 482,314 198,314" fill="#BA7517"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="279" text-anchor="middle" dominant-baseline="central" fill="white">添加企业微信</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="297" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">免费领专属香型 2ml 小样</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="279" text-anchor="end" fill="#BA7517">2,000</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="296" text-anchor="end" fill="#5F5E5A">人添加</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" font-weight="500" x="630" y="295" fill="#A32D2D">领样率60%</text>
+<polygon points="198,318 482,318 452,376 228,376" fill="#993556"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="341" text-anchor="middle" dominant-baseline="central" fill="white">领取小样 · 体验后首购</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="359" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">复购8折会员专属</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="341" text-anchor="end" fill="#993556">1,200</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="358" text-anchor="end" fill="#5F5E5A">人领样</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" font-weight="500" x="630" y="357" fill="#A32D2D">首购率8%</text>
+<polygon points="228,380 452,380 420,438 260,438" fill="#A32D2D"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="13" font-weight="500" x="340" y="403" text-anchor="middle" dominant-baseline="central" fill="white">注册私域会员 · 复购增长</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="340" y="421" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.9)">LTV · 酒店体验 · 深度复测</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="18" font-weight="500" x="52" y="403" text-anchor="end" fill="#A32D2D">96</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="52" y="420" text-anchor="end" fill="#5F5E5A">人首购</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="340" y="462" text-anchor="middle" fill="#5F5E5A">每获取1名付费会员，估算综合成本约¥150-200（含小样寄送）</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="340" y="480" text-anchor="middle" fill="#5F5E5A">裂变传播的新用户进入同一漏斗，可持续降低人均获客成本</text>
+</svg>

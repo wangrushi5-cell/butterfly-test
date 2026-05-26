@@ -1,0 +1,57 @@
+<svg viewBox="0 0 680 420" width="680" height="420" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>蝴蝶坞 — 分享裂变阶梯奖励机制</title>
+<rect width="680" height="420" fill="#FAFAF8"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="340" y="28" text-anchor="middle" fill="#2C2C2A">分享裂变阶梯奖励机制</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="340" y="48" text-anchor="middle" fill="#5F5E5A">条件：分享的好友须完成测试才算有效邀请</text>
+<!-- 阶梯底座 -->
+<rect x="60" y="270" width="122" height="90" rx="10" fill="#3C3489"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="22" font-weight="500" x="121" y="308" text-anchor="middle" dominant-baseline="central" fill="white">1</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="121" y="334" text-anchor="middle" fill="rgba(255,255,255,0.9)">邀请好友测试人次</text>
+<rect x="200" y="240" width="122" height="120" rx="10" fill="#0F6E56"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="22" font-weight="500" x="261" y="283" text-anchor="middle" dominant-baseline="central" fill="white">3</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="309" text-anchor="middle" fill="rgba(255,255,255,0.9)">邀请好友测试人次</text>
+<rect x="212" y="333" width="98" height="18" rx="4" fill="rgba(255,255,255,0.15)"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="342" text-anchor="middle" fill="white">裂变主力甜蜜点</text>
+<rect x="340" y="200" width="122" height="160" rx="10" fill="#BA7517"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="22" font-weight="500" x="401" y="250" text-anchor="middle" dominant-baseline="central" fill="white">8</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="401" y="279" text-anchor="middle" fill="rgba(255,255,255,0.9)">邀请好友测试人次</text>
+<rect x="352" y="305" width="98" height="18" rx="4" fill="rgba(255,255,255,0.15)"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="401" y="314" text-anchor="middle" fill="white">超级传播者节点</text>
+<rect x="480" y="150" width="140" height="210" rx="10" fill="#993556"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="22" font-weight="500" x="550" y="210" text-anchor="middle" dominant-baseline="central" fill="white">20</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="550" y="238" text-anchor="middle" fill="rgba(255,255,255,0.9)">邀请好友测试人次</text>
+<rect x="492" y="265" width="116" height="18" rx="4" fill="rgba(255,255,255,0.15)"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="550" y="274" text-anchor="middle" fill="white">品牌大使·长期关系</text>
+<!-- 奖励卡片 -->
+<rect x="60" y="138" width="122" height="116" rx="8" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="121" y="157" text-anchor="middle" fill="#3C3489">专属小样</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="121" y="177" text-anchor="middle" fill="#2C2C2A">2ml 对应人格香型</text>
+<line x1="75" y1="188" x2="167" y2="188" stroke="#D3D1C7" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="121" y="202" text-anchor="middle" fill="#5F5E5A">礼品成本 ¥8-12</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="121" y="218" text-anchor="middle" fill="#5F5E5A">获客成本 ¥8-12/人</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="121" y="234" text-anchor="middle" fill="#5F5E5A">门槛最低·验证意愿</text>
+<rect x="200" y="90" width="122" height="132" rx="8" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="261" y="109" text-anchor="middle" fill="#0F6E56">小样礼盒</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="261" y="129" text-anchor="middle" fill="#2C2C2A">6支全系列小样套装</text>
+<line x1="215" y1="140" x2="307" y2="140" stroke="#D3D1C7" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="154" text-anchor="middle" fill="#5F5E5A">礼品成本 ¥35-50</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="170" text-anchor="middle" fill="#5F5E5A">获客成本 ¥12-17/人</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="186" text-anchor="middle" fill="#5F5E5A">最佳ROI阶梯</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="261" y="202" text-anchor="middle" fill="#0F6E56">★ 重点推广</text>
+<rect x="340" y="64" width="122" height="118" rx="8" fill="#FAEEDA" stroke="#FAC775" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="401" y="83" text-anchor="middle" fill="#854F0B">正装香水</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="401" y="103" text-anchor="middle" fill="#2C2C2A">35ml 正装一瓶</text>
+<line x1="355" y1="114" x2="447" y2="114" stroke="#D3D1C7" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="401" y="128" text-anchor="middle" fill="#5F5E5A">礼品成本 ¥60-80</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="401" y="144" text-anchor="middle" fill="#5F5E5A">获客成本 ¥7-10/人</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="401" y="160" text-anchor="middle" fill="#5F5E5A">筛选超级传播者</text>
+<rect x="480" y="30" width="140" height="102" rx="8" fill="#FBEAF0" stroke="#ED93B1" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="14" font-weight="500" x="550" y="49" text-anchor="middle" fill="#993556">城堡酒店体验</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="550" y="69" text-anchor="middle" fill="#2C2C2A">住宿体验券 1晚</text>
+<line x1="495" y1="80" x2="605" y2="80" stroke="#D3D1C7" stroke-width="0.5"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="550" y="94" text-anchor="middle" fill="#5F5E5A">品牌大使·头部KOC</text>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="11" x="550" y="110" text-anchor="middle" fill="#5F5E5A">深度绑定·长期内容</text>
+<!-- 底部横轴 -->
+<line x1="60" y1="364" x2="625" y2="364" stroke="#D3D1C7" stroke-width="1"/>
+<text font-family="PingFang SC,Noto Sans SC,sans-serif" font-size="12" x="620" y="378" text-anchor="end" fill="#888780">分享人数 →</text>
+</svg>
