@@ -195,6 +195,110 @@ body {
 }
 .retest-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+/* ---- TRAITS ---- */
+.traits-wrap {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 24px;
+}
+.trait-tag {
+  padding: 8px 18px; border-radius: 20px; font-size: 13px; font-family: var(--font-cn);
+  letter-spacing: 0.04em;
+}
+
+/* ---- GROWING TIPS ---- */
+.growing-card {
+  background: var(--card); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
+  padding: 20px; margin-bottom: 16px;
+}
+.growing-card-label {
+  font-size: 11px; color: var(--text3); letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.growing-card-text {
+  font-family: var(--font-cn); font-size: 15px; color: var(--text);
+  line-height: 1.8; font-style: italic;
+}
+
+/* ---- SCENES & ENERGY ---- */
+.scenes-row {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+}
+.scene-chip {
+  padding: 6px 14px; border-radius: 14px; font-size: 12px;
+  border: 0.5px solid var(--border); background: var(--bg); color: var(--text2);
+}
+.energy-row { display: flex; gap: 20px; margin-bottom: 24px; }
+.energy-col { flex: 1; }
+.energy-label { font-size: 11px; color: var(--text3); letter-spacing: 0.04em; margin-bottom: 4px; }
+.energy-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+/* ---- PRODUCT LIST ---- */
+.product-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.product-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--bg); border-radius: var(--radius-sm); padding: 14px 16px;
+  border: 0.5px solid var(--border);
+}
+.product-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  flex-shrink: 0; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-info { flex: 1; }
+.product-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.product-meta { font-size: 12px; color: var(--text3); }
+.product-price { font-size: 14px; font-weight: 500; color: var(--accent); flex-shrink: 0; }
+.room-fragrance {
+  font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 24px;
+  line-height: 1.6; font-style: italic;
+}
+
+/* ---- SHARE REWARDS ---- */
+.rewards-section {
+  width: 100%; background: var(--card); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 20px;
+  margin-bottom: 24px;
+}
+.rewards-title {
+  font-size: 14px; font-weight: 500; text-align: center; margin-bottom: 6px;
+}
+.rewards-subtitle {
+  font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 16px;
+}
+.reward-tiers { display: flex; gap: 12px; }
+.reward-tier {
+  flex: 1; text-align: center; padding: 14px 8px;
+  background: var(--bg); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
+}
+.reward-tier-num {
+  font-family: var(--font-cn); font-size: 24px; font-weight: 400; margin-bottom: 4px;
+}
+.reward-tier-label { font-size: 11px; color: var(--text3); line-height: 1.4; }
+.reward-tier-icon { font-size: 20px; margin-bottom: 4px; }
+.reward-tier.highlight {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+.reward-tier.highlight .reward-tier-num { color: var(--accent); }
+
+/* ---- SHARE COPY ---- */
+.share-copy-section { margin-bottom: 24px; width: 100%; }
+.copy-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.copy-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; background: var(--card); border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border); cursor: pointer;
+  transition: all 0.2s ease;
+}
+.copy-card:hover { border-color: var(--accent); background: var(--accent-light); }
+.copy-card-text { font-size: 13px; color: var(--text2); flex: 1; line-height: 1.5; }
+.copy-card-btn { font-size: 11px; color: var(--accent); flex-shrink: 0; letter-spacing: 0.04em; }
+.copy-toast {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(44,36,22,0.85); color: #FFF; padding: 12px 28px;
+  border-radius: 24px; font-size: 14px; z-index: 2000;
+  opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+}
+.copy-toast.show { opacity: 1; }
+
 /* ---- POSTER OVERLAY ---- */
 .poster-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -317,15 +421,72 @@ body {
         </div>
       </div>
 
-      <div class="info-card anim-up" id="fragranceCard">
-        <div class="info-card-label">你的主香</div>
-        <div class="info-card-title" id="fragranceName"></div>
-        <div class="info-card-desc" id="fragranceDesc"></div>
+      <!-- 人格标签云 -->
+      <div class="traits-wrap anim-up" id="traitsWrap"></div>
+
+      <!-- 成长之径 -->
+      <div class="growing-card anim-up">
+        <div class="growing-card-label">你的成长之径</div>
+        <div class="growing-card-text" id="growingTips"></div>
+      </div>
+
+      <!-- 适合场景 + 能量 -->
+      <div class="info-card anim-up">
+        <div class="info-card-label">适合你的场景</div>
+        <div class="scenes-row" id="scenesRow"></div>
+        <div class="energy-row" style="margin-top:14px;">
+          <div class="energy-col">
+            <div class="energy-label">+ 能量来源</div>
+            <div class="energy-text" id="energySource"></div>
+          </div>
+          <div class="energy-col">
+            <div class="energy-label">- 能量消耗</div>
+            <div class="energy-text" id="energyDrain"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 香氛产品推荐 -->
+      <div class="info-card anim-up">
+        <div class="info-card-label">你的专属香 · 主香</div>
+        <div class="info-card-title" id="fragranceName" style="margin-bottom:6px;"></div>
+        <div class="info-card-desc" id="fragranceDesc" style="margin-bottom:16px;"></div>
+        <div class="product-list" id="productList"></div>
+        <div class="room-fragrance" id="roomFragrance"></div>
       </div>
 
       <div class="poem-card anim-up">
         <div class="poem-text" id="poemText"></div>
         <div class="poem-author">—— 李清照</div>
+      </div>
+
+      <!-- 分享裂变激励 -->
+      <div class="rewards-section anim-up">
+        <div class="rewards-title">邀请好友测试，解锁香氛好礼</div>
+        <div class="rewards-subtitle">分享你的专属链接，好友通过后完成测试即可累计</div>
+        <div class="reward-tiers">
+          <div class="reward-tier">
+            <div class="reward-tier-icon">🧴</div>
+            <div class="reward-tier-num">1人</div>
+            <div class="reward-tier-label">专属香型2ml小样<br>到店领取</div>
+          </div>
+          <div class="reward-tier highlight">
+            <div class="reward-tier-icon">🎁</div>
+            <div class="reward-tier-num">3人</div>
+            <div class="reward-tier-label">六色香氛4支礼盒<br>价值 ¥358</div>
+          </div>
+          <div class="reward-tier">
+            <div class="reward-tier-icon">🌟</div>
+            <div class="reward-tier-num">8人</div>
+            <div class="reward-tier-label">专属人格正装香水<br>50ml 价值 ¥468</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 分享文案 -->
+      <div class="share-copy-section anim-up">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:12px;text-align:center;">选择文案，分享到朋友圈或群聊</div>
+        <div class="copy-cards" id="copyCards"></div>
       </div>
 
       <div class="share-section anim-up">
@@ -358,6 +519,9 @@ body {
     <div class="poster-close" onclick="closePoster()">✕ 关闭</div>
   </div>
 
+  <!-- ===== COPY TOAST ===== -->
+  <div class="copy-toast" id="copyToast">已复制</div>
+
 </div>
 
 <script>
@@ -373,7 +537,28 @@ const personalities = [
     fragrance: '暗香', fragranceDesc: '清冷栀子调，初闻清冽，细品温柔。像你一样，需要靠近才能读懂。',
     zhaoli: '柔光照狸', zhaoliDesc: '陪你重新被世界打动',
     zhaoliImg: 'images/zhaoli-xiehou.jpg',
-    poem: '和羞走，倚门回首，却把青梅嗅。'
+    poem: '和羞走，倚门回首，却把青梅嗅。',
+    // 释义
+    traits: ['感知细腻', '浪漫温柔', '好奇心旺盛', '共情力强'],
+    growingTips: '不必为自己的敏感道歉。你的柔软是这个世界最稀缺的力量——继续保持对世界的好奇，但也要学会在感受之后，给自己一个安静的收梢。',
+    suitableScenes: ['初遇与心动时刻', '艺术展与咖啡馆', '花市与旧书店', '雨后散步'],
+    energySource: '新鲜感、美好的细节、真诚的连接',
+    energyDrain: '重复的日常、冷漠的环境、被忽视的感觉',
+    // 香水产品对应
+    products: [
+      { name: '暗香 · 邂逅淡香精', type: 'EDP 50ml', price: '¥398', desc: '清冷栀子调，初闻清冽细品温柔。持香6-8小时。' },
+      { name: '暗香 · 邂逅身体乳', type: '身体乳 200ml', price: '¥168', desc: '栀子花+杏仁油，如初恋般的温柔滋养。' },
+      { name: '暗香 · 邂逅空间香氛', type: '空间喷雾 100ml', price: '¥128', desc: '让整个房间都染上温柔的栀子气息。' },
+    ],
+    roomFragrance: '栀子花与白茶空间香氛 · 适合卧室与书房',
+    bestSeason: '春夏',
+    // 分享裂变
+    shareTitle: '我是「邂逅」人格，你呢？',
+    shareCopy: [
+      '测了一下这个香水人格测试，居然被说中了...太准了',
+      '我的专属香是「暗香」——清冷栀子调。你的是什么？',
+      '我仍然有被世界打动的能力。来测测你是什么人格香型'
+    ]
   },
   {
     id: 'juexing', name: '觉醒', color: '#7B9E7D', bgColor: '#E8F0E8',
@@ -385,7 +570,28 @@ const personalities = [
     fragrance: '醒木', fragranceDesc: '雨后苔藓与雪松交织，干净利落，带着刚刚好的距离感。像一场清醒的呼吸。',
     zhaoli: '清醒照狸', zhaoliDesc: '陪你看见真实的自己',
     zhaoliImg: 'images/zhaoli-juexing.jpg',
-    poem: '知否？知否？应是绿肥红瘦。'
+    poem: '知否？知否？应是绿肥红瘦。',
+    // 释义
+    traits: ['理性清醒', '边界感强', '独立思考', '洞见深刻'],
+    growingTips: '清醒不是为了拒绝世界，而是为了更精准地选择。你可以继续划清边界，但也请记得——偶尔允许自己不知分寸地喜欢一个人或一件事。',
+    suitableScenes: ['独处充电', '深度阅读与写作', '自然徒步', '深夜思考'],
+    energySource: '独处时间、被理解的感觉、看见真相',
+    energyDrain: '无意义的社交、虚伪的关系、被情感绑架',
+    // 香水产品对应
+    products: [
+      { name: '醒木 · 觉醒淡香精', type: 'EDP 50ml', price: '¥398', desc: '雨后苔藓与雪松交织，干净利落。持香6-8小时。' },
+      { name: '醒木 · 觉醒沐浴露', type: '沐浴露 300ml', price: '¥128', desc: '雪松木+薄荷，洗去一天社交疲惫。' },
+      { name: '醒木 · 觉醒香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '苔藓与雪松，独处时刻的清醒陪伴。燃烧约40小时。' },
+    ],
+    roomFragrance: '苔藓与雪松空间香氛 · 适合书房与冥想角',
+    bestSeason: '秋冬',
+    // 分享裂变
+    shareTitle: '我是「觉醒」人格，你呢？',
+    shareCopy: [
+      '这个测试让我意识到，清醒不是冷漠，是终于把自己也算进去了。',
+      '我的香叫「醒木」——雨后的苔藓和雪松，刚好的距离感。',
+      '我终于把自己也算进去了。——来测你的六色人格香型'
+    ]
   },
   {
     id: 'diebian', name: '蝶变', color: '#8B7EAC', bgColor: '#EDEAF5',
@@ -397,7 +603,28 @@ const personalities = [
     fragrance: '破茧', fragranceDesc: '鸢尾与檀木的交叠，前调低沉，中后调逐渐明亮。像一只正在展翅的蝶，不急不缓。',
     zhaoli: '破茧照狸', zhaoliDesc: '陪你穿过旧我',
     zhaoliImg: 'images/zhaoli-diebian.jpg',
-    poem: '清露洗、蘋花汀草，眠沙鸥鹭不回头。'
+    poem: '清露洗、蘋花汀草，眠沙鸥鹭不回头。',
+    // 释义
+    traits: ['深度思考', '正在蜕变', '内省力强', '创造力爆发期'],
+    growingTips: '你现在经历的，不是「坏掉了」，而是一次深层的重组。不要急着变成「更好的自己」——先在重组中学会善待正在变化的自己。',
+    suitableScenes: ['深夜创作', '独自旅行', '沉浸式艺术体验', '写日记与反思'],
+    energySource: '深度对话、艺术触动、独自完成一件事的成就感',
+    energyDrain: '被打断的沉思、被要求快速表态、浅层闲聊',
+    // 香水产品对应
+    products: [
+      { name: '破茧 · 蝶变淡香精', type: 'EDP 50ml', price: '¥468', desc: '鸢尾与檀木，前调低沉后调明亮。持香8-10小时。' },
+      { name: '破茧 · 蝶变香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '檀木+鸢尾，燃烧时如蜕变般层次渐明。约40小时。' },
+      { name: '破茧 · 蝶变精油套装', type: '精油套装', price: '¥268', desc: '鸢尾+檀木+佛手柑，含扩香木，冥想蜕变伴侣。' },
+    ],
+    roomFragrance: '檀木与鸢尾空间香氛 · 适合工作室与冥想空间',
+    bestSeason: '四季皆宜',
+    // 分享裂变
+    shareTitle: '我是「蝶变」人格，你呢？',
+    shareCopy: [
+      '测试说我正在经历一次重组——不是坏掉了，是在长出新的结构。',
+      '我的香叫「破茧」。鸢尾和檀木，前调低沉后调明亮。',
+      '你不是坏掉了，你是在重组。来测你的蝶变阶段'
+    ]
   },
   {
     id: 'zhanfang', name: '绽放', color: '#C4A45A', bgColor: '#F7F2E3',
@@ -409,7 +636,28 @@ const personalities = [
     fragrance: '耀光', fragranceDesc: '柑橘与琥珀的碰撞，明亮而有层次。第一秒就抓人，越久越有故事。',
     zhaoli: '光芒照狸', zhaoliDesc: '陪你不再压低自己的光',
     zhaoliImg: 'images/zhaoli-zhanfang.jpg',
-    poem: '梅定妒，菊应羞。'
+    poem: '梅定妒，菊应羞。',
+    // 释义
+    traits: ['感染力强', '自信表达', '热爱庆祝', '引领他人'],
+    growingTips: '你的光芒不需要压低。这个世界需要更多敢于亮出来的人——但请记住，真正的绽放不是为了被看见，而是因为你本来就有光。学会在热闹之后，也给自己留一盏安静的灯。',
+    suitableScenes: ['聚会与庆祝', '公开表达', '舞台和聚光灯', '旅行与冒险'],
+    energySource: '被认可、创造影响、与人分享快乐',
+    energyDrain: '被压制表达、长期独处、被忽视的价值',
+    // 香水产品对应
+    products: [
+      { name: '耀光 · 绽放淡香精', type: 'EDP 50ml', price: '¥468', desc: '柑橘与琥珀碰撞，明亮有层次。持香8-10小时。' },
+      { name: '耀光 · 绽放滚珠香水', type: '便携滚珠 10ml', price: '¥188', desc: '随时补香，保持光芒不灭。' },
+      { name: '耀光 · 绽放香氛礼盒', type: '三件套礼盒', price: '¥698', desc: 'EDP+身体乳+滚珠，光芒全开礼。送礼首选。' },
+    ],
+    roomFragrance: '柑橘与琥珀空间香氛 · 适合客厅与派对空间',
+    bestSeason: '春夏',
+    // 分享裂变
+    shareTitle: '我是「绽放」人格，你呢？',
+    shareCopy: [
+      '测完觉得自己最近状态真的很好！你的光芒不需要压低。',
+      '我的香叫「耀光」——柑橘和琥珀，一秒抓人。来测你的专属香。',
+      '我不再压低自己的光。你的六色人格香型是什么？'
+    ]
   },
   {
     id: 'shouhu', name: '守护', color: '#C4967A', bgColor: '#F5EDE6',
@@ -421,7 +669,28 @@ const personalities = [
     fragrance: '暖岸', fragranceDesc: '琥珀与零陵香豆的温暖组合，像一个让人安心的拥抱。不张扬，但久久不散。',
     zhaoli: '骑士照狸', zhaoliDesc: '陪你温柔但坚定地守住边界',
     zhaoliImg: 'images/zhaoli-shouhu.jpg',
-    poem: '风休住，蓬舟吹取三山去。'
+    poem: '风休住，蓬舟吹取三山去。',
+    // 释义
+    traits: ['可靠温暖', '责任感强', '擅长构建安全感', '温柔但有边界'],
+    growingTips: '你比任何人都更懂得如何让身边的人感到安全。但请记住：守护别人的前提，是守护好自己的能量。学会说「不」，是你最重要的功课——那不是冷漠，而是让温柔可持续的边界。',
+    suitableScenes: ['家庭聚会', '照顾与陪伴', '稳定长期关系', '安静的手工时光'],
+    energySource: '被需要的感觉、稳定的关系、有意义的付出',
+    energyDrain: '失控的局面、被辜负的信任、无边界的要求',
+    // 香水产品对应
+    products: [
+      { name: '暖岸 · 守护淡香精', type: 'EDP 50ml', price: '¥398', desc: '琥珀与零陵香豆，如温暖拥抱。持香6-8小时。' },
+      { name: '暖岸 · 守护护手霜', type: '护手霜 50ml', price: '¥98', desc: '琥珀+乳木果，守护你的每一寸温柔。' },
+      { name: '暖岸 · 守护香氛蜡烛', type: '蜡烛 200g', price: '¥198', desc: '琥珀与零陵香豆，让家的每个角落都安心。约40小时。' },
+    ],
+    roomFragrance: '琥珀与零陵香豆空间香氛 · 适合卧室与家庭空间',
+    bestSeason: '秋冬',
+    // 分享裂变
+    shareTitle: '我是「守护」人格，你呢？',
+    shareCopy: [
+      '测出来我是守护型人格——温柔但有边界，太准了。',
+      '我的香叫「暖岸」。琥珀和零陵香豆，像一个让人安心的拥抱。',
+      '我温柔，但我有边界。来测你的六色人格香型'
+    ]
   },
   {
     id: 'gongsheng', name: '共生', color: '#7B94B5', bgColor: '#E8EEF5',
@@ -433,7 +702,28 @@ const personalities = [
     fragrance: '静泊', fragranceDesc: '白麝香与雪松木的沉静组合，不争不抢，却有无法忽视的存在感。越久越醇。',
     zhaoli: '静境照狸', zhaoliDesc: '陪你走向平静共生',
     zhaoliImg: 'images/zhaoli-gongsheng.jpg',
-    poem: '枕上诗书闲处好，门前风景雨来佳。'
+    poem: '枕上诗书闲处好，门前风景雨来佳。',
+    // 释义
+    traits: ['内心秩序', '成熟包容', '不争不抢', '自带稳定感'],
+    growingTips: '你已经走过了最远的路——从对抗世界到与自己和解。现在，你不需要再证明什么。你的存在本身，就是一种安静的力量。继续这份静定，它会带你看见更大的风景。',
+    suitableScenes: ['安静阅读', '自然独处', '深度对话', '晨间冥想'],
+    energySource: '内心的秩序感、深度的关系、自然与宁静',
+    energyDrain: '嘈杂环境、被迫竞争、浅层社交',
+    // 香水产品对应
+    products: [
+      { name: '静泊 · 共生淡香精', type: 'EDP 50ml', price: '¥468', desc: '白麝香与雪松木，不争却有存在感。持香8-10小时。' },
+      { name: '静泊 · 共生精油套装', type: '精油套装', price: '¥268', desc: '白麝香+雪松+佛手柑，含扩香木，冥想伴侣。' },
+      { name: '静泊 · 共生香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '白麝香与雪松，静谧时光的最佳背景。约40小时。' },
+    ],
+    roomFragrance: '白麝香与雪松木空间香氛 · 适合书房与茶室',
+    bestSeason: '四季皆宜',
+    // 分享裂变
+    shareTitle: '我是「共生」人格，你呢？',
+    shareCopy: [
+      '这个测试说我到了一个人和世界和解的阶段，确实是这样。',
+      '我的香叫「静泊」——白麝香和雪松木，越久越醇。',
+      '我不再和自己对抗。来测你的六色人格香型'
+    ]
   }
 ];
 
@@ -647,17 +937,82 @@ function showResult() {
   document.getElementById('descOthers').textContent = p.others;
   document.getElementById('descHidden').textContent = p.hidden;
   
+  // ---- 人格标签云 ----
+  const traitsWrap = document.getElementById('traitsWrap');
+  traitsWrap.innerHTML = '';
+  p.traits.forEach(function(t) {
+    var tag = document.createElement('span');
+    tag.className = 'trait-tag';
+    tag.textContent = t;
+    tag.style.background = p.bgColor;
+    tag.style.color = p.color;
+    traitsWrap.appendChild(tag);
+  });
+  
+  // ---- 成长之径 ----
+  document.getElementById('growingTips').textContent = p.growingTips;
+  
+  // ---- 适合场景 ----
+  var scenesRow = document.getElementById('scenesRow');
+  scenesRow.innerHTML = '';
+  p.suitableScenes.forEach(function(s) {
+    var chip = document.createElement('span');
+    chip.className = 'scene-chip';
+    chip.textContent = s;
+    scenesRow.appendChild(chip);
+  });
+  document.getElementById('energySource').textContent = p.energySource;
+  document.getElementById('energyDrain').textContent = p.energyDrain;
+  
+  // ---- 香氛产品 ----
   document.getElementById('fragranceName').textContent = '「' + p.fragrance + '」';
   document.getElementById('fragranceDesc').textContent = p.fragranceDesc;
   
+  var productList = document.getElementById('productList');
+  productList.innerHTML = '';
+  var productIcons = ['🌿', '🌸', '🕯'];
+  p.products.forEach(function(prod, i) {
+    productList.innerHTML += '<div class="product-item"><div class="product-icon" style="background:' + p.bgColor + ';color:' + p.color + '">' + productIcons[i % 3] + '</div><div class="product-info"><div class="product-name">' + prod.name + '</div><div class="product-meta">' + prod.type + '</div><div class="product-meta" style="color:' + p.color + '">' + prod.desc + '</div></div><div class="product-price">' + prod.price + '</div></div>';
+  });
+  document.getElementById('roomFragrance').textContent = p.roomFragrance;
+  
   document.getElementById('poemText').textContent = p.poem;
   
-  setTimeout(() => {
-    document.querySelectorAll('#screen-result .anim-up').forEach((el, i) => {
+  // ---- 分享文案 ----
+  var copyCards = document.getElementById('copyCards');
+  copyCards.innerHTML = '';
+  p.shareCopy.forEach(function(text, i) {
+    copyCards.innerHTML += '<div class="copy-card" onclick="copyShareText(' + i + ')" style="animation-delay:' + (i * 0.1) + 's"><span class="copy-card-text">' + text + '</span><span class="copy-card-btn">复制</span></div>';
+  });
+  
+  setTimeout(function() {
+    document.querySelectorAll('#screen-result .anim-up').forEach(function(el, i) {
       el.style.animationDelay = (i * 0.1) + 's';
     });
     drawRadarChart();
   }, 100);
+}
+
+function copyShareText(index) {
+  var text = resultPersonality.shareCopy[index];
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(showCopyToast);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showCopyToast();
+  }
+}
+
+function showCopyToast() {
+  var toast = document.getElementById('copyToast');
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 1500);
 }
 
 let radarChartInstance = null;
@@ -715,136 +1070,192 @@ function closePoster() {
 function drawPoster() {
   const canvas = document.getElementById('posterCanvas');
   const ctx = canvas.getContext('2d');
-  const W = 750, H = 1334;
+  const W = 750, H = 1600;
   canvas.width = W; canvas.height = H;
   const p = resultPersonality;
-  
+
   // Background
   ctx.fillStyle = '#F7F4ED';
   ctx.fillRect(0, 0, W, H);
-  
+
   // Top decorative area with personality color
   ctx.fillStyle = p.bgColor;
-  ctx.fillRect(0, 0, W, 480);
-  
+  ctx.fillRect(0, 0, W, 420);
+
   // Subtle pattern overlay
   ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  for (let i = 0; i < 12; i++) {
-    const cx = 80 + Math.random() * (W - 160);
-    const cy = 80 + Math.random() * 320;
+  for (var i = 0; i < 10; i++) {
+    var cx = 80 + Math.random() * (W - 160);
+    var cy = 60 + Math.random() * 300;
     ctx.beginPath();
-    ctx.arc(cx, cy, 40 + Math.random() * 60, 0, Math.PI * 2);
+    ctx.arc(cx, cy, 35 + Math.random() * 50, 0, Math.PI * 2);
     ctx.fill();
   }
-  
+
   // Brand name
   ctx.fillStyle = p.color;
-  ctx.font = '400 28px "PingFang SC","Noto Serif SC",serif';
+  ctx.font = '400 24px "PingFang SC","Noto Serif SC",serif';
   ctx.textAlign = 'center';
-  ctx.fillText('蝴蝶坞 · 六色人格', W/2, 100);
-  
+  ctx.fillText('蝴蝶坞 · 六色人格', W/2, 80);
+
   // Personality type
   ctx.fillStyle = p.color;
-  ctx.font = '400 72px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText(p.name, W/2, 220);
-  
+  ctx.font = '400 60px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText(p.name, W/2, 185);
+
   // Badge
   ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  const badgeW = 120, badgeH = 36;
-  const badgeX = W/2 - badgeW/2, badgeY = 260;
+  var badgeW2 = 110, badgeH2 = 32;
+  var badgeX2 = W/2 - badgeW2/2, badgeY2 = 215;
   ctx.beginPath();
-  ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 18);
+  ctx.roundRect(badgeX2, badgeY2, badgeW2, badgeH2, 16);
   ctx.fill();
   ctx.fillStyle = p.color;
-  ctx.font = '400 16px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.badge, W/2, badgeY + 25);
-  
+  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.badge, W/2, badgeY2 + 23);
+
   // Declaration
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = 'italic 400 24px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('「' + p.declare + '」', W/2, 340);
-  
+  ctx.font = 'italic 400 22px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('「' + p.declare + '」', W/2, 295);
+
   // Core phrase
   ctx.fillStyle = 'rgba(255,255,255,0.85)';
-  ctx.font = '400 18px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.phrase, W/2, 390);
-  
+  ctx.font = '400 16px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText(p.phrase, W/2, 340);
+
   // Decorative line
   ctx.strokeStyle = p.color;
   ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(W/2 - 80, 430);
-  ctx.lineTo(W/2 + 80, 430);
+  ctx.moveTo(W/2 - 70, 370);
+  ctx.lineTo(W/2 + 70, 370);
   ctx.stroke();
-  
-  // 照狸 image
-  const zhaoliImgEl = document.getElementById('zhaoliImg');
+
+  // 照狸 image (smaller)
+  var imgSize2 = 130;
+  var imgY2 = 440;
+  var zhaoliImgEl = document.getElementById('zhaoliImg');
   if (zhaoliImgEl && zhaoliImgEl.complete && zhaoliImgEl.naturalWidth > 0) {
-    const imgSize = 180;
-    const imgX = W/2 - imgSize/2;
-    const imgY = 490;
-    // Draw circular clip
+    var imgX2 = W/2 - imgSize2/2;
     ctx.save();
     ctx.beginPath();
-    ctx.arc(W/2, imgY + imgSize/2, imgSize/2, 0, Math.PI * 2);
+    ctx.arc(W/2, imgY2 + imgSize2/2, imgSize2/2, 0, Math.PI * 2);
     ctx.clip();
-    ctx.drawImage(zhaoliImgEl, imgX, imgY, imgSize, imgSize);
+    ctx.drawImage(zhaoliImgEl, imgX2, imgY2, imgSize2, imgSize2);
     ctx.restore();
     ctx.strokeStyle = p.color;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(W/2, imgY + imgSize/2, imgSize/2, 0, Math.PI * 2);
+    ctx.arc(W/2, imgY2 + imgSize2/2, imgSize2/2, 0, Math.PI * 2);
     ctx.stroke();
   }
-  
-  let yPos = 710;
-  
+
+  var yPos = 600;
+
   // 照狸 name
   ctx.fillStyle = p.color;
-  ctx.font = '500 22px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.font = '500 20px "PingFang SC","Hiragino Sans GB",sans-serif';
   ctx.fillText('专属照狸：' + p.zhaoli, W/2, yPos);
-  yPos += 36;
+  yPos += 32;
   ctx.fillStyle = '#8B8178';
-  ctx.font = '400 15px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
   ctx.fillText(p.zhaoliDesc, W/2, yPos);
-  yPos += 48;
-  
+  yPos += 42;
+
+  // 人格标签 (traits)
+  var totalTagsW = p.traits.length * 110;
+  var tagStartX = (W - totalTagsW) / 2;
+  p.traits.forEach(function(t, i) {
+    var tx = tagStartX + i * 110 + 55;
+    ctx.fillStyle = p.bgColor;
+    ctx.beginPath();
+    ctx.roundRect(tx - 48, yPos - 14, 96, 28, 14);
+    ctx.fill();
+    ctx.fillStyle = p.color;
+    ctx.font = '400 13px "PingFang SC","Noto Serif SC",serif';
+    ctx.fillText(t, tx, yPos + 5);
+  });
+  yPos += 50;
+
   // Fragrance section
   ctx.fillStyle = p.bgColor;
-  ctx.fillRect(60, yPos, W - 120, 80);
+  ctx.fillRect(60, yPos, W - 120, 110);
   ctx.fillStyle = p.color;
   ctx.font = '500 20px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('你的主香：「' + p.fragrance + '」', W/2, yPos + 36);
+  ctx.fillText('你的主香：「' + p.fragrance + '」', W/2, yPos + 34);
   ctx.fillStyle = '#8B8178';
-  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.fragranceDesc, W/2, yPos + 62);
-  yPos += 120;
-  
+  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
+  // Wrap long fragrance description
+  var descText = p.fragranceDesc;
+  if (descText.length > 36) {
+    ctx.fillText(descText.substring(0, 36), W/2, yPos + 62);
+    ctx.fillText(descText.substring(36), W/2, yPos + 84);
+  } else {
+    ctx.fillText(descText, W/2, yPos + 72);
+  }
+  yPos += 138;
+
+  // 产品推荐
+  ctx.fillStyle = '#2C2416';
+  ctx.font = '400 16px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('推荐产品', W/2, yPos);
+  yPos += 30;
+
+  p.products.forEach(function(prod) {
+    ctx.fillStyle = p.bgColor;
+    ctx.fillRect(60, yPos, W - 120, 52);
+    ctx.fillStyle = p.color;
+    ctx.font = '500 15px "PingFang SC","Hiragino Sans GB",sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(prod.name, 80, yPos + 22);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = p.color;
+    ctx.font = '500 15px "PingFang SC","Hiragino Sans GB",sans-serif';
+    ctx.fillText(prod.price, W - 80, yPos + 22);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#8B8178';
+    ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
+    ctx.fillText(prod.type, 80, yPos + 42);
+    ctx.textAlign = 'center';
+    yPos += 64;
+  });
+  yPos += 6;
+
   // Poem
   ctx.fillStyle = '#2C2416';
-  ctx.font = 'italic 400 22px "PingFang SC","Noto Serif SC",serif';
+  ctx.font = 'italic 400 20px "PingFang SC","Noto Serif SC",serif';
   ctx.fillText(p.poem, W/2, yPos);
-  yPos += 36;
+  yPos += 32;
   ctx.fillStyle = '#B5AEA5';
-  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
   ctx.fillText('—— 李清照', W/2, yPos);
-  yPos += 60;
-  
+  yPos += 48;
+
+  // 分享激励
+  ctx.fillStyle = p.color;
+  ctx.font = '500 16px "PingFang SC","Noto Serif SC",serif';
+  ctx.fillText('邀请好友测试，解锁香氛好礼', W/2, yPos);
+  yPos += 28;
+  ctx.fillStyle = '#8B8178';
+  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('1人得小样 · 3人赢礼盒 · 8人领正装', W/2, yPos);
+  yPos += 40;
+
   // CTA
   ctx.fillStyle = p.color;
   ctx.font = '500 18px "PingFang SC","Noto Serif SC",serif';
   ctx.fillText('在蝴蝶坞，认领不被定义的自己', W/2, yPos);
-  yPos += 48;
-  
+  yPos += 44;
+
   // QR placeholder
   ctx.fillStyle = '#E8E3DC';
-  ctx.fillRect(W/2 - 50, yPos, 100, 100);
+  ctx.fillRect(W/2 - 40, yPos, 80, 80);
   ctx.fillStyle = '#B5AEA5';
-  ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('扫码测试', W/2, yPos + 55);
-  
-  yPos += 130;
-  
+  ctx.font = '400 11px "PingFang SC","Hiragino Sans GB",sans-serif';
+  ctx.fillText('扫码测试', W/2, yPos + 45);
+  yPos += 105;
+
   // Bottom text
   ctx.fillStyle = '#B5AEA5';
   ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
