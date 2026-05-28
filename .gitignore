@@ -5,3 +5,11 @@
 .Trashes
 Thumbs.db
 *.swp
+node_modules/
+__pycache__/
+.workbuddy/
+package-lock.json
+*.docx
+*.py
+*.json
+!package.json

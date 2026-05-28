@@ -3,1282 +3,1299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>蝴蝶坞 · 六色人格测试</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<title>SFSC Test · 照狸六色循环测试</title>
 <style>
 :root {
-  --bg: #F7F4ED;
+  --bg: #F5F2EC;
   --card: #FFFFFF;
-  --text: #2C2416;
-  --text2: #8B8178;
-  --text3: #B5AEA5;
-  --accent: #8B6B7D;
-  --accent-light: #F0E8EC;
+  --text: #1A1A1A;
+  --text2: #6B6360;
+  --text3: #A49E99;
   --border: #E8E3DC;
-  --radius: 16px;
+  --radius: 14px;
   --radius-sm: 10px;
-  --font-cn: "PingFang SC", "Noto Serif SC", "Hiragino Mincho ProN", "Songti SC", serif;
+  --font-cn: "PingFang SC", "Noto Serif SC", "Songti SC", "Hiragino Mincho ProN", serif;
   --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --clr-e: #C4827C; --clr-e-bg: #F5E8E6;
+  --clr-a: #7B9E7D; --clr-a-bg: #E8F0E8;
+  --clr-m: #8B7EAC; --clr-m-bg: #EDEAF5;
+  --clr-b: #C4A45A; --clr-b-bg: #F7F2E3;
+  --clr-g: #C4967A; --clr-g-bg: #F5EDE6;
+  --clr-c: #7B94B5; --clr-c-bg: #E8EEF5;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing: border-box; }
 body {
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex; justify-content: center; align-items: center;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  min-height: 100vh; display: flex; justify-content: center; align-items: center;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
 }
-#app {
-  width: 100%; max-width: 480px; min-height: 100vh;
-  position: relative; overflow: hidden;
-}
+#app { width: 100%; max-width: 480px; min-height: 100vh; position: relative; overflow: hidden; }
 .screen {
   position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh;
   display: none; flex-direction: column; align-items: center;
-  padding: 60px 28px 40px;
-  opacity: 0; transition: opacity 0.4s ease;
+  padding: 56px 28px 40px; opacity: 0; transition: opacity 0.4s ease;
 }
 .screen.active { display: flex; opacity: 1; position: relative; }
 
-/* ---- HOME ---- */
-.home-top { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
-.home-logo {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: var(--accent-light);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 32px;
-}
-.home-logo-svg { width: 40px; height: 40px; }
+/* HOME */
+.home-inner { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; }
+.home-eye { width:120px; height:120px; margin-bottom:28px; position:relative; display:flex; align-items:center; justify-content:center; }
 .home-title {
-  font-family: var(--font-cn); font-size: 28px; font-weight: 400;
-  color: var(--text); text-align: center; line-height: 1.5;
-  margin-bottom: 12px; letter-spacing: 0.05em;
+  font-family: var(--font-cn); font-size:26px; font-weight:400;
+  color: var(--text); text-align:center; line-height:1.5; margin-bottom:10px; letter-spacing:0.04em;
 }
-.home-subtitle {
-  font-size: 14px; color: var(--text2); text-align: center;
-  line-height: 1.8; margin-bottom: 8px;
-}
-.home-features {
-  display: flex; gap: 24px; margin: 32px 0;
-}
-.home-feat {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-}
-.home-feat-num { font-size: 20px; font-weight: 500; color: var(--accent); font-family: var(--font-cn); }
-.home-feat-label { font-size: 12px; color: var(--text3); }
-.home-bottom { width: 100%; padding-bottom: 20px; }
+.home-title em { font-style:normal; }
+.home-sub { font-size:14px; color:var(--text2); text-align:center; line-height:1.7; margin-bottom:8px; }
+.home-sub-en { font-size:11px; color:var(--text3); letter-spacing:0.08em; margin-bottom:36px; }
+.home-cycle { display:flex; align-items:center; gap:6px; margin-bottom:36px; font-size:11px; color:var(--text3); letter-spacing:0.04em; }
+.home-cycle-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.home-cycle-arrow { font-size:10px; color:var(--text3); }
+.home-bottom { width:100%; padding-bottom:20px; }
 .btn-start {
-  width: 100%; padding: 16px; border: none; border-radius: var(--radius);
-  background: var(--accent); color: #FFF; font-size: 17px;
-  font-family: var(--font-cn); letter-spacing: 0.08em;
-  cursor: pointer; transition: all 0.3s ease;
+  width:100%; padding:16px; border:0.5px solid var(--text);
+  border-radius:var(--radius); background:var(--text); color:#FFF;
+  font-size:16px; font-family:var(--font-cn); letter-spacing:0.08em; cursor:pointer; 
+  transition:all 0.3s ease; text-align:center; -webkit-appearance:none;
 }
-.btn-start:hover { opacity: 0.9; transform: translateY(-1px); }
 .btn-start:active { transform: scale(0.98); }
-.home-disclaimer { font-size: 11px; color: var(--text3); text-align: center; margin-top: 16px; line-height: 1.6; }
-
-/* ---- PROGRESS ---- */
-.progress-wrap { width: 100%; margin-bottom: 40px; }
-.progress-bar {
-  width: 100%; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden;
+.home-sfsc {
+  margin-bottom:24px; text-align:center; padding:16px 24px;
+  border:0.5px solid var(--border); border-radius:var(--radius);
 }
-.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
-.progress-text { font-size: 11px; color: var(--text3); margin-top: 8px; text-align: right; }
+.home-sfsc-label { font-size:10px; color:var(--text3); letter-spacing:0.1em; margin-bottom:6px; }
+.home-sfsc-text { font-size:13px; color:var(--text2); line-height:1.6; }
 
-/* ---- QUESTION ---- */
-.q-num { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 20px; font-weight: 500; }
+/* INSTRUCTIONS */
+.inst-card {
+  background:var(--card); border-radius:var(--radius); border:0.5px solid var(--border);
+  padding:28px 24px; margin-bottom:24px; width:100%;
+}
+.inst-title { font-family:var(--font-cn); font-size:18px; margin-bottom:16px; letter-spacing:0.04em; }
+.inst-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; }
+.inst-dot { width:6px; height:6px; border-radius:50%; margin-top:7px; flex-shrink:0; background:var(--text3); }
+.inst-text { font-size:14px; color:var(--text2); line-height:1.6; }
+.inst-note { font-size:12px; color:var(--text3); text-align:center; line-height:1.6; margin-bottom:24px; }
+
+/* PROGRESS */
+.progress-wrap { width:100%; margin-bottom:24px; }
+.progress-bar { width:100%; height:2px; background:var(--border); border-radius:1px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:1px; transition: width 0.4s ease; }
+.progress-text { font-size:11px; color:var(--text3); margin-top:8px; text-align:right; }
+
+/* QUESTION - 4 options */
+.q-num { font-size:12px; color:var(--text3); letter-spacing:0.08em; margin-bottom:16px; text-align:center; }
 .q-text {
-  font-family: var(--font-cn); font-size: 22px; font-weight: 400; color: var(--text);
-  line-height: 1.6; margin-bottom: 36px; text-align: center; width: 100%;
+  font-family:var(--font-cn); font-size:21px; font-weight:400; color:var(--text);
+  line-height:1.6; margin-bottom:28px; text-align:center; width:100%;
 }
-.q-options { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-.q-option {
-  width: 100%; padding: 18px 20px; background: var(--card);
-  border: 0.5px solid var(--border); border-radius: var(--radius-sm);
-  font-size: 15px; color: var(--text); text-align: left; line-height: 1.5;
-  cursor: pointer; transition: all 0.25s ease;
-  font-family: var(--font-sans);
+.q-options { display:flex; flex-direction:column; gap:10px; width:100%; margin-bottom:16px; }
+.q-opt {
+  width:100%; padding:16px 18px; border:0.5px solid var(--border); border-radius:var(--radius-sm);
+  background:var(--card); cursor:pointer; text-align:left;
+  font-size:14px; color:var(--text); line-height:1.5; transition:all 0.2s ease;
+  font-family:var(--font-sans); -webkit-appearance:none;
+  display:flex; align-items:flex-start; gap:10px;
 }
-.q-option:hover { border-color: var(--accent); background: #FDF8FA; }
-.q-option:active { transform: scale(0.985); }
-.q-option.selected {
-  border-color: var(--accent); background: var(--accent-light);
-  color: var(--accent); font-weight: 500;
+.q-opt:active { transform: scale(0.98); }
+.q-opt.selected { border-color: var(--text); background: #1A1A1A; color: #FFF; }
+.q-opt.selected .q-opt-letter { background: #FFF; color: #1A1A1A; }
+.q-opt-letter {
+  width:26px; height:26px; border-radius:50%; flex-shrink:0;
+  background:var(--bg); color:var(--text2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:500; margin-top:1px;
 }
-.q-hint { font-size: 12px; color: var(--text3); margin-top: 32px; text-align: center; }
+.q-hint { font-size:12px; color:var(--text3); margin-top:20px; text-align:center; }
 
-/* ---- RESULT ---- */
-.result-scroll { width: 100%; max-width: 420px; }
-.result-header { text-align: center; margin-bottom: 28px; }
-.result-badge {
-  display: inline-block; padding: 6px 20px; border-radius: 20px;
-  font-size: 13px; letter-spacing: 0.06em; margin-bottom: 16px;
+/* RESULT */
+.result-scroll { width:100%; max-width:420px; }
+.result-top {
+  text-align:center; padding:32px 20px 24px;
+  border-radius:var(--radius); margin-bottom:16px;
 }
-.result-type {
-  font-family: var(--font-cn); font-size: 36px; font-weight: 400;
-  margin-bottom: 12px; letter-spacing: 0.06em;
+.result-code {
+  font-family:var(--font-cn); font-size:13px; letter-spacing:0.1em; margin-bottom:8px;
+  display:flex; align-items:center; justify-content:center; gap:8px;
 }
-.result-declaration {
-  font-family: var(--font-cn); font-size: 16px; color: var(--text2);
-  line-height: 1.6; font-style: italic;
-}
+.result-code-sep { color:var(--text3); font-size:10px; }
+.result-main-label { font-size:11px; letter-spacing:0.08em; margin-bottom:4px; }
+.result-main-type { font-family:var(--font-cn); font-size:40px; font-weight:400; letter-spacing:0.06em; margin-bottom:6px; }
+.result-main-en { font-size:12px; color:var(--text3); letter-spacing:0.06em; margin-bottom:14px; }
+.result-main-phrase { font-family:var(--font-cn); font-size:15px; line-height:1.6; font-style:italic; }
 
-.radar-wrap {
-  background: var(--card); border-radius: var(--radius);
-  border: 0.5px solid var(--border); padding: 24px 16px 16px;
-  margin-bottom: 24px;
+/* HEXAGON */
+.hex-wrap {
+  background:var(--card); border-radius:var(--radius); border:0.5px solid var(--border);
+  padding:20px 12px 12px; margin-bottom:14px;
 }
-.radar-label { font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 12px; }
+.hex-label { font-size:11px; color:var(--text3); text-align:center; letter-spacing:0.06em; margin-bottom:8px; }
 
-.zhaoli-wrap {
-  display: flex; align-items: center; gap: 20px;
-  background: var(--card); border-radius: var(--radius); border: 0.5px solid var(--border);
-  padding: 20px; margin-bottom: 16px;
+/* CARDS */
+.r-card {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border);
+  padding:18px 20px; margin-bottom:12px;
 }
-.zhaoli-img {
-  width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-  border: 1px solid var(--border); flex-shrink: 0;
-}
-.zhaoli-info { flex: 1; }
-.zhaoli-name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
-.zhaoli-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+.r-card-label { font-size:10px; color:var(--text3); letter-spacing:0.08em; margin-bottom:8px; text-transform:uppercase; }
+.r-card-title { font-family:var(--font-cn); font-size:17px; color:var(--text); margin-bottom:6px; letter-spacing:0.03em; }
+.r-card-desc { font-size:13px; color:var(--text2); line-height:1.7; }
+.r-card-highlight { font-family:var(--font-cn); font-size:14px; line-height:1.7; font-style:italic; }
+.r-duo { display:flex; gap:10px; margin-bottom:12px; }
+.r-duo-card { flex:1; background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border); padding:16px; }
+.r-duo-label { font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-bottom:6px; }
+.r-duo-text { font-size:13px; color:var(--text2); line-height:1.6; }
 
-.info-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-.info-card {
-  background: var(--card); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
-  padding: 18px 20px;
+/* DEPTH INTERPRETATION CARDS */
+.r-depth { margin-bottom:12px; }
+.r-depth-header {
+  display:flex; align-items:center; gap:12px; margin-bottom:10px;
 }
-.info-card-label { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; margin-bottom: 8px; }
-.info-card-title { font-family: var(--font-cn); font-size: 17px; color: var(--text); margin-bottom: 6px; }
-.info-card-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
-
-.poem-card {
-  background: transparent; border: none; padding: 24px 20px;
-  text-align: center; margin-bottom: 16px;
+.r-depth-icon {
+  width:48px; height:48px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:20px;
 }
-.poem-text {
-  font-family: var(--font-cn); font-size: 17px; color: var(--text);
-  line-height: 2; letter-spacing: 0.04em; font-style: italic;
-}
-.poem-author { font-size: 12px; color: var(--text3); margin-top: 8px; }
-
-.share-section { margin-bottom: 32px; width: 100%; }
-.btn-share {
-  width: 100%; padding: 16px; border: 1px solid var(--accent); border-radius: var(--radius);
-  background: transparent; color: var(--accent); font-size: 16px;
-  font-family: var(--font-cn); letter-spacing: 0.06em;
-  cursor: pointer; transition: all 0.3s ease;
-}
-.btn-share:hover { background: var(--accent-light); }
-.btn-share:active { transform: scale(0.98); }
-
-.wecom-section {
-  width: 100%; background: var(--card); border-radius: var(--radius);
-  border: 1px dashed var(--border); padding: 24px 20px;
-  text-align: center; margin-bottom: 16px;
-}
-.wecom-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
-.wecom-desc { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
-.wecom-qr {
-  width: 120px; height: 120px; background: var(--bg); border-radius: 8px;
-  margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-  font-size: 12px; color: var(--text3);
-}
-.wecom-hint { font-size: 12px; color: var(--text3); }
-
-.retest-btn {
-  width: 100%; padding: 14px; border: 0.5px solid var(--border); border-radius: var(--radius);
-  background: var(--card); color: var(--text2); font-size: 14px;
-  cursor: pointer; transition: all 0.3s ease; text-align: center;
-  font-family: var(--font-sans);
-}
-.retest-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ---- TRAITS ---- */
-.traits-wrap {
-  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 24px;
-}
-.trait-tag {
-  padding: 8px 18px; border-radius: 20px; font-size: 13px; font-family: var(--font-cn);
-  letter-spacing: 0.04em;
+.r-depth-role { font-family:var(--font-cn); font-size:16px; letter-spacing:0.03em; }
+.r-depth-role-sub { font-size:12px; color:var(--text3); margin-top:2px; }
+.r-depth-animal { font-size:13px; color:var(--text2); line-height:1.6; }
+.r-depth-awaken {
+  font-family:var(--font-cn); font-size:16px; text-align:center; padding:14px 0;
+  line-height:1.6; margin-bottom:8px;
 }
 
-/* ---- GROWING TIPS ---- */
-.growing-card {
-  background: var(--card); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
-  padding: 20px; margin-bottom: 16px;
+/* 3D SELF */
+.r-3d { display:flex; flex-direction:column; gap:10px; margin-bottom:12px; }
+.r-3d-item {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border); padding:16px;
 }
-.growing-card-label {
-  font-size: 11px; color: var(--text3); letter-spacing: 0.06em; margin-bottom: 10px;
+.r-3d-label { font-size:10px; letter-spacing:0.06em; margin-bottom:6px; }
+.r-3d-text { font-size:13px; color:var(--text2); line-height:1.7; }
+
+/* ACTION */
+.r-action {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border);
+  padding:18px 20px; margin-bottom:12px; text-align:center;
 }
-.growing-card-text {
-  font-family: var(--font-cn); font-size: 15px; color: var(--text);
-  line-height: 1.8; font-style: italic;
+.r-action-label { font-size:10px; letter-spacing:0.08em; margin-bottom:8px; }
+.r-action-text { font-size:14px; color:var(--text2); line-height:1.7; margin-bottom:10px; }
+.r-action-cmd {
+  display:inline-block; padding:8px 18px; border-radius:20px;
+  font-size:12px; letter-spacing:0.04em; margin-top:4px;
 }
 
-/* ---- SCENES & ENERGY ---- */
-.scenes-row {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+/* WARNING */
+.r-warn {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border);
+  padding:18px 20px; margin-bottom:12px;
 }
-.scene-chip {
-  padding: 6px 14px; border-radius: 14px; font-size: 12px;
-  border: 0.5px solid var(--border); background: var(--bg); color: var(--text2);
-}
-.energy-row { display: flex; gap: 20px; margin-bottom: 24px; }
-.energy-col { flex: 1; }
-.energy-label { font-size: 11px; color: var(--text3); letter-spacing: 0.04em; margin-bottom: 4px; }
-.energy-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
-
-/* ---- PRODUCT LIST ---- */
-.product-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
-.product-item {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--bg); border-radius: var(--radius-sm); padding: 14px 16px;
-  border: 0.5px solid var(--border);
-}
-.product-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  flex-shrink: 0; font-size: 18px;
-  display: flex; align-items: center; justify-content: center;
-}
-.product-info { flex: 1; }
-.product-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
-.product-meta { font-size: 12px; color: var(--text3); }
-.product-price { font-size: 14px; font-weight: 500; color: var(--accent); flex-shrink: 0; }
-.room-fragrance {
-  font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 24px;
-  line-height: 1.6; font-style: italic;
+.r-warn-label { font-size:10px; letter-spacing:0.08em; margin-bottom:8px; }
+.r-warn-text { font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:10px; }
+.r-warn-signal {
+  font-size:11px; color:var(--clr-e); line-height:1.6; padding:8px 12px;
+  background:var(--clr-e-bg); border-radius:8px;
 }
 
-/* ---- SHARE REWARDS ---- */
-.rewards-section {
-  width: 100%; background: var(--card); border-radius: var(--radius);
-  border: 1px solid var(--border); padding: 20px;
-  margin-bottom: 24px;
-}
-.rewards-title {
-  font-size: 14px; font-weight: 500; text-align: center; margin-bottom: 6px;
-}
-.rewards-subtitle {
-  font-size: 12px; color: var(--text3); text-align: center; margin-bottom: 16px;
-}
-.reward-tiers { display: flex; gap: 12px; }
-.reward-tier {
-  flex: 1; text-align: center; padding: 14px 8px;
-  background: var(--bg); border-radius: var(--radius-sm); border: 0.5px solid var(--border);
-}
-.reward-tier-num {
-  font-family: var(--font-cn); font-size: 24px; font-weight: 400; margin-bottom: 4px;
-}
-.reward-tier-label { font-size: 11px; color: var(--text3); line-height: 1.4; }
-.reward-tier-icon { font-size: 20px; margin-bottom: 4px; }
-.reward-tier.highlight {
-  background: var(--accent-light);
-  border-color: var(--accent);
-}
-.reward-tier.highlight .reward-tier-num { color: var(--accent); }
+/* POEM DEEP */
+.r-poem { text-align:center; padding:24px 20px; margin-bottom:12px; border:none; background:transparent; }
+.r-poem-text { font-family:var(--font-cn); font-size:17px; color:var(--text); line-height:2; letter-spacing:0.04em; font-style:italic; }
+.r-poem-auth { font-size:12px; color:var(--text3); margin-top:4px; }
+.r-poem-deep { font-size:13px; color:var(--text2); line-height:1.7; margin-top:8px; }
 
-/* ---- SHARE COPY ---- */
-.share-copy-section { margin-bottom: 24px; width: 100%; }
-.copy-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
-.copy-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 16px; background: var(--card); border-radius: var(--radius-sm);
-  border: 0.5px solid var(--border); cursor: pointer;
-  transition: all 0.2s ease;
+/* PREDICTION */
+.r-predict {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border);
+  padding:20px; margin-bottom:12px;
 }
-.copy-card:hover { border-color: var(--accent); background: var(--accent-light); }
-.copy-card-text { font-size: 13px; color: var(--text2); flex: 1; line-height: 1.5; }
-.copy-card-btn { font-size: 11px; color: var(--accent); flex-shrink: 0; letter-spacing: 0.04em; }
-.copy-toast {
-  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  background: rgba(44,36,22,0.85); color: #FFF; padding: 12px 28px;
-  border-radius: 24px; font-size: 14px; z-index: 2000;
-  opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
-}
-.copy-toast.show { opacity: 1; }
+.r-predict-label { font-size:10px; color:var(--text3); letter-spacing:0.1em; margin-bottom:10px; }
 
-/* ---- POSTER OVERLAY ---- */
+/* CYCLE VIS */
+.r-cycle { margin-bottom:20px; }
+.r-cycle-label { font-size:11px; color:var(--text3); text-align:center; letter-spacing:0.06em; margin-bottom:12px; }
+.r-cycle-steps { display:flex; align-items:center; gap:2px; justify-content:center; flex-wrap:wrap; }
+.r-cycle-step {
+  padding:6px 10px; border-radius:12px; font-size:11px; letter-spacing:0.04em;
+  border:0.5px solid var(--border); background:var(--bg); color:var(--text3);
+}
+.r-cycle-step.current { color:#FFF; border-color:transparent; }
+.r-cycle-arr { font-size:10px; color:var(--text3); }
+.r-cycle-you { font-size:10px; letter-spacing:0.04em; text-align:center; margin-top:8px; }
+
+/* PRODUCT */
+.r-prod { margin-bottom:12px; }
+.r-prod-title { font-size:12px; letter-spacing:0.06em; margin-bottom:10px; text-align:center; }
+.r-prod-list { display:flex; flex-direction:column; gap:8px; }
+.r-prod-item {
+  display:flex; align-items:center; gap:12px;
+  background:var(--card); border-radius:var(--radius-sm); padding:14px 16px;
+  border:0.5px solid var(--border);
+}
+.r-prod-icon { width:36px; height:36px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:16px; }
+.r-prod-info { flex:1; }
+.r-prod-name { font-size:13px; font-weight:500; color:var(--text); margin-bottom:2px; }
+.r-prod-meta { font-size:11px; color:var(--text3); }
+.r-prod-tag { font-size:10px; padding:3px 8px; border-radius:10px; flex-shrink:0; letter-spacing:0.04em; }
+
+/* BUTTONS */
+.btn-main {
+  width:100%; padding:15px; border:none; border-radius:var(--radius);
+  color:#FFF; font-size:15px; font-family:var(--font-cn); letter-spacing:0.06em;
+  cursor:pointer; transition:all 0.3s ease; -webkit-appearance:none;
+}
+.btn-main:active { transform:scale(0.98); }
+.btn-outline {
+  width:100%; padding:15px; border-radius:var(--radius);
+  background:transparent; font-size:14px; font-family:var(--font-cn);
+  letter-spacing:0.06em; cursor:pointer; transition:all 0.3s ease;
+  border:0.5px solid var(--border); color:var(--text2); -webkit-appearance:none;
+}
+.btn-outline:active { transform:scale(0.98); }
+
+/* SHARE / POSTER SECTION */
+.r-share-section { width:100%; margin-bottom:16px; }
+.r-share-label { font-size:12px; color:var(--text2); margin-bottom:10px; text-align:center; }
+.r-share-btns { display:flex; flex-direction:column; gap:10px; width:100%; }
+.r-share-copy { display:flex; flex-direction:column; gap:8px; margin-bottom:8px; }
+.r-share-item {
+  display:flex; align-items:center; gap:10px; padding:12px 16px;
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border);
+  cursor:pointer; transition:all 0.2s ease; font-size:13px; color:var(--text2);
+}
+.r-share-item:active { background:var(--bg); }
+.r-share-item-text { flex:1; line-height:1.4; }
+.r-share-item-btn { font-size:10px; color:var(--text3); letter-spacing:0.04em; flex-shrink:0; }
+
+/* MEMBER */
+.r-member {
+  text-align:center; padding:20px; margin-bottom:16px;
+  border-radius:var(--radius-sm); border:1px dashed var(--border);
+}
+.r-member-label { font-size:13px; font-weight:500; margin-bottom:8px; }
+.r-member-desc { font-size:12px; color:var(--text2); line-height:1.6; margin-bottom:14px; }
+.r-member-qr { width:100px; height:100px; background:var(--bg); border-radius:6px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; border:0.5px solid var(--border); font-size:11px; color:var(--text3); }
+.r-member-hint { font-size:11px; color:var(--text3); }
+
+/* RETEST */
+.r-retest {
+  text-align:center; padding:14px; cursor:pointer; font-size:13px; color:var(--text2);
+  letter-spacing:0.04em; border:0.5px solid transparent; border-radius:var(--radius); transition:all 0.3s ease;
+  -webkit-appearance:none; background:none;
+}
+
+/* TOAST */
+.toast {
+  position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+  background:rgba(26,26,26,0.88); color:#FFF; padding:12px 28px;
+  border-radius:20px; font-size:13px; z-index:2000;
+  opacity:0; transition:opacity 0.3s ease; pointer-events:none;
+}
+.toast.show { opacity:1; }
+
+/* POSTER OVERLAY */
 .poster-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.75); z-index: 1000;
-  display: none; flex-direction: column; align-items: center; justify-content: center;
-  padding: 20px;
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.75); z-index:1000;
+  display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px;
 }
-.poster-overlay.show { display: flex; }
-.poster-card {
-  background: var(--card); border-radius: var(--radius);
-  overflow: hidden; max-width: 360px; width: 100%;
-}
-.poster-canvas-wrap { position: relative; width: 100%; }
-#posterCanvas { width: 100%; height: auto; display: block; }
-.poster-actions {
-  display: flex; gap: 12px; padding: 16px;
-}
+.poster-overlay.show { display:flex; }
+.poster-card { background:var(--card); border-radius:var(--radius); overflow:hidden; max-width:360px; width:100%; }
+.poster-canvas-wrap { position:relative; width:100%; }
+#posterCanvas { width:100%; height:auto; display:block; }
+.poster-actions { display:flex; gap:12px; padding:16px; }
 .poster-btn {
-  flex: 1; padding: 14px; border-radius: var(--radius-sm);
-  font-size: 14px; cursor: pointer; transition: all 0.3s ease;
-  border: 0.5px solid var(--border); background: var(--card);
-  color: var(--text); text-align: center; font-family: var(--font-sans);
+  flex:1; padding:14px; border-radius:var(--radius-sm); font-size:14px; cursor:pointer;
+  transition:all 0.3s ease; border:0.5px solid var(--border); background:var(--card);
+  color:var(--text); text-align:center; font-family:var(--font-sans); -webkit-appearance:none;
 }
-.poster-btn.primary { background: var(--accent); color: #FFF; border: none; }
-.poster-close {
-  color: #FFF; font-size: 14px; margin-top: 16px;
-  cursor: pointer; opacity: 0.8;
-}
+.poster-btn.primary { background:var(--text); color:#FFF; border:none; }
+.poster-close { color:#FFF; font-size:14px; margin-top:16px; cursor:pointer; opacity:0.8; }
 
-/* ---- ANIMATIONS ---- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.anim-up { animation: fadeInUp 0.6s ease forwards; }
+/* ANIMATIONS */
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.a-up { animation:fadeInUp 0.55s ease forwards; }
 
-@media (max-width: 380px) {
-  .screen { padding: 40px 20px 32px; }
-  .home-title { font-size: 24px; }
-  .q-text { font-size: 20px; }
-  .result-type { font-size: 30px; }
+@media (max-width:380px) {
+  .screen { padding:40px 18px 32px; }
+  .home-title { font-size:23px; }
+  .q-text { font-size:19px; }
+  .result-main-type { font-size:34px; }
 }
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- ===== HOME ===== -->
-  <div class="screen active" id="screen-home">
-    <div class="home-top">
-      <div class="home-logo">
-        <svg class="home-logo-svg" viewBox="0 0 40 40" fill="none">
-          <path d="M20 5C20 5 12 15 8 22C4 29 6 35 12 36C18 37 20 30 20 30C20 30 22 37 28 36C34 35 36 29 32 22C28 15 20 5 20 5Z" fill="#8B6B7D" opacity="0.3"/>
-          <path d="M20 36C20 36 14 28 10 18C6 8 20 2 20 2C20 2 34 8 30 18C26 28 20 36 20 36Z" fill="#8B6B7D" opacity="0.15"/>
-          <circle cx="20" cy="22" r="3" fill="#8B6B7D" opacity="0.4"/>
-        </svg>
-      </div>
-      <h1 class="home-title">测一测<br>闻见此刻的自己</h1>
-      <p class="home-subtitle">六色香水人格 · 发现你的专属香型</p>
-      <div class="home-features">
-        <div class="home-feat"><span class="home-feat-num">18</span><span class="home-feat-label">道题目</span></div>
-        <div class="home-feat"><span class="home-feat-num">2</span><span class="home-feat-label">分钟完成</span></div>
-        <div class="home-feat"><span class="home-feat-num">6</span><span class="home-feat-label">种人格</span></div>
-      </div>
+<!-- HOME -->
+<div class="screen active" id="screen-home">
+  <div class="home-inner">
+    <div class="home-eye">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <defs><radialGradient id="eyeGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#F5E8E6"/><stop offset="40%" stop-color="#EDE0D8"/><stop offset="100%" stop-color="#E8E3DC"/></radialGradient></defs>
+        <polygon points="60,6 110,36 110,84 60,114 10,84 10,36" fill="url(#eyeGrad)" stroke="#C4827C" stroke-width="0.8" opacity="0.6"/>
+        <polygon points="60,22 96,44 96,76 60,98 24,76 24,44" fill="none" stroke="#C4827C" stroke-width="0.5" opacity="0.35"/>
+        <ellipse cx="60" cy="58" rx="22" ry="20" fill="#F5F2EC" stroke="#1A1A1A" stroke-width="1.2"/>
+        <ellipse cx="60" cy="58" rx="11" ry="12" fill="#1A1A1A"/>
+        <ellipse cx="62" cy="54" rx="4" ry="4" fill="#FFF" opacity="0.7"/>
+        <path d="M40 48 Q30 38 36 28" stroke="#1A1A1A" stroke-width="0.7" fill="none"/><path d="M46 40 Q40 28 44 20" stroke="#1A1A1A" stroke-width="0.7" fill="none"/>
+        <path d="M80 48 Q90 38 84 28" stroke="#1A1A1A" stroke-width="0.7" fill="none"/><path d="M74 40 Q80 28 76 20" stroke="#1A1A1A" stroke-width="0.7" fill="none"/>
+      </svg>
     </div>
-    <div class="home-bottom">
-      <button class="btn-start" onclick="startTest()">开始测试</button>
-      <p class="home-disclaimer">凭第一感觉选择即可，没有标准答案。<br>测试结果仅供娱乐和香水推荐参考。</p>
+    <h1 class="home-title">扫照狸之眼<br>认领你此刻的<em>主香状态</em></h1>
+    <p class="home-sub">不是定义你是谁<br>而是看见此刻的你，走到了六色循环的哪一站</p>
+    <p class="home-sub-en">SFSC TEST · SCENTFELIS SIX-STATE CYCLE</p>
+    <div class="home-cycle">
+      <div class="home-cycle-dot" style="background:var(--clr-e)"></div>邂逅<span class="home-cycle-arrow">→</span>
+      <div class="home-cycle-dot" style="background:var(--clr-a)"></div>觉醒<span class="home-cycle-arrow">→</span>
+      <div class="home-cycle-dot" style="background:var(--clr-m)"></div>蝶变<span class="home-cycle-arrow">→</span>
+      <div class="home-cycle-dot" style="background:var(--clr-b)"></div>绽放<span class="home-cycle-arrow">→</span>
+      <div class="home-cycle-dot" style="background:var(--clr-g)"></div>守护<span class="home-cycle-arrow">→</span>
+      <div class="home-cycle-dot" style="background:var(--clr-c)"></div>共生
     </div>
-  </div>
-
-  <!-- ===== QUESTION ===== -->
-  <div class="screen" id="screen-question">
-    <div class="progress-wrap">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="progress-text" id="progressText">1 / 18</div>
-    </div>
-    <div class="q-num" id="qNumLabel"></div>
-    <div class="q-text" id="qText"></div>
-    <div class="q-options" id="qOptions"></div>
-    <p class="q-hint">点击选项继续</p>
-  </div>
-
-  <!-- ===== RESULT ===== -->
-  <div class="screen" id="screen-result">
-    <div class="result-scroll">
-      <div class="result-header anim-up">
-        <div class="result-badge" id="resultBadge"></div>
-        <div class="result-type" id="resultType"></div>
-        <div class="result-declaration" id="resultDeclare"></div>
-      </div>
-
-      <div class="radar-wrap anim-up">
-        <div class="radar-label">你的六边形正在生长</div>
-        <div style="position:relative;width:100%;height:280px">
-          <canvas id="radarChart" role="img" aria-label="六色人格雷达图"></canvas>
-        </div>
-      </div>
-
-      <div class="zhaoli-wrap anim-up">
-        <img class="zhaoli-img" id="zhaoliImg" src="" alt="照狸">
-        <div class="zhaoli-info">
-          <div class="zhaoli-name" id="zhaoliName"></div>
-          <div class="zhaoli-desc" id="zhaoliDesc"></div>
-        </div>
-      </div>
-
-      <div class="info-cards anim-up">
-        <div class="info-card" id="descCard1">
-          <div class="info-card-label">你眼中的自己</div>
-          <div class="info-card-desc" id="descSelf"></div>
-        </div>
-        <div class="info-card" id="descCard2">
-          <div class="info-card-label">别人看到的你</div>
-          <div class="info-card-desc" id="descOthers"></div>
-        </div>
-        <div class="info-card" id="descCard3">
-          <div class="info-card-label">你尚未察觉的天赋</div>
-          <div class="info-card-desc" id="descHidden"></div>
-        </div>
-      </div>
-
-      <!-- 人格标签云 -->
-      <div class="traits-wrap anim-up" id="traitsWrap"></div>
-
-      <!-- 成长之径 -->
-      <div class="growing-card anim-up">
-        <div class="growing-card-label">你的成长之径</div>
-        <div class="growing-card-text" id="growingTips"></div>
-      </div>
-
-      <!-- 适合场景 + 能量 -->
-      <div class="info-card anim-up">
-        <div class="info-card-label">适合你的场景</div>
-        <div class="scenes-row" id="scenesRow"></div>
-        <div class="energy-row" style="margin-top:14px;">
-          <div class="energy-col">
-            <div class="energy-label">+ 能量来源</div>
-            <div class="energy-text" id="energySource"></div>
-          </div>
-          <div class="energy-col">
-            <div class="energy-label">- 能量消耗</div>
-            <div class="energy-text" id="energyDrain"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 香氛产品推荐 -->
-      <div class="info-card anim-up">
-        <div class="info-card-label">你的专属香 · 主香</div>
-        <div class="info-card-title" id="fragranceName" style="margin-bottom:6px;"></div>
-        <div class="info-card-desc" id="fragranceDesc" style="margin-bottom:16px;"></div>
-        <div class="product-list" id="productList"></div>
-        <div class="room-fragrance" id="roomFragrance"></div>
-      </div>
-
-      <div class="poem-card anim-up">
-        <div class="poem-text" id="poemText"></div>
-        <div class="poem-author">—— 李清照</div>
-      </div>
-
-      <!-- 分享裂变激励 -->
-      <div class="rewards-section anim-up">
-        <div class="rewards-title">邀请好友测试，解锁香氛好礼</div>
-        <div class="rewards-subtitle">分享你的专属链接，好友通过后完成测试即可累计</div>
-        <div class="reward-tiers">
-          <div class="reward-tier">
-            <div class="reward-tier-icon">🧴</div>
-            <div class="reward-tier-num">1人</div>
-            <div class="reward-tier-label">专属香型2ml小样<br>到店领取</div>
-          </div>
-          <div class="reward-tier highlight">
-            <div class="reward-tier-icon">🎁</div>
-            <div class="reward-tier-num">3人</div>
-            <div class="reward-tier-label">六色香氛4支礼盒<br>价值 ¥358</div>
-          </div>
-          <div class="reward-tier">
-            <div class="reward-tier-icon">🌟</div>
-            <div class="reward-tier-num">8人</div>
-            <div class="reward-tier-label">专属人格正装香水<br>50ml 价值 ¥468</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 分享文案 -->
-      <div class="share-copy-section anim-up">
-        <div style="font-size:13px;color:var(--text2);margin-bottom:12px;text-align:center;">选择文案，分享到朋友圈或群聊</div>
-        <div class="copy-cards" id="copyCards"></div>
-      </div>
-
-      <div class="share-section anim-up">
-        <button class="btn-share" onclick="showPoster()">生成专属海报 · 分享你的六边形</button>
-      </div>
-
-      <div class="wecom-section anim-up">
-        <div class="wecom-title">添加香氛顾问</div>
-        <div class="wecom-desc">免费领取你的专属香型2ml小样<br>首单复购享8折会员权益</div>
-        <div class="wecom-qr">企业微信<br>二维码</div>
-        <div class="wecom-hint">长按扫码添加</div>
-      </div>
-
-      <button class="retest-btn" onclick="retest()">重新测试</button>
-      <div style="height:40px"></div>
+    <div class="home-sfsc">
+      <div class="home-sfsc-label">SCENTFELIS SIX-STATE CYCLE</div>
+      <div class="home-sfsc-text">六色不是终点，而是循环。<br>30天后，你的六边形也许会有新的颜色。</div>
     </div>
   </div>
-
-  <!-- ===== POSTER OVERLAY ===== -->
-  <div class="poster-overlay" id="posterOverlay">
-    <div class="poster-card">
-      <div class="poster-canvas-wrap">
-        <canvas id="posterCanvas" width="750" height="1334"></canvas>
-      </div>
-      <div class="poster-actions">
-        <div class="poster-btn" onclick="closePoster()">关闭</div>
-        <div class="poster-btn primary" onclick="savePoster()">保存海报</div>
-      </div>
-    </div>
-    <div class="poster-close" onclick="closePoster()">✕ 关闭</div>
+  <div class="home-bottom">
+    <button class="btn-start" onclick="goInstructions()">进入测试</button>
+    <p style="text-align:center;margin-top:16px;font-size:11px;color:var(--text3)">凭第一感觉选择，没有标准答案<br>本测试是一项生活方式与香气偏好互动体验</p>
   </div>
-
-  <!-- ===== COPY TOAST ===== -->
-  <div class="copy-toast" id="copyToast">已复制</div>
-
 </div>
 
+<!-- INSTRUCTIONS -->
+<div class="screen" id="screen-instructions">
+  <div class="inst-card">
+    <div class="inst-title">测试说明</div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">共18题，约3分钟完成</div></div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">每题4个选项，选择最贴近你此刻状态的一项</div></div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">每次从600题库中随机抽题，同一天测试题目相同</div></div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">测试完成后，你将获得：<br>主香状态 · 副香能量 · 下一站方向 ·<br>专属照狸 · 人格深度解读 · 诗词共鸣 · 产品推荐</div></div>
+  </div>
+  <p class="inst-note">SFSC 不定义你是谁，只帮你看见此刻更突出的状态。<br>30天后可以复测。</p>
+  <button class="btn-start" onclick="startTest()">开始测试</button>
+</div>
+
+<!-- QUESTION -->
+<div class="screen" id="screen-question">
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">1 / 18</div>
+  </div>
+  <div class="q-num" id="qNumLabel"></div>
+  <div class="q-text" id="qText"></div>
+  <div class="q-options" id="qOptions"></div>
+  <p class="q-hint">凭第一感觉选择，没有标准答案</p>
+</div>
+
+<!-- RESULT -->
+<div class="screen" id="screen-result">
+  <div class="result-scroll">
+    <!-- 状态码 + 主香 -->
+    <div class="result-top a-up" id="resultTop">
+      <div class="result-code" id="resultCode"></div>
+      <div class="result-main-label" id="resultMainLabel"></div>
+      <div class="result-main-type" id="resultType"></div>
+      <div class="result-main-en" id="resultEn"></div>
+      <div class="result-main-phrase" id="resultPhrase"></div>
+    </div>
+
+    <!-- 六边形 -->
+    <div class="hex-wrap a-up">
+      <div class="hex-label">你的六边形正在生长</div>
+      <div style="width:100%;height:260px;position:relative"><canvas id="hexCanvas" role="img" aria-label="六色状态图"></canvas></div>
+    </div>
+
+    <!-- 人格深度画像 -->
+    <div class="r-card a-up" id="depthProfile"></div>
+
+    <!-- 三维自我认知 -->
+    <div class="r-3d a-up" id="threeDSelf"></div>
+
+    <!-- 积极暗示 + 行动指令 -->
+    <div class="r-action a-up" id="positiveAction"></div>
+
+    <!-- 明亮面 + 阴影提醒 -->
+    <div class="r-duo a-up">
+      <div class="r-duo-card"><div class="r-duo-label">明亮面</div><div class="r-duo-text" id="brightSide"></div></div>
+      <div class="r-duo-card"><div class="r-duo-label">温柔提醒</div><div class="r-duo-text" id="shadowSide"></div></div>
+    </div>
+
+    <!-- 阴影提醒深度 + 警惕信号 -->
+    <div class="r-warn a-up" id="warningDeep"></div>
+
+    <!-- 状态推进建议 -->
+    <div class="r-card a-up" style="text-align:center;">
+      <div class="r-card-label">状态推进建议</div>
+      <div class="r-card-highlight" id="advanceTip"></div>
+    </div>
+
+    <!-- 副香 -->
+    <div class="r-card a-up" style="text-align:center;">
+      <div class="r-card-label">副香 · 隐藏能量</div>
+      <div style="font-family:var(--font-cn);font-size:18px;margin-bottom:4px;" id="subScent"></div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.5;" id="subScentDesc"></div>
+    </div>
+
+    <!-- 下一站 -->
+    <div class="r-card a-up" style="text-align:center;">
+      <div class="r-card-label">下一站香 · 循环方向</div>
+      <div style="font-family:var(--font-cn);font-size:18px;margin-bottom:4px;" id="nextScent"></div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px;" id="nextScentDesc"></div>
+      <div class="r-predict" style="border:none;padding:14px 12px;margin-bottom:0;">
+        <div class="r-predict-label">照狸对下一阶段的建议</div>
+        <div class="r-card-desc" id="predictionText"></div>
+      </div>
+    </div>
+
+    <!-- 六色循环可视化 -->
+    <div class="r-cycle a-up">
+      <div class="r-cycle-label">你在六色循环中的位置</div>
+      <div class="r-cycle-steps" id="cycleSteps"></div>
+      <div class="r-cycle-you" id="cycleYou"></div>
+    </div>
+
+    <!-- 诗词深度 -->
+    <div class="r-poem a-up">
+      <div class="r-poem-text" id="poemText"></div>
+      <div class="r-poem-auth">—— 李清照</div>
+      <div class="r-poem-deep" id="poemDeep"></div>
+    </div>
+
+    <!-- 照狸寄语（深度） -->
+    <div class="r-card a-up" style="text-align:center;" id="zhaoliDeep"></div>
+
+    <!-- 产品推荐 -->
+    <div class="r-prod a-up">
+      <div class="r-prod-title">主香认领，把此刻的自己带回生活</div>
+      <div class="r-prod-list" id="productList"></div>
+      <div style="font-size:12px;color:var(--text3);text-align:center;margin-top:8px;line-height:1.6;font-style:italic;" id="roomFragrance"></div>
+    </div>
+    <div class="a-up" style="width:100%;margin-bottom:16px;">
+      <button class="btn-main" id="claimBtn" style="width:100%" onclick="alert('认领功能对接中，敬请期待')">认领我的主香 · 10ml</button>
+    </div>
+
+    <!-- 分享区 -->
+    <div class="r-share-section a-up">
+      <div class="r-share-label">分享你的主香状态</div>
+      <div class="r-share-copy" id="shareCopyList"></div>
+      <div class="r-share-btns">
+        <button class="btn-outline" style="width:100%" onclick="shareLink()">📤 一键转发分享链接</button>
+        <button class="btn-outline" style="width:100%" onclick="drawPoster()">🎨 生成海报 · 保存下载 · 发朋友圈</button>
+      </div>
+    </div>
+
+    <!-- 朋友圈文案 -->
+    <div class="a-up" style="width:100%;margin-bottom:12px;" id="momentsCopy"></div>
+
+    <!-- 会员 -->
+    <div class="r-member a-up">
+      <div class="r-member-label">加入未界会员</div>
+      <div class="r-member-desc">保存今天的主香、副香和六边形状态图<br>30天后，照狸会提醒你再看一次</div>
+      <div class="r-member-qr">未界会员<br>入口</div>
+      <div class="r-member-hint">长按扫码加入</div>
+    </div>
+
+    <!-- 复测 -->
+    <div class="a-up" style="width:100%;margin-bottom:20px;">
+      <button class="btn-outline" onclick="retest()" style="width:100%">重新测试</button>
+    </div>
+    <div class="r-retest"><span style="opacity:0.5">30天后，再看看你的六边形有没有变色</span></div>
+    <div style="height:40px"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toastEl">已复制</div>
+
+<!-- POSTER OVERLAY -->
+<div class="poster-overlay" id="posterOverlay">
+  <div class="poster-card">
+    <div class="poster-canvas-wrap"><canvas id="posterCanvas" width="750" height="1400"></canvas></div>
+    <div class="poster-actions">
+      <div class="poster-btn" onclick="closePoster()">关闭</div>
+      <div class="poster-btn primary" onclick="savePoster()">保存海报</div>
+    </div>
+  </div>
+  <div class="poster-close" onclick="closePoster()">✕ 关闭</div>
+</div>
+
+</div><!-- #app -->
+
+<!-- ==================== DATA ==================== -->
+<script src="questions.js"></script>
 <script>
-// ===== DATA =====
-const personalities = [
-  {
-    id: 'xiehou', name: '邂逅', color: '#C4827C', bgColor: '#F5E8E6',
-    badge: '柔光粉', phrase: '你仍然有被世界打动的能力',
-    declare: '我愿意重新被世界打动',
-    self: '你此刻更容易被美好、关系、细节和新鲜感触动。你不是幼稚，而是仍然保有感受世界的能力。',
-    others: '在旁人眼中，你温柔、细腻、容易亲近，像是春天里的第一缕暖风，让人不自觉地放下防备。',
-    hidden: '你以为自己只是敏感，其实那是一种高阶的感知力——你能看见别人忽略的美好，这是你的天赋，不是弱点。',
-    fragrance: '暗香', fragranceDesc: '清冷栀子调，初闻清冽，细品温柔。像你一样，需要靠近才能读懂。',
-    zhaoli: '柔光照狸', zhaoliDesc: '陪你重新被世界打动',
-    zhaoliImg: 'images/zhaoli-xiehou.jpg',
-    poem: '和羞走，倚门回首，却把青梅嗅。',
-    // 释义
-    traits: ['感知细腻', '浪漫温柔', '好奇心旺盛', '共情力强'],
-    growingTips: '不必为自己的敏感道歉。你的柔软是这个世界最稀缺的力量——继续保持对世界的好奇，但也要学会在感受之后，给自己一个安静的收梢。',
-    suitableScenes: ['初遇与心动时刻', '艺术展与咖啡馆', '花市与旧书店', '雨后散步'],
-    energySource: '新鲜感、美好的细节、真诚的连接',
-    energyDrain: '重复的日常、冷漠的环境、被忽视的感觉',
-    // 香水产品对应
-    products: [
-      { name: '暗香 · 邂逅淡香精', type: 'EDP 50ml', price: '¥398', desc: '清冷栀子调，初闻清冽细品温柔。持香6-8小时。' },
-      { name: '暗香 · 邂逅身体乳', type: '身体乳 200ml', price: '¥168', desc: '栀子花+杏仁油，如初恋般的温柔滋养。' },
-      { name: '暗香 · 邂逅空间香氛', type: '空间喷雾 100ml', price: '¥128', desc: '让整个房间都染上温柔的栀子气息。' },
+// ==================== SIX DATA (with depth interpretation) ====================
+const SIX = [
+  { // E - 邂逅
+    code:'E',name:'邂逅',en:'Encounter',color:'#C4827C',bg:'#F5E8E6',badge:'柔光粉',
+    phrase:'你仍然有被世界打动的能力',declare:'我允许新的美好再次触动我',
+    socialRole:'浪漫生活家',socialRoleSub:'朋友圈里最会发现美好的人',
+    animal:'蝴蝶',animalDesc:'对世界保持最原始的敏感与好奇。蝴蝶不必大声喧哗——每一次振翅都是对美的回应，每一次停留都是一次选择。',
+    awakeningQuote:'你仍然有被世界打动的能力',personalityDeclaration:'我愿意重新被世界打动',
+    selfView:'你此刻更容易被美好、关系、细节和新鲜感触动。你不是幼稚——你只是仍然保有感受世界的能力。你的敏感不是弱点，它是高阶感知力，让你看见别人忽略的美好。',
+    othersView:'在旁人眼中，你温柔、细腻、容易亲近，像春天里的第一缕暖风。人们会被你的温柔吸引，不自觉地放下防备，却未必知道你内心的丰富世界——你的内心比你表现出来的要深邃得多。',
+    hiddenTalent:'你以为自己只是敏感，其实那是高阶感知力——你能看见别人忽略的美好，这是你的天赋，不是弱点。你的柔软是这个时代最稀缺的力量。',
+    growthAdvice:'不必为自己的敏感道歉。继续保持对世界的好奇，但也要学会在感受之后，给自己一个安静的收梢。练习说"不"——建立情感边界感，让你的温柔可持续。',
+    positiveAffirmation:'发现美，是你与生俱来的天赋。这周，请每天记录一个「只有你注意到了」的美好瞬间。一周后回看——你会发现，世界因为你的注视，变得更加值得温柔相待。',
+    todayAction:'拍下此刻你眼中最美的一瞬，不需解释，只需感受。',
+    shadowReminder:'温柔的人最容易成为情绪的容器。你的共情力在滋养别人的同时，也在悄悄消耗你自己的能量。当你发现自己开始「替别人难过」时，请在心里画一条线——那是你的领地。温柔，不等于无条件承接。',
+    warningSignal:'频繁叹气、不想回消息、对曾经喜欢的事物失去兴趣 → 你正在透支你的温柔。',
+    zhaoliMessage:'柔光照狸在你肩头轻轻落下。它不是来定义你的——它是来陪你看这个世界有多美好的。每一次心动，都值得被温柔收藏。',
+    poemInterpretation:'这首词中最动人的不是「和羞走」，而是「倚门回首」——在羞怯与好奇之间反复横跳的微妙张力，正是邂逅者灵魂的底色。你不是不敢面对世界，你只是需要一点时间，确认这个世界值得温柔相待。「却把青梅嗅」：用一个最轻柔的动作，完成了与世界的连接。',
+    bright:'愿意被美好触动',shadow:'邂逅很美，但也要记得慢慢确认，不把全部期待投射到一次遇见里',
+    advance:'记录最近触动你的三个瞬间',
+    scent:'暗香',scentDesc:'清冷栀子调，初闻清冽细品温柔。像一次初见，需要靠近才能读懂。',
+    scentShort:'栀子 · 青梅 · 微甜',
+    zhaoli:'柔光照狸',zhaoliDesc:'陪你重新被世界打动',
+    poem:'和羞走，倚门回首，却把青梅嗅。',
+    products:[
+      {name:'暗香·邂逅 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'暗香·邂逅 淡香精',type:'EDP 50ml',tag:'正装',desc:'清冷栀子调，持香6-8小时',price:'¥398'},
+      {name:'邂逅照狸摆件',type:'摆件',tag:'照狸',desc:'柔光照狸，陪你重新被世界打动',price:'¥168'}
     ],
-    roomFragrance: '栀子花与白茶空间香氛 · 适合卧室与书房',
-    bestSeason: '春夏',
-    // 分享裂变
-    shareTitle: '我是「邂逅」人格，你呢？',
-    shareCopy: [
-      '测了一下这个香水人格测试，居然被说中了...太准了',
-      '我的专属香是「暗香」——清冷栀子调。你的是什么？',
-      '我仍然有被世界打动的能力。来测测你是什么人格香型'
-    ]
+    room:'邂逅双人主题房 · 约会 | 旅行 | 初次试香',
+    shareCopy:[
+      '我的SFSC状态码里有E——照狸说，我还愿意被美好触动。',
+      '测了一下照狸六色循环，我的主香是「暗香」· 邂逅。',
+      '我不是被你定义的人，我只是走到了邂逅这一站。'
+    ],
+    postCopy:'我的SFSC状态码是E·邂逅。「和羞走，倚门回首，却把青梅嗅。」——照狸说，我还愿意被美好触动。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'邂逅之后是觉醒。如果最近你有什么突然明了的事情，不必急——允许自己被触动之后，慢慢看清方向。'
   },
-  {
-    id: 'juexing', name: '觉醒', color: '#7B9E7D', bgColor: '#E8F0E8',
-    badge: '清醒绿', phrase: '清醒不是冷漠，是终于把自己也算进去',
-    declare: '我终于把自己也算进去',
-    self: '你正在更清楚地看见自己、关系和真正重要的东西。清醒不是变得冷漠，而是终于不再只活在别人的期待里。',
-    others: '别人会觉得你最近有些"不一样"——更笃定、更不讨好、更难被随便说服。他们未必理解，但会开始尊重。',
-    hidden: '你内心深处有一种"看透但不拆穿"的智慧。这种冷静不是无情，而是一种深层的保护力。',
-    fragrance: '醒木', fragranceDesc: '雨后苔藓与雪松交织，干净利落，带着刚刚好的距离感。像一场清醒的呼吸。',
-    zhaoli: '清醒照狸', zhaoliDesc: '陪你看见真实的自己',
-    zhaoliImg: 'images/zhaoli-juexing.jpg',
-    poem: '知否？知否？应是绿肥红瘦。',
-    // 释义
-    traits: ['理性清醒', '边界感强', '独立思考', '洞见深刻'],
-    growingTips: '清醒不是为了拒绝世界，而是为了更精准地选择。你可以继续划清边界，但也请记得——偶尔允许自己不知分寸地喜欢一个人或一件事。',
-    suitableScenes: ['独处充电', '深度阅读与写作', '自然徒步', '深夜思考'],
-    energySource: '独处时间、被理解的感觉、看见真相',
-    energyDrain: '无意义的社交、虚伪的关系、被情感绑架',
-    // 香水产品对应
-    products: [
-      { name: '醒木 · 觉醒淡香精', type: 'EDP 50ml', price: '¥398', desc: '雨后苔藓与雪松交织，干净利落。持香6-8小时。' },
-      { name: '醒木 · 觉醒沐浴露', type: '沐浴露 300ml', price: '¥128', desc: '雪松木+薄荷，洗去一天社交疲惫。' },
-      { name: '醒木 · 觉醒香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '苔藓与雪松，独处时刻的清醒陪伴。燃烧约40小时。' },
+  { // A - 觉醒
+    code:'A',name:'觉醒',en:'Awakening',color:'#7B9E7D',bg:'#E8F0E8',badge:'清醒绿',
+    phrase:'清醒不是冷漠，是终于把自己也算进去',declare:'我因这次触动而明了自己',
+    socialRole:'理性洞察者',socialRoleSub:'朋友群里的冷静分析师',
+    animal:'猫头鹰',animalDesc:'在黑暗中依然能看清事物的本质，冷静而不失温度。猫头鹰不追逐热闹——它们选择在最安静的时刻起飞，用自己的节奏观察世界。',
+    awakeningQuote:'清醒不是冷漠，是终于把自己也算进去',personalityDeclaration:'我终于把自己也算进去',
+    selfView:'你正在更清楚地看见自己、关系和真正重要的东西。清醒不是变得冷漠——而是终于不再只活在别人的期待里。你知道自己想要什么，也敢于承认自己不想要什么。这份笃定，是你给自己最好的礼物。',
+    othersView:'别人会觉得你最近有些「不一样」——更笃定、更不讨好、更难被随便说服。他们未必理解你的变化，但会开始尊重你的边界。你身上有一种让人不敢轻视的质感——那不是高冷，是清醒。',
+    hiddenTalent:'你内心深处有一种「看透但不拆穿」的智慧。这种冷静不是无情，而是一种深层的保护力——你知道什么时候该说话，什么时候该沉默，这是极少有人具备的定力。',
+    positiveAffirmation:'清醒，是你在风暴中获得的最大礼物。这周，当你察觉自己在「讨好」时，停下来，用30秒问自己——「这真的是我想要的吗？」每一次诚实的回答，都是向自己靠近的一步。',
+    todayAction:'对一件你不想答应的事说「不」，不需要解释，不需要道歉。',
+    shadowReminder:'清醒者最大的陷阱，是把「理性」变成一种防御。当你看透了太多，可能会不自觉地竖起高墙——不是不需要温暖，而是害怕温暖之后是失望。清醒的尽头不是孤岛，而是终于知道谁值得你放下边界。',
+    warningSignal:'对一切说「没意思」、刻意回避亲密时刻、用「我不需要」替代「我不敢要」→ 你的理性正在成为一堵墙。',
+    zhaoliMessage:'清醒照狸坐在你身边，不催你、不哄你。它知道清醒需要时间。它只是安静地陪着，等你自己说出那句——「我懂了」。',
+    poemInterpretation:'「绿肥红瘦」是对现象最清醒的判断——繁华易逝，本质永存。觉醒者就像词中的李清照：不沉溺于表象的繁荣，始终保有一双看透本质的眼睛。旁人问「知否」，其实早已了然于心——只是他们在合适的时机说出口。',
+    bright:'看清方向',shadow:'清醒很好，但不必让自己过度紧绷，也不必急着和所有旧事告别',
+    advance:'写下你真正想要改变的一件事',
+    scent:'醒木',scentDesc:'雨后苔藓与雪松交织，干净利落，带着刚刚好的距离感。像一场清醒的呼吸。',
+    scentShort:'绿叶 · 茶感 · 雪松',
+    zhaoli:'清醒照狸',zhaoliDesc:'陪你看见真实的自己',
+    poem:'知否？知否？应是绿肥红瘦。',
+    products:[
+      {name:'醒木·觉醒 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'醒木·觉醒 淡香精',type:'EDP 50ml',tag:'正装',desc:'雨后苔藓与雪松，持香6-8小时',price:'¥398'},
+      {name:'觉醒照狸摆件',type:'摆件',tag:'照狸',desc:'清醒照狸，陪你看见真实的自己',price:'¥168'}
     ],
-    roomFragrance: '苔藓与雪松空间香氛 · 适合书房与冥想角',
-    bestSeason: '秋冬',
-    // 分享裂变
-    shareTitle: '我是「觉醒」人格，你呢？',
-    shareCopy: [
-      '这个测试让我意识到，清醒不是冷漠，是终于把自己也算进去了。',
-      '我的香叫「醒木」——雨后的苔藓和雪松，刚好的距离感。',
-      '我终于把自己也算进去了。——来测你的六色人格香型'
-    ]
+    room:'觉醒独处主题房 · 独处 | 读书 | 做决定',
+    shareCopy:[
+      '我的SFSC状态码里有A——照狸说，我因这次触动而明了自己。',
+      '测了一下照狸六色循环，我的主香是「醒木」· 觉醒。',
+      '我终于把自己也算进去了。来看看你的主香状态是哪一站？'
+    ],
+    postCopy:'我的SFSC状态码是A·觉醒。「知否？知否？应是绿肥红瘦。」——照狸说，我终于把自己也算进去了。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'觉醒之后是蝶变。看清楚之后，不必急着改变一切——先给自己一点安静时间，慢慢沉淀，慢慢重组。'
   },
-  {
-    id: 'diebian', name: '蝶变', color: '#8B7EAC', bgColor: '#EDEAF5',
-    badge: '深邃紫', phrase: '你不是坏掉了，你是在重组',
-    declare: '我允许自己慢慢重组',
-    self: '你可能正处在变化、调整、转型的阶段。不必急着证明自己已经完成改变——重组本身就是一种力量。',
-    others: '别人会注意到你的"不同"，但未必能准确描述。你身上有一种正在酝酿的东西，让人好奇又不敢轻易打扰。',
-    hidden: '你比别人想象中更坚韧。重组期的你表面脆弱，底层却在生长出从未有过的结构。',
-    fragrance: '破茧', fragranceDesc: '鸢尾与檀木的交叠，前调低沉，中后调逐渐明亮。像一只正在展翅的蝶，不急不缓。',
-    zhaoli: '破茧照狸', zhaoliDesc: '陪你穿过旧我',
-    zhaoliImg: 'images/zhaoli-diebian.jpg',
-    poem: '清露洗、蘋花汀草，眠沙鸥鹭不回头。',
-    // 释义
-    traits: ['深度思考', '正在蜕变', '内省力强', '创造力爆发期'],
-    growingTips: '你现在经历的，不是「坏掉了」，而是一次深层的重组。不要急着变成「更好的自己」——先在重组中学会善待正在变化的自己。',
-    suitableScenes: ['深夜创作', '独自旅行', '沉浸式艺术体验', '写日记与反思'],
-    energySource: '深度对话、艺术触动、独自完成一件事的成就感',
-    energyDrain: '被打断的沉思、被要求快速表态、浅层闲聊',
-    // 香水产品对应
-    products: [
-      { name: '破茧 · 蝶变淡香精', type: 'EDP 50ml', price: '¥468', desc: '鸢尾与檀木，前调低沉后调明亮。持香8-10小时。' },
-      { name: '破茧 · 蝶变香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '檀木+鸢尾，燃烧时如蜕变般层次渐明。约40小时。' },
-      { name: '破茧 · 蝶变精油套装', type: '精油套装', price: '¥268', desc: '鸢尾+檀木+佛手柑，含扩香木，冥想蜕变伴侣。' },
+  { // M - 蝶变
+    code:'M',name:'蝶变',en:'Metamorphosis',color:'#8B7EAC',bg:'#EDEAF5',badge:'深邃紫',
+    phrase:'你不是被困住了，你是在等待新的翅膀',declare:'我愿意为新的自己沉淀作茧',
+    socialRole:'内在探险家',socialRoleSub:'你朋友圈里那个突然就变了的人',
+    animal:'蝶蛹',animalDesc:'表面静止，内部却在进行着最激烈的重组。没有人看见你在黑暗中做了什么，但破茧的那一刻——一切都有了答案。蝶蛹不需要向任何人解释它在变成什么。',
+    awakeningQuote:'你不是坏掉了，你是在重组',personalityDeclaration:'我允许自己慢慢重组',
+    selfView:'你可能正处在变化、调整、转型的阶段。不必急着证明自己已经完成改变——重组本身就是一种力量。你不是破碎了，你是在长出从未有过的结构。允许自己在这个阶段慢下来，茧不需要解释。',
+    othersView:'别人会注意到你的「不同」，但未必能准确描述。你身上有一种正在酝酿的东西——让人好奇又不敢轻易打扰。他们会感受到你的深度，却不完全理解你的旅程。没关系，不是所有蜕变都需要观众。',
+    hiddenTalent:'你比别人想象中更坚韧。重组期的你表面脆弱，底层却在生长出从未有过的结构。那些你以为快要撑不住的夜晚，其实正在为你的未来打下最坚固的地基。你比你想象的更接近破茧。',
+    positiveAffirmation:'重组，是只有勇敢者才敢进入的状态。你不是停滞，你是在积蓄。这周，每天写下一条「我今天的感受是______，这没关系」。让每一个感受都有被承认的权利。',
+    todayAction:'找一段15分钟，关掉所有外界的声音。什么都不做——只是感受此刻的自己。',
+    shadowReminder:'蝶变者最深的陷阱，是沉溺于「蜕变」本身。当你太专注于审视伤口，可能会忘记：生活不止有蛹中的黑暗。偶尔也需要抬起头，看看外面的光——那光不是催促，是提醒。',
+    warningSignal:'连续3天以上不出门/不社交/反复自我分析 → 你在用「内省」逃避行动。请打破循环。',
+    zhaoliMessage:'破茧照狸蜷在你的掌心，温热的。它知道你现在什么都说不清——那不重要。重要的是，你还在呼吸，还在允许自己变化。这就够了。',
+    poemInterpretation:'「不回头」是蝶变者最深的共鸣。你已经做出了选择，走上了一条不回头的路。身后的风景再美，也不及前方的未知。清晨的露水洗去了昨日的尘埃——你不再是昨天的你。',
+    bright:'主动沉淀重组',shadow:'作茧是保护，但不要把自己封闭太久。新的翅膀，也需要一点光',
+    advance:'给自己一段不被打扰的沉淀时间',
+    scent:'破茧',scentDesc:'鸢尾与檀木的交叠，前调低沉，中后调逐渐明亮。像一只正在展翅的蝶，不急不缓。',
+    scentShort:'鸢尾 · 檀木 · 暗光',
+    zhaoli:'破茧照狸',zhaoliDesc:'陪你穿过旧我，等待翅膀',
+    poem:'清露洗、蘋花汀草，眠沙鸥鹭不回头。',
+    products:[
+      {name:'破茧·蝶变 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'破茧·蝶变 淡香精',type:'EDP 50ml',tag:'正装',desc:'鸢尾与檀木，持香8-10小时',price:'¥468'},
+      {name:'蝶变照狸摆件',type:'摆件',tag:'照狸',desc:'破茧照狸，陪你穿过旧我',price:'¥168'}
     ],
-    roomFragrance: '檀木与鸢尾空间香氛 · 适合工作室与冥想空间',
-    bestSeason: '四季皆宜',
-    // 分享裂变
-    shareTitle: '我是「蝶变」人格，你呢？',
-    shareCopy: [
-      '测试说我正在经历一次重组——不是坏掉了，是在长出新的结构。',
-      '我的香叫「破茧」。鸢尾和檀木，前调低沉后调明亮。',
-      '你不是坏掉了，你是在重组。来测你的蝶变阶段'
-    ]
+    room:'蝶变艺术主题房 · 转折期 | 创作 | 安静重组',
+    shareCopy:[
+      '我的SFSC状态码里有M——照狸说，我不是被困住了，我是在作茧。',
+      '测了一下照狸六色循环，我的主香是「破茧」· 蝶变。',
+      '你不是被困住了，你是在等待新的翅膀。来看看你的六色状态？'
+    ],
+    postCopy:'我的SFSC状态码是M·蝶变。「清露洗、蘋花汀草，眠沙鸥鹭不回头。」——照狸说，我不是坏掉了，我是在重组。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'蝶变之后是绽放。重组之后的你会以新的方式出现。现在耐心沉淀——那些长不出来的翅膀，还需要一点安静的时间。'
   },
-  {
-    id: 'zhanfang', name: '绽放', color: '#C4A45A', bgColor: '#F7F2E3',
-    badge: '明耀黄', phrase: '绽放不是炫耀，而是不再压低自己的光',
-    declare: '我不再压低自己的光',
-    self: '你此刻更需要表达、庆祝和被看见。你不再是那种躲在角落里的状态——你有光，而且你值得让它亮出来。',
-    others: '别人会被你的能量吸引。你不一定是最大声的那个，但你出现的时候，空气会变得不一样。',
-    hidden: '你以为自己只是"状态好"，其实你正在活出一种感染力。你让身边的人也想变得更好——这是领袖气质的前兆。',
-    fragrance: '耀光', fragranceDesc: '柑橘与琥珀的碰撞，明亮而有层次。第一秒就抓人，越久越有故事。',
-    zhaoli: '光芒照狸', zhaoliDesc: '陪你不再压低自己的光',
-    zhaoliImg: 'images/zhaoli-zhanfang.jpg',
-    poem: '梅定妒，菊应羞。',
-    // 释义
-    traits: ['感染力强', '自信表达', '热爱庆祝', '引领他人'],
-    growingTips: '你的光芒不需要压低。这个世界需要更多敢于亮出来的人——但请记住，真正的绽放不是为了被看见，而是因为你本来就有光。学会在热闹之后，也给自己留一盏安静的灯。',
-    suitableScenes: ['聚会与庆祝', '公开表达', '舞台和聚光灯', '旅行与冒险'],
-    energySource: '被认可、创造影响、与人分享快乐',
-    energyDrain: '被压制表达、长期独处、被忽视的价值',
-    // 香水产品对应
-    products: [
-      { name: '耀光 · 绽放淡香精', type: 'EDP 50ml', price: '¥468', desc: '柑橘与琥珀碰撞，明亮有层次。持香8-10小时。' },
-      { name: '耀光 · 绽放滚珠香水', type: '便携滚珠 10ml', price: '¥188', desc: '随时补香，保持光芒不灭。' },
-      { name: '耀光 · 绽放香氛礼盒', type: '三件套礼盒', price: '¥698', desc: 'EDP+身体乳+滚珠，光芒全开礼。送礼首选。' },
+  { // B - 绽放
+    code:'B',name:'绽放',en:'Blooming',color:'#C4A45A',bg:'#F7F2E3',badge:'明耀黄',
+    phrase:'绽放不是炫耀，而是不再压低自己的光',declare:'我让沉淀后的自己精彩地活出来',
+    socialRole:'派对主角',socialRoleSub:'你朋友圈里活得最尽兴的那个人',
+    animal:'孔雀',animalDesc:'不羞于展示自己的美，每一次开屏都是对生命的礼赞。孔雀不需要和谁比美——它只是站在那里，就已经回答了「我是谁」这个问题。',
+    awakeningQuote:'绽放不是炫耀，而是不再压低自己的光',personalityDeclaration:'我不再压低自己的光',
+    selfView:'你此刻更需要表达、庆祝和被看见。你不再是那种躲在角落里的状态——你有光，而且你值得让它亮出来。你的存在本身就能改变一个空间的温度。这不是傲慢，这是对自己的诚实。',
+    othersView:'别人会被你的能量吸引。你不一定是最大声的那个，但你出现的时候，空气会变得不一样。人们希望靠近你、了解你、被你感染——这是一种稀有的天赋。',
+    hiddenTalent:'你以为自己只是「状态好」，其实你正在活出一种感染力——你让身边的人也想变得更好。这是领袖气质的前兆。你的光不仅照亮自己，也点燃了别人。你正在成为你曾经仰望的那种人。',
+    positiveAffirmation:'你正在活出一种感染力——它比任何香水都更持久。这周，用你的能量去点亮一个正处于低谷的朋友。不需要长篇大论，只需要出现在那里，带着你的光。',
+    todayAction:'对镜子里的人笑一下，说「你今天也很不错」。不需要理由，因为你本就值得。',
+    shadowReminder:'绽放者最深的风险，是把「发光」变成一种义务。当「照亮别人」从天赋变成了负担，你的光就不再为你自己服务。请记住：你可以暗下来。允许自己不出现、不回应、不发光——这不是失败，这是让光源充电的必须过程。',
+    warningSignal:'独处时感到空虚、对赞美上瘾、无法停止社交表演 → 你正在用「绽放」逃避与自己的独处。',
+    zhaoliMessage:'光芒照狸在你周围盘旋了一圈，然后停在你掌心。它不说话，但你知道它在说：你本来就有光。不需要借用别人的灯，不需要等天黑才亮——你，就是光源。',
+    poemInterpretation:'「梅定妒，菊应羞」——李清照笔下最自信的诗句。她没有说桂花比梅菊更美，她说的是：我就是我，不需要在你们的坐标系里寻找位置。绽放者不需要和别人比较——因为他们深知，自己的存在本身就是一种光芒。',
+    bright:'精彩表达',shadow:'绽放不是为了取悦所有人，也不必用过度消耗换来被看见',
+    advance:'允许自己完成一次表达或庆祝',
+    scent:'耀光',scentDesc:'柑橘与琥珀的碰撞，明亮而有层次。第一秒就抓人，越久越有故事。',
+    scentShort:'柑橘 · 琥珀 · 光芒',
+    zhaoli:'光芒照狸',zhaoliDesc:'陪你不再压低自己的光',
+    poem:'梅定妒，菊应羞。',
+    products:[
+      {name:'耀光·绽放 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'耀光·绽放 淡香精',type:'EDP 50ml',tag:'正装',desc:'柑橘与琥珀，持香8-10小时',price:'¥468'},
+      {name:'绽放照狸摆件',type:'摆件',tag:'照狸',desc:'光芒照狸，陪你不再压低自己的光',price:'¥168'}
     ],
-    roomFragrance: '柑橘与琥珀空间香氛 · 适合客厅与派对空间',
-    bestSeason: '春夏',
-    // 分享裂变
-    shareTitle: '我是「绽放」人格，你呢？',
-    shareCopy: [
-      '测完觉得自己最近状态真的很好！你的光芒不需要压低。',
-      '我的香叫「耀光」——柑橘和琥珀，一秒抓人。来测你的专属香。',
-      '我不再压低自己的光。你的六色人格香型是什么？'
-    ]
+    room:'绽放生日主题房 · 生日 | 聚会 | 庆祝',
+    shareCopy:[
+      '我的SFSC状态码里有B——照狸说，我让沉淀后的自己精彩地活出来。',
+      '测了一下照狸六色循环，我的主香是「耀光」· 绽放。',
+      '我不再压低自己的光。来看看你的六色状态？'
+    ],
+    postCopy:'我的SFSC状态码是B·绽放。「梅定妒，菊应羞。」——照狸说，我不再压低自己的光。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'绽放之后是守护。尽情发光之后，你也需要珍惜这份来之不易的精彩——学会在发光的同时，也给自己温柔的边界。'
   },
-  {
-    id: 'shouhu', name: '守护', color: '#C4967A', bgColor: '#F5EDE6',
-    badge: '温暖橙', phrase: '真正的守护，是温柔但有边界',
-    declare: '我温柔，但我有边界',
-    self: '你重视责任、安全感和承诺。你很会照顾别人，但也正在学习一件重要的事——把自己的能量也算进去。',
-    others: '别人依赖你，因为你可靠、温暖、不会轻易放弃一段关系。但有时候他们也会忘记，你同样需要被照顾。',
-    hidden: '你以为自己只是"付出型人格"，其实你拥有罕见的构建能力——你能创造让所有人都感到安全的空间。',
-    fragrance: '暖岸', fragranceDesc: '琥珀与零陵香豆的温暖组合，像一个让人安心的拥抱。不张扬，但久久不散。',
-    zhaoli: '骑士照狸', zhaoliDesc: '陪你温柔但坚定地守住边界',
-    zhaoliImg: 'images/zhaoli-shouhu.jpg',
-    poem: '风休住，蓬舟吹取三山去。',
-    // 释义
-    traits: ['可靠温暖', '责任感强', '擅长构建安全感', '温柔但有边界'],
-    growingTips: '你比任何人都更懂得如何让身边的人感到安全。但请记住：守护别人的前提，是守护好自己的能量。学会说「不」，是你最重要的功课——那不是冷漠，而是让温柔可持续的边界。',
-    suitableScenes: ['家庭聚会', '照顾与陪伴', '稳定长期关系', '安静的手工时光'],
-    energySource: '被需要的感觉、稳定的关系、有意义的付出',
-    energyDrain: '失控的局面、被辜负的信任、无边界的要求',
-    // 香水产品对应
-    products: [
-      { name: '暖岸 · 守护淡香精', type: 'EDP 50ml', price: '¥398', desc: '琥珀与零陵香豆，如温暖拥抱。持香6-8小时。' },
-      { name: '暖岸 · 守护护手霜', type: '护手霜 50ml', price: '¥98', desc: '琥珀+乳木果，守护你的每一寸温柔。' },
-      { name: '暖岸 · 守护香氛蜡烛', type: '蜡烛 200g', price: '¥198', desc: '琥珀与零陵香豆，让家的每个角落都安心。约40小时。' },
+  { // G - 守护
+    code:'G',name:'守护',en:'Guardian',color:'#C4967A',bg:'#F5EDE6',badge:'温暖橙',
+    phrase:'真正的守护，是温柔但坚定地守住边界',declare:'我珍惜这份光，也有边界地守护它',
+    socialRole:'温暖靠山',socialRoleSub:'所有人遇到困难第一个想到的人',
+    animal:'大象',animalDesc:'强大的力量从不轻易展示。大象记得每一个同伴，也记得如何让每个人都感到安全。他们的温柔不是没有力量——恰恰相反，是因为足够强大，才选择了温柔。',
+    awakeningQuote:'真正的守护，是温柔但有边界',personalityDeclaration:'我温柔，但我有边界',
+    selfView:'你重视责任、安全感和承诺。你很会照顾别人，但也正在学习一件重要的事——把自己的能量也算进去。你的温柔不该是消耗品，而是源源不断的力量。真正的守护，始于守护好自己。',
+    othersView:'别人依赖你，因为你可靠、温暖、不会轻易放弃一段关系。你是风暴中那个让人安心的存在。但有时候人们会忘记——你同样需要被照顾。你的温柔也需要回响，你的肩膀也需要依靠。',
+    hiddenTalent:'你以为自己只是「付出型人格」，其实你拥有罕见的构建能力——你能创造出所有人都感到安全的空间。这种能力是在一次次被需要中打磨出来的。你正在建造一座看不见的城堡。',
+    positiveAffirmation:'你的温暖，是这个世界上最踏实的风景。这周，把你为别人操心的其中一件事，暂时「移交」出去。不是为了偷懒——是为了腾出空间，给自己。你的温柔应该有一份留给自己。',
+    todayAction:'给自己写一张卡片，像你写给在意的人那样。然后，放在你能看到的地方。',
+    shadowReminder:'守护者最深的风险，是把「被需要」当作「被爱」。当你把所有的温柔都给了别人，却没有留一点给自己时，那种温暖就会从礼物变成负担。你不需要永远坚强。你的价值不取决于你为别人做了什么——你本身，就值得被守护。',
+    warningSignal:'身体不明原因疲惫、忘记上一次「被照顾」是什么时候、无法开口向别人求助 → 你正在把守护变成自我消耗。',
+    zhaoliMessage:'骑士照狸站在你身侧，不是替你战斗，而是让你知道——你在守护别人的时候，也会有人守护你。它的铠甲不是为了防御世界，而是为了提醒你：你也是需要被保护的存在。',
+    poemInterpretation:'「风休住」——守护者不怕风浪，他们怕的是风浪来时，自己护不住重要的人。蓬舟虽小，心意却大。守护不是蛮力，而是在风暴中依然稳稳掌舵的勇气。李清照写这句词时，已经经历了人生最大的风暴——她的「守护」不是天真，是经历过一切之后仍然选择相信。',
+    bright:'珍惜并有边界',shadow:'守护不是控制，也不是牺牲自己。真正的守护，是让值得的人和自己都更好',
+    advance:'重新确认一个重要边界',
+    scent:'暖岸',scentDesc:'琥珀与零陵香豆的温暖组合，像一个让人安心的拥抱。不张扬，但久久不散。',
+    scentShort:'琥珀 · 零陵香豆 · 包裹感',
+    zhaoli:'骑士照狸',zhaoliDesc:'陪你温柔但坚定地守住边界',
+    poem:'风休住，蓬舟吹取三山去。',
+    products:[
+      {name:'暖岸·守护 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'暖岸·守护 淡香精',type:'EDP 50ml',tag:'正装',desc:'琥珀与零陵香豆，持香6-8小时',price:'¥398'},
+      {name:'守护照狸摆件',type:'摆件',tag:'照狸',desc:'骑士照狸，陪你温柔但坚定地守住边界',price:'¥168'}
     ],
-    roomFragrance: '琥珀与零陵香豆空间香氛 · 适合卧室与家庭空间',
-    bestSeason: '秋冬',
-    // 分享裂变
-    shareTitle: '我是「守护」人格，你呢？',
-    shareCopy: [
-      '测出来我是守护型人格——温柔但有边界，太准了。',
-      '我的香叫「暖岸」。琥珀和零陵香豆，像一个让人安心的拥抱。',
-      '我温柔，但我有边界。来测你的六色人格香型'
-    ]
+    room:'守护亲子主题房 · 家庭 | 亲子 | 母亲节',
+    shareCopy:[
+      '我的SFSC状态码里有G——照狸说，我珍惜这份光，也有边界地守护它。',
+      '测了一下照狸六色循环，我的主香是「暖岸」· 守护。',
+      '我温柔，但我有边界。来看看你的六色状态？'
+    ],
+    postCopy:'我的SFSC状态码是G·守护。「风休住，蓬舟吹取三山去。」——照狸说，我温柔，但我有边界。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'守护之后是共生。守住了边界、守住了光，接下来你会更平静地与自己、与他人、与世界共处——不再把人生变成一场对抗。'
   },
-  {
-    id: 'gongsheng', name: '共生', color: '#7B94B5', bgColor: '#E8EEF5',
-    badge: '静境蓝', phrase: '共生不是妥协，而是不再把人生变成一场对抗',
-    declare: '我不再和自己对抗',
-    self: '你正在走向更平静、更成熟、更长期的关系状态。你不再需要赢过谁，也不再需要证明什么。',
-    others: '别人会觉得你越来越"稳"了。你不争不抢，但你说的话越来越有分量。你身上有一种让人安静下来的力量。',
-    hidden: '你以为自己只是"看开了"，其实你已经抵达了很多人一辈子都在追求的境界——内心秩序的自洽。',
-    fragrance: '静泊', fragranceDesc: '白麝香与雪松木的沉静组合，不争不抢，却有无法忽视的存在感。越久越醇。',
-    zhaoli: '静境照狸', zhaoliDesc: '陪你走向平静共生',
-    zhaoliImg: 'images/zhaoli-gongsheng.jpg',
-    poem: '枕上诗书闲处好，门前风景雨来佳。',
-    // 释义
-    traits: ['内心秩序', '成熟包容', '不争不抢', '自带稳定感'],
-    growingTips: '你已经走过了最远的路——从对抗世界到与自己和解。现在，你不需要再证明什么。你的存在本身，就是一种安静的力量。继续这份静定，它会带你看见更大的风景。',
-    suitableScenes: ['安静阅读', '自然独处', '深度对话', '晨间冥想'],
-    energySource: '内心的秩序感、深度的关系、自然与宁静',
-    energyDrain: '嘈杂环境、被迫竞争、浅层社交',
-    // 香水产品对应
-    products: [
-      { name: '静泊 · 共生淡香精', type: 'EDP 50ml', price: '¥468', desc: '白麝香与雪松木，不争却有存在感。持香8-10小时。' },
-      { name: '静泊 · 共生精油套装', type: '精油套装', price: '¥268', desc: '白麝香+雪松+佛手柑，含扩香木，冥想伴侣。' },
-      { name: '静泊 · 共生香薰蜡烛', type: '蜡烛 200g', price: '¥198', desc: '白麝香与雪松，静谧时光的最佳背景。约40小时。' },
+  { // C - 共生
+    code:'C',name:'共生',en:'Coexistence',color:'#7B94B5',bg:'#E8EEF5',badge:'静境蓝',
+    phrase:'共生不是妥协，而是不再把人生变成一场对抗',declare:'我与自己、他人和世界平静共处，并准备再次遇见',
+    socialRole:'静境智者',socialRoleSub:'朋友群里最稳的那个存在',
+    animal:'鲸',animalDesc:'在深海中从容游弋，不争不抢，却有无法忽视的存在感。鲸歌悠远绵长——不需要被所有人听见，但听见的人一生都不会忘记。体积不是用于威慑，深潜不是用于逃避。',
+    awakeningQuote:'共生不是妥协，而是不再把人生变成一场对抗',personalityDeclaration:'我不再和自己对抗',
+    selfView:'你正在走向更平静、更成熟、更长期的关系状态。你不再需要赢过谁，也不再需要证明什么。你身上有一种让人安静下来的力量——这不是老去，是抵达。你把对抗变成了连接。',
+    othersView:'别人会觉得你越来越「稳」了。你不争不抢，但你说的话越来越有分量。你身上有一种让人安静下来的力量，人们在你面前不需要伪装——因为你知道，一切都会好的。',
+    hiddenTalent:'你以为自己只是「看开了」，其实你已经抵达了很多人一辈子都在追求的境界——内心秩序的自洽。这种境界不是放弃，而是超越了对抗之后的选择。你终于明白：和世界和解，就是和自己和解。',
+    positiveAffirmation:'你的存在本身，就是一种力量。这不意味着你已经到达终点——共生不是静止，而是在平静中继续生长。这周，花20分钟做一件只为自己、不为任何人的小事。就像年少时那样，毫无目的地快乐。',
+    todayAction:'找到一件很久没做但曾经很喜欢的事，花20分钟——什么都不为，只是因为你喜欢。',
+    shadowReminder:'共生者最隐秘的风险，是在「看开」中失去了「在意」。当你把所有情绪都修炼成了平静，可能会忘记：愤怒、激动、热烈——这些都是活着的证据。请允许自己偶尔不那么「稳」。偶尔大声笑、偶尔眼眶发热——那才是完整的共生。',
+    warningSignal:'对曾经的兴趣爱好无感、与人谈论自己时用「都挺好的」一带而过、回避强烈情绪 → 你的平静正在变成一种疏离。找回你的温度。',
+    zhaoliMessage:'静境照狸在你身旁盘腿坐下，像一座小小的灯塔。它什么都不说——因为它知道，你已经不需要任何指引了。你走过的路，已经是你的方向。它只是在旁边陪着，和你一起看着潮起潮落。',
+    poemInterpretation:'「闲处好」「雨来佳」——李清照晚年最通透的心境。她已经不需要风和日丽才能快乐：下雨也好，晴天也好，书在枕边就好，风景在眼前就好。共生者已经抵达了很多人一生追求的境界：不焦虑雨来，不慌张闲去。',
+    bright:'平静共处',shadow:'平静不是麻木，也不是退缩。共生之后，新的邂逅还会再次发生',
+    advance:'保持平静，也允许新的美好靠近',
+    scent:'静泊',scentDesc:'白麝香与雪松木的沉静组合，不争不抢，却有无法忽视的存在感。越久越醇。',
+    scentShort:'白麝香 · 雪松 · 静水',
+    zhaoli:'静境照狸',zhaoliDesc:'陪你走向平静共生',
+    poem:'枕上诗书闲处好，门前风景雨来佳。',
+    products:[
+      {name:'静泊·共生 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'静泊·共生 淡香精',type:'EDP 50ml',tag:'正装',desc:'白麝香与雪松木，持香8-10小时',price:'¥468'},
+      {name:'共生照狸摆件',type:'摆件',tag:'照狸',desc:'静境照狸，陪你走向平静共生',price:'¥168'}
     ],
-    roomFragrance: '白麝香与雪松木空间香氛 · 适合书房与茶室',
-    bestSeason: '四季皆宜',
-    // 分享裂变
-    shareTitle: '我是「共生」人格，你呢？',
-    shareCopy: [
-      '这个测试说我到了一个人和世界和解的阶段，确实是这样。',
-      '我的香叫「静泊」——白麝香和雪松木，越久越醇。',
-      '我不再和自己对抗。来测你的六色人格香型'
-    ]
+    room:'共生静境主题房 · 夜晚 | 阅读 | 独处',
+    shareCopy:[
+      '我的SFSC状态码里有C——照狸说，我与自己和世界平静共处，并准备再次遇见。',
+      '测了一下照狸六色循环，我的主香是「静泊」· 共生。',
+      '我不再和自己对抗了。来看看你的六色状态？'
+    ],
+    postCopy:'我的SFSC状态码是C·共生。「枕上诗书闲处好，门前风景雨来佳。」——照狸说，我不再和自己对抗了。你的主香是什么？扫码来测 ⬇️',
+    nextPredict:'共生之后，新的邂逅会再次发生。平静不是为了永远静止——而是为了下一次循环做好准备。新的遇见、新的触动，正在靠近你。'
   }
 ];
 
-const personalityLabels = ['邂逅', '觉醒', '蝶变', '绽放', '守护', '共生'];
+// ==================== CONSTANTS ====================
+const CYCLE = ['E','A','M','B','G','C'];
+function nextInCycle(code) { return CYCLE[(CYCLE.indexOf(code)+1)%6]; }
 
-const questions = [
-  { q: '最近最能吸引你的一种旅行是？', opts: [
-    { t: '去一个陌生城市，随意走走，看看会遇见什么', s: [2,0,0,0,0,0] },
-    { t: '找一个安静地方，把最近的自己重新整理一下', s: [0,1,1,0,0,0] },
-    { t: '去一个很有仪式感的地方，好好拍照、庆祝一次', s: [0,0,0,2,0,0] },
-    { t: '找一个舒服的地方，让家人都能放松下来', s: [0,0,0,0,2,0] }
-  ]},
-  { q: '当你很累的时候，你最想做什么？', opts: [
-    { t: '一个人安静待着，不解释', s: [0,0,0,0,0,2] },
-    { t: '找朋友聊聊，重新感受生活的温度', s: [2,0,0,0,0,0] },
-    { t: '整理房间、换香氛、让秩序回来', s: [0,1,0,0,1,0] },
-    { t: '睡一觉，慢慢把自己从旧状态里捡回来', s: [0,0,2,0,0,0] }
-  ]},
-  { q: '朋友临时情绪崩溃找你，你第一反应是？', opts: [
-    { t: '先听她说完，不急着评价', s: [0,0,0,0,0,2] },
-    { t: '帮她分析问题，找出关键', s: [0,2,0,0,0,0] },
-    { t: '立刻陪她，尽量让她安心', s: [0,0,0,0,2,0] },
-    { t: '提醒她不要一直消耗自己', s: [0,1,0,0,1,0] }
-  ]},
-  { q: '你更喜欢哪一种空间？', opts: [
-    { t: '有花、有光、有风，像一次初见', s: [2,0,0,0,0,0] },
-    { t: '清爽、干净、有镜面和绿意', s: [0,2,0,0,0,0] },
-    { t: '深色、安静、有一点神秘', s: [0,0,2,0,0,0] },
-    { t: '明亮、热烈、有庆祝感', s: [0,0,0,2,0,0] }
-  ]},
-  { q: '你最不希望自己被别人说成？', opts: [
-    { t: '太敏感', s: [2,0,0,0,0,0] },
-    { t: '太冷静', s: [0,2,0,0,0,0] },
-    { t: '变了', s: [0,0,2,0,0,0] },
-    { t: '太强势或太爱表现', s: [0,0,0,2,0,0] }
-  ]},
-  { q: '如果今天收到一束花，你更希望它代表什么？', opts: [
-    { t: '一次温柔的心动', s: [2,0,0,0,0,0] },
-    { t: '对自己的一次奖励', s: [0,0,0,2,0,0] },
-    { t: '从低谷里慢慢开出来', s: [0,0,2,0,0,0] },
-    { t: '对某个人或某段关系的守护', s: [0,0,0,0,2,0] }
-  ]},
-  { q: '面对人生变化，你通常会？', opts: [
-    { t: '先感受，等心里有答案', s: [1,0,0,0,0,1] },
-    { t: '分析利弊，重新判断', s: [0,2,0,0,0,0] },
-    { t: '先沉下去，慢慢重组', s: [0,0,2,0,0,0] },
-    { t: '尽量稳住身边重要的人和事', s: [0,0,0,0,2,0] }
-  ]},
-  { q: '哪句话更像现在的你？', opts: [
-    { t: '我还想重新被生活打动', s: [2,0,0,0,0,0] },
-    { t: '我终于开始看清一些事', s: [0,2,0,0,0,0] },
-    { t: '我正在经历一次重组', s: [0,0,2,0,0,0] },
-    { t: '我希望不再和自己对抗', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '你买香水时更在意？', opts: [
-    { t: '它有没有让我心动', s: [2,0,0,0,0,0] },
-    { t: '它像不像现在的我', s: [0,1,0,1,0,0] },
-    { t: '它有没有层次和故事', s: [0,0,2,0,0,0] },
-    { t: '它是否适合长期陪伴', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '你更愿意分享哪种朋友圈？', opts: [
-    { t: '一个偶然遇见的美好瞬间', s: [2,0,0,0,0,0] },
-    { t: '一段让自己清醒的感悟', s: [0,2,0,0,0,0] },
-    { t: '一张状态很好的照片', s: [0,0,0,2,0,0] },
-    { t: '一次和家人朋友安稳相处的时刻', s: [0,0,0,0,1,1] }
-  ]},
-  { q: '如果有一天完全属于自己，你会？', opts: [
-    { t: '去看展、喝咖啡、随意走走', s: [2,0,0,0,0,0] },
-    { t: '读书、写东西、重新规划', s: [0,2,0,0,0,0] },
-    { t: '换造型、拍照、认真庆祝自己', s: [0,0,0,2,0,0] },
-    { t: '关掉手机，安静休息', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '关系里你最看重？', opts: [
-    { t: '心动和新鲜感', s: [2,0,0,0,0,0] },
-    { t: '真实和边界', s: [0,2,0,0,0,0] },
-    { t: '能一起经历变化', s: [0,0,2,0,0,0] },
-    { t: '长久、安心和彼此成全', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '你最想对过去的自己说？', opts: [
-    { t: '你值得被温柔对待', s: [2,0,0,0,0,0] },
-    { t: '你可以把自己也算进去', s: [0,2,0,0,0,0] },
-    { t: '你不是坏掉了，你是在重组', s: [0,0,2,0,0,0] },
-    { t: '谢谢你一直守住了重要的人和事', s: [0,0,0,0,2,0] }
-  ]},
-  { q: '哪一种颜色最像你最近的状态？', opts: [
-    { t: '柔和的粉', s: [2,0,0,0,0,0] },
-    { t: '清醒的绿', s: [0,2,0,0,0,0] },
-    { t: '深处的紫', s: [0,0,2,0,0,0] },
-    { t: '安静的蓝', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '当别人夸你时，你最希望听到？', opts: [
-    { t: '你让人觉得很舒服', s: [1,0,0,0,0,1] },
-    { t: '你真的很清醒', s: [0,2,0,0,0,0] },
-    { t: '你变化很大，但更像自己了', s: [0,0,2,0,0,0] },
-    { t: '你很有光', s: [0,0,0,2,0,0] }
-  ]},
-  { q: '如果选择一间城堡房间，你会选？', opts: [
-    { t: '有花影和柔光的房间', s: [2,0,0,0,0,0] },
-    { t: '清爽安静、适合独处的房间', s: [0,2,0,0,0,0] },
-    { t: '深色艺术感、适合沉思的房间', s: [0,0,2,0,0,0] },
-    { t: '明亮华丽、适合庆祝的房间', s: [0,0,0,2,0,0] }
-  ]},
-  { q: '你更希望香水帮你表达？', opts: [
-    { t: '温柔和心动', s: [2,0,0,0,0,0] },
-    { t: '清醒和自我', s: [0,2,0,0,0,0] },
-    { t: '转变和深度', s: [0,0,2,0,0,0] },
-    { t: '安定和成熟', s: [0,0,0,0,0,2] }
-  ]},
-  { q: '此刻你最想认领哪句话？', opts: [
-    { t: '我愿意重新被世界打动', s: [2,0,0,0,0,0] },
-    { t: '我终于把自己也算进去', s: [0,2,0,0,0,0] },
-    { t: '我不再压低自己的光', s: [0,0,0,2,0,0] },
-    { t: '我温柔，但我有边界', s: [0,0,0,0,2,0] }
-  ]}
-];
+// ==================== STATE ====================
+let currentQ = 0;
+let scores = [0,0,0,0,0,0]; // 六维累计分(每题选中选项+1)
+let paperQuestions = []; // 本场试卷（抽出的18题）
+let lastSelectedOpt = -1;
+let currentResultIdx = 0;
+let answerHistory = []; // 记录每题的选项和维度
 
-// ===== STATE =====
-let currentQuestion = 0;
-let scores = [0, 0, 0, 0, 0, 0];
-let resultPersonality = null;
-
-// ===== NAVIGATION =====
+// ==================== NAVIGATION ====================
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('screen-' + id);
-  if (target) {
-    target.classList.add('active');
-    target.scrollTop = 0;
-    window.scrollTo(0, 0);
+  const t = document.getElementById('screen-'+id);
+  if (t) { t.classList.add('active'); t.scrollTop = 0; window.scrollTo(0,0); }
+}
+function goInstructions() { showScreen('instructions'); }
+
+// ==================== FISHER-YATES RANDOM PAPER GEN ====================
+function generatePaper() {
+  // 获取今天的日期作为种子
+  const today = new Date().toISOString().slice(0,10); // "2026-05-28"
+  
+  // 使用日期哈希作为随机种子
+  function seededRandom(seed) {
+    let h = 0;
+    for (let i = 0; i < seed.length; i++) {
+      h = ((h << 5) - h) + seed.charCodeAt(i);
+      h |= 0;
+    }
+    function next() {
+      h = (h * 1103515245 + 12345) | 0;
+      return (h >>> 0) / 0xFFFFFFFF;
+    }
+    return { next };
   }
+  
+  const rng = seededRandom(today + 'sfsc');
+  
+  // Fisher-Yates shuffle with seed
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(rng.next() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  
+  // 从题库中随机抽取18题（按维度分桶确保均衡）
+  // 题库按维度分桶
+  const buckets = [[],[],[],[],[],[]]; // 0-5 六个维度
+  QUESTION_BANK.forEach((q, idx) => {
+    // 每道题的选项覆盖4个维度，以第一个选项的维度作为"主维度"分类
+    // 实际抽取时不严格按维度分桶，而是从全题库随机抽
+    buckets[q.o[0].d].push(q);
+  });
+  
+  // 目标：每维度至少2题，剩余6题随机分配
+  const selected = [];
+  const usedIds = new Set();
+  
+  // 每维度抽3题（18/6=3）
+  for (let d = 0; d < 6; d++) {
+    const pool = shuffle(buckets[d]);
+    let taken = 0;
+    for (const q of pool) {
+      if (taken >= 3) break;
+      const id = q.q + q.o.map(o => o.t).join('');
+      if (!usedIds.has(id)) {
+        usedIds.add(id);
+        selected.push(q);
+        taken++;
+      }
+    }
+  }
+  
+  // 再次shuffle整份试卷
+  const finalPaper = shuffle(selected);
+  
+  // 如果没有抽取到密码（极少数情况下），用纯随机
+  if (finalPaper.length < 15) {
+    return shuffle(QUESTION_BANK).slice(0, 18);
+  }
+  
+  return finalPaper.slice(0, 18);
 }
 
 function startTest() {
-  currentQuestion = 0;
-  scores = [0, 0, 0, 0, 0, 0];
-  resultPersonality = null;
+  currentQ = 0;
+  scores = [0,0,0,0,0,0];
+  answerHistory = [];
+  paperQuestions = generatePaper();
   showScreen('question');
   renderQuestion();
 }
 
+function retest() { showScreen('home'); window.scrollTo(0,0); }
+
+// ==================== QUESTION RENDERING ====================
 function renderQuestion() {
-  const q = questions[currentQuestion];
-  const total = questions.length;
-  
-  document.getElementById('progressFill').style.width = ((currentQuestion + 1) / total * 100) + '%';
-  document.getElementById('progressText').textContent = (currentQuestion + 1) + ' / ' + total;
-  
-  const labels = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十',
-    '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八'];
-  document.getElementById('qNumLabel').textContent = '第' + labels[currentQuestion] + '题';
+  const q = paperQuestions[currentQ];
+  const total = paperQuestions.length;
+  lastSelectedOpt = -1;
+
+  document.getElementById('progressFill').style.width = ((currentQ+1)/total*100)+'%';
+  document.getElementById('progressText').textContent = (currentQ+1)+' / '+total;
+
+  const labels = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八'];
+  document.getElementById('qNumLabel').textContent = '第'+labels[currentQ]+'题';
   document.getElementById('qText').textContent = q.q;
-  
-  const optsContainer = document.getElementById('qOptions');
-  optsContainer.innerHTML = '';
-  
-  const letters = ['A', 'B', 'C', 'D'];
-  q.opts.forEach((opt, i) => {
+
+  const letters = ['A','B','C','D'];
+  const optsEl = document.getElementById('qOptions');
+  optsEl.innerHTML = '';
+  q.o.forEach((opt, i) => {
     const btn = document.createElement('button');
-    btn.className = 'q-option';
-    btn.textContent = letters[i] + '. ' + opt.t;
+    btn.className = 'q-opt';
+    btn.innerHTML = '<span class="q-opt-letter">'+letters[i]+'</span><span>'+opt.t+'</span>';
     btn.onclick = () => selectAnswer(i);
-    optsContainer.appendChild(btn);
+    optsEl.appendChild(btn);
   });
 }
 
-function selectAnswer(index) {
-  const btns = document.querySelectorAll('.q-option');
-  btns.forEach(b => b.classList.remove('selected'));
-  btns[index].classList.add('selected');
-  
-  const scores_add = questions[currentQuestion].opts[index].s;
-  for (let i = 0; i < 6; i++) scores[i] += scores_add[i];
-  
+function selectAnswer(idx) {
+  lastSelectedOpt = idx;
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach((b, i) => {
+    b.classList.toggle('selected', i === idx);
+  });
+
+  // 记分：选中选项对应的维度 +1
+  const q = paperQuestions[currentQ];
+  const opt = q.o[idx];
+  scores[opt.d] += 1;
+  answerHistory.push({ qIdx: currentQ, optIdx: idx, dim: opt.d });
+
   setTimeout(() => {
-    if (currentQuestion < questions.length - 1) {
-      currentQuestion++;
+    if (currentQ < paperQuestions.length - 1) {
+      currentQ++;
       renderQuestion();
     } else {
-      showResult();
+      calculateAndShow();
     }
-  }, 350);
+  }, 300);
 }
 
-function calculateResult() {
-  let maxScore = -1, maxIdx = 0;
-  for (let i = 0; i < 6; i++) {
-    if (scores[i] > maxScore) { maxScore = scores[i]; maxIdx = i; }
-  }
-  return maxIdx;
+// ==================== CALCULATE ====================
+function calculateAndShow() {
+  // 排序获取主香、副香
+  const indexed = scores.map((s,i) => ({i,s})).sort((a,b) => b.s - a.s);
+  const mainIdx = indexed[0].i;
+  const subIdx = indexed[1].i;
+  const nextIdx = CYCLE.indexOf(SIX[mainIdx].code);
+  const nextCode = CYCLE[(nextIdx+1)%6];
+  const nextObjIdx = SIX.findIndex(s => s.code === nextCode);
+
+  // 边界判定
+  const maxS = indexed[0].s, secondS = indexed[1].s;
+  const gap = maxS > 0 ? (maxS - secondS) / maxS : 0;
+  let boundaryType = '';
+  if (gap > 0.25) boundaryType = 'high';
+  else if (gap < 0.1 && indexed[1].s > 0) boundaryType = 'twin';
+  else boundaryType = 'standard';
+
+  renderResult(mainIdx, subIdx, nextObjIdx, boundaryType);
 }
 
-function showResult() {
-  const idx = calculateResult();
-  resultPersonality = personalities[idx];
-  const p = resultPersonality;
-  
+// ==================== RESULT RENDERING ====================
+function renderResult(mainIdx, subIdx, nextObjIdx, boundaryType) {
+  currentResultIdx = mainIdx;
+  const p = SIX[mainIdx];
+  const sub = SIX[subIdx];
+  const next = SIX[nextObjIdx];
+
   showScreen('result');
-  
-  document.getElementById('resultBadge').textContent = p.badge;
-  document.getElementById('resultBadge').style.background = p.bgColor;
-  document.getElementById('resultBadge').style.color = p.color;
-  document.getElementById('resultType').textContent = p.name;
+
+  // 状态码
+  document.getElementById('resultCode').innerHTML =
+    '<span style="color:'+p.color+'">'+p.code+'</span><span class="result-code-sep">-</span>'+
+    '<span style="color:'+sub.color+'">'+sub.code+'</span><span class="result-code-sep">-</span>'+
+    '<span style="color:'+next.color+'">'+next.code+'</span>';
+  document.getElementById('resultMainLabel').textContent = '主香状态';
+  document.getElementById('resultMainLabel').style.color = p.color;
+  document.getElementById('resultType').textContent = p.name + ' · ' + p.code;
   document.getElementById('resultType').style.color = p.color;
-  document.getElementById('resultDeclare').textContent = '「' + p.declare + '」';
-  
-  document.getElementById('zhaoliImg').src = p.zhaoliImg;
-  document.getElementById('zhaoliName').textContent = p.zhaoli;
-  document.getElementById('zhaoliDesc').textContent = p.zhaoliDesc;
-  
-  document.getElementById('descSelf').textContent = p.self;
-  document.getElementById('descOthers').textContent = p.others;
-  document.getElementById('descHidden').textContent = p.hidden;
-  
-  // ---- 人格标签云 ----
-  const traitsWrap = document.getElementById('traitsWrap');
-  traitsWrap.innerHTML = '';
-  p.traits.forEach(function(t) {
-    var tag = document.createElement('span');
-    tag.className = 'trait-tag';
-    tag.textContent = t;
-    tag.style.background = p.bgColor;
-    tag.style.color = p.color;
-    traitsWrap.appendChild(tag);
+  document.getElementById('resultEn').textContent = p.en.toUpperCase() + ' STATE';
+  document.getElementById('resultPhrase').textContent = '「' + p.phrase + '」';
+  document.getElementById('resultPhrase').style.color = p.color;
+  document.getElementById('resultTop').style.background = p.bg;
+
+  // --- 人格深度画像 ---
+  document.getElementById('depthProfile').innerHTML =
+    '<div class="r-depth-header">'+
+    '<div class="r-depth-icon" style="background:'+p.bg+'">'+(p.code==='E'?'🦋':p.code==='A'?'🦉':p.code==='M'?'🐛':p.code==='B'?'🦚':p.code==='G'?'🐘':'🐋')+'</div>'+
+    '<div><div class="r-depth-role" style="color:'+p.color+'">'+p.name+' · '+p.socialRole+'</div><div class="r-depth-role-sub">'+p.socialRoleSub+'</div></div>'+
+    '</div>'+
+    '<div style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:8px;">动物原型：<b>'+p.animal+'</b> — '+p.animalDesc+'</div>'+
+    '<div class="r-depth-awaken" style="color:'+p.color+'">「'+p.awakeningQuote+'」</div>'+
+    '<div style="text-align:center;font-size:13px;">'+p.personalityDeclaration+'</div>';
+
+  // --- 三维自我认知 ---
+  const colors3d = [p.color, sub.color, p.color];
+  const labels3d = ['你眼中的自己','别人看到的你','尚未察觉的天赋'];
+  const texts3d = [p.selfView, p.othersView, p.hiddenTalent];
+  let html3d = '';
+  for (let i = 0; i < 3; i++) {
+    html3d += '<div class="r-3d-item"><div class="r-3d-label" style="color:'+colors3d[i]+'">'+labels3d[i]+'</div><div class="r-3d-text">'+texts3d[i]+'</div></div>';
+  }
+  document.getElementById('threeDSelf').innerHTML = html3d;
+
+  // --- 积极暗示 + 行动指令 ---
+  document.getElementById('positiveAction').innerHTML =
+    '<div class="r-action-label" style="color:'+p.color+'">✦ 积极暗示</div>'+
+    '<div class="r-action-text">'+p.positiveAffirmation+'</div>'+
+    '<div class="r-action-cmd" style="background:'+p.bg+';color:'+p.color+'">→ 今天的行动指令: '+p.todayAction+'</div>';
+
+  // --- 明亮面 + 阴影 ---
+  document.getElementById('brightSide').textContent = p.bright;
+  document.getElementById('shadowSide').textContent = p.shadow;
+
+  // --- 阴影深度 + 警惕信号 ---
+  document.getElementById('warningDeep').innerHTML =
+    '<div class="r-warn-label">⚠ 过度消耗提醒</div>'+
+    '<div class="r-warn-text">'+p.shadowReminder+'</div>'+
+    '<div class="r-warn-signal">⚠ 警惕信号: '+p.warningSignal+'</div>';
+
+  // --- 推进建议 ---
+  document.getElementById('advanceTip').textContent = p.advance;
+  document.getElementById('advanceTip').style.color = p.color;
+
+  // --- 副香 ---
+  document.getElementById('subScent').textContent = sub.name + '「' + sub.scent + '」';
+  document.getElementById('subScent').style.color = sub.color;
+  document.getElementById('subScentDesc').textContent = '副香代表隐藏能量——你没有说出口、但一直存在的能量';
+
+  // --- 下一站 ---
+  document.getElementById('nextScent').textContent = next.name + '「' + next.scent + '」';
+  document.getElementById('nextScent').style.color = next.color;
+  document.getElementById('nextScentDesc').textContent = next.phrase;
+  document.getElementById('predictionText').textContent = p.nextPredict;
+
+  // --- 六色循环vis ---
+  const stepsEl = document.getElementById('cycleSteps');
+  stepsEl.innerHTML = '';
+  CYCLE.forEach((c, i) => {
+    const s = SIX.find(x => x.code === c);
+    const isCurrent = c === p.code;
+    const isNext = c === next.code;
+    const step = document.createElement('span');
+    step.className = 'r-cycle-step';
+    if (isCurrent) { step.className += ' current'; step.style.background = s.color; }
+    else if (isNext) { step.style.borderColor = s.color; step.style.color = s.color; }
+    step.textContent = s.name;
+    stepsEl.appendChild(step);
+    if (i < 5) {
+      const arr = document.createElement('span');
+      arr.className = 'r-cycle-arr'; arr.textContent = '→';
+      stepsEl.appendChild(arr);
+    }
   });
-  
-  // ---- 成长之径 ----
-  document.getElementById('growingTips').textContent = p.growingTips;
-  
-  // ---- 适合场景 ----
-  var scenesRow = document.getElementById('scenesRow');
-  scenesRow.innerHTML = '';
-  p.suitableScenes.forEach(function(s) {
-    var chip = document.createElement('span');
-    chip.className = 'scene-chip';
-    chip.textContent = s;
-    scenesRow.appendChild(chip);
-  });
-  document.getElementById('energySource').textContent = p.energySource;
-  document.getElementById('energyDrain').textContent = p.energyDrain;
-  
-  // ---- 香氛产品 ----
-  document.getElementById('fragranceName').textContent = '「' + p.fragrance + '」';
-  document.getElementById('fragranceDesc').textContent = p.fragranceDesc;
-  
-  var productList = document.getElementById('productList');
-  productList.innerHTML = '';
-  var productIcons = ['🌿', '🌸', '🕯'];
-  p.products.forEach(function(prod, i) {
-    productList.innerHTML += '<div class="product-item"><div class="product-icon" style="background:' + p.bgColor + ';color:' + p.color + '">' + productIcons[i % 3] + '</div><div class="product-info"><div class="product-name">' + prod.name + '</div><div class="product-meta">' + prod.type + '</div><div class="product-meta" style="color:' + p.color + '">' + prod.desc + '</div></div><div class="product-price">' + prod.price + '</div></div>';
-  });
-  document.getElementById('roomFragrance').textContent = p.roomFragrance;
-  
+  document.getElementById('cycleYou').innerHTML = '<span style="color:'+p.color+';font-weight:500">↑ YOU ARE HERE</span>';
+
+  // --- 诗词深度 ---
   document.getElementById('poemText').textContent = p.poem;
-  
-  // ---- 分享文案 ----
-  var copyCards = document.getElementById('copyCards');
-  copyCards.innerHTML = '';
-  p.shareCopy.forEach(function(text, i) {
-    copyCards.innerHTML += '<div class="copy-card" onclick="copyShareText(' + i + ')" style="animation-delay:' + (i * 0.1) + 's"><span class="copy-card-text">' + text + '</span><span class="copy-card-btn">复制</span></div>';
+  document.getElementById('poemDeep').textContent = p.poemInterpretation;
+
+  // --- 照狸寄语 ---
+  document.getElementById('zhaoliDeep').innerHTML =
+    '<div class="r-card-label" style="color:'+p.color+'">照狸寄语 · '+p.zhaoli+'</div>'+
+    '<div style="font-size:13px;color:var(--text2);line-height:1.7;">'+p.zhaoliMessage+'</div>';
+
+  // --- 产品推荐 ---
+  const prodList = document.getElementById('productList');
+  prodList.innerHTML = '';
+  const icons = ['🌿','🌸','🦊'];
+  p.products.forEach((prod, i) => {
+    prodList.innerHTML +=
+      '<div class="r-prod-item"><div class="r-prod-icon" style="background:'+p.bg+';color:'+p.color+'">'+icons[i]+'</div>'+
+      '<div class="r-prod-info"><div class="r-prod-name">'+prod.name+'</div><div class="r-prod-meta">'+prod.desc+'</div></div>'+
+      '<span class="r-prod-tag" style="background:'+p.bg+';color:'+p.color+'">'+prod.tag+'</span></div>';
   });
-  
-  setTimeout(function() {
-    document.querySelectorAll('#screen-result .anim-up').forEach(function(el, i) {
-      el.style.animationDelay = (i * 0.1) + 's';
+  document.getElementById('roomFragrance').textContent = p.room;
+
+  // --- 认领按钮 ---
+  const claimBtn = document.getElementById('claimBtn');
+  if (claimBtn) {
+    claimBtn.style.background = p.color;
+    claimBtn.textContent = '认领我的主香 · ' + p.scent + ' · 10ml';
+  }
+
+  // --- 分享文案 ---
+  const shareEl = document.getElementById('shareCopyList');
+  shareEl.innerHTML = '';
+  p.shareCopy.forEach((text, i) => {
+    shareEl.innerHTML += '<div class="r-share-item" onclick="doCopy('+i+')"><span class="r-share-item-text">'+text+'</span><span class="r-share-item-btn">复制</span></div>';
+  });
+
+  // --- 朋友圈文案 ---
+  document.getElementById('momentsCopy').innerHTML =
+    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px;text-align:center;">朋友圈文案 · 一键复制</div>'+
+    '<div class="r-share-item" onclick="copyMomentsCopy()">'+
+    '<span class="r-share-item-text" id="momentsCopyText">'+p.postCopy+'</span>'+
+    '<span class="r-share-item-btn">复制全部</span></div>';
+
+  // --- 画六边形 ---
+  setTimeout(() => {
+    document.querySelectorAll('#screen-result .a-up').forEach((el, i) => {
+      el.style.animationDelay = (i*0.04)+'s';
     });
-    drawRadarChart();
-  }, 100);
+    drawHexagon(mainIdx);
+  }, 150);
 }
 
-function copyShareText(index) {
-  var text = resultPersonality.shareCopy[index];
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(showCopyToast);
-  } else {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showCopyToast();
+// ==================== HEXAGON ====================
+function drawHexagon(mainIdx) {
+  const canvas = document.getElementById('hexCanvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const w = rect.width * dpr, h = 240 * dpr;
+  canvas.width = w; canvas.height = h;
+  canvas.style.width = '100%'; canvas.style.height = '240px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = 240;
+  const cx = W/2, cy = H/2, r = 85;
+  const names = SIX.map(s => s.name);
+  const colors = SIX.map(s => s.color);
+
+  const total = scores.reduce((a,b) => a+b, 0);
+  const vals = scores.map(s => total > 0 ? Math.round(s/total*100) : 0);
+
+  for (let level = 1; level <= 4; level++) {
+    const lr = r * level / 4;
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = -Math.PI/2 + i*Math.PI/3;
+      const x = cx + lr*Math.cos(angle), y = cy + lr*Math.sin(angle);
+      if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(0,0,0,0.05)'; ctx.lineWidth = 0.5; ctx.stroke();
+  }
+
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + r*Math.cos(angle), cy + r*Math.sin(angle));
+    ctx.strokeStyle = 'rgba(0,0,0,0.06)'; ctx.lineWidth = 0.5; ctx.stroke();
+  }
+
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    const vr = Math.max(4, r * vals[i] / 100);
+    const x = cx + vr*Math.cos(angle), y = cy + vr*Math.sin(angle);
+    if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = SIX[mainIdx].bg + '99'; ctx.fill();
+  ctx.strokeStyle = SIX[mainIdx].color; ctx.lineWidth = 1.5; ctx.stroke();
+
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    const vr = Math.max(4, r * vals[i] / 100);
+    const x = cx + vr*Math.cos(angle), y = cy + vr*Math.sin(angle);
+    ctx.beginPath(); ctx.arc(x, y, i===mainIdx ? 5 : 3.5, 0, Math.PI*2);
+    ctx.fillStyle = colors[i]; ctx.fill();
+    if (i===mainIdx) {
+      ctx.beginPath(); ctx.arc(x, y, 9, 0, Math.PI*2);
+      ctx.strokeStyle = colors[i]; ctx.lineWidth = 1.2; ctx.stroke();
+    }
+  }
+
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    const lx = cx + (r+22)*Math.cos(angle), ly = cy + (r+22)*Math.sin(angle);
+    ctx.fillStyle = colors[i]; ctx.font = '400 13px "PingFang SC",sans-serif';
+    ctx.fillText(names[i], lx, ly);
+    ctx.fillStyle = '#A49E99'; ctx.font = '400 10px "PingFang SC",sans-serif';
+    ctx.fillText(vals[i]+'%', lx, ly+16);
   }
 }
 
-function showCopyToast() {
-  var toast = document.getElementById('copyToast');
-  toast.classList.add('show');
-  setTimeout(function() { toast.classList.remove('show'); }, 1500);
+// ==================== COPY & SHARE ====================
+function doCopy(idx) {
+  const p = SIX[currentResultIdx];
+  if (!p) return;
+  const text = p.shareCopy[idx];
+  copyText(text);
 }
 
-let radarChartInstance = null;
-function drawRadarChart() {
-  if (radarChartInstance) radarChartInstance.destroy();
-  const ctx = document.getElementById('radarChart').getContext('2d');
-  const maxScore = Math.max(...scores, 1);
-  const normalizedScores = scores.map(s => Math.round(s / maxScore * 100));
+function copyMomentsCopy() {
+  const p = SIX[currentResultIdx];
+  if (!p) return;
+  copyText(p.postCopy);
+}
+
+function copyText(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(showToast);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showToast();
+  }
+}
+
+function shareLink() {
+  // 构造当前URL作为分享链接
+  const url = window.location.href.split('?')[0]; // 去掉已有的query参数
+  // 加上结果状态，方便接收者看到
+  const p = SIX[currentResultIdx];
+  const shareUrl = url + '?s=' + p.code;
+  const text = '我的SFSC状态码是'+p.code+'·'+p.name+'「'+p.zhaoli+'」。你的主香是什么？来测👉 '+shareUrl;
   
-  const colors6 = ['#C4827C', '#7B9E7D', '#8B7EAC', '#C4A45A', '#C4967A', '#7B94B5'];
-  
-  radarChartInstance = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: personalityLabels,
-      datasets: [{
-        data: normalizedScores,
-        backgroundColor: 'rgba(139,107,125,0.12)',
-        borderColor: 'rgba(139,107,125,0.6)',
-        borderWidth: 1.5,
-        pointBackgroundColor: colors6,
-        pointBorderColor: colors6,
-        pointRadius: 5,
-        pointHoverRadius: 7
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        r: {
-          beginAtZero: true,
-          max: 100,
-          ticks: { display: false, stepSize: 20 },
-          pointLabels: { font: { size: 13, family: '"PingFang SC","Hiragino Sans GB",sans-serif' }, color: '#555' },
-          grid: { color: 'rgba(0,0,0,0.06)' },
-          angleLines: { color: 'rgba(0,0,0,0.06)' }
-        }
-      }
-    }
+  if (navigator.share) {
+    navigator.share({ title: '照狸六色循环测试', text: text, url: shareUrl }).catch(() => {});
+  } else {
+    copyText(text);
+    showToast();
+    setTimeout(() => {
+      document.getElementById('toastEl').textContent = '链接已复制，可粘贴分享到微信/朋友圈';
+      document.getElementById('toastEl').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('toastEl').textContent = '已复制';
+        document.getElementById('toastEl').classList.remove('show');
+      }, 2500);
+    }, 1600);
+  }
+}
+
+function showToast() {
+  const el = document.getElementById('toastEl');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+// ==================== POSTER ====================
+function drawPoster() {
+  const p = SIX[currentResultIdx];
+  if (!p) return;
+  const canvas = document.getElementById('posterCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 750, H = 1400;
+  canvas.width = W; canvas.height = H;
+
+  ctx.fillStyle = '#F5F2EC';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.fillStyle = p.color + '33';
+  ctx.fillRect(0, 0, W, 420);
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = p.color;
+  ctx.font = 'bold 72px "PingFang SC", serif';
+  ctx.fillText(p.name, W/2, 180);
+  ctx.font = '400 28px "PingFang SC", sans-serif';
+  ctx.fillStyle = '#1A1A1A';
+  ctx.fillText(p.en.toUpperCase() + ' STATE', W/2, 230);
+
+  ctx.font = 'italic 400 26px "PingFang SC", serif';
+  ctx.fillStyle = p.color;
+  ctx.fillText('「' + p.phrase + '」', W/2, 290);
+
+  const sub = SIX[(currentResultIdx+1)%6];
+  const nextCode = nextInCycle(p.code);
+  const nextObj = SIX.find(s => s.code === nextCode);
+  ctx.font = '400 22px "PingFang SC", sans-serif';
+  ctx.fillStyle = '#6B6360';
+  ctx.fillText(p.code + ' - ' + sub.code + ' - ' + nextObj.code, W/2, 350);
+
+  const cx = W/2, cy = 560, r = 120;
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    const x = cx + r*Math.cos(angle), y = cy + r*Math.sin(angle);
+    if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = p.bg + '99'; ctx.fill();
+  ctx.strokeStyle = p.color; ctx.lineWidth = 2; ctx.stroke();
+
+  ctx.font = '400 16px "PingFang SC", sans-serif';
+  const names = SIX.map(s => s.name);
+  for (let i = 0; i < 6; i++) {
+    const angle = -Math.PI/2 + i*Math.PI/3;
+    const lx = cx + (r+30)*Math.cos(angle), ly = cy + (r+30)*Math.sin(angle);
+    ctx.fillStyle = SIX[i].color;
+    ctx.fillText(names[i], lx, ly);
+  }
+
+  ctx.font = 'italic 400 22px "PingFang SC", serif';
+  ctx.fillStyle = '#1A1A1A';
+  ctx.fillText(p.poem, W/2, 760);
+
+  ctx.font = '400 20px "PingFang SC", sans-serif';
+  ctx.fillStyle = p.color;
+  ctx.fillText(p.zhaoli, W/2, 810);
+
+  ctx.font = '400 18px "PingFang SC", sans-serif';
+  ctx.fillStyle = '#6B6360';
+  ctx.fillText('主香 · ' + p.scent, W/2, 860);
+  ctx.fillText(p.scentDesc, W/2, 890);
+
+  ctx.strokeStyle = '#E8E3DC'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 950); ctx.lineTo(W-80, 950); ctx.stroke();
+
+  // 多行文案适配
+  ctx.font = '400 16px "PingFang SC", sans-serif';
+  ctx.fillStyle = '#1A1A1A';
+  const lines = wrapText(ctx, p.postCopy, W - 120);
+  lines.forEach((line, i) => {
+    ctx.fillText(line, W/2, 1000 + i*28);
   });
+
+  ctx.font = '400 15px "PingFang SC", sans-serif';
+  ctx.fillStyle = '#A49E99';
+  ctx.fillText('蝴蝶坞 · 照狸六色循环测试', W/2, H - 60);
+  ctx.fillText('SFSC TEST · SCENTFELIS SIX-STATE CYCLE', W/2, H - 35);
+
+  document.getElementById('posterOverlay').classList.add('show');
 }
 
-// ===== POSTER =====
-function showPoster() {
-  document.getElementById('posterOverlay').classList.add('show');
-  setTimeout(drawPoster, 100);
+function wrapText(ctx, text, maxWidth) {
+  const lines = [];
+  let current = '';
+  for (const char of text) {
+    const test = current + char;
+    if (ctx.measureText(test).width > maxWidth && current.length > 0) {
+      lines.push(current);
+      current = char;
+    } else {
+      current = test;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function savePoster() {
+  const canvas = document.getElementById('posterCanvas');
+  const link = document.createElement('a');
+  link.download = 'SFSC_' + SIX[currentResultIdx].code + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
 }
 
 function closePoster() {
   document.getElementById('posterOverlay').classList.remove('show');
 }
 
-function drawPoster() {
-  const canvas = document.getElementById('posterCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = 750, H = 1600;
-  canvas.width = W; canvas.height = H;
-  const p = resultPersonality;
-
-  // Background
-  ctx.fillStyle = '#F7F4ED';
-  ctx.fillRect(0, 0, W, H);
-
-  // Top decorative area with personality color
-  ctx.fillStyle = p.bgColor;
-  ctx.fillRect(0, 0, W, 420);
-
-  // Subtle pattern overlay
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  for (var i = 0; i < 10; i++) {
-    var cx = 80 + Math.random() * (W - 160);
-    var cy = 60 + Math.random() * 300;
-    ctx.beginPath();
-    ctx.arc(cx, cy, 35 + Math.random() * 50, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Brand name
-  ctx.fillStyle = p.color;
-  ctx.font = '400 24px "PingFang SC","Noto Serif SC",serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('蝴蝶坞 · 六色人格', W/2, 80);
-
-  // Personality type
-  ctx.fillStyle = p.color;
-  ctx.font = '400 60px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText(p.name, W/2, 185);
-
-  // Badge
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  var badgeW2 = 110, badgeH2 = 32;
-  var badgeX2 = W/2 - badgeW2/2, badgeY2 = 215;
-  ctx.beginPath();
-  ctx.roundRect(badgeX2, badgeY2, badgeW2, badgeH2, 16);
-  ctx.fill();
-  ctx.fillStyle = p.color;
-  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.badge, W/2, badgeY2 + 23);
-
-  // Declaration
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = 'italic 400 22px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('「' + p.declare + '」', W/2, 295);
-
-  // Core phrase
-  ctx.fillStyle = 'rgba(255,255,255,0.85)';
-  ctx.font = '400 16px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.phrase, W/2, 340);
-
-  // Decorative line
-  ctx.strokeStyle = p.color;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(W/2 - 70, 370);
-  ctx.lineTo(W/2 + 70, 370);
-  ctx.stroke();
-
-  // 照狸 image (smaller)
-  var imgSize2 = 130;
-  var imgY2 = 440;
-  var zhaoliImgEl = document.getElementById('zhaoliImg');
-  if (zhaoliImgEl && zhaoliImgEl.complete && zhaoliImgEl.naturalWidth > 0) {
-    var imgX2 = W/2 - imgSize2/2;
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(W/2, imgY2 + imgSize2/2, imgSize2/2, 0, Math.PI * 2);
-    ctx.clip();
-    ctx.drawImage(zhaoliImgEl, imgX2, imgY2, imgSize2, imgSize2);
-    ctx.restore();
-    ctx.strokeStyle = p.color;
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(W/2, imgY2 + imgSize2/2, imgSize2/2, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-
-  var yPos = 600;
-
-  // 照狸 name
-  ctx.fillStyle = p.color;
-  ctx.font = '500 20px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('专属照狸：' + p.zhaoli, W/2, yPos);
-  yPos += 32;
-  ctx.fillStyle = '#8B8178';
-  ctx.font = '400 14px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText(p.zhaoliDesc, W/2, yPos);
-  yPos += 42;
-
-  // 人格标签 (traits)
-  var totalTagsW = p.traits.length * 110;
-  var tagStartX = (W - totalTagsW) / 2;
-  p.traits.forEach(function(t, i) {
-    var tx = tagStartX + i * 110 + 55;
-    ctx.fillStyle = p.bgColor;
-    ctx.beginPath();
-    ctx.roundRect(tx - 48, yPos - 14, 96, 28, 14);
-    ctx.fill();
-    ctx.fillStyle = p.color;
-    ctx.font = '400 13px "PingFang SC","Noto Serif SC",serif';
-    ctx.fillText(t, tx, yPos + 5);
-  });
-  yPos += 50;
-
-  // Fragrance section
-  ctx.fillStyle = p.bgColor;
-  ctx.fillRect(60, yPos, W - 120, 110);
-  ctx.fillStyle = p.color;
-  ctx.font = '500 20px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('你的主香：「' + p.fragrance + '」', W/2, yPos + 34);
-  ctx.fillStyle = '#8B8178';
-  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
-  // Wrap long fragrance description
-  var descText = p.fragranceDesc;
-  if (descText.length > 36) {
-    ctx.fillText(descText.substring(0, 36), W/2, yPos + 62);
-    ctx.fillText(descText.substring(36), W/2, yPos + 84);
-  } else {
-    ctx.fillText(descText, W/2, yPos + 72);
-  }
-  yPos += 138;
-
-  // 产品推荐
-  ctx.fillStyle = '#2C2416';
-  ctx.font = '400 16px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('推荐产品', W/2, yPos);
-  yPos += 30;
-
-  p.products.forEach(function(prod) {
-    ctx.fillStyle = p.bgColor;
-    ctx.fillRect(60, yPos, W - 120, 52);
-    ctx.fillStyle = p.color;
-    ctx.font = '500 15px "PingFang SC","Hiragino Sans GB",sans-serif';
-    ctx.textAlign = 'left';
-    ctx.fillText(prod.name, 80, yPos + 22);
-    ctx.textAlign = 'right';
-    ctx.fillStyle = p.color;
-    ctx.font = '500 15px "PingFang SC","Hiragino Sans GB",sans-serif';
-    ctx.fillText(prod.price, W - 80, yPos + 22);
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#8B8178';
-    ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
-    ctx.fillText(prod.type, 80, yPos + 42);
-    ctx.textAlign = 'center';
-    yPos += 64;
-  });
-  yPos += 6;
-
-  // Poem
-  ctx.fillStyle = '#2C2416';
-  ctx.font = 'italic 400 20px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText(p.poem, W/2, yPos);
-  yPos += 32;
-  ctx.fillStyle = '#B5AEA5';
-  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('—— 李清照', W/2, yPos);
-  yPos += 48;
-
-  // 分享激励
-  ctx.fillStyle = p.color;
-  ctx.font = '500 16px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('邀请好友测试，解锁香氛好礼', W/2, yPos);
-  yPos += 28;
-  ctx.fillStyle = '#8B8178';
-  ctx.font = '400 13px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('1人得小样 · 3人赢礼盒 · 8人领正装', W/2, yPos);
-  yPos += 40;
-
-  // CTA
-  ctx.fillStyle = p.color;
-  ctx.font = '500 18px "PingFang SC","Noto Serif SC",serif';
-  ctx.fillText('在蝴蝶坞，认领不被定义的自己', W/2, yPos);
-  yPos += 44;
-
-  // QR placeholder
-  ctx.fillStyle = '#E8E3DC';
-  ctx.fillRect(W/2 - 40, yPos, 80, 80);
-  ctx.fillStyle = '#B5AEA5';
-  ctx.font = '400 11px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('扫码测试', W/2, yPos + 45);
-  yPos += 105;
-
-  // Bottom text
-  ctx.fillStyle = '#B5AEA5';
-  ctx.font = '400 12px "PingFang SC","Hiragino Sans GB",sans-serif';
-  ctx.fillText('测一测，闻见此刻的自己', W/2, yPos);
-}
-
-function savePoster() {
-  const canvas = document.getElementById('posterCanvas');
-  const link = document.createElement('a');
-  link.download = '蝴蝶坞六色人格_' + resultPersonality.name + '.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
-}
-
-function retest() {
-  showScreen('home');
-  window.scrollTo(0, 0);
-}
-
-// ===== INIT =====
-document.addEventListener('DOMContentLoaded', () => {
-  showScreen('home');
-});
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => showScreen('home'));
 </script>
 </body>
 </html>
