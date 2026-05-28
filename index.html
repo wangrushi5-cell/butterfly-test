@@ -758,10 +758,9 @@ function goInstructions() { showScreen('instructions'); }
 
 // ==================== FISHER-YATES RANDOM PAPER GEN ====================
 function generatePaper() {
-  // 获取今天的日期作为种子
-  const today = new Date().toISOString().slice(0,10); // "2026-05-28"
+  // 每人每次打开链接都生成不同的题目：基于时间戳+随机数的per-session种子
+  const sessionSeed = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
   
-  // 使用日期哈希作为随机种子
   function seededRandom(seed) {
     let h = 0;
     for (let i = 0; i < seed.length; i++) {
@@ -775,7 +774,7 @@ function generatePaper() {
     return { next };
   }
   
-  const rng = seededRandom(today + 'sfsc');
+  const rng = seededRandom(sessionSeed);
   
   // Fisher-Yates shuffle with seed
   function shuffle(arr) {
@@ -787,41 +786,70 @@ function generatePaper() {
     return a;
   }
   
-  // 从题库中随机抽取18题（按维度分桶确保均衡）
-  // 题库按维度分桶
-  const buckets = [[],[],[],[],[],[]]; // 0-5 六个维度
-  QUESTION_BANK.forEach((q, idx) => {
-    // 每道题的选项覆盖4个维度，以第一个选项的维度作为"主维度"分类
-    // 实际抽取时不严格按维度分桶，而是从全题库随机抽
-    buckets[q.o[0].d].push(q);
+  // === 智能均衡抽取算法 ===
+  // 目标：18题×4选项=72槽位，每个维度在72个选项中尽量接近12次曝光
+  // 避免某些维度（如邂逅）因题库中占比过高而被过度选择
+  
+  // Step 1: 为每道题记录覆盖的维度集合
+  const questionsWithDims = QUESTION_BANK.map((q, idx) => {
+    const dims = new Set(q.o.map(o => o.d));
+    return { q, idx, dims: [...dims] };
   });
   
-  // 目标：每维度至少2题，剩余6题随机分配
+  // Step 2: 贪心均衡选择
+  // dimExposure[d] = 已选题目中维度d的选项出现总次数
+  const dimExposure = [0, 0, 0, 0, 0, 0];
+  const TARGET_PER_DIM = 12; // 72/6
   const selected = [];
-  const usedIds = new Set();
+  const usedIdx = new Set();
   
-  // 每维度抽3题（18/6=3）
-  for (let d = 0; d < 6; d++) {
-    const pool = shuffle(buckets[d]);
-    let taken = 0;
-    for (const q of pool) {
-      if (taken >= 3) break;
-      const id = q.q + q.o.map(o => o.t).join('');
-      if (!usedIds.has(id)) {
-        usedIds.add(id);
-        selected.push(q);
-        taken++;
+  // 多次迭代，每次选择最能"补缺"的题目
+  for (let round = 0; round < 18; round++) {
+    // 计算每个维度当前的"缺口分数"：越缺分越高
+    const deficit = dimExposure.map((exp, d) => Math.max(0, TARGET_PER_DIM - exp));
+    
+    // 从剩余题库中随机抽30道作为候选
+    const remaining = questionsWithDims.filter((_, i) => !usedIdx.has(i));
+    const candidates = shuffle(remaining).slice(0, 30);
+    
+    if (candidates.length === 0) break;
+    
+    // 评分：题目中越包含缺口大的维度，得分越高
+    let bestQ = candidates[0];
+    let bestScore = -Infinity;
+    
+    for (const c of candidates) {
+      // 这道题贡献的维度"补缺"总分
+      let score = 0;
+      for (const d of c.dims) {
+        score += deficit[d] * deficit[d]; // 平方放大缺口效果
       }
+      // 轻微随机扰动避免每次同样结果
+      score += rng.next() * 2;
+      if (score > bestScore) {
+        bestScore = score;
+        bestQ = c;
+      }
+    }
+    
+    selected.push(bestQ.q);
+    usedIdx.add(bestQ.idx);
+    // 更新维度曝光
+    for (const d of bestQ.dims) {
+      dimExposure[d]++;
     }
   }
   
-  // 再次shuffle整份试卷
+  // Step 3: 最终shuffle打乱题目顺序
   const finalPaper = shuffle(selected);
   
-  // 如果没有抽取到密码（极少数情况下），用纯随机
+  // 兜底：如果不足15题，用纯随机
   if (finalPaper.length < 15) {
     return shuffle(QUESTION_BANK).slice(0, 18);
   }
+  
+  // 记录本次试卷的维度曝光分布，供后续归一化使用
+  window._paperDimExposure = dimExposure;
   
   return finalPaper.slice(0, 18);
 }
@@ -887,8 +915,23 @@ function selectAnswer(idx) {
 
 // ==================== CALCULATE ====================
 function calculateAndShow() {
-  // 排序获取主香、副香
-  const indexed = scores.map((s,i) => ({i,s})).sort((a,b) => b.s - a.s);
+  // === 得分归一化 ===
+  // 因题库各维度选项数不均，用户实际看到的各维度选项数不同
+  // 用"选中率"（选中数/曝光数）替代原始得分，消除曝光偏差
+  const exposure = window._paperDimExposure || [3,3,3,3,3,3];
+  const totalExp = exposure.reduce((a,b) => a+b, 0);
+  const avgExp = totalExp / 6;
+  
+  // 归一化得分 = 原始得分 × (平均曝光/该维度曝光)
+  // 曝光多的维度得分向下修正，曝光少的向上修正
+  const normalizedScores = scores.map((s, d) => {
+    if (exposure[d] === 0) return 0;
+    return s * (avgExp / exposure[d]);
+  });
+  
+  // 排序获取主香、副香（使用归一化得分）
+  const indexed = normalizedScores.map((s,i) => ({i,s, raw: scores[i]}))
+    .sort((a,b) => b.s - a.s);
   const mainIdx = indexed[0].i;
   const subIdx = indexed[1].i;
   const nextIdx = CYCLE.indexOf(SIX[mainIdx].code);
