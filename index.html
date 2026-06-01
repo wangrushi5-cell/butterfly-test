@@ -311,6 +311,33 @@ body {
 @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 .a-up { animation:fadeInUp 0.55s ease forwards; }
 
+/* TRAIT MAP 心理特质图谱 */
+.r-trait-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.r-trait-item {
+  background:var(--card); border-radius:var(--radius-sm); border:0.5px solid var(--border); padding:14px;
+}
+.r-trait-text { font-size:12px; color:var(--text2); line-height:1.6; margin-top:4px; }
+
+/* SCENT PYRAMID 香调金字塔 */
+.r-pyramid { display:flex; flex-direction:column; gap:14px; margin-top:10px; }
+.r-pyramid-layer { padding-left:14px; border-left:2px solid; position:relative; }
+.r-pyramid-level { font-size:11px; letter-spacing:0.08em; margin-bottom:4px; font-weight:500; }
+.r-pyramid-notes { font-size:12px; color:var(--text2); line-height:1.8; }
+.r-pyramid-sep { color:var(--border); margin:0 4px; }
+
+/* ROOM & EXHIBITION 主题房&六感展 */
+.r-room-grid { display:flex; flex-direction:column; gap:8px; }
+.r-room-card {
+  background:var(--bg); border-radius:var(--radius-sm); border:0.5px solid var(--border); padding:14px;
+}
+
+/* SCENT DETAIL HEADER */
+.r-scent-header { text-align:center; margin-bottom:12px; }
+.r-scent-name { font-family:var(--font-cn); font-size:18px; letter-spacing:0.04em; }
+.r-scent-mood { font-size:13px; color:var(--text2); line-height:1.6; margin-top:6px; }
+.r-scent-meta { font-size:11px; color:var(--text3); margin-top:6px; }
+.r-scent-tag { display:inline-block; padding:3px 10px; border-radius:12px; font-size:10px; letter-spacing:0.04em; margin:2px 3px; }
+
 @media (max-width:380px) {
   .screen { padding:40px 18px 32px; }
   .home-title { font-size:23px; }
@@ -363,9 +390,9 @@ body {
 <div class="screen" id="screen-instructions">
   <div class="inst-card">
     <div class="inst-title">测试说明</div>
-    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">共18题，约3分钟完成</div></div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">共18题，约3分钟完成（题库共344题随机抽取）</div></div>
     <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">每题4个选项，选择最贴近你此刻状态的一项</div></div>
-    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">每次从600题库中随机抽题，同一天测试题目相同</div></div>
+    <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">每次从344题库中随机抽题，每人每次链接题目不同</div></div>
     <div class="inst-item"><div class="inst-dot"></div><div class="inst-text">测试完成后，你将获得：<br>主香状态 · 副香能量 · 下一站方向 ·<br>专属照狸 · 人格深度解读 · 诗词共鸣 · 产品推荐</div></div>
   </div>
   <p class="inst-note">SFSC 不定义你是谁，只帮你看见此刻更突出的状态。<br>30天后可以复测。</p>
@@ -404,6 +431,18 @@ body {
 
     <!-- 人格深度画像 -->
     <div class="r-card a-up" id="depthProfile"></div>
+
+    <!-- 心理特质图谱 -->
+    <div class="r-card a-up" id="traitMapContainer">
+      <div class="r-card-label">心理特质图谱</div>
+      <div class="r-trait-grid" id="traitGrid"></div>
+    </div>
+
+    <!-- 能量地图 -->
+    <div class="r-duo a-up">
+      <div class="r-duo-card"><div class="r-duo-label" style="color:#C4A45A">✦ 能量来源</div><div class="r-duo-text" id="energySrc"></div></div>
+      <div class="r-duo-card"><div class="r-duo-label" style="color:#8B7EAC">✦ 能量消耗</div><div class="r-duo-text" id="energyDrain"></div></div>
+    </div>
 
     <!-- 三维自我认知 -->
     <div class="r-3d a-up" id="threeDSelf"></div>
@@ -471,6 +510,19 @@ body {
       <button class="btn-main" id="claimBtn" style="width:100%" onclick="alert('认领功能对接中，敬请期待')">认领我的主香 · 10ml</button>
     </div>
 
+    <!-- 专属香型详情 · 香调金字塔 -->
+    <div class="r-card a-up" id="scentDetail">
+      <div class="r-card-label">专属香型 · 香调金字塔</div>
+      <div class="r-scent-header" id="scentHeader"></div>
+      <div class="r-pyramid" id="scentPyramidViz"></div>
+    </div>
+
+    <!-- 主题房 & 六感展 -->
+    <div class="r-card a-up" id="roomExhibition">
+      <div class="r-card-label">主题房 & 照狸六感展</div>
+      <div class="r-room-grid" id="roomGrid"></div>
+    </div>
+
     <!-- 分享区 -->
     <div class="r-share-section a-up">
       <div class="r-share-label">分享你的主香状态</div>
@@ -522,219 +574,203 @@ body {
 <script src="questions.js"></script>
 <script>
 // ==================== SIX DATA (with depth interpretation) ====================
+// ==================== SIX DATA (V2 - 完整14模块版) ====================
+// 来源：蝴蝶坞六色人格结果页_完整文案集 + 专属香型优化版
 const SIX = [
-  { // E - 邂逅
-    code:'E',name:'邂逅',en:'Encounter',color:'#C4827C',bg:'#F5E8E6',badge:'柔光粉',
-    phrase:'你仍然有被世界打动的能力',declare:'我允许新的美好再次触动我',
-    socialRole:'浪漫生活家',socialRoleSub:'朋友圈里最会发现美好的人',
+  {code:'E',name:'邂逅',en:'Encounter',color:'#C4827C',bg:'#F5E8E6',badge:'柔光粉',
+    phrase:'你仍然有被世界打动的能力',declare:'我允许新的美好再次触动我',socialRole:'浪漫生活家',socialRoleSub:'朋友圈里最会发现美好的人',
     animal:'蝴蝶',animalDesc:'对世界保持最原始的敏感与好奇。蝴蝶不必大声喧哗——每一次振翅都是对美的回应，每一次停留都是一次选择。',
     awakeningQuote:'你仍然有被世界打动的能力',personalityDeclaration:'我愿意重新被世界打动',
-    selfView:'你此刻更容易被美好、关系、细节和新鲜感触动。你不是幼稚——你只是仍然保有感受世界的能力。你的敏感不是弱点，它是高阶感知力，让你看见别人忽略的美好。',
-    othersView:'在旁人眼中，你温柔、细腻、容易亲近，像春天里的第一缕暖风。人们会被你的温柔吸引，不自觉地放下防备，却未必知道你内心的丰富世界——你的内心比你表现出来的要深邃得多。',
-    hiddenTalent:'你以为自己只是敏感，其实那是高阶感知力——你能看见别人忽略的美好，这是你的天赋，不是弱点。你的柔软是这个时代最稀缺的力量。',
+    coreTraits:'感知细腻、浪漫温柔、好奇心旺盛、共情力强',coreStrengths:'敏锐的审美感知；强大的共情能力；对细节的天然关注；人际温度的传递者',
+    growthTopics:'易被外界情绪消耗；需要学会设立情感边界；避免过度解读他人意图',suitableCareers:'创意设计、心理咨询、人文教育、品牌策划、花艺与生活方式',
     growthAdvice:'不必为自己的敏感道歉。继续保持对世界的好奇，但也要学会在感受之后，给自己一个安静的收梢。练习说"不"——建立情感边界感，让你的温柔可持续。',
-    positiveAffirmation:'发现美，是你与生俱来的天赋。这周，请每天记录一个「只有你注意到了」的美好瞬间。一周后回看——你会发现，世界因为你的注视，变得更加值得温柔相待。',
+    selfView:'你此刻更容易被美好、关系、细节和新鲜感触动。你不是幼稚——你只是仍然保有感受世界的能力。你的敏感不是弱点，它是高阶感知力，让你看见别人忽略的美好。',
+    othersView:'在旁人眼中，你温柔、细腻、容易亲近，像春天里第一缕暖风。人们会被你的温柔吸引，却未必知道你内心的丰富世界。',
+    hiddenTalent:'你以为自己只是敏感，其实那是高阶感知力——你能看见别人忽略的美好，这是你的天赋，不是弱点。',
+    energySource:'新鲜感、美好的细节、真诚的连接、被理解的感觉、自然的馈赠',energyDrain:'重复单调日常、冷漠环境氛围、被忽视的付出、持续情感透支',
+    bright:'愿意被美好触动',shadow:'温柔的人最容易成为情绪的容器。你的共情力在滋养别人时也在悄悄消耗自己。当你开始"替别人难过"时，请在心里画一条线——那是你的领地。温柔，不等于无条件承接。',
+    positiveAffirmation:'发现美，是你与生俱来的天赋。这周，请每天记录一个"只有你注意到了"的美好瞬间。一周后回看——你会发现，世界因为你的注视，变得更加值得温柔相待。',
     todayAction:'拍下此刻你眼中最美的一瞬，不需解释，只需感受。',
-    shadowReminder:'温柔的人最容易成为情绪的容器。你的共情力在滋养别人的同时，也在悄悄消耗你自己的能量。当你发现自己开始「替别人难过」时，请在心里画一条线——那是你的领地。温柔，不等于无条件承接。',
     warningSignal:'频繁叹气、不想回消息、对曾经喜欢的事物失去兴趣 → 你正在透支你的温柔。',
-    zhaoliMessage:'柔光照狸在你肩头轻轻落下。它不是来定义你的——它是来陪你看这个世界有多美好的。每一次心动，都值得被温柔收藏。',
-    poemInterpretation:'这首词中最动人的不是「和羞走」，而是「倚门回首」——在羞怯与好奇之间反复横跳的微妙张力，正是邂逅者灵魂的底色。你不是不敢面对世界，你只是需要一点时间，确认这个世界值得温柔相待。「却把青梅嗅」：用一个最轻柔的动作，完成了与世界的连接。',
-    bright:'愿意被美好触动',shadow:'邂逅很美，但也要记得慢慢确认，不把全部期待投射到一次遇见里',
-    advance:'记录最近触动你的三个瞬间',
-    scent:'暗香',scentDesc:'清冷栀子调，初闻清冽细品温柔。像一次初见，需要靠近才能读懂。',
-    scentShort:'栀子 · 青梅 · 微甜',
     zhaoli:'柔光照狸',zhaoliDesc:'陪你重新被世界打动',
+    zhaoliMessage:'柔光照狸在你肩头轻轻落下。它不是来定义你的——它是来陪你看这个世界有多美好的。每一次心动，都值得被温柔收藏。',
     poem:'和羞走，倚门回首，却把青梅嗅。',
-    products:[
-      {name:'暗香·邂逅 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'暗香·邂逅 淡香精',type:'EDP 50ml',tag:'正装',desc:'清冷栀子调，持香6-8小时',price:'¥398'},
-      {name:'邂逅照狸摆件',type:'摆件',tag:'照狸',desc:'柔光照狸，陪你重新被世界打动',price:'¥168'}
-    ],
-    room:'邂逅双人主题房 · 约会 | 旅行 | 初次试香',
-    shareCopy:[
-      '我的SFSC状态码里有E——照狸说，我还愿意被美好触动。',
-      '测了一下照狸六色循环，我的主香是「暗香」· 邂逅。',
-      '我不是被你定义的人，我只是走到了邂逅这一站。'
-    ],
-    postCopy:'我的SFSC状态码是E·邂逅。「和羞走，倚门回首，却把青梅嗅。」——照狸说，我还愿意被美好触动。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'邂逅之后是觉醒。如果最近你有什么突然明了的事情，不必急——允许自己被触动之后，慢慢看清方向。'
-  },
-  { // A - 觉醒
-    code:'A',name:'觉醒',en:'Awakening',color:'#7B9E7D',bg:'#E8F0E8',badge:'清醒绿',
-    phrase:'清醒不是冷漠，是终于把自己也算进去',declare:'我因这次触动而明了自己',
-    socialRole:'理性洞察者',socialRoleSub:'朋友群里的冷静分析师',
-    animal:'猫头鹰',animalDesc:'在黑暗中依然能看清事物的本质，冷静而不失温度。猫头鹰不追逐热闹——它们选择在最安静的时刻起飞，用自己的节奏观察世界。',
+    poemDeep:'这首词中最动人的不是"和羞走"，而是"倚门回首"——在羞怯与好奇之间反复横跳的微妙张力，正是邂逅者灵魂的底色。你不是不敢面对世界，你只是需要一点时间，确认这个世界值得温柔相待。"却把青梅嗅"：用一个最轻柔的动作，完成了与世界的连接。',
+    scentMain:'邂逅香',scentMainDesc:'一种由命运感流动而来的香气。不是你选择了它——是它在人海中认出了你。',
+    scentMood:'花香青梅调，柔光轻盈，微甜初见。像一个你以为不会再来的人，就这样出现了——没有预兆，没有解释，只有一种奇异的确认感：原来真的有人懂你。',
+    scentSeason:'春夏',scentShort:'花香 · 青梅 · 命运感',
+    scentPyramid:'前调：香柠檬 · 初见明亮，打开心门那束光  |  青梅 · 说不清的熟悉，像早就认识的人再次相遇；中调：栀子花 · 夏夜安静笃定的心动  |  茉莉 · 情感被温柔回应的瞬间  |  玫瑰 · 爱与理解，情感能量盛放；后调：白麝香 · 终于可以放松自己  |  鸢尾 · 灵魂吸引力，会留下记忆的气息',
+    subScent:'觉醒香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的清醒',
+    products:[{name:'邂逅香·邂逅 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'邂逅香·邂逅 淡香精',type:'EDP 35ml',tag:'正装',desc:'花香青梅调，持香6-10小时',price:'¥398'},
+      {name:'邂逅照狸摆件',type:'摆件',tag:'照狸',desc:'柔光照狸，陪你重新被世界打动',price:'¥168'}],
+    room:'邂逅情侣房 · 约会 | 旅行 | 初次试香',exhibition:'初见·照狸六感展："和羞走，倚门回首"的光影空间',
+    shareCopy:['我的SFSC状态码里有EAA——照狸说，我还愿意被美好触动。','测了照狸六色循环，我的主香是「邂逅香」· 邂逅。','我不是被你定义的人，我只是走到了邂逅这一站。'],
+    postCopy:'我的SFSC状态码是EAA·邂逅。「和羞走，倚门回首，却把青梅嗅。」——照狸说，我还愿意被美好触动。你的主香是什么？扫码来测 👇',
+    nextStation:'邂逅香 → 觉醒香',nextPhrase:'清醒不是冷漠，是终于把自己也算进去',
+    nextDirection:'邂逅之后是觉醒。如果最近你有什么突然明了的事情，不必急——允许自己被触动之后，慢慢看清方向。'},
+  {code:'A',name:'觉醒',en:'Awakening',color:'#7B9E7D',bg:'#E8F0E8',badge:'清醒绿',
+    phrase:'清醒不是冷漠，是终于把自己也算进去',declare:'我因这次触动而明了自己',socialRole:'理性洞察者',socialRoleSub:'朋友群里的冷静分析师',
+    animal:'猫头鹰',animalDesc:'在黑暗中依然能看清事物本质，冷静而不失温度。猫头鹰不追逐热闹——它们选择在最安静的时刻起飞，用自己的节奏观察世界。',
     awakeningQuote:'清醒不是冷漠，是终于把自己也算进去',personalityDeclaration:'我终于把自己也算进去',
-    selfView:'你正在更清楚地看见自己、关系和真正重要的东西。清醒不是变得冷漠——而是终于不再只活在别人的期待里。你知道自己想要什么，也敢于承认自己不想要什么。这份笃定，是你给自己最好的礼物。',
-    othersView:'别人会觉得你最近有些「不一样」——更笃定、更不讨好、更难被随便说服。他们未必理解你的变化，但会开始尊重你的边界。你身上有一种让人不敢轻视的质感——那不是高冷，是清醒。',
-    hiddenTalent:'你内心深处有一种「看透但不拆穿」的智慧。这种冷静不是无情，而是一种深层的保护力——你知道什么时候该说话，什么时候该沉默，这是极少有人具备的定力。',
-    positiveAffirmation:'清醒，是你在风暴中获得的最大礼物。这周，当你察觉自己在「讨好」时，停下来，用30秒问自己——「这真的是我想要的吗？」每一次诚实的回答，都是向自己靠近的一步。',
-    todayAction:'对一件你不想答应的事说「不」，不需要解释，不需要道歉。',
-    shadowReminder:'清醒者最大的陷阱，是把「理性」变成一种防御。当你看透了太多，可能会不自觉地竖起高墙——不是不需要温暖，而是害怕温暖之后是失望。清醒的尽头不是孤岛，而是终于知道谁值得你放下边界。',
-    warningSignal:'对一切说「没意思」、刻意回避亲密时刻、用「我不需要」替代「我不敢要」→ 你的理性正在成为一堵墙。',
-    zhaoliMessage:'清醒照狸坐在你身边，不催你、不哄你。它知道清醒需要时间。它只是安静地陪着，等你自己说出那句——「我懂了」。',
-    poemInterpretation:'「绿肥红瘦」是对现象最清醒的判断——繁华易逝，本质永存。觉醒者就像词中的李清照：不沉溺于表象的繁荣，始终保有一双看透本质的眼睛。旁人问「知否」，其实早已了然于心——只是他们在合适的时机说出口。',
-    bright:'看清方向',shadow:'清醒很好，但不必让自己过度紧绷，也不必急着和所有旧事告别',
-    advance:'写下你真正想要改变的一件事',
-    scent:'醒木',scentDesc:'雨后苔藓与雪松交织，干净利落，带着刚刚好的距离感。像一场清醒的呼吸。',
-    scentShort:'绿叶 · 茶感 · 雪松',
+    coreTraits:'理性清醒、边界感强、独立思考、洞见深刻',coreStrengths:'犀利的逻辑分析；卓越的独立判断力；不被情绪裹挟的定力；精准的本质洞察',
+    growthTopics:'可能显得过于疏离；需要学会表达温度；避免过度理性压抑真实情感',suitableCareers:'战略咨询、数据分析、科研学术、法律法务、独立创作',
+    growthAdvice:'清醒不是为了拒绝世界，而是为了更精准地选择。继续划清边界，但请记得——偶尔允许自己"不知分寸"地喜欢一个人或一件事。理性是工具，不是牢笼。',
+    selfView:'你正在更清楚地看见自己、关系和真正重要的东西。清醒不是变得冷漠——而是终于不再只活在别人的期待里。你知道自己想要什么，也敢于承认自己不想要什么。',
+    othersView:'别人会觉得你最近有些"不一样"——更笃定、更不讨好、更难被随便说服。他们未必理解你的变化，但会开始尊重你的边界。你身上有一种让人不敢轻视的质感。',
+    hiddenTalent:'你内心深处有一种"看透但不拆穿"的智慧。这种冷静不是无情，而是一种深层的保护力——你知道什么时候该说话，什么时候该沉默。',
+    energySource:'独处的深度时间、被真正理解的瞬间、看见真相后的豁然、逻辑自洽的思考过程',energyDrain:'无意义的社交展演、虚伪的人际关系、被情感绑架的场合、碎片化信息轰炸',
+    bright:'看清方向并把自己算进去',shadow:'清醒者最大的陷阱，是把"理性"变成一种防御。当你看透了太多，可能会不自觉地竖起高墙——不是不需要温暖，而是害怕温暖之后是失望。清醒的尽头不是孤岛，而是终于知道谁值得你放下边界。',
+    positiveAffirmation:'清醒，是你在风暴中获得的最大礼物。这周，当你察觉自己在"讨好"时，停下来，用30秒自问——"这真的是我想要的吗？"每一次诚实的回答，都是向自己靠近的一步。',
+    todayAction:'对一件你不想答应的事说"不"，不需要解释，不需要道歉。',
+    warningSignal:'对一切说"没意思"、刻意回避亲密时刻、用"我不需要"替代"我不敢要" → 你的理性正在成为一堵墙。',
     zhaoli:'清醒照狸',zhaoliDesc:'陪你看见真实的自己',
+    zhaoliMessage:'清醒照狸坐在你身边，不催你、不哄你。它知道清醒需要时间。它只是安静地陪着，等你自己说出那句——"我懂了"。',
     poem:'知否？知否？应是绿肥红瘦。',
-    products:[
-      {name:'醒木·觉醒 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'醒木·觉醒 淡香精',type:'EDP 50ml',tag:'正装',desc:'雨后苔藓与雪松，持香6-8小时',price:'¥398'},
-      {name:'觉醒照狸摆件',type:'摆件',tag:'照狸',desc:'清醒照狸，陪你看见真实的自己',price:'¥168'}
-    ],
-    room:'觉醒独处主题房 · 独处 | 读书 | 做决定',
-    shareCopy:[
-      '我的SFSC状态码里有A——照狸说，我因这次触动而明了自己。',
-      '测了一下照狸六色循环，我的主香是「醒木」· 觉醒。',
-      '我终于把自己也算进去了。来看看你的主香状态是哪一站？'
-    ],
-    postCopy:'我的SFSC状态码是A·觉醒。「知否？知否？应是绿肥红瘦。」——照狸说，我终于把自己也算进去了。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'觉醒之后是蝶变。看清楚之后，不必急着改变一切——先给自己一点安静时间，慢慢沉淀，慢慢重组。'
-  },
-  { // M - 蝶变
-    code:'M',name:'蝶变',en:'Metamorphosis',color:'#8B7EAC',bg:'#EDEAF5',badge:'深邃紫',
-    phrase:'你不是被困住了，你是在等待新的翅膀',declare:'我愿意为新的自己沉淀作茧',
-    socialRole:'内在探险家',socialRoleSub:'你朋友圈里那个突然就变了的人',
-    animal:'蝶蛹',animalDesc:'表面静止，内部却在进行着最激烈的重组。没有人看见你在黑暗中做了什么，但破茧的那一刻——一切都有了答案。蝶蛹不需要向任何人解释它在变成什么。',
+    poemDeep:'"绿肥红瘦"是对现象最清醒的判断——繁华易逝，本质永存。觉醒者就像词中的李清照：不沉溺于表象的繁荣，始终保有一双看透本质的眼睛。',
+    scentMain:'觉醒香',scentMainDesc:'一种意识被点亮之后的气息。不是突然变强，而是终于不再假装。',
+    scentMood:'绿叶茶感调，雨后清晨般干净利落。不是冷漠，而是终于把自己也算进去了。带着刚刚好的距离感——不迎合，不张扬，只是清醒地站在那里：这就是我，不需要解释，不需要讨好。',
+    scentSeason:'秋冬',scentShort:'绿叶 · 茶感 · 意识苏醒',
+    scentPyramid:'前调：绿叶 · 回归真实，雨后苔藓的清醒  |  柑橘 · 黑暗后第一束光  |  藏红花 · 灵魂苏醒的神秘感；中调：茶 · 沉淀之后的明净  |  草本 · 不被情绪裹挟的定力  |  空气感分子 · 灵性，意识扩张；后调：雪松 · 安定感，长久陪伴  |  麝香 · 终于可以放松自己  |  橡苔 · 真实，回归本心',
+    subScent:'蝶变香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的变化渴望',
+    products:[{name:'觉醒香·觉醒 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'觉醒香·觉醒 淡香精',type:'EDP 35ml',tag:'正装',desc:'绿叶茶感调，持香6-10小时',price:'¥398'},
+      {name:'觉醒照狸摆件',type:'摆件',tag:'照狸',desc:'清醒照狸，陪你看见真实的自己',price:'¥168'}],
+    room:'觉醒独处房 · 独处 | 读书 | 做决定',exhibition:'清醒·照狸六感展："知否？知否？应是绿肥红瘦"的沉浸体验',
+    shareCopy:['我的SFSC状态码里有AMM——照狸说，我因这次触动而明了自己。','测了照狸六色循环，我的主香是「觉醒香」· 觉醒。','我终于把自己也算进去了。来看看你的主香状态是哪一站？'],
+    postCopy:'我的SFSC状态码是AMM·觉醒。「知否？知否？应是绿肥红瘦。」——照狸说，我终于把自己也算进去了。你的主香是什么？扫码来测 👇',
+    nextStation:'觉醒香 → 蝶变香',nextPhrase:'你不是坏掉了，你是在重组',
+    nextDirection:'觉醒之后是蝶变。看清楚之后，不必急着改变一切——先给自己一点安静时间，慢慢沉淀，慢慢重组。'},
+  {code:'M',name:'蝶变',en:'Metamorphosis',color:'#8B7EAC',bg:'#EDEAF5',badge:'深邃紫',
+    phrase:'你不是坏掉了，你是在重组',declare:'我愿意为新的自己沉淀作茧',socialRole:'内在探险家',socialRoleSub:'你朋友圈里那个突然就变了的人',
+    animal:'蝶蛹',animalDesc:'表面静止，内部却在进行着最激烈的重组。没有人看见你在黑暗中做了什么，但破茧的那一刻——一切都有了答案。',
     awakeningQuote:'你不是坏掉了，你是在重组',personalityDeclaration:'我允许自己慢慢重组',
-    selfView:'你可能正处在变化、调整、转型的阶段。不必急着证明自己已经完成改变——重组本身就是一种力量。你不是破碎了，你是在长出从未有过的结构。允许自己在这个阶段慢下来，茧不需要解释。',
-    othersView:'别人会注意到你的「不同」，但未必能准确描述。你身上有一种正在酝酿的东西——让人好奇又不敢轻易打扰。他们会感受到你的深度，却不完全理解你的旅程。没关系，不是所有蜕变都需要观众。',
-    hiddenTalent:'你比别人想象中更坚韧。重组期的你表面脆弱，底层却在生长出从未有过的结构。那些你以为快要撑不住的夜晚，其实正在为你的未来打下最坚固的地基。你比你想象的更接近破茧。',
-    positiveAffirmation:'重组，是只有勇敢者才敢进入的状态。你不是停滞，你是在积蓄。这周，每天写下一条「我今天的感受是______，这没关系」。让每一个感受都有被承认的权利。',
+    coreTraits:'深度思考、正在蜕变、内省力强、创造力爆发期',coreStrengths:'深刻的自我洞察力；强大的内在驱动力；高创造力的爆发期；对复杂情绪的消化与转化能力',
+    growthTopics:'可能过度沉溺内省；避免自我怀疑的恶性循环；学会在外界反馈中校准自我',suitableCareers:'艺术创作、内容写作、品牌创新、心理咨询、转型期创业者',
+    growthAdvice:'你现在经历的，不是"坏掉了"，而是一次深层的重组。不要急着变成"更好的自己"——先在重组中学会善待正在变化的自己。',
+    selfView:'你可能正处在变化、调整、转型的阶段。不必急着证明自己已经完成改变——重组本身就是一种力量。你不是破碎了，你是在长出从未有过的结构。',
+    othersView:'别人会注意到你的"不同"，但未必能准确描述。你身上有一种正在酝酿的东西——让人好奇又不敢轻易打扰。他们会感受到你的深度，却不完全理解你的旅程。',
+    hiddenTalent:'你比别人想象中更坚韧。重组期的你表面脆弱，底层却在生长出从未有过的结构。那些你以为快要撑不住的夜晚，其实正在为你的未来打下最坚固的地基。',
+    energySource:'深度对话、艺术触动、独自完成一件事的成就感、黑夜中的灵感与顿悟',energyDrain:'被打断的沉思、被要求快速表态、浅层闲聊、无意义的社交展演',
+    bright:'主动沉淀重组',shadow:'蝶变者最深的陷阱，是沉溺于"蜕变"本身。当你太专注于审视伤口，可能会忘记：生活不止有蛹中的黑暗。偶尔也需要抬起头，看看外面的光。蜕变的终点不是完美，而是重新与世界连接。',
+    positiveAffirmation:'重组，是只有勇敢者才敢进入的状态。你不是停滞，你是在积蓄。这周，每天写下一条"我今天的感受是______，这没关系"。让每一个感受都有被承认的权利。',
     todayAction:'找一段15分钟，关掉所有外界的声音。什么都不做——只是感受此刻的自己。',
-    shadowReminder:'蝶变者最深的陷阱，是沉溺于「蜕变」本身。当你太专注于审视伤口，可能会忘记：生活不止有蛹中的黑暗。偶尔也需要抬起头，看看外面的光——那光不是催促，是提醒。',
-    warningSignal:'连续3天以上不出门/不社交/反复自我分析 → 你在用「内省」逃避行动。请打破循环。',
-    zhaoliMessage:'破茧照狸蜷在你的掌心，温热的。它知道你现在什么都说不清——那不重要。重要的是，你还在呼吸，还在允许自己变化。这就够了。',
-    poemInterpretation:'「不回头」是蝶变者最深的共鸣。你已经做出了选择，走上了一条不回头的路。身后的风景再美，也不及前方的未知。清晨的露水洗去了昨日的尘埃——你不再是昨天的你。',
-    bright:'主动沉淀重组',shadow:'作茧是保护，但不要把自己封闭太久。新的翅膀，也需要一点光',
-    advance:'给自己一段不被打扰的沉淀时间',
-    scent:'破茧',scentDesc:'鸢尾与檀木的交叠，前调低沉，中后调逐渐明亮。像一只正在展翅的蝶，不急不缓。',
-    scentShort:'鸢尾 · 檀木 · 暗光',
+    warningSignal:'连续3天以上不出门/不社交/反复自我分析 → 你在用"内省"逃避行动。请打破循环。',
     zhaoli:'破茧照狸',zhaoliDesc:'陪你穿过旧我，等待翅膀',
+    zhaoliMessage:'破茧照狸蜷在你的掌心，温热的。它知道你现在什么都说不清——那不重要。重要的是，你还在呼吸，还在允许自己变化。这就够了。',
     poem:'清露洗、蘋花汀草，眠沙鸥鹭不回头。',
-    products:[
-      {name:'破茧·蝶变 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'破茧·蝶变 淡香精',type:'EDP 50ml',tag:'正装',desc:'鸢尾与檀木，持香8-10小时',price:'¥468'},
-      {name:'蝶变照狸摆件',type:'摆件',tag:'照狸',desc:'破茧照狸，陪你穿过旧我',price:'¥168'}
-    ],
-    room:'蝶变艺术主题房 · 转折期 | 创作 | 安静重组',
-    shareCopy:[
-      '我的SFSC状态码里有M——照狸说，我不是被困住了，我是在作茧。',
-      '测了一下照狸六色循环，我的主香是「破茧」· 蝶变。',
-      '你不是被困住了，你是在等待新的翅膀。来看看你的六色状态？'
-    ],
-    postCopy:'我的SFSC状态码是M·蝶变。「清露洗、蘋花汀草，眠沙鸥鹭不回头。」——照狸说，我不是坏掉了，我是在重组。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'蝶变之后是绽放。重组之后的你会以新的方式出现。现在耐心沉淀——那些长不出来的翅膀，还需要一点安静的时间。'
-  },
-  { // B - 绽放
-    code:'B',name:'绽放',en:'Blooming',color:'#C4A45A',bg:'#F7F2E3',badge:'明耀黄',
-    phrase:'绽放不是炫耀，而是不再压低自己的光',declare:'我让沉淀后的自己精彩地活出来',
-    socialRole:'派对主角',socialRoleSub:'你朋友圈里活得最尽兴的那个人',
-    animal:'孔雀',animalDesc:'不羞于展示自己的美，每一次开屏都是对生命的礼赞。孔雀不需要和谁比美——它只是站在那里，就已经回答了「我是谁」这个问题。',
+    poemDeep:'"不回头"是蝶变者最深的共鸣。你已经做出了选择，走上了一条不回头的路。身后的风景再美，也不及前方的未知。清晨的露水洗去了昨日的尘埃——你不再是昨天的你。',
+    scentMain:'蝶变香',scentMainDesc:'一种正在发生、却无法言说的香气。不是破碎，是重组。',
+    scentMood:'紫调木质调，前调低沉克制，中后调逐渐明亮有层次。像一只正在展翅的蝶——不急，不缓，每一层都是时间的礼物。你不是坏掉了，你是在重组。没有人能看见你在黑暗中做了什么——但每一滴汗水、每一次挣扎，都在成为你翅膀上的纹路。',
+    scentSeason:'四季皆宜',scentShort:'紫调 · 木质 · 重组的力量',
+    scentPyramid:'前调：佛手柑 · 新生的光感  |  粉红胡椒 · 被轻轻击中的感觉  |  黑胡椒 · 命运按下开始键；中调：鸢尾 · 灵魂吸引力  |  紫罗兰 · 内心深处正在萌生之物  |  甘草 · 内在沉静韧性；后调：檀木 · 成长后的笃定  |  琥珀 · 时间深层能量  |  愈创木 · 重建的沉稳力量  |  安息香 · 新生后的柔和',
+    subScent:'绽放香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的绽放渴望',
+    products:[{name:'蝶变香·蝶变 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'蝶变香·蝶变 淡香精',type:'EDP 35ml',tag:'正装',desc:'紫调木质调，持香6-10小时',price:'¥468'},
+      {name:'蝶变照狸摆件',type:'摆件',tag:'照狸',desc:'破茧照狸，陪你穿过旧我，等待翅膀',price:'¥168'}],
+    room:'蝶变艺术房 · 转折期 | 创作 | 安静重组',exhibition:'重组·照狸六感展："清露洗、蘋花汀草"的光影茧房',
+    shareCopy:['我的SFSC状态码里有MBB——照狸说，我不是被困住了，我是在重组。','测了照狸六色循环，我的主香是「蝶变香」· 蝶变。','你不是坏掉了，你是在长出新的翅膀。来看看你的六色状态？'],
+    postCopy:'我的SFSC状态码是MBB·蝶变。「清露洗、蘋花汀草，眠沙鸥鹭不回头。」——照狸说，我不是坏掉了，我是在重组。你的主香是什么？扫码来测 👇',
+    nextStation:'蝶变香 → 绽放香',nextPhrase:'绽放不是炫耀，而是不再压低自己的光',
+    nextDirection:'蝶变之后是绽放。重组之后的你会以新的方式出现。现在耐心沉淀——那些长不出来的翅膀，还需要一点安静的时间。'},
+  {code:'B',name:'绽放',en:'Blooming',color:'#C4A45A',bg:'#F7F2E3',badge:'明耀黄',
+    phrase:'绽放不是炫耀，而是不再压低自己的光',declare:'我让沉淀后的自己精彩地活出来',socialRole:'派对主角',socialRoleSub:'你朋友圈里活得最尽兴的那个人',
+    animal:'孔雀',animalDesc:'不羞于展示自己的美，每一次开屏都是对生命的礼赞。孔雀不需要和谁比美——它只是站在那里，就已经回答了"我是谁"这个问题。',
     awakeningQuote:'绽放不是炫耀，而是不再压低自己的光',personalityDeclaration:'我不再压低自己的光',
-    selfView:'你此刻更需要表达、庆祝和被看见。你不再是那种躲在角落里的状态——你有光，而且你值得让它亮出来。你的存在本身就能改变一个空间的温度。这不是傲慢，这是对自己的诚实。',
-    othersView:'别人会被你的能量吸引。你不一定是最大声的那个，但你出现的时候，空气会变得不一样。人们希望靠近你、了解你、被你感染——这是一种稀有的天赋。',
-    hiddenTalent:'你以为自己只是「状态好」，其实你正在活出一种感染力——你让身边的人也想变得更好。这是领袖气质的前兆。你的光不仅照亮自己，也点燃了别人。你正在成为你曾经仰望的那种人。',
+    coreTraits:'感染力强、自信表达、热爱庆祝、引领他人',coreStrengths:'极强的社交感染力；自信而不自大的表达能力；天然的领袖气质；对美好事物的鉴赏力',
+    growthTopics:'注意避免过度外求认可；学会在安静中充电；保持谦逊的同时不压抑光芒',suitableCareers:'品牌营销、公开演讲、演艺与主持、团队管理、时尚与生活方式',
+    growthAdvice:'你的光芒不需要压低。这个世界需要更多敢于亮出来的人。但请记住：真正的绽放不是为了被看见，而是因为你本来就有光。学会在热闹之后，也给自己留一盏安静的灯。',
+    selfView:'你此刻更需要表达、庆祝和被看见。你有光，而且你值得让它亮出来。你的存在本身就能改变一个空间的温度。',
+    othersView:'别人会被你的能量吸引。你出现的时候，空气会变得不一样。人们希望靠近你、被你感染——这是一种稀有的天赋。',
+    hiddenTalent:'你以为自己只是"状态好"，其实你正在活出一种感染力——你让身边的人也想变得更好。这是领袖气质的前兆。',
+    energySource:'被认可的感觉、创造影响力的时刻、与人分享快乐、人群中的共振',energyDrain:'被压制表达的时刻、长期独处、被忽视的价值、不被看见的付出',
+    bright:'精彩表达，不再压低自己的光',shadow:'绽放者最深的风险，是把"发光"变成一种义务。当"照亮别人"从天赋变成了负担，你的光就不再为你自己服务。你可以暗下来——允许自己不发光，这不是失败，是让光源充电。',
     positiveAffirmation:'你正在活出一种感染力——它比任何香水都更持久。这周，用你的能量去点亮一个正处于低谷的朋友。不需要长篇大论，只需要出现在那里，带着你的光。',
-    todayAction:'对镜子里的人笑一下，说「你今天也很不错」。不需要理由，因为你本就值得。',
-    shadowReminder:'绽放者最深的风险，是把「发光」变成一种义务。当「照亮别人」从天赋变成了负担，你的光就不再为你自己服务。请记住：你可以暗下来。允许自己不出现、不回应、不发光——这不是失败，这是让光源充电的必须过程。',
-    warningSignal:'独处时感到空虚、对赞美上瘾、无法停止社交表演 → 你正在用「绽放」逃避与自己的独处。',
-    zhaoliMessage:'光芒照狸在你周围盘旋了一圈，然后停在你掌心。它不说话，但你知道它在说：你本来就有光。不需要借用别人的灯，不需要等天黑才亮——你，就是光源。',
-    poemInterpretation:'「梅定妒，菊应羞」——李清照笔下最自信的诗句。她没有说桂花比梅菊更美，她说的是：我就是我，不需要在你们的坐标系里寻找位置。绽放者不需要和别人比较——因为他们深知，自己的存在本身就是一种光芒。',
-    bright:'精彩表达',shadow:'绽放不是为了取悦所有人，也不必用过度消耗换来被看见',
-    advance:'允许自己完成一次表达或庆祝',
-    scent:'耀光',scentDesc:'柑橘与琥珀的碰撞，明亮而有层次。第一秒就抓人，越久越有故事。',
-    scentShort:'柑橘 · 琥珀 · 光芒',
+    todayAction:'对镜子里的人笑一下，说"你今天也很不错"。不需要理由，因为你本就值得。',
+    warningSignal:'独处时感到空虚、对赞美上瘾、无法停止社交表演 → 你正在用"绽放"逃避与自己的独处。',
     zhaoli:'光芒照狸',zhaoliDesc:'陪你不再压低自己的光',
+    zhaoliMessage:'光芒照狸在你周围盘旋了一圈，然后停在你掌心。它不说话，但你知道它在说：你本来就有光。不需要借用别人的灯，不需要等天黑才亮——你，就是光源。',
     poem:'梅定妒，菊应羞。',
-    products:[
-      {name:'耀光·绽放 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'耀光·绽放 淡香精',type:'EDP 50ml',tag:'正装',desc:'柑橘与琥珀，持香8-10小时',price:'¥468'},
-      {name:'绽放照狸摆件',type:'摆件',tag:'照狸',desc:'光芒照狸，陪你不再压低自己的光',price:'¥168'}
-    ],
-    room:'绽放生日主题房 · 生日 | 聚会 | 庆祝',
-    shareCopy:[
-      '我的SFSC状态码里有B——照狸说，我让沉淀后的自己精彩地活出来。',
-      '测了一下照狸六色循环，我的主香是「耀光」· 绽放。',
-      '我不再压低自己的光。来看看你的六色状态？'
-    ],
-    postCopy:'我的SFSC状态码是B·绽放。「梅定妒，菊应羞。」——照狸说，我不再压低自己的光。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'绽放之后是守护。尽情发光之后，你也需要珍惜这份来之不易的精彩——学会在发光的同时，也给自己温柔的边界。'
-  },
-  { // G - 守护
-    code:'G',name:'守护',en:'Guardian',color:'#C4967A',bg:'#F5EDE6',badge:'温暖橙',
-    phrase:'真正的守护，是温柔但坚定地守住边界',declare:'我珍惜这份光，也有边界地守护它',
-    socialRole:'温暖靠山',socialRoleSub:'所有人遇到困难第一个想到的人',
-    animal:'大象',animalDesc:'强大的力量从不轻易展示。大象记得每一个同伴，也记得如何让每个人都感到安全。他们的温柔不是没有力量——恰恰相反，是因为足够强大，才选择了温柔。',
+    poemDeep:'"梅定妒，菊应羞"——李清照笔下最自信的诗句。她没有说桂花比梅菊更美，她说的是：我就是我，不需要在你们的坐标系里寻找位置。绽放者不需要和别人比较。',
+    scentMain:'绽放香',scentMainDesc:'一种终于不再压低自己的香气。活成了自己想要的样子，所以才这么香。',
+    scentMood:'明黄花果调，鲜活透亮，自带引力。绽放不是炫耀，而是不再压低自己的光。你不需要和谁比美——你只是站在那里，就已经回答了"我是谁"这个问题。阳光打在身上，你没有躲——因为发光，是你本来就有的权利。',
+    scentSeason:'春夏',scentShort:'花束 · 果香 · 由内而生的光',
+    scentPyramid:'前调：柑橘 · 生命能量新的开始  |  粉红葡萄柚 · 清醒的悸动  |  果香 · 丰盛情绪流动；中调：茉莉 · 情感被温柔回应  |  橙花 · 纯净幸福感  |  牡丹 · 女性生命力盛放  |  白花 · 女性柔光  |  百合 · 纯净内在优雅；后调：琥珀 · 时间沉淀由内而生  |  香草 · 温暖被爱感  |  麝香 · 安全感情感归属',
+    subScent:'守护香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的守护力量',
+    products:[{name:'绽放香·绽放 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'绽放香·绽放 淡香精',type:'EDP 35ml',tag:'正装',desc:'明黄花果调，持香6-10小时',price:'¥468'},
+      {name:'绽放照狸摆件',type:'摆件',tag:'照狸',desc:'光芒照狸，陪你不再压低自己的光',price:'¥168'}],
+    room:'绽放生日房 · 生日 | 聚会 | 庆祝',exhibition:'光芒·照狸六感展："梅定妒，菊应羞"的自信沉浸体验',
+    shareCopy:['我的SFSC状态码里有BGG——照狸说，我让沉淀后的自己精彩地活出来。','测了照狸六色循环，我的主香是「绽放香」· 绽放。','我不再压低自己的光。来看看你的六色状态？'],
+    postCopy:'我的SFSC状态码是BGG·绽放。「梅定妒，菊应羞。」——照狸说，我不再压低自己的光。你的主香是什么？扫码来测 👇',
+    nextStation:'绽放香 → 守护香',nextPhrase:'真正的守护，是温柔但有边界',
+    nextDirection:'绽放之后是守护。尽情发光之后，你也需要珍惜这份来之不易的精彩——学会在发光的同时，也给自己温柔的边界。'},
+  {code:'G',name:'守护',en:'Guardian',color:'#C4967A',bg:'#F5EDE6',badge:'温暖橙',
+    phrase:'真正的守护，是温柔但有边界',declare:'我珍惜这份光，也有边界地守护它',socialRole:'温暖靠山',socialRoleSub:'所有人遇到困难第一个想到的人',
+    animal:'大象',animalDesc:'强大的力量从不轻易展示。大象记得每一个同伴，也记得如何让每个人都感到安全。他们的温柔不是没有力量——是因为足够强大，才选择了温柔。',
     awakeningQuote:'真正的守护，是温柔但有边界',personalityDeclaration:'我温柔，但我有边界',
-    selfView:'你重视责任、安全感和承诺。你很会照顾别人，但也正在学习一件重要的事——把自己的能量也算进去。你的温柔不该是消耗品，而是源源不断的力量。真正的守护，始于守护好自己。',
-    othersView:'别人依赖你，因为你可靠、温暖、不会轻易放弃一段关系。你是风暴中那个让人安心的存在。但有时候人们会忘记——你同样需要被照顾。你的温柔也需要回响，你的肩膀也需要依靠。',
-    hiddenTalent:'你以为自己只是「付出型人格」，其实你拥有罕见的构建能力——你能创造出所有人都感到安全的空间。这种能力是在一次次被需要中打磨出来的。你正在建造一座看不见的城堡。',
-    positiveAffirmation:'你的温暖，是这个世界上最踏实的风景。这周，把你为别人操心的其中一件事，暂时「移交」出去。不是为了偷懒——是为了腾出空间，给自己。你的温柔应该有一份留给自己。',
+    coreTraits:'可靠温暖、责任感强、擅长构建安全感、温柔但有边界',coreStrengths:'卓越的关怀能力；稳定的情绪输出；长期的承诺执行力；创造安全空间的天赋',
+    growthTopics:'学会说"不"；避免过度承担他人情绪；将自己的能量纳入守护范围',suitableCareers:'医疗健康、教育培训、社区运营、人力资源、家庭与亲子领域',
+    growthAdvice:'你比任何人都更懂得如何让身边的人感到安全。但请记住：守护别人的前提，是守护好自己的能量。学会说"不"——不是冷漠，而是让温柔可持续的边界。',
+    selfView:'你重视责任、安全感和承诺。你很会照顾别人，但也正在学习一件重要的事——把自己的能量也算进去。你的温柔不该是消耗品，而是源源不断的力量。',
+    othersView:'别人依赖你，因为你可靠、温暖、不会轻易放弃一段关系。你是风暴中那个让人安心的存在。但有时候人们会忘记——你同样需要被照顾。',
+    hiddenTalent:'你以为自己只是"付出型人格"，其实你拥有罕见的构建能力——你能创造出所有人都感到安全的空间。你正在建造一座看不见的城堡。',
+    energySource:'被需要的感觉、稳定的关系、有意义的付出、被回应的温柔',energyDrain:'失控的局面、被辜负的信任、无边界的要求、情感单向付出',
+    bright:'珍惜并有边界，让温柔可持续',shadow:'守护者最深的风险，是把"被需要"当作"被爱"。当你把所有的温柔都给了别人，却没有留一点给自己时，那种温暖就会从礼物变成负担。你本身，就值得被守护。',
+    positiveAffirmation:'你的温暖，是这个世界上最踏实的风景。这周，把你为别人操心的其中一件事，暂时"移交"出去。不是为了偷懒——是为了腾出空间，给自己。',
     todayAction:'给自己写一张卡片，像你写给在意的人那样。然后，放在你能看到的地方。',
-    shadowReminder:'守护者最深的风险，是把「被需要」当作「被爱」。当你把所有的温柔都给了别人，却没有留一点给自己时，那种温暖就会从礼物变成负担。你不需要永远坚强。你的价值不取决于你为别人做了什么——你本身，就值得被守护。',
-    warningSignal:'身体不明原因疲惫、忘记上一次「被照顾」是什么时候、无法开口向别人求助 → 你正在把守护变成自我消耗。',
-    zhaoliMessage:'骑士照狸站在你身侧，不是替你战斗，而是让你知道——你在守护别人的时候，也会有人守护你。它的铠甲不是为了防御世界，而是为了提醒你：你也是需要被保护的存在。',
-    poemInterpretation:'「风休住」——守护者不怕风浪，他们怕的是风浪来时，自己护不住重要的人。蓬舟虽小，心意却大。守护不是蛮力，而是在风暴中依然稳稳掌舵的勇气。李清照写这句词时，已经经历了人生最大的风暴——她的「守护」不是天真，是经历过一切之后仍然选择相信。',
-    bright:'珍惜并有边界',shadow:'守护不是控制，也不是牺牲自己。真正的守护，是让值得的人和自己都更好',
-    advance:'重新确认一个重要边界',
-    scent:'暖岸',scentDesc:'琥珀与零陵香豆的温暖组合，像一个让人安心的拥抱。不张扬，但久久不散。',
-    scentShort:'琥珀 · 零陵香豆 · 包裹感',
+    warningSignal:'身体不明原因疲惫、忘记上一次"被照顾"是什么时候、无法开口向别人求助 → 你正在把守护变成自我消耗。',
     zhaoli:'骑士照狸',zhaoliDesc:'陪你温柔但坚定地守住边界',
+    zhaoliMessage:'骑士照狸站在你身侧，不是替你战斗，而是让你知道——你在守护别人的时候，也会有人守护你。它的铠甲不是为了防御世界，而是为了提醒你：你也是需要被保护的存在。',
     poem:'风休住，蓬舟吹取三山去。',
-    products:[
-      {name:'暖岸·守护 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'暖岸·守护 淡香精',type:'EDP 50ml',tag:'正装',desc:'琥珀与零陵香豆，持香6-8小时',price:'¥398'},
-      {name:'守护照狸摆件',type:'摆件',tag:'照狸',desc:'骑士照狸，陪你温柔但坚定地守住边界',price:'¥168'}
-    ],
-    room:'守护亲子主题房 · 家庭 | 亲子 | 母亲节',
-    shareCopy:[
-      '我的SFSC状态码里有G——照狸说，我珍惜这份光，也有边界地守护它。',
-      '测了一下照狸六色循环，我的主香是「暖岸」· 守护。',
-      '我温柔，但我有边界。来看看你的六色状态？'
-    ],
-    postCopy:'我的SFSC状态码是G·守护。「风休住，蓬舟吹取三山去。」——照狸说，我温柔，但我有边界。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'守护之后是共生。守住了边界、守住了光，接下来你会更平静地与自己、与他人、与世界共处——不再把人生变成一场对抗。'
-  },
-  { // C - 共生
-    code:'C',name:'共生',en:'Coexistence',color:'#7B94B5',bg:'#E8EEF5',badge:'静境蓝',
-    phrase:'共生不是妥协，而是不再把人生变成一场对抗',declare:'我与自己、他人和世界平静共处，并准备再次遇见',
-    socialRole:'静境智者',socialRoleSub:'朋友群里最稳的那个存在',
-    animal:'鲸',animalDesc:'在深海中从容游弋，不争不抢，却有无法忽视的存在感。鲸歌悠远绵长——不需要被所有人听见，但听见的人一生都不会忘记。体积不是用于威慑，深潜不是用于逃避。',
+    poemDeep:'"风休住"——守护者不怕风浪，他们怕的是风浪来时，自己护不住重要的人。蓬舟虽小，心意却大。守护不是蛮力，而是在风暴中依然稳稳掌舵的勇气。',
+    scentMain:'守护香',scentMainDesc:'一种让人安心落地的香气。不是依赖，是让人知道：你在这里，一切都好。',
+    scentMood:'暖橙琥珀木质调，像一个让人安心的拥抱。不张扬，但久久不散——因为真正的力量不需要声张。大象记得每一个同伴，守护者也记得每一份信任。你的温柔不是没有力量——是因为足够强大，才选择了温柔。',
+    scentSeason:'秋冬',scentShort:'暖橙 · 琥珀 · 真正的安全感',
+    scentPyramid:'前调：佛手柑 · 打开心门新的开始  |  豆蔻 · 灵性温暖智慧  |  橙子 · 生命能量乐观  |  西柚 · 情绪净化透气感；中调：琥珀 · 深层能量时间沉淀  |  零陵香豆 · 温柔的甜  |  薄荷 · 清醒情绪降温；后调：檀木 · 宁静深层疗愈  |  安息香 · 温暖归属疗愈  |  麝香 · 安全感陪伴被接纳',
+    subScent:'共生香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的共生智慧',
+    products:[{name:'守护香·守护 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'守护香·守护 淡香精',type:'EDP 35ml',tag:'正装',desc:'暖橙琥珀木质调，持香6-10小时',price:'¥398'},
+      {name:'守护照狸摆件',type:'摆件',tag:'照狸',desc:'骑士照狸，陪你温柔但坚定地守住边界',price:'¥168'}],
+    room:'守护亲子房 · 家庭 | 亲子 | 陪伴',exhibition:'承托·照狸六感展："风休住，蓬舟吹取三山去"的守护空间',
+    shareCopy:['我的SFSC状态码里有GCC——照狸说，我珍惜这份光，也有边界地守护它。','测了照狸六色循环，我的主香是「守护香」· 守护。','我温柔，但我有边界。来看看你的六色状态？'],
+    postCopy:'我的SFSC状态码是GCC·守护。「风休住，蓬舟吹取三山去。」——照狸说，我温柔，但我有边界。你的主香是什么？扫码来测 👇',
+    nextStation:'守护香 → 共生香',nextPhrase:'共生不是妥协，而是不再把人生变成一场对抗',
+    nextDirection:'守护之后是共生。守住了边界、守住了光，接下来你会更平静地与自己、与他人、与世界共处——不再把人生变成一场对抗。'},
+  {code:'C',name:'共生',en:'Symbiosis',color:'#7B94B5',bg:'#E8EEF5',badge:'静境蓝',
+    phrase:'共生不是妥协，而是不再把人生变成一场对抗',declare:'我与自己、他人和世界平静共处，并准备再次遇见',socialRole:'静境智者',socialRoleSub:'朋友群里最稳的那个存在',
+    animal:'鲸',animalDesc:'在深海中从容游弋，不争不抢，却有无法忽视的存在感。鲸歌悠远绵长——不需要被所有人听见，但听见的人一生都不会忘记。',
     awakeningQuote:'共生不是妥协，而是不再把人生变成一场对抗',personalityDeclaration:'我不再和自己对抗',
+    coreTraits:'内心秩序、成熟包容、不争不抢、自带稳定感',coreStrengths:'超稳定的情绪内核；成熟的包容力；不依赖外部认可的自我价值感；看透本质的智慧',
+    growthTopics:'避免过度超脱导致疏离；保持对世界的好奇心；在平静中注入适度的热情',suitableCareers:'高级管理、哲学与人文、投资与长期规划、冥想与身心疗愈、战略顾问',
+    growthAdvice:'你已经走过了最远的路——从对抗世界到与自己和解。你的存在本身，就是一种安静的力量。继续这份静定，但请也保持对世界温柔的好奇——它会带你看见更大的风景。',
     selfView:'你正在走向更平静、更成熟、更长期的关系状态。你不再需要赢过谁，也不再需要证明什么。你身上有一种让人安静下来的力量——这不是老去，是抵达。你把对抗变成了连接。',
-    othersView:'别人会觉得你越来越「稳」了。你不争不抢，但你说的话越来越有分量。你身上有一种让人安静下来的力量，人们在你面前不需要伪装——因为你知道，一切都会好的。',
-    hiddenTalent:'你以为自己只是「看开了」，其实你已经抵达了很多人一辈子都在追求的境界——内心秩序的自洽。这种境界不是放弃，而是超越了对抗之后的选择。你终于明白：和世界和解，就是和自己和解。',
-    positiveAffirmation:'你的存在本身，就是一种力量。这不意味着你已经到达终点——共生不是静止，而是在平静中继续生长。这周，花20分钟做一件只为自己、不为任何人的小事。就像年少时那样，毫无目的地快乐。',
+    othersView:'别人会觉得你越来越"稳"了。你不争不抢，但你说的话越来越有分量。你身上有一种让人安静下来的力量，人们在你面前不需要伪装——因为你知道，一切都会好的。',
+    hiddenTalent:'你以为自己只是"看开了"，其实你已经抵达了很多人一辈子都在追求的境界——内心秩序的自洽。这种境界不是放弃，而是超越了对抗之后的选择。你终于明白：和世界和解，就是和自己和解。',
+    energySource:'内心的秩序感、深度的关系、自然与宁静、不被干扰的专注状态',energyDrain:'嘈杂环境、被迫竞争、浅层社交、被要求表态的场合',
+    bright:'平静共处，保持内心秩序',shadow:'共生者最隐秘的风险，是在"看开"中失去了"在意"。当你把所有情绪都修炼成了平静，可能会忘记：愤怒、激动、热烈——这些都是活着的证据。偶尔不那么"稳"，那才是完整的共生。',
+    positiveAffirmation:'你的存在本身，就是一种力量。这周，花20分钟做一件只为自己、不为任何人的小事。就像年少时那样，毫无目的地快乐。',
     todayAction:'找到一件很久没做但曾经很喜欢的事，花20分钟——什么都不为，只是因为你喜欢。',
-    shadowReminder:'共生者最隐秘的风险，是在「看开」中失去了「在意」。当你把所有情绪都修炼成了平静，可能会忘记：愤怒、激动、热烈——这些都是活着的证据。请允许自己偶尔不那么「稳」。偶尔大声笑、偶尔眼眶发热——那才是完整的共生。',
-    warningSignal:'对曾经的兴趣爱好无感、与人谈论自己时用「都挺好的」一带而过、回避强烈情绪 → 你的平静正在变成一种疏离。找回你的温度。',
-    zhaoliMessage:'静境照狸在你身旁盘腿坐下，像一座小小的灯塔。它什么都不说——因为它知道，你已经不需要任何指引了。你走过的路，已经是你的方向。它只是在旁边陪着，和你一起看着潮起潮落。',
-    poemInterpretation:'「闲处好」「雨来佳」——李清照晚年最通透的心境。她已经不需要风和日丽才能快乐：下雨也好，晴天也好，书在枕边就好，风景在眼前就好。共生者已经抵达了很多人一生追求的境界：不焦虑雨来，不慌张闲去。',
-    bright:'平静共处',shadow:'平静不是麻木，也不是退缩。共生之后，新的邂逅还会再次发生',
-    advance:'保持平静，也允许新的美好靠近',
-    scent:'静泊',scentDesc:'白麝香与雪松木的沉静组合，不争不抢，却有无法忽视的存在感。越久越醇。',
-    scentShort:'白麝香 · 雪松 · 静水',
+    warningSignal:'对曾经兴趣爱好无感、与人谈论自己时用"都挺好的"一带而过、回避强烈情绪 → 平静正在变成疏离。找回你的温度。',
     zhaoli:'静境照狸',zhaoliDesc:'陪你走向平静共生',
+    zhaoliMessage:'静境照狸在你身旁盘腿坐下，像一座小小的灯塔。它什么都不说——因为它知道，你已经不需要任何指引了。它只是在旁边陪着，和你一起看着潮起潮落。',
     poem:'枕上诗书闲处好，门前风景雨来佳。',
-    products:[
-      {name:'静泊·共生 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
-      {name:'静泊·共生 淡香精',type:'EDP 50ml',tag:'正装',desc:'白麝香与雪松木，持香8-10小时',price:'¥468'},
-      {name:'共生照狸摆件',type:'摆件',tag:'照狸',desc:'静境照狸，陪你走向平静共生',price:'¥168'}
-    ],
-    room:'共生静境主题房 · 夜晚 | 阅读 | 独处',
-    shareCopy:[
-      '我的SFSC状态码里有C——照狸说，我与自己和世界平静共处，并准备再次遇见。',
-      '测了一下照狸六色循环，我的主香是「静泊」· 共生。',
-      '我不再和自己对抗了。来看看你的六色状态？'
-    ],
-    postCopy:'我的SFSC状态码是C·共生。「枕上诗书闲处好，门前风景雨来佳。」——照狸说，我不再和自己对抗了。你的主香是什么？扫码来测 ⬇️',
-    nextPredict:'共生之后，新的邂逅会再次发生。平静不是为了永远静止——而是为了下一次循环做好准备。新的遇见、新的触动，正在靠近你。'
-  }
+    poemDeep:'"闲处好""雨来佳"——李清照晚年最通透的心境。她已经不需要风和日丽才能快乐：下雨也好，晴天也好，书在枕边就好，风景在眼前就好。共生者已经抵达了很多人一生追求的境界。',
+    scentMain:'共生香',scentMainDesc:'一种抵达之后的香气。不争不抢，却有无法忽视的存在感。你已经不需要证明任何东西。',
+    scentMood:'深蓝木质海盐调，不争不抢，却有无法忽视的存在感。像深湖的表面——看似平静，底下却藏着丰富的生命。越久越醇。共生不是妥协，而是不再把人生变成一场对抗。你已经走过了最远的路——从对抗世界到与自己和解。',
+    scentSeason:'四季皆宜',scentShort:'深蓝 · 木质 · 与世界同频',
+    scentPyramid:'前调：白茶 · 内心的净与定  |  佛手柑 · 打开心门命运流动  |  小豆蔻 · 灵性温暖智慧；中调：白麝香 · 安全感肌肤温度  |  鸢尾 · 内在稳定灵魂重量  |  檀香 · 宁静深层疗愈  |  乳香 · 灵魂安定；后调：雪松木 · 长久陪伴  |  琥珀 · 时间沉淀成熟  |  安息香 · 温暖归属柔和  |  干龙涎香 · 与世界融合的命运感',
+    subScent:'邂逅香',subScentDesc:'隐藏能量——你没有说出口、但一直存在的重新出发渴望',
+    products:[{name:'共生香·共生 10ml主香认领装',type:'10ml',tag:'首认',desc:'此刻主香的气味信物，把今天的自己带回生活',price:'¥139'},
+      {name:'共生香·共生 淡香精',type:'EDP 35ml',tag:'正装',desc:'深蓝木质海盐调，持香6-10小时',price:'¥468'},
+      {name:'共生照狸摆件',type:'摆件',tag:'照狸',desc:'静境照狸，陪你走向平静共生',price:'¥168'}],
+    room:'共生静境房 · 夜晚 | 阅读 | 独处',exhibition:'和解·照狸六感展："枕上诗书闲处好，门前风景雨来佳"的治愈体验',
+    shareCopy:['我的SFSC状态码里有CEE——照狸说，我与自己和世界平静共处，并准备再次遇见。','测了照狸六色循环，我的主香是「共生香」· 共生。','我不再和自己对抗了。来看看你的六色状态？'],
+    postCopy:'我的SFSC状态码是CEE·共生。「枕上诗书闲处好，门前风景雨来佳。」——照狸说，我不再和自己对抗了。你的主香是什么？扫码来测 👇',
+    nextStation:'共生香 → 邂逅香',nextPhrase:'你仍然有被世界打动的能力',
+    nextDirection:'共生之后，新的邂逅会再次发生。平静不是为了永远静止——而是为了下一次循环做好准备。新的遇见、新的触动，正在靠近你。'}
 ];
+
 
 // ==================== CONSTANTS ====================
 const CYCLE = ['E','A','M','B','G','C'];
@@ -982,6 +1018,21 @@ function renderResult(mainIdx, subIdx, nextObjIdx, boundaryType) {
     '<div class="r-depth-awaken" style="color:'+p.color+'">「'+p.awakeningQuote+'」</div>'+
     '<div style="text-align:center;font-size:13px;">'+p.personalityDeclaration+'</div>';
 
+  // --- 心理特质图谱 ---
+  const traits = [
+    {label:'核心特质', value:p.coreTraits},
+    {label:'核心优势', value:p.coreStrengths},
+    {label:'成长课题', value:p.growthTopics},
+    {label:'适合领域', value:p.suitableCareers}
+  ];
+  document.getElementById('traitGrid').innerHTML = traits.map(t =>
+    '<div class="r-trait-item"><div class="r-3d-label" style="color:'+p.color+'">'+t.label+'</div><div class="r-trait-text">'+t.value+'</div></div>'
+  ).join('');
+
+  // --- 能量地图 ---
+  document.getElementById('energySrc').textContent = p.energySource;
+  document.getElementById('energyDrain').textContent = p.energyDrain;
+
   // --- 三维自我认知 ---
   const colors3d = [p.color, sub.color, p.color];
   const labels3d = ['你眼中的自己','别人看到的你','尚未察觉的天赋'];
@@ -1005,23 +1056,23 @@ function renderResult(mainIdx, subIdx, nextObjIdx, boundaryType) {
   // --- 阴影深度 + 警惕信号 ---
   document.getElementById('warningDeep').innerHTML =
     '<div class="r-warn-label">⚠ 过度消耗提醒</div>'+
-    '<div class="r-warn-text">'+p.shadowReminder+'</div>'+
+    '<div class="r-warn-text">'+p.shadow+'</div>'+
     '<div class="r-warn-signal">⚠ 警惕信号: '+p.warningSignal+'</div>';
 
   // --- 推进建议 ---
-  document.getElementById('advanceTip').textContent = p.advance;
+  document.getElementById('advanceTip').textContent = p.growthAdvice;
   document.getElementById('advanceTip').style.color = p.color;
 
   // --- 副香 ---
-  document.getElementById('subScent').textContent = sub.name + '「' + sub.scent + '」';
+  document.getElementById('subScent').textContent = p.subScent + ' · 副香';
   document.getElementById('subScent').style.color = sub.color;
-  document.getElementById('subScentDesc').textContent = '副香代表隐藏能量——你没有说出口、但一直存在的能量';
+  document.getElementById('subScentDesc').textContent = p.subScentDesc;
 
   // --- 下一站 ---
-  document.getElementById('nextScent').textContent = next.name + '「' + next.scent + '」';
+  document.getElementById('nextScent').textContent = p.nextStation;
   document.getElementById('nextScent').style.color = next.color;
-  document.getElementById('nextScentDesc').textContent = next.phrase;
-  document.getElementById('predictionText').textContent = p.nextPredict;
+  document.getElementById('nextScentDesc').textContent = p.nextPhrase;
+  document.getElementById('predictionText').textContent = p.nextDirection;
 
   // --- 六色循环vis ---
   const stepsEl = document.getElementById('cycleSteps');
@@ -1046,7 +1097,7 @@ function renderResult(mainIdx, subIdx, nextObjIdx, boundaryType) {
 
   // --- 诗词深度 ---
   document.getElementById('poemText').textContent = p.poem;
-  document.getElementById('poemDeep').textContent = p.poemInterpretation;
+  document.getElementById('poemDeep').textContent = p.poemDeep;
 
   // --- 照狸寄语 ---
   document.getElementById('zhaoliDeep').innerHTML =
@@ -1069,8 +1120,51 @@ function renderResult(mainIdx, subIdx, nextObjIdx, boundaryType) {
   const claimBtn = document.getElementById('claimBtn');
   if (claimBtn) {
     claimBtn.style.background = p.color;
-    claimBtn.textContent = '认领我的主香 · ' + p.scent + ' · 10ml';
+    claimBtn.textContent = '认领我的主香 · ' + p.scentMain + ' · 10ml';
   }
+
+  // --- 专属香型详情 · 香调金字塔 ---
+  // 解析香调金字塔：前调：A | B；中调：C | D；后调：E | F
+  const scentHeaderEl = document.getElementById('scentHeader');
+  scentHeaderEl.innerHTML =
+    '<div class="r-scent-name" style="color:'+p.color+'">'+p.scentMain+'</div>'+
+    '<div class="r-scent-mood">'+p.scentMood+'</div>'+
+    '<div class="r-scent-meta"><span class="r-scent-tag" style="background:'+p.bg+';color:'+p.color+'">'+p.scentSeason+'</span></div>'+
+    '<div style="font-size:11px;color:var(--text3);margin-top:6px;">'+p.scentShort+'</div>';
+
+  const pyramidEl = document.getElementById('scentPyramidViz');
+  // 按"；"分割前中后调
+  const pyramidLayers = p.scentPyramid.split('；');
+  let pyramidHTML = '';
+  pyramidLayers.forEach(layer => {
+    const colonIdx = layer.indexOf('：');
+    if (colonIdx === -1) return;
+    const levelName = layer.substring(0, colonIdx).trim();
+    const notesText = layer.substring(colonIdx + 1).trim();
+    // 按"|"分割每个香调元素
+    const notes = notesText.split('|').map(n => n.trim()).filter(n => n);
+    const notesHTML = notes.map(n => {
+      // 检查是否包含"——"或"·"
+      const dashIdx = n.indexOf('——');
+      if (dashIdx > 0) {
+        const noteName = n.substring(0, dashIdx).trim();
+        const noteDesc = n.substring(dashIdx + 2).trim();
+        return '<span style="font-weight:500">'+noteName+'</span><span style="color:var(--text3);font-size:11px"> —— '+noteDesc+'</span>';
+      }
+      return '<span>'+n+'</span>';
+    }).join('<span class="r-pyramid-sep">|</span>');
+    pyramidHTML +=
+      '<div class="r-pyramid-layer" style="border-left-color:'+p.color+'">'+
+      '<div class="r-pyramid-level" style="color:'+p.color+'">'+levelName+'</div>'+
+      '<div class="r-pyramid-notes">'+notesHTML+'</div>'+
+      '</div>';
+  });
+  pyramidEl.innerHTML = pyramidHTML;
+
+  // --- 主题房 & 六感展 ---
+  document.getElementById('roomGrid').innerHTML =
+    '<div class="r-room-card"><div class="r-3d-label" style="color:'+p.color+'">✦ 主题房</div><div class="r-duo-text">'+p.room+'</div></div>'+
+    '<div class="r-room-card"><div class="r-3d-label" style="color:'+p.color+'">✦ 照狸六感展</div><div class="r-duo-text">'+p.exhibition+'</div></div>';
 
   // --- 分享文案 ---
   const shareEl = document.getElementById('shareCopyList');
@@ -1299,8 +1393,8 @@ function drawPoster() {
 
   ctx.font = '400 18px "PingFang SC", sans-serif';
   ctx.fillStyle = '#6B6360';
-  ctx.fillText('主香 · ' + p.scent, W/2, 860);
-  ctx.fillText(p.scentDesc, W/2, 890);
+  ctx.fillText('主香 · ' + p.scentMain, W/2, 860);
+  ctx.fillText(p.scentMainDesc, W/2, 890);
 
   ctx.strokeStyle = '#E8E3DC'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(80, 950); ctx.lineTo(W-80, 950); ctx.stroke();
