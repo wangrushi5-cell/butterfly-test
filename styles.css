@@ -82,8 +82,8 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .result-hero::before { content: ""; position: absolute; left: -20%; right: -20%; top: -32%; height: 58%; background: conic-gradient(from 120deg, #d99eaa55, #7f9f8555, #8f76a155, #d5a93c55, #cb865655, #668b9b55, #d99eaa55); filter: blur(34px); opacity: .32; animation: hueSweep 11s linear infinite; }
 .result-hero > * { position: relative; z-index: 1; }
 .result-module { scroll-margin-top: 18px; }
-.result-brand-strip { margin-bottom: 26px; padding: 8px 12px; border: 1px solid #eadbd1; border-radius: 999px; background: #ffffffbf; backdrop-filter: blur(10px); }
-.result-brand-strip img:first-child { max-width: 210px; max-height: 46px; }
+.result-brand-strip { width: fit-content; min-width: 132px; max-width: 168px; min-height: 36px; margin: 0 auto 24px; padding: 5px 14px; border: 1px solid #eadbd1; border-radius: 999px; background: #ffffffc9; box-shadow: 0 8px 20px #7d59420f, inset 0 1px 0 #fff; backdrop-filter: blur(10px); }
+.result-brand-strip img:first-child { width: 112px; max-width: 100%; max-height: 30px; }
 .hero-label { margin: 56px 0 11px; color: #987d6d; font-size: 13px; }
 .result-icon { font-size: 42px; animation: guardianFloat 4.6s ease-in-out infinite; }
 .result-hero h1 { margin: 8px 0 4px; color: #604433; font-family: "Songti SC", serif; font-size: 40px; font-weight: 500; letter-spacing: .08em; }
