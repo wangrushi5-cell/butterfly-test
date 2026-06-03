@@ -373,9 +373,12 @@ function renderResult() {
   $("action-title").textContent = p.action; $("action-copy").textContent = p.actionCopy;
   $("code-breakdown").innerHTML = [[p, "主香 · 此刻的你"], [s, "副香 · 隐藏的你"], [n, "下一站 · 正在生长的你"]].map(([x, label]) => `<div class="code-row"><b>${x.code}</b><span>${label}：${x.fragrance}</span></div>`).join("");
   $("cycle-path").innerHTML = `
-    <div class="cycle-wheel" aria-hidden="true"></div>
+    <div class="cycle-orbit" aria-hidden="true"></div>
+    <div class="cycle-flow" aria-hidden="true">
+      ${CYCLE.map((_, index) => `<i style="--a:${-60 + index * 60}deg">›</i>`).join("")}
+    </div>
     <div class="cycle-center">
-      <span>当前所在</span>
+      <span>YOU ARE HERE</span>
       <strong>${p.state}</strong>
       <em>${p.code} · ${p.colorName}</em>
     </div>
@@ -383,15 +386,14 @@ function renderResult() {
       const item = SIX.find(x => x.code === cycleCode);
       const angle = -90 + index * 60;
       const rad = angle * Math.PI / 180;
-      const x = 50 + Math.cos(rad) * 39;
-      const y = 50 + Math.sin(rad) * 39;
+      const x = 50 + Math.cos(rad) * 31;
+      const y = 50 + Math.sin(rad) * 31;
       const active = cycleCode === p.code ? " is-active" : "";
       const nextStep = cycleCode === n.code ? " is-next" : "";
-      const textColor = cycleCode === "B" ? "#5a4234" : "#fff";
-      return `<span class="cycle-node${active}${nextStep}" style="--x:${x.toFixed(2)}%; --y:${y.toFixed(2)}%; --node-color:${CYCLE_COLORS[cycleCode]}; --node-text:${textColor};"><b>${cycleCode}</b>${item.state}</span>`;
+      return `<span class="cycle-dot${active}${nextStep}" style="--x:${x.toFixed(2)}%; --y:${y.toFixed(2)}%; --node-color:${CYCLE_COLORS[cycleCode]}; --label-x:${Math.cos(rad).toFixed(3)}; --label-y:${Math.sin(rad).toFixed(3)};"><i></i><b>${item.state}</b></span>`;
     }).join("")}
-    <div class="cycle-flow-label">顺时针循环 · 下一站 ${n.state}</div>`;
-  $("cycle-copy").textContent = `当前站：${p.state}（${p.code}）\n下一站：${n.state}（${n.code}）\n\n六色不是六种固定人格，而是六种生命状态。不是定型，而是流转；不是判断，而是看见。`;
+    <div class="cycle-flow-label"><span>当前：${p.state}</span><span>下一站：${n.state}</span></div>`;
+  $("cycle-copy").textContent = `你当前的所属状态：${p.state}（${p.code}）\n顺时针流向下一站：${n.state}（${n.code}）\n\n六色不是六种固定人格，而是六种生命状态。不是定型，而是流转；不是判断，而是看见。`;
   $("three-view").innerHTML = cardList([["你眼中的自己", pd.selfView], ["别人看到的你", pd.othersView], ["你尚未察觉的天赋", pd.hiddenTalent]]);
   $("trait-map").innerHTML = traitCardList([["✧", "核心特质", pd.traits], ["◇", "核心优势", pd.strengths], ["⌁", "成长课题", pd.growthTask], ["◌", "适合场景", pd.scenes]]);
   $("energy-map").innerHTML = cardList([["能量来源", pd.energySource], ["能量消耗", pd.energyDrain]]);
@@ -401,14 +403,6 @@ function renderResult() {
   $("guardian-image").src = `./assets/guardians/${assets.guardian}`;
   $("guardian-image").alt = `${pd.guardianName}形象`;
   $("poem-card").innerHTML = `<blockquote>${pd.poem}</blockquote><p>${pd.poemSource}</p><span>${pd.poemRead}</span>`;
-  $("fragrance-map").innerHTML = `
-    <p class="feature-copy">${pd.scentMood}</p>
-    <div class="pyramid">${pd.materials.map(([name, meaning, metaphor], index) => `<div class="pyramid-row level-${index + 1}"><i>${MATERIAL_ICONS[name] || "✧"}</i><b>${name}</b><span>${meaning}</span><em>${metaphor}</em></div>`).join("")}</div>
-    <div class="scent-notes compact">
-      <div><span>主香</span><strong>${p.fragrance} · ${p.keywords}</strong></div>
-      <div><span>副香</span><strong>${s.fragrance} · ${s.keywords}</strong></div>
-      <div><span>下一站</span><strong>${n.fragrance} · ${n.keywords}</strong></div>
-    </div>`;
   $("product-card").innerHTML = `
     <figure class="product-line">
       <img src="./assets/products/product-line-overview.jpg" alt="蝴蝶坞香水产品线" />

@@ -111,22 +111,30 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .code-row { display: grid; grid-template-columns: 26px 1fr; gap: 9px; align-items: center; }
 .code-row b { display: grid; height: 26px; place-items: center; border-radius: 50%; color: #fff; background: #8d6a56; font-size: 12px; }
 .code-row span { color: #68594e; font-size: 13px; }
-.cycle-path { position: relative; display: grid; place-items: center; width: min(100%, 360px); aspect-ratio: 1 / 1; margin: 18px auto 46px; overflow: visible; padding: 18px; border: 1px solid #ead8c9; border-radius: 32px; background: radial-gradient(circle at 50% 50%, #fffdf8 0 34%, color-mix(in srgb, var(--result-glow), #fff 40%) 58%, #fffaf3 100%); box-shadow: inset 0 1px 0 #fff, 0 16px 34px #7d594214; }
-.cycle-path::before, .cycle-path::after { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--result-accent); box-shadow: 0 0 18px var(--result-accent); animation: orbitParticle 5.5s linear infinite; }
-.cycle-path::before { left: 18%; top: 18%; }
-.cycle-path::after { right: 18%; bottom: 18%; animation-delay: -2.4s; }
-.cycle-wheel { position: absolute; inset: 13%; border-radius: 50%; background: conic-gradient(from -120deg, #edabc3 0deg 60deg, #4baa52 60deg 120deg, #8c3a91 120deg 180deg, #ffd51b 180deg 240deg, #ed681c 240deg 300deg, #0d4298 300deg 360deg); box-shadow: 0 18px 42px #7d59421d, inset 0 0 0 1px #ffffffa8; animation: cycleGlow 8s ease-in-out infinite; }
-.cycle-wheel::before { content: ""; position: absolute; inset: 17%; border-radius: 50%; background: #fffdf8; box-shadow: inset 0 8px 18px #7d594214; }
-.cycle-wheel::after { content: "↻"; position: absolute; right: 13%; top: 9%; display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: #75523f; background: #fffdf8e8; box-shadow: 0 8px 20px #0002; font-size: 18px; animation: ringPulse 3.6s ease-in-out infinite; }
-.cycle-center { position: relative; z-index: 2; display: grid; place-items: center; width: 42%; aspect-ratio: 1 / 1; border: 1px solid #ead8c9; border-radius: 50%; background: #fffdf8f5; box-shadow: 0 14px 34px #7d59421f, inset 0 1px 0 #fff; text-align: center; }
-.cycle-center span { color: #a17b63; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
-.cycle-center strong { color: #5a4234; font-family: "Songti SC", serif; font-size: 24px; font-weight: 500; line-height: 1.2; }
-.cycle-center em { color: #756a62; font-size: 10px; font-style: normal; }
-.cycle-node { position: absolute; left: var(--x); top: var(--y); z-index: 3; display: grid; min-width: 58px; min-height: 42px; place-items: center; padding: 6px 8px; border: 2px solid #fff; border-radius: 16px; color: var(--node-text); background: var(--node-color); font-size: 12px; font-weight: 700; box-shadow: 0 12px 22px color-mix(in srgb, var(--node-color), transparent 58%), inset 0 1px 0 #ffffff80; transform: translate(-50%, -50%); }
-.cycle-node b { color: inherit; font-size: 11px; line-height: 1; opacity: .86; }
-.cycle-node.is-next { outline: 1px dashed color-mix(in srgb, var(--node-color), #fff 20%); outline-offset: 4px; }
-.cycle-node.is-active { min-width: 74px; min-height: 54px; border-width: 3px; box-shadow: 0 18px 34px color-mix(in srgb, var(--node-color), transparent 40%), 0 0 0 8px color-mix(in srgb, var(--node-color), transparent 82%), inset 0 1px 0 #ffffffa0; transform: translate(-50%, -50%) scale(1.08); animation: activeNodePulse 2.6s ease-in-out infinite; }
-.cycle-flow-label { position: absolute; left: 50%; bottom: -26px; z-index: 2; padding: 7px 11px; border: 1px solid #ead8c9; border-radius: 999px; color: #75523f; background: #fffdf8f2; box-shadow: 0 10px 24px #7d594214; font-size: 11px; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+.cycle-path { position: relative; display: grid; place-items: center; width: min(100%, 292px); aspect-ratio: 1 / 1; margin: 16px auto 52px; overflow: visible; padding: 18px; border: 1px solid #ead8c9; border-radius: 28px; background: radial-gradient(circle at 50% 50%, #fffdf8 0 34%, color-mix(in srgb, var(--result-glow), #fff 72%) 62%, #fff9f1 100%); box-shadow: inset 0 1px 0 #fff, 0 12px 28px #7d594212; }
+.cycle-orbit { position: absolute; inset: 25%; border: 1px dashed #d9c5b5; border-radius: 50%; opacity: .72; }
+.cycle-orbit::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; background: conic-gradient(from -90deg, transparent 0 12deg, #ffffffd8 12deg 18deg, transparent 18deg 60deg); animation: cycleTrace 4.8s linear infinite; mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px)); }
+.cycle-flow { position: absolute; inset: 0; animation: cycleTrace 12s linear infinite; }
+.cycle-flow i { position: absolute; left: 50%; top: 50%; color: #9d8677; font-style: normal; font-size: 17px; line-height: 1; transform: rotate(var(--a)) translate(54px) rotate(calc(-1 * var(--a))); opacity: .68; animation: arrowBreath 1.8s ease-in-out infinite; }
+.cycle-flow i:nth-child(2) { animation-delay: .12s; }
+.cycle-flow i:nth-child(3) { animation-delay: .24s; }
+.cycle-flow i:nth-child(4) { animation-delay: .36s; }
+.cycle-flow i:nth-child(5) { animation-delay: .48s; }
+.cycle-flow i:nth-child(6) { animation-delay: .6s; }
+.cycle-center { position: relative; z-index: 2; display: grid; place-items: center; width: 40%; aspect-ratio: 1 / 1; border: 1px solid #ead8c9; border-radius: 50%; background: #fffdf8f5; box-shadow: 0 10px 24px #7d594217, inset 0 1px 0 #fff; text-align: center; }
+.cycle-center span { color: #a17b63; font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+.cycle-center strong { color: #5a4234; font-family: "Songti SC", serif; font-size: 21px; font-weight: 500; line-height: 1.18; }
+.cycle-center em { color: #756a62; font-size: 9px; font-style: normal; }
+.cycle-dot { position: absolute; left: var(--x); top: var(--y); z-index: 3; display: grid; place-items: center; transform: translate(-50%, -50%); }
+.cycle-dot i { display: block; width: 22px; height: 22px; border: 2px solid #fffef8; border-radius: 50%; background: var(--node-color); box-shadow: 0 8px 18px color-mix(in srgb, var(--node-color), transparent 62%), inset 0 1px 0 #ffffff8a; }
+.cycle-dot b { position: absolute; left: calc(50% + var(--label-x) * 46px); top: calc(50% + var(--label-y) * 35px); min-width: 42px; color: #6c5c52; font-family: "Songti SC", serif; font-size: 15px; font-weight: 500; line-height: 1; text-align: center; transform: translate(-50%, -50%); white-space: nowrap; }
+.cycle-dot.is-next i { outline: 1px dashed color-mix(in srgb, var(--node-color), #fff 10%); outline-offset: 5px; }
+.cycle-dot.is-next b::after { content: "下一站"; display: block; margin-top: 5px; color: #a17b63; font-family: "PingFang SC", sans-serif; font-size: 9px; font-weight: 800; letter-spacing: .08em; }
+.cycle-dot.is-active i { width: 28px; height: 28px; border-width: 3px; box-shadow: 0 12px 24px color-mix(in srgb, var(--node-color), transparent 48%), 0 0 0 7px color-mix(in srgb, var(--node-color), transparent 84%), inset 0 1px 0 #ffffffa0; animation: activeDotPulse 2.4s ease-in-out infinite; }
+.cycle-dot.is-active b { color: #4f3b31; font-size: 17px; font-weight: 600; }
+.cycle-dot.is-active b::after { content: "当前"; display: block; margin-top: 5px; color: var(--node-color); font-family: "PingFang SC", sans-serif; font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+.cycle-flow-label { position: absolute; left: 50%; bottom: -36px; z-index: 2; display: inline-flex; gap: 8px; padding: 7px 10px; border: 1px solid #ead8c9; border-radius: 999px; color: #75523f; background: #fffdf8f2; box-shadow: 0 10px 24px #7d594214; font-size: 11px; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+.cycle-flow-label span + span { padding-left: 8px; border-left: 1px solid #ead8c9; }
 .info-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 16px; }
 .field-list { display: grid; gap: 10px; margin-top: 16px; }
 #trait-map.field-list { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -142,7 +150,6 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .quote-card blockquote { margin: 0; color: #604433; font-family: "Songti SC", serif; font-size: 22px; line-height: 1.65; }
 .quote-card p { margin: 10px 0 14px; color: #a17b63; font-size: 12px; }
 .quote-card span { color: #665b54; font-size: 14px; line-height: 1.8; }
-.fragrance-map { display: grid; gap: 18px; }
 .scent-tier-map { display: grid; gap: 10px; margin: 16px 0 14px; }
 .scent-tier-card { display: grid; grid-template-columns: 32px 1fr; gap: 10px 12px; align-items: start; padding: 14px 13px; border: 1px solid #f0e1d4; border-radius: 16px; background: #fffdf8f0; box-shadow: 0 10px 24px #7d594214, inset 0 1px 0 #fff; }
 .scent-tier-card i { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 50%; color: #fff; background: var(--result-accent); font-style: normal; font-size: 12px; box-shadow: 0 8px 18px color-mix(in srgb, var(--result-accent), transparent 62%); }
@@ -280,9 +287,20 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
   0%, 100% { filter: saturate(1) brightness(1); transform: rotate(0deg); }
   50% { filter: saturate(1.08) brightness(1.03); transform: rotate(1.5deg); }
 }
+@keyframes cycleTrace {
+  to { transform: rotate(360deg); }
+}
+@keyframes arrowBreath {
+  0%, 100% { opacity: .38; }
+  50% { opacity: .92; }
+}
 @keyframes activeNodePulse {
   0%, 100% { transform: translate(-50%, -50%) scale(1.08); }
   50% { transform: translate(-50%, -50%) scale(1.14); }
+}
+@keyframes activeDotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 @keyframes orbitParticle {
   0% { transform: translate(0, 0) scale(.8); opacity: .35; }
