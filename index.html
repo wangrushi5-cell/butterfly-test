@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#f7f1ea" />
     <title>蝴蝶坞 · 照狸六色循环测试</title>
-    <link rel="stylesheet" href="./styles.css?v=17.1" />
+    <link rel="stylesheet" href="./styles.css?v=18.0" />
   </head>
   <body>
     <main id="app" class="app-shell">
@@ -130,6 +130,7 @@
             <h2 id="primary-fragrance"></h2>
             <p class="muted">主香代表此刻的你。它不是给你贴标签，而是提醒你今天更靠近哪一种状态。</p>
             <p id="primary-copy" class="feature-copy"></p>
+            <div id="scent-tier-map" class="scent-tier-map" aria-label="前中后调香型解析"></div>
             <div class="scent-notes">
               <div><span>香型</span><strong id="primary-family"></strong></div>
               <div><span>关键词</span><strong id="primary-keywords"></strong></div>
@@ -235,7 +236,7 @@
                 <canvas id="report-poster" width="1080" height="1920"></canvas>
               </div>
               <div class="share-tools">
-                <canvas id="test-qr" width="156" height="156" aria-label="测试二维码"></canvas>
+                <canvas id="test-qr" width="112" height="112" aria-label="测试二维码"></canvas>
                 <button id="generate-poster-button" class="secondary-button" type="button">重新生成长图</button>
                 <button id="download-poster-button" class="primary-button" type="button">保存报告长图</button>
                 <button id="copy-report-link-button" class="secondary-button" type="button">复制报告链接</button>
@@ -250,13 +251,13 @@
           </section>
 
           <section class="result-section result-module member-section" data-module="19">
-            <div class="section-kicker" data-icon="◇">未界会员</div>
+            <div class="section-kicker" data-icon="◇">蝶坞会员</div>
             <h2>保存今天的自己，30 天后再看看变化</h2>
-            <p class="feature-copy">未界会员不是积分系统，而是蝴蝶坞为你保存六边形香水人格、主香与复测记录的成长档案。</p>
+            <p class="feature-copy">蝶坞会员不是积分系统，而是蝴蝶坞为你保存六边形香水人格、主香与复测记录的成长档案。</p>
             <div class="member-panel">
               <div class="member-card">
-                <span class="member-badge">未界 · WUJIE</span>
-                <h3>加入未界会员档案</h3>
+                <span class="member-badge">蝶坞会员 · Butterfly Cove Member</span>
+                <h3>加入蝶坞会员档案</h3>
                 <p>保存本次主香、副香、下一站香和六边形状态。30 天后，照狸会通过企业微信提醒你回来复测，生成前后对比报告。</p>
                 <div class="member-benefits">
                   <span>保存主香档案</span>
@@ -266,7 +267,7 @@
                 </div>
               </div>
               <div class="wecom-card">
-                <canvas id="wecom-qr" width="148" height="148" aria-label="企业微信二维码"></canvas>
+                <canvas id="wecom-qr" width="106" height="106" aria-label="企业微信二维码"></canvas>
                 <strong>添加企业微信顾问</strong>
                 <p>正式上线时替换为企微活码。添加后可保存档案、领取权益，并设置 30 天复测提醒。</p>
                 <button id="copy-wecom-button" class="primary-button" type="button">添加企业微信 · 保存档案</button>
@@ -282,8 +283,8 @@
       </section>
     </main>
     <div id="toast" class="toast" role="status"></div>
-    <script src="./questions.js?v=17.1"></script>
-    <script src="./vendor/qrcode-generator.js?v=17.1"></script>
-    <script src="./app.js?v=17.1"></script>
+    <script src="./questions.js?v=18.0"></script>
+    <script src="./vendor/qrcode-generator.js?v=18.0"></script>
+    <script src="./app.js?v=18.0"></script>
   </body>
 </html>

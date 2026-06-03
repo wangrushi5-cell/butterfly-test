@@ -28,6 +28,38 @@ const MATERIAL_ICONS = {
   "紫调花香": "✦", "愈创木": "▰", "广藿香": "◼", "柑橘": "☼", "花束": "✺", "柔软木质": "▱",
   "暖橙": "◉", "琥珀": "◆", "麝香木质": "◇", "海洋调": "≈", "龙涎香": "◈", "檀香": "△"
 };
+const SCENT_TIER_DETAILS = {
+  E: [
+    ["前调", "香柠檬、荔枝、黑醋栗、西柚", "眼眸的凝视", "人生里最柔软的开场，往往来自一次不期而遇。"],
+    ["中调", "玫瑰、梨、牡丹、雪松", "脸颊的绯红", "心动不是失控，而是审美、价值观与情绪频率的轻轻共振。"],
+    ["后调", "降龙涎香醚、麝香", "万蝶的心率", "真正留下来的，是一段关系开始时被身体记住的温度。"]
+  ],
+  A: [
+    ["前调", "藏红花、橙子、甜香", "无明的茧房", "混沌并不可怕，它只是清醒到来之前的暗处。"],
+    ["中调", "龙涎香、茉莉", "惊蛰的春雷", "当你诚实地看向自己，第一道光会先在心里响起。"],
+    ["后调", "橡苔", "破晓的澄明", "清醒不是冷掉，而是终于拥有自己的判断和边界。"]
+  ],
+  M: [
+    ["前调", "黑胡椒、香柠檬、焦糖", "笃定的作茧", "改变之前，先允许自己进入一段安静的重构期。"],
+    ["中调", "甘草", "蛹内的撕裂", "旧的形态正在松动，新的力量也在不被看见处生成。"],
+    ["后调", "愈创木、广藿香、安息香、雪松", "琥珀的胎动", "所有深刻变化，最后都会成为你身体里更稳的骨架。"]
+  ],
+  B: [
+    ["前调", "橘子、香柠檬、青柠、果香", "破茧的初息", "生命开始显形，第一口呼吸就带着明亮的证明。"],
+    ["中调", "白花、百合、大马士革玫瑰", "不迎合的舒展", "真正的绽放，不再为了取悦而改变自己的形状。"],
+    ["后调", "龙涎香、麝香、香草、苔藓", "阳光下温柔的自信", "光不是一瞬间的热闹，而是安静时也不会熄灭的底气。"]
+  ],
+  G: [
+    ["前调", "橙子、西柚", "心域的穹顶", "先为自己划出安静边界，才有力量温柔地照顾他人。"],
+    ["中调", "薄荷、黑醋栗", "悠长的脉动", "稳定不是停滞，而是在变化里维持自己的呼吸节奏。"],
+    ["后调", "麝香", "温存的琥珀", "真正的守护，会把时间、关系和自己一起温柔包裹。"]
+  ],
+  C: [
+    ["前调", "香柠檬、小豆蔻、胡椒", "栩栩然，入梦", "当你不再急着证明，世界反而开始向你打开。"],
+    ["中调", "雪松、檀香、乳香", "天籁的和弦", "自我、他人和万物慢慢同频，关系也变得更安静。"],
+    ["后调", "干龙涎香、麝香、安息香", "混沌的初晨", "圆融不是消失自我，而是在更大的秩序里重新归来。"]
+  ]
+};
 const PROFILE_DETAILS = {
   E: {
     selfView: "你会留意空气里的细节，也会把人与人之间很轻的变化放在心上。",
@@ -335,6 +367,7 @@ function renderResult() {
   $("result-icon").textContent = p.icon; $("result-state").textContent = `${p.state} · ${p.colorName}`; $("result-english").textContent = `${p.english} STATE`;
   $("sfsc-code").textContent = code; $("result-quote").textContent = `“${p.quote}”`;
   $("primary-fragrance").textContent = p.fragrance; $("primary-copy").textContent = p.copy; $("primary-family").textContent = p.family; $("primary-keywords").textContent = p.keywords; $("primary-season").textContent = p.season;
+  $("scent-tier-map").innerHTML = scentTierCards(p.code);
   $("secondary-fragrance").textContent = `你的副香：${s.fragrance}`; $("secondary-copy").textContent = `你的副香是「${s.fragrance}」。\n\n这股能量可能没有被你放在最前面，却一直在影响你的选择、关系和感受方式。\n\n${sd.selfView}`;
   $("next-fragrance").textContent = `你的下一站香：${n.fragrance}`; $("next-copy").textContent = `${p.state}之后是${n.state}。\n\n${nextCopy(p.code)}\n\n下一站香：${n.fragrance}\n香气关键词：${n.keywords}`;
   $("action-title").textContent = p.action; $("action-copy").textContent = p.actionCopy;
@@ -360,7 +393,7 @@ function renderResult() {
     <div class="cycle-flow-label">顺时针循环 · 下一站 ${n.state}</div>`;
   $("cycle-copy").textContent = `当前站：${p.state}（${p.code}）\n下一站：${n.state}（${n.code}）\n\n六色不是六种固定人格，而是六种生命状态。不是定型，而是流转；不是判断，而是看见。`;
   $("three-view").innerHTML = cardList([["你眼中的自己", pd.selfView], ["别人看到的你", pd.othersView], ["你尚未察觉的天赋", pd.hiddenTalent]]);
-  $("trait-map").innerHTML = fieldList([["核心特质", pd.traits], ["核心优势", pd.strengths], ["成长课题", pd.growthTask], ["适合场景", pd.scenes]]);
+  $("trait-map").innerHTML = traitCardList([["✧", "核心特质", pd.traits], ["◇", "核心优势", pd.strengths], ["⌁", "成长课题", pd.growthTask], ["◌", "适合场景", pd.scenes]]);
   $("energy-map").innerHTML = cardList([["能量来源", pd.energySource], ["能量消耗", pd.energyDrain]]);
   $("bright-reminder").innerHTML = cardList([["明亮面", pd.bright], ["温柔提醒", pd.reminder]]);
   $("guardian-title").textContent = pd.guardianName;
@@ -399,8 +432,23 @@ function renderResult() {
 function cardList(items) {
   return items.map(([title, text]) => `<div class="mini-card"><p>${title}</p><span>${text}</span></div>`).join("");
 }
+function traitCardList(items) {
+  return items.map(([icon, title, text]) => `<div class="trait-card"><i>${icon}</i><p>${title}</p><span>${text}</span></div>`).join("");
+}
 function fieldList(items) {
   return items.map(([title, text]) => `<div class="field-row"><span>${title}</span><strong>${text}</strong></div>`).join("");
+}
+function scentTierCards(code) {
+  return (SCENT_TIER_DETAILS[code] || []).map(([tier, notes, symbol, metaphor], index) => `
+    <article class="scent-tier-card tier-${index + 1}">
+      <i>${["Ⅰ", "Ⅱ", "Ⅲ"][index]}</i>
+      <div>
+        <span>${tier}</span>
+        <strong>${notes}</strong>
+      </div>
+      <p>${symbol}</p>
+      <em>${metaphor}</em>
+    </article>`).join("");
 }
 function nextCopy(code) {
   return {
@@ -416,9 +464,21 @@ function drawHexagon(primary) {
   const canvas = $("radar-chart"), ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height, cx = W / 2, cy = H / 2, r = 170;
   ctx.clearRect(0, 0, W, H); const angle = i => -Math.PI / 2 + i * Math.PI / 3;
   for (let layer = 1; layer <= 4; layer++) { ctx.beginPath(); for (let i = 0; i < 6; i++) { const rr = r * layer / 4, x = cx + Math.cos(angle(i)) * rr, y = cy + Math.sin(angle(i)) * rr; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.closePath(); ctx.strokeStyle = "#ccbdb133"; ctx.stroke(); }
-  const max = Math.max(...rawScores, 1), vals = rawScores.map(s => .12 + s / max * .86);
+  const scores = lastResult?.normalized?.length ? lastResult.normalized : rawScores;
+  const max = Math.max(...scores, 1), vals = scores.map(s => .12 + s / max * .86);
   ctx.beginPath(); vals.forEach((v, i) => { const x = cx + Math.cos(angle(i)) * r * v, y = cy + Math.sin(angle(i)) * r * v; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.closePath(); ctx.fillStyle = SIX[primary].bg + "bb"; ctx.fill(); ctx.strokeStyle = SIX[primary].color; ctx.lineWidth = 4; ctx.stroke();
-  SIX.forEach((x, i) => { const px = cx + Math.cos(angle(i)) * (r + 54), py = cy + Math.sin(angle(i)) * (r + 54); ctx.fillStyle = x.color; ctx.font = `${i === primary ? "700" : "500"} 24px PingFang SC`; ctx.textAlign = "center"; ctx.fillText(`${x.code} · ${x.state}`, px, py); });
+  vals.forEach((v, i) => {
+    const dotX = cx + Math.cos(angle(i)) * r * v, dotY = cy + Math.sin(angle(i)) * r * v;
+    ctx.beginPath(); ctx.arc(dotX, dotY, i === primary ? 7 : 5, 0, Math.PI * 2);
+    ctx.fillStyle = SIX[i].color; ctx.fill();
+    ctx.strokeStyle = "#fffaf4"; ctx.lineWidth = 3; ctx.stroke();
+  });
+  SIX.forEach((x, i) => {
+    const px = cx + Math.cos(angle(i)) * (r + 62), py = cy + Math.sin(angle(i)) * (r + 62);
+    const score = Math.round((scores[i] / max) * 100);
+    ctx.fillStyle = x.color; ctx.font = `${i === primary ? "700" : "500"} 22px PingFang SC`; ctx.textAlign = "center"; ctx.fillText(`${x.code} · ${x.state}`, px, py - 8);
+    ctx.fillStyle = i === primary ? x.color : "#8e8075"; ctx.font = `${i === primary ? "700" : "500"} 18px PingFang SC`; ctx.fillText(`${score}分`, px, py + 22);
+  });
 }
 function reportPayload() {
   const { primary, secondary, next, code, rawScores } = lastResult;
@@ -436,7 +496,7 @@ function decodeReport(hash) {
 function reportLink() {
   return `${TEST_ENTRY_PATH}#report=${encodeReport()}`;
 }
-function drawQr(canvas, text, size = 156) {
+function drawQr(canvas, text, size = canvas.width) {
   if (!window.qrcode) return;
   const qr = qrcode(0, "M");
   qr.addData(text);
@@ -564,7 +624,7 @@ $("generate-poster-button").addEventListener("click", () => { drawPoster(); toas
 $("download-poster-button").addEventListener("click", downloadPoster);
 $("copy-report-link-button").addEventListener("click", () => copyText(reportLink(), "报告链接已复制"));
 $("native-share-button").addEventListener("click", nativeShareReport);
-$("copy-wecom-button").addEventListener("click", () => copyText("我想加入未界会员，保存我的六边形香水人格档案，并设置30天复测提醒。", "企微添加话术已复制"));
+$("copy-wecom-button").addEventListener("click", () => copyText("我想加入蝶坞会员，保存我的六边形香水人格档案，并设置30天复测提醒。", "企微添加话术已复制"));
 window.reportLink = reportLink;
 window.drawPoster = drawPoster;
 const sharedReport = decodeReport(location.hash);
