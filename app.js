@@ -474,6 +474,15 @@ const PROFILE_DETAILS = {
     room: "为共生状态准备的房间，会更安静、开阔、有留白。它适合让身体和心一起降噪，也适合重新听见自己的声音。"
   }
 };
+const SOCIAL_SHARE = {
+  E: { title: "我是邂逅型：容易被世界轻轻打动的人", tags: ["初见感很强", "温柔但不普通", "适合被美好偷袭"], elegant: "我不是容易心动，我只是还保留着被世界打动的能力。", playful: "测出来我是邂逅型。翻译一下：别人看风景，我在跟命运对视。", invite: "我测出来是「邂逅」。你觉得像我吗？你也测一下，我猜你可能是「觉醒」或「守护」。", poster: "把心动留在很轻的地方" },
+  A: { title: "我是觉醒型：终于开始把自己也算进去的人", tags: ["清醒感", "边界感", "不再委屈自己"], elegant: "清醒不是冷漠，是我终于把自己也放进了选择里。", playful: "测出来我是觉醒型。系统提示：讨好模式已关闭，边界感正在上线。", invite: "我测出来是「觉醒」。你觉得准吗？你也测一下，把你的状态码发我看看我们是不是同频。", poster: "把自己放回选择之中" },
+  M: { title: "我是蝶变型：正在长出新版本的自己", tags: ["系统更新中", "破茧期", "不急着解释"], elegant: "我不是变了，我只是终于开始靠近真正的自己。", playful: "测出来我是蝶变型。最近不是情绪不稳定，是系统正在更新。", invite: "我测出来是「蝶变」。你觉得我最近像不像在更新？你也测一下，我想看看你走到哪一站。", poster: "变化不是告别，是更准确地成为自己" },
+  B: { title: "我是绽放型：不再压低自己的光", tags: ["自带光", "适合上场", "明亮但有底气"], elegant: "绽放不是炫耀，是我不再故意压低自己的光。", playful: "测出来我是绽放型。确认了，不是我太亮，是环境该调高亮度。", invite: "我测出来是「绽放」。你觉得像不像？你也来测，我想看看你的主香有没有发光。", poster: "不再等待允许，开始自然发光" },
+  G: { title: "我是守护型：温柔，但有自己的边界", tags: ["稳定感", "可靠后盾", "温柔有边界"], elegant: "真正的守护，是温柔地陪伴，也认真地守住自己。", playful: "测出来我是守护型。本人自带安心感，但请不要把我当充电宝。", invite: "我测出来是「守护」。你觉得准吗？你也测一下，我们看看谁更像彼此的后盾。", poster: "温柔不是承担一切，也包括守住自己" },
+  C: { title: "我是共生型：正在学会与世界平静相处", tags: ["安静高级", "长期主义", "不争也有力量"], elegant: "平静不是退让，是我终于能与自己好好共处。", playful: "测出来我是共生型。现在主打一个不争不抢，但什么都看得很清楚。", invite: "我测出来是「共生」。你也测一下，我想看看我们是不是同一个频率的人。", poster: "不急着证明，也能安放自己" }
+};
+
 const TOTAL = 18;
 const TEST_ENTRY_PATH = `${location.origin}${location.pathname}`;
 const DIMENSION_NAMES = SIX.map(x => x.state);
@@ -743,6 +752,7 @@ function calculateAndShow() {
 function renderResult() {
   const { primary, secondary, next, code, boundaryType } = lastResult, p = SIX[primary], s = SIX[secondary], n = SIX[next];
   const pd = PROFILE_DETAILS[p.code], sd = PROFILE_DETAILS[s.code];
+  const social = SOCIAL_SHARE[p.code];
   const assets = ASSET_BY_CODE[p.code];
   const isTwin = boundaryType === "twin";
   document.documentElement.style.setProperty("--result-accent", assets.accent);
@@ -750,6 +760,8 @@ function renderResult() {
   $("result-state").textContent = isTwin ? `${p.state} × ${s.state}` : `${p.state} · ${p.colorName}`;
   $("result-english").textContent = isTwin ? `${p.english} × ${s.english}` : `${p.english} STATE`;
   $("sfsc-code").textContent = code; $("result-quote").textContent = isTwin ? `“你正处在 ${p.state} 与 ${s.state} 两种状态之间。”` : `“${p.quote}”`;
+  $("social-title").textContent = isTwin ? `我在 ${p.state} 与 ${s.state} 之间：两种状态正在同时发生` : social.title;
+  $("social-hooks").innerHTML = social.tags.map(tag => `<span>${tag}</span>`).join("");
   $("primary-fragrance").textContent = p.fragrance; $("primary-copy").textContent = p.copy; $("primary-family").textContent = p.family; $("primary-keywords").textContent = p.keywords; $("primary-season").textContent = p.season;
   $("scent-tier-map").innerHTML = scentTierCards(p.code);
   $("secondary-fragrance").textContent = `你的副香：${s.fragrance}`; $("secondary-copy").textContent = `你的副香是「${s.fragrance}」。\n\n这股能量可能没有被你放在最前面，却一直在影响你的选择、关系和感受方式。\n\n${sd.selfView}`;
@@ -780,7 +792,6 @@ function renderResult() {
   $("cycle-copy").textContent = `你当前的所属状态：${p.state}（${p.code}）\n顺时针流向下一站：${n.state}（${n.code}）\n\n六色不是六种固定人格，而是六种生命状态。不是定型，而是流转；不是判断，而是看见。`;
   $("three-view").innerHTML = cardList([["你眼中的自己", pd.selfView], ["别人看到的你", pd.othersView], ["你尚未察觉的天赋", pd.hiddenTalent]]);
   $("trait-map").innerHTML = traitCardList([["✧", "核心特质", pd.traits], ["◇", "核心优势", pd.strengths], ["⌁", "成长课题", pd.growthTask], ["◌", "适合场景", pd.scenes]]);
-  $("energy-map").innerHTML = cardList([["能量来源", pd.energySource], ["能量消耗", pd.energyDrain]]);
   $("bright-reminder").innerHTML = cardList([["明亮面", pd.bright], ["温柔提醒", pd.reminder]]);
   $("guardian-title").textContent = pd.guardianName;
   $("guardian-copy").textContent = pd.guardianCopy;
@@ -908,6 +919,35 @@ function wrap(ctx, text, x, y, width, lineHeight, maxLines = 20) {
   lines.slice(0, maxLines).forEach((l, i) => ctx.fillText(l, x, y + i * lineHeight));
   return y + Math.min(lines.length, maxLines) * lineHeight;
 }
+async function drawSocialCard() {
+  const canvas = $("social-poster"), ctx = canvas.getContext("2d");
+  const { primary, secondary, next, code } = lastResult;
+  const p = SIX[primary], n = SIX[next], assets = ASSET_BY_CODE[p.code], social = SOCIAL_SHARE[p.code];
+  const W = canvas.width, H = canvas.height;
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, p.bg); bg.addColorStop(.48, "#fffaf4"); bg.addColorStop(1, "#efe1d4");
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = "#ffffffc9"; ctx.beginPath(); ctx.roundRect(54, 54, W - 108, H - 108, 48); ctx.fill();
+  ctx.strokeStyle = "#ead8c9"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.save(); ctx.globalAlpha = .5; const orbit = ctx.createConicGradient(0, W / 2, 520);
+  ["#d99eaa", "#7f9f85", "#8f76a1", "#d5a93c", "#cb8656", "#668b9b", "#d99eaa"].forEach((color, i, arr) => orbit.addColorStop(i / (arr.length - 1), color));
+  ctx.fillStyle = orbit; ctx.beginPath(); ctx.arc(W / 2, 520, 330, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  const logo = await image("./assets/logos/butterfly-cove-logo-cropped.png"); ctx.drawImage(logo, 390, 92, 300, 150);
+  ctx.textAlign = "center"; ctx.fillStyle = "#8b6f5f"; ctx.font = "26px PingFang SC"; ctx.fillText("照狸六色循环测试", W / 2, 278);
+  ctx.textAlign = "left"; ctx.fillStyle = p.color; ctx.font = "64px Songti SC, serif"; wrap(ctx, social.title, 150, 370, W - 300, 78, 2);
+  ctx.textAlign = "center"; ctx.fillStyle = "#6b5040"; ctx.font = "30px PingFang SC"; ctx.fillText(`SFSC ${code} · ${p.fragrance}`, W / 2, 560);
+  const guardian = await image(`./assets/guardians/${assets.guardian}`);
+  ctx.fillStyle = "#141110"; ctx.beginPath(); ctx.roundRect(350, 610, 380, 410, 42); ctx.fill(); ctx.drawImage(guardian, 455, 630, 170, 370);
+  ctx.fillStyle = "#fff8ef"; ctx.beginPath(); ctx.roundRect(132, 1048, W - 264, 118, 30); ctx.fill(); ctx.strokeStyle = "#ead8c9"; ctx.stroke();
+  ctx.fillStyle = "#5a4234"; ctx.font = "31px Songti SC, serif"; wrap(ctx, `“${social.poster}”`, 180, 1105, W - 360, 44, 2);
+  const tagWidth = 230, gap = 18, startX = (W - tagWidth * 3 - gap * 2) / 2;
+  social.tags.forEach((tag, i) => { const x = startX + i * (tagWidth + gap); ctx.fillStyle = "#ffffffd9"; ctx.beginPath(); ctx.roundRect(x, 1202, tagWidth, 56, 28); ctx.fill(); ctx.strokeStyle = "#ead8c9"; ctx.stroke(); ctx.fillStyle = "#765845"; ctx.font = "24px PingFang SC"; ctx.fillText(tag, x + tagWidth / 2, 1239); });
+  const qrCanvas = document.createElement("canvas"); qrCanvas.width = 180; qrCanvas.height = 180; drawQr(qrCanvas, TEST_ENTRY_PATH, 180); ctx.drawImage(qrCanvas, 128, 1270, 126, 126);
+  ctx.fillStyle = "#6b5d53"; ctx.font = "21px PingFang SC"; ctx.textAlign = "left"; wrap(ctx, `扫码测你的主香状态
+我猜你的下一站可能是：${n.state}`, 320, 1286, 520, 32, 2);
+}
+function drawShareImages() { drawSocialCard(); drawPoster(); }
+
 async function drawPoster() {
   const canvas = $("report-poster"), ctx = canvas.getContext("2d");
   const { primary, secondary, next, code } = lastResult, p = SIX[primary], s = SIX[secondary], n = SIX[next], pd = PROFILE_DETAILS[p.code], assets = ASSET_BY_CODE[p.code];
@@ -944,25 +984,16 @@ async function drawPoster() {
   ctx.fillStyle = "#4f3b31"; ctx.font = "27px PingFang SC"; ctx.fillText("扫码进入测试", 365, 1706);
   ctx.fillStyle = "#8a7e75"; ctx.font = "23px PingFang SC"; wrap(ctx, "看见你的主香、副香和下一站香，生成属于你的六色循环报告。", 365, 1756, 500, 36, 2);
 }
-function shareCopies() {
-  const p = SIX[lastResult.primary], pd = PROFILE_DETAILS[p.code], link = reportLink();
-  return [
-    ["诗意版", `我刚完成了照狸六色循环测试。\n我的 SFSC 状态码是 ${lastResult.code} · ${p.state}。\n\n“${p.quote}”\n\n这不是定义我是谁，而是看见此刻的我走到了哪一站。\n${link}`],
-    ["轻松版", `测出来我现在的主香是「${p.fragrance}」！状态码 ${lastResult.code}，照狸说：${p.quote}\n\n你也来测测自己的主香是什么：${link}`],
-    ["种草版", `今天认领了我的蝴蝶坞主香：${p.fragrance}。\n${pd.guardianName}给我的提醒是：${p.action}\n\n点开看我的报告，也可以扫码生成你的六色状态：${link}`]
-  ];
+function shareCopy() {
+  const p = SIX[lastResult.primary], social = SOCIAL_SHARE[p.code], link = reportLink();
+  return `${social.elegant}\n\n我的 SFSC 状态码是 ${lastResult.code} · ${p.state}，主香是「${p.fragrance}」。\n\n你觉得像我吗？也测一下你的六色状态：\n${link}`;
 }
 function renderShareModule() {
   $("report-link-input").value = reportLink();
   drawQr($("test-qr"), TEST_ENTRY_PATH);
-  $("share-copy-list").innerHTML = shareCopies().map(([title, copy], i) => `
-    <article class="share-copy-card">
-      <strong>${title}</strong>
-      <p>${copy}</p>
-      <button class="secondary-button copy-template-button" type="button" data-copy-index="${i}">复制${title}文案</button>
-    </article>`).join("");
-  document.querySelectorAll(".copy-template-button").forEach(btn => btn.addEventListener("click", () => copyText(shareCopies()[+btn.dataset.copyIndex][1], "分享文案已复制")));
-  drawPoster();
+  $("friend-challenge-copy").textContent = SOCIAL_SHARE[SIX[lastResult.primary].code].invite;
+  $("simple-share-copy").textContent = shareCopy();
+  drawShareImages();
 }
 function renderMemberModule() {
   const p = SIX[lastResult.primary], link = `${TEST_ENTRY_PATH}#member=${lastResult.code}`;
@@ -978,10 +1009,16 @@ function downloadPoster() {
   link.href = $("report-poster").toDataURL("image/png");
   link.click();
 }
+function downloadSocialCard() {
+  const link = document.createElement("a");
+  link.download = `照狸六色循环社交短卡-${lastResult.code}.png`;
+  link.href = $("social-poster").toDataURL("image/png");
+  link.click();
+}
 async function nativeShareReport() {
-  const link = reportLink(), p = SIX[lastResult.primary];
+  const link = reportLink(), p = SIX[lastResult.primary], social = SOCIAL_SHARE[p.code];
   if (navigator.share) {
-    try { await navigator.share({ title: `我的照狸六色循环报告 · ${p.state}`, text: `我的 SFSC 状态码是 ${lastResult.code} · ${p.state}`, url: link }); return; }
+    try { await navigator.share({ title: social.title, text: `我的 SFSC 状态码是 ${lastResult.code} · ${p.state}。${social.elegant}`, url: link }); return; }
     catch { return; }
   }
   copyText(link, "报告链接已复制");
@@ -997,13 +1034,17 @@ if (privacyCheckbox && startButton) {
   privacyCheckbox.addEventListener("change", () => { startButton.disabled = !privacyCheckbox.checked; });
 }
 startButton.addEventListener("click", start); $("back-button").addEventListener("click", back); $("restart-button").addEventListener("click", restart); $("share-button").addEventListener("click", share);
-$("generate-poster-button").addEventListener("click", () => { drawPoster(); toast("报告长图已生成"); });
+$("generate-poster-button").addEventListener("click", () => { drawShareImages(); toast("分享图已生成"); });
+$("download-social-button").addEventListener("click", downloadSocialCard);
 $("download-poster-button").addEventListener("click", downloadPoster);
 $("copy-report-link-button").addEventListener("click", () => copyText(reportLink(), "报告链接已复制"));
+$("copy-simple-share-button").addEventListener("click", () => copyText(shareCopy(), "分享文案已复制"));
+$("copy-friend-button").addEventListener("click", () => copyText(SOCIAL_SHARE[SIX[lastResult.primary].code].invite + "\n" + reportLink(), "好友邀约已复制"));
 $("native-share-button").addEventListener("click", nativeShareReport);
 $("copy-wecom-button").addEventListener("click", () => copyText("我想加入蝶坞会员，保存我的六边形香水人格档案，并设置30天复测提醒。", "企微添加话术已复制"));
 window.reportLink = reportLink;
 window.drawPoster = drawPoster;
+window.drawSocialCard = drawSocialCard;
 const sharedReport = decodeReport(location.hash);
 if (sharedReport) {
   lastResult = { ...sharedReport, normalized: sharedReport.rawScores || [] };
