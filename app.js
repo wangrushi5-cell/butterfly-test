@@ -29,35 +29,321 @@ const MATERIAL_ICONS = {
   "暖橙": "◉", "琥珀": "◆", "麝香木质": "◇", "海洋调": "≈", "龙涎香": "◈", "檀香": "△"
 };
 const SCENT_TIER_DETAILS = {
-  E: [
-    ["前调", "香柠檬、荔枝、黑醋栗、西柚", "眼眸的凝视", "人生里最柔软的开场，往往来自一次不期而遇。"],
-    ["中调", "玫瑰、梨、牡丹、雪松", "脸颊的绯红", "心动不是失控，而是审美、价值观与情绪频率的轻轻共振。"],
-    ["后调", "降龙涎香醚、麝香", "万蝶的心率", "真正留下来的，是一段关系开始时被身体记住的温度。"]
+  "E": [
+    {
+      "tier": "前调",
+      "title": "人海中认出彼此",
+      "notes": [
+        {
+          "name": "香柠檬",
+          "meaning": "初见时的明亮、打开心门、命运开始流动，像阳光第一次落进关系里，是一种“愿意靠近”的能量。"
+        },
+        {
+          "name": "荔枝",
+          "meaning": "心动、温柔吸引、被珍视的甜意，不是少女感，真正高级的荔枝是“情绪里的柔软”，像一句轻轻靠近的话。"
+        },
+        {
+          "name": "黑醋栗",
+          "meaning": "神秘吸引力、情绪深度、难以解释的磁场，让邂逅不只是甜，而是有灵魂张力。"
+        },
+        {
+          "name": "西柚",
+          "meaning": "清醒的悸动、自由感、新关系的空气感，像心跳突然加快时的一口呼吸。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "心意悄然靠近",
+      "notes": [
+        {
+          "name": "玫瑰",
+          "meaning": "爱与理解、女性情感能量、被认真感受，真正高级的玫瑰不是“恋爱”，而是“情感被温柔回应”。"
+        },
+        {
+          "name": "梨",
+          "meaning": "纯净、松弛、关系中的自然靠近，像没有防备的笑。"
+        },
+        {
+          "name": "牡丹",
+          "meaning": "女性生命力、盛放、柔软中的力量，不是攻击性的美，而是“舒服地做自己”。"
+        },
+        {
+          "name": "雪松",
+          "meaning": "安定感、信任、长久陪伴，像终于有人让你安心。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "原来真的有人懂你",
+      "notes": [
+        {
+          "name": "降龙涎香醚",
+          "meaning": "灵魂吸引力、关系余韵、命运感，像人与人之间难以解释的靠近，是一种会留下记忆的气息。"
+        },
+        {
+          "name": "麝香",
+          "meaning": "肌肤温度、安全感、情感归属，真正高级的麝香不是性感，而是“终于可以放松自己”。"
+        }
+      ]
+    }
   ],
-  A: [
-    ["前调", "藏红花、橙子、甜香", "无明的茧房", "混沌并不可怕，它只是清醒到来之前的暗处。"],
-    ["中调", "龙涎香、茉莉", "惊蛰的春雷", "当你诚实地看向自己，第一道光会先在心里响起。"],
-    ["后调", "橡苔", "破晓的澄明", "清醒不是冷掉，而是终于拥有自己的判断和边界。"]
+  "A": [
+    {
+      "tier": "前调",
+      "title": "长夜中的微光",
+      "notes": [
+        {
+          "name": "藏红花",
+          "meaning": "精神觉知、内在力量、灵魂苏醒，有一种“意识被点亮”的神秘感。"
+        },
+        {
+          "name": "橙子",
+          "meaning": "生命能量、乐观、新的开始，像黑暗之后第一束光。"
+        },
+        {
+          "name": "甜香",
+          "meaning": "内心柔软、情绪修复、对世界重新打开。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "意识缓缓苏醒",
+      "notes": [
+        {
+          "name": "龙涎香",
+          "meaning": "深层意识、内在稳定、灵魂重量，不是浓烈，而是一种成熟后的安静力量。"
+        },
+        {
+          "name": "茉莉（二氢茉莉酮酸甲酯 模拟茉莉气息）",
+          "meaning": "空气感、灵性、意识扩张，是很多高级香水的“灵魂分子”，像光穿过空气。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "天亮后看见真实的自己",
+      "notes": [
+        {
+          "name": "橡苔",
+          "meaning": "真实、土地感、回归本心，像雨后森林的呼吸，让人从漂浮回到真实人生。"
+        }
+      ]
+    }
   ],
-  M: [
-    ["前调", "黑胡椒、香柠檬、焦糖", "笃定的作茧", "改变之前，先允许自己进入一段安静的重构期。"],
-    ["中调", "甘草", "蛹内的撕裂", "旧的形态正在松动，新的力量也在不被看见处生成。"],
-    ["后调", "愈创木、广藿香、安息香、雪松", "琥珀的胎动", "所有深刻变化，最后都会成为你身体里更稳的骨架。"]
+  "M": [
+    {
+      "tier": "前调",
+      "title": "被触动的瞬间",
+      "notes": [
+        {
+          "name": "黑胡椒",
+          "meaning": "生命张力、觉察、被击中的瞬间，像命运突然按下开始键。"
+        },
+        {
+          "name": "香柠檬",
+          "meaning": "新生、光感、打开变化。"
+        },
+        {
+          "name": "焦糖",
+          "meaning": "温度、情感包裹感、成长中的柔软，让蜕变不是冰冷的。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "沉淀与作茧",
+      "notes": [
+        {
+          "name": "甘草",
+          "meaning": "内在沉静、韧性、长时间积累后的力量，像安静地改变自己。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "在新的光里重新生长",
+      "notes": [
+        {
+          "name": "愈创木",
+          "meaning": "重建、深层能量、沉稳力量。"
+        },
+        {
+          "name": "广藿香",
+          "meaning": "大地能量、自我扎根、成熟。"
+        },
+        {
+          "name": "安息香",
+          "meaning": "疗愈、温暖、新生后的柔和。"
+        },
+        {
+          "name": "雪松",
+          "meaning": "稳定、成长后的笃定。"
+        }
+      ]
+    }
   ],
-  B: [
-    ["前调", "橘子、香柠檬、青柠、果香", "破茧的初息", "生命开始显形，第一口呼吸就带着明亮的证明。"],
-    ["中调", "白花、百合、大马士革玫瑰", "不迎合的舒展", "真正的绽放，不再为了取悦而改变自己的形状。"],
-    ["后调", "龙涎香、麝香、香草、苔藓", "阳光下温柔的自信", "光不是一瞬间的热闹，而是安静时也不会熄灭的底气。"]
+  "B": [
+    {
+      "tier": "前调",
+      "title": "晨光里的舒展",
+      "notes": [
+        {
+          "name": "橘子",
+          "meaning": "快乐、自由、轻盈生命力。"
+        },
+        {
+          "name": "香柠檬",
+          "meaning": "新生、光感、打开变化。"
+        },
+        {
+          "name": "青柠",
+          "meaning": "清透、清醒、活力。"
+        },
+        {
+          "name": "果香",
+          "meaning": "丰盛、青春生命感、情绪流动。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "终于活成自己的自在",
+      "notes": [
+        {
+          "name": "白花",
+          "meaning": "女性柔光、温柔能量、盛放感。"
+        },
+        {
+          "name": "百合",
+          "meaning": "纯净、自我完整、内在优雅。"
+        },
+        {
+          "name": "水生调（三调呈现中已删除）",
+          "meaning": "呼吸感、自由、无拘束。"
+        },
+        {
+          "name": "大马士革玫瑰",
+          "meaning": "丰盛爱意、女性成熟魅力。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "由内而生的光芒",
+      "notes": [
+        {
+          "name": "龙涎香",
+          "meaning": "深层意识、内在稳定、灵魂重量。"
+        },
+        {
+          "name": "麝香",
+          "meaning": "肌肤温度、安全感、情感归属。"
+        },
+        {
+          "name": "香草",
+          "meaning": "温暖、被爱感、长久陪伴，真正高级的香草是安心，不是甜腻。"
+        }
+      ]
+    }
   ],
-  G: [
-    ["前调", "橙子、西柚", "心域的穹顶", "先为自己划出安静边界，才有力量温柔地照顾他人。"],
-    ["中调", "薄荷、黑醋栗", "悠长的脉动", "稳定不是停滞，而是在变化里维持自己的呼吸节奏。"],
-    ["后调", "麝香", "温存的琥珀", "真正的守护，会把时间、关系和自己一起温柔包裹。"]
+  "G": [
+    {
+      "tier": "前调",
+      "title": "风息之后的安宁",
+      "notes": [
+        {
+          "name": "橙子",
+          "meaning": "生命能量、乐观、新的开始。"
+        },
+        {
+          "name": "西柚",
+          "meaning": "情绪净化、清新的开始、心灵透气感。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "内心缓缓安定下来",
+      "notes": [
+        {
+          "name": "薄荷",
+          "meaning": "清醒、放松、情绪降温，像终于松开的神经。"
+        },
+        {
+          "name": "黑醋栗",
+          "meaning": "内心深度、温柔中的力量。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "被温柔包裹的余温",
+      "notes": [
+        {
+          "name": "麝香",
+          "meaning": "安全感、陪伴、被接纳，像回到属于自己的地方。"
+        }
+      ]
+    }
   ],
-  C: [
-    ["前调", "香柠檬、小豆蔻、胡椒", "栩栩然，入梦", "当你不再急着证明，世界反而开始向你打开。"],
-    ["中调", "雪松、檀香、乳香", "天籁的和弦", "自我、他人和万物慢慢同频，关系也变得更安静。"],
-    ["后调", "干龙涎香、麝香、安息香", "混沌的初晨", "圆融不是消失自我，而是在更大的秩序里重新归来。"]
+  "C": [
+    {
+      "tier": "前调",
+      "title": "边界渐渐柔和",
+      "notes": [
+        {
+          "name": "香柠檬",
+          "meaning": "新生、光感、打开变化。"
+        },
+        {
+          "name": "小豆蔻",
+          "meaning": "灵性、温暖智慧、内在平衡，像情绪与世界重新连接。"
+        },
+        {
+          "name": "胡椒",
+          "meaning": "能量流动、意识苏醒。"
+        }
+      ]
+    },
+    {
+      "tier": "中调",
+      "title": "万物自在流经身体",
+      "notes": [
+        {
+          "name": "雪松",
+          "meaning": "安定感、信任、长久陪伴。"
+        },
+        {
+          "name": "檀香",
+          "meaning": "宁静、稳定、深层疗愈。"
+        },
+        {
+          "name": "乳香",
+          "meaning": "灵魂安定、神圣感、内在平和，不是宗教，而是人终于安静下来。"
+        }
+      ]
+    },
+    {
+      "tier": "后调",
+      "title": "与世界同频的安静",
+      "notes": [
+        {
+          "name": "干龙涎香",
+          "meaning": "时间沉淀、成熟、与世界融合。"
+        },
+        {
+          "name": "麝香",
+          "meaning": "安全感、陪伴、被接纳。"
+        },
+        {
+          "name": "安息香",
+          "meaning": "温暖归属、内心柔和。"
+        }
+      ]
+    }
   ]
 };
 const PROFILE_DETAILS = {
@@ -196,17 +482,24 @@ const PAPER_CONFIG = {
   anchorTotal: 6,
   coreTotal: 6,
   supportTotal: 6,
+  lockDays: 7,
   minDimensionExposure: 8,
   maxDimensionExposure: 16,
   maxSameScene: 4,
-  requiredScenes: ["情绪", "关系", "独处", "工作", "价值观", "香气隐喻"]
+  requiredScenes: ["情绪", "关系", "独处", "工作", "价值观", "香气隐喻"],
+  anchorMultiplier: 1.2
 };
-const DEPTH_WEIGHT = { core: 1, support: .8, light: .6 };
-let rng, paper = [], answers = [], current = 0, rawScores = Array(6).fill(0), exposure = Array(6).fill(0), exposurePotential = Array(6).fill(0), lastResult;
+const STORAGE_KEYS = {
+  lockedPaper: "butterfly_sfsc_locked_paper_v21",
+  draft: "butterfly_sfsc_draft_v21",
+  lastResult: "butterfly_sfsc_last_result_v21"
+};
+let rng, paper = [], answers = [], current = 0, rawScores = Array(6).fill(0), exposure = Array(6).fill(0), exposurePotential = Array(6).fill(0), lastResult, choosing = false;
 
 const $ = (id) => document.getElementById(id);
 function showScreen(id) { document.querySelectorAll(".screen").forEach(x => x.classList.remove("is-active")); $(id).classList.add("is-active"); window.scrollTo({ top: 0, behavior: "smooth" }); }
-function seededRandom(seed) { let h = 0; for (const c of seed) { h = ((h << 5) - h) + c.charCodeAt(0); h |= 0; } return { next() { h = (h * 1103515245 + 12345) | 0; return (h >>> 0) / 0xFFFFFFFF; } }; }
+function createSeed() { return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10); }
+function seededRandom(seed) { let h = 2166136261 >>> 0; for (const c of seed) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return { next() { h += h << 13; h ^= h >>> 7; h += h << 3; h ^= h >>> 17; h += h << 5; return (h >>> 0) / 4294967296; } }; }
 function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng.next() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function questionDims(question) {
   return [...new Set((question.o || []).map(option => option.d).filter(dim => Number.isInteger(dim)))];
@@ -217,8 +510,7 @@ function questionScene(question) {
 function questionWeight(question) {
   const reliability = Number(question.reliability || .8);
   const discrimination = Number(question.discrimination || .8);
-  const depthWeight = question.is_anchor ? 1.25 : (DEPTH_WEIGHT[question.depth] || .8);
-  return reliability * discrimination * depthWeight;
+  return reliability * discrimination * (question.is_anchor ? PAPER_CONFIG.anchorMultiplier : 1);
 }
 function weightedPick(pool, count) {
   const selected = [], remaining = [...pool];
@@ -271,8 +563,8 @@ function canAddQuestion(selected, question) {
   const scenes = sceneCounts(selected);
   return (scenes[questionScene(question)] || 0) < PAPER_CONFIG.maxSameScene;
 }
-function generatePaper() {
-  rng = seededRandom(Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10));
+function generatePaper(seed = createSeed()) {
+  rng = seededRandom(seed);
   const bank = QUESTION_BANK.filter(question => (question.o || []).length === 4);
   const anchors = bank.filter(question => question.is_anchor);
   const cores = bank.filter(question => question.depth === "core" && !question.is_anchor);
@@ -317,6 +609,67 @@ function generatePaper() {
   paper = bestPaper;
   exposure = exposureCounts(paper);
   exposurePotential = potentialCounts(paper);
+  return { seed, questionIds: paper.map(question => question.id), questions: paper };
+}
+function storageRead(key) {
+  try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; }
+}
+function storageWrite(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+}
+function storageRemove(key) {
+  try { localStorage.removeItem(key); } catch {}
+}
+function isFresh(timestamp, days = PAPER_CONFIG.lockDays) {
+  return timestamp && Date.now() - timestamp < days * 86400000;
+}
+function questionsFromIds(ids = []) {
+  const byId = new Map(QUESTION_BANK.map(question => [question.id, question]));
+  return ids.map(id => byId.get(id)).filter(Boolean);
+}
+function getOrCreateLockedPaper(forceNew = false) {
+  const saved = !forceNew && storageRead(STORAGE_KEYS.lockedPaper);
+  if (saved && isFresh(saved.createdAt) && Array.isArray(saved.questionIds)) {
+    const lockedQuestions = questionsFromIds(saved.questionIds);
+    if (lockedQuestions.length === PAPER_CONFIG.total) {
+      paper = lockedQuestions;
+      exposure = exposureCounts(paper);
+      exposurePotential = potentialCounts(paper);
+      return { ...saved, questions: paper, locked: true };
+    }
+  }
+  const generated = generatePaper(createSeed());
+  const payload = { seed: generated.seed, questionIds: generated.questionIds, createdAt: Date.now() };
+  storageWrite(STORAGE_KEYS.lockedPaper, payload);
+  return { ...payload, questions: paper, locked: false };
+}
+function loadDraft() {
+  const draft = storageRead(STORAGE_KEYS.draft);
+  if (!draft || !Array.isArray(draft.questionIds) || !isFresh(draft.createdAt)) return null;
+  const draftQuestions = questionsFromIds(draft.questionIds);
+  if (draftQuestions.length !== PAPER_CONFIG.total) return null;
+  if ((draft.current || 0) >= PAPER_CONFIG.total) return null;
+  return { ...draft, questions: draftQuestions };
+}
+function saveDraft() {
+  if (!paper.length) return;
+  storageWrite(STORAGE_KEYS.draft, {
+    seed: storageRead(STORAGE_KEYS.lockedPaper)?.seed || "",
+    questionIds: paper.map(question => question.id),
+    current,
+    answers,
+    rawScores,
+    createdAt: storageRead(STORAGE_KEYS.draft)?.createdAt || Date.now(),
+    updatedAt: Date.now()
+  });
+}
+function restoreDraft(draft) {
+  paper = draft.questions;
+  current = Number(draft.current || 0);
+  answers = Array.isArray(draft.answers) ? draft.answers : [];
+  rawScores = Array.isArray(draft.rawScores) ? draft.rawScores : Array(6).fill(0);
+  exposure = exposureCounts(paper);
+  exposurePotential = potentialCounts(paper);
 }
 function start() {
   const privacyCheckbox = $("privacy-checkbox");
@@ -324,7 +677,25 @@ function start() {
     toast("请先确认隐私协议后再开始测试");
     return;
   }
-  history.replaceState(null, "", location.pathname); generatePaper(); answers = []; rawScores = Array(6).fill(0); current = 0; showScreen("quiz-screen"); renderQuestion();
+  history.replaceState(null, "", location.pathname);
+  const draft = loadDraft();
+  if (draft && (draft.answers || []).length) {
+    const shouldContinue = confirm(`发现你有一份未完成的测试，已完成 ${draft.answers.length} / ${PAPER_CONFIG.total} 题。是否继续？`);
+    if (shouldContinue) {
+      restoreDraft(draft);
+      showScreen("quiz-screen");
+      renderQuestion();
+      return;
+    }
+    storageRemove(STORAGE_KEYS.draft);
+  }
+  getOrCreateLockedPaper(false);
+  answers = [];
+  rawScores = Array(6).fill(0);
+  current = 0;
+  saveDraft();
+  showScreen("quiz-screen");
+  renderQuestion();
 }
 function restart() {
   history.replaceState(null, "", location.pathname);
@@ -332,20 +703,28 @@ function restart() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 function renderQuestion() {
-  const q = paper[current]; $("question-index").textContent = String(current + 1).padStart(2, "0");
+  if (current >= paper.length) { calculateAndShow(); return; }
+  choosing = false;
+  const q = paper[current];
+  if (!q) { toast("题目加载异常，请重新开始测试"); showScreen("intro-screen"); return; }
+  $("question-index").textContent = String(current + 1).padStart(2, "0");
   $("progress-bar").style.width = `${((current + 1) / TOTAL) * 100}%`; $("question-text").textContent = q.q;
   $("back-button").style.visibility = current ? "visible" : "hidden";
   $("options").innerHTML = q.o.map((o, i) => `<button class="option" data-index="${i}"><span class="option-letter">${o.l || "ABCD"[i]}</span><span>${o.t}</span></button>`).join("");
   document.querySelectorAll(".option").forEach(btn => btn.addEventListener("click", () => choose(+btn.dataset.index)));
 }
 function choose(optionIndex) {
+  if (choosing || current >= paper.length) return;
+  choosing = true;
   const question = paper[current], option = question.o[optionIndex], dim = option.d;
   const points = Number(option.score || 1) * questionWeight(question);
   answers[current] = { optionIndex, dim, points }; rawScores[dim] += points;
-  if (++current < TOTAL) { setTimeout(renderQuestion, 130); } else { setTimeout(calculateAndShow, 180); }
+  current++;
+  saveDraft();
+  if (current < TOTAL) { setTimeout(renderQuestion, 130); } else { setTimeout(calculateAndShow, 180); }
 }
 function back() {
-  if (!current) return; current--; const prior = answers[current]; if (prior) rawScores[prior.dim] -= prior.points || 0; answers.length = current; renderQuestion();
+  if (!current) return; current--; const prior = answers[current]; if (prior) rawScores[prior.dim] -= prior.points || 0; answers.length = current; saveDraft(); renderQuestion();
 }
 function calculateAndShow() {
   const avgPotential = exposurePotential.reduce((a, b) => a + b, 0) / 6;
@@ -353,25 +732,30 @@ function calculateAndShow() {
   const ranked = normalized.map((score, index) => ({ index, score })).sort((a, b) => b.score - a.score || a.index - b.index);
   const primary = ranked[0].index, secondary = ranked[1].index;
   const next = SIX.findIndex(x => x.code === CYCLE[(CYCLE.indexOf(SIX[primary].code) + 1) % 6]);
-  const totalScore = normalized.reduce((a, b) => a + b, 0);
-  const confidence = totalScore ? Math.max(0, (ranked[0].score - ranked[1].score) / totalScore) : 0;
-  lastResult = { primary, secondary, next, rawScores: [...rawScores], normalized, confidence, code: SIX[primary].code + SIX[secondary].code + SIX[next].code };
+  const mainScore = ranked[0].score || 0;
+  const gap = mainScore ? Math.max(0, (ranked[0].score - ranked[1].score) / mainScore) : 0;
+  const boundaryType = gap > .25 ? "high" : (gap >= .10 ? "standard" : "twin");
+  lastResult = { primary, secondary, next, rawScores: [...rawScores], normalized, confidence: Math.round(gap * 10000) / 10000, boundaryType, code: SIX[primary].code + SIX[secondary].code + SIX[next].code };
+  storageWrite(STORAGE_KEYS.lastResult, { ...lastResult, completedAt: Date.now(), questionIds: paper.map(question => question.id), answers });
+  storageRemove(STORAGE_KEYS.draft);
   renderResult(); showScreen("result-screen");
 }
 function renderResult() {
-  const { primary, secondary, next, code } = lastResult, p = SIX[primary], s = SIX[secondary], n = SIX[next];
+  const { primary, secondary, next, code, boundaryType } = lastResult, p = SIX[primary], s = SIX[secondary], n = SIX[next];
   const pd = PROFILE_DETAILS[p.code], sd = PROFILE_DETAILS[s.code];
   const assets = ASSET_BY_CODE[p.code];
+  const isTwin = boundaryType === "twin";
   document.documentElement.style.setProperty("--result-accent", assets.accent);
   document.documentElement.style.setProperty("--result-glow", p.bg);
-  $("result-icon").textContent = p.icon; $("result-state").textContent = `${p.state} · ${p.colorName}`; $("result-english").textContent = `${p.english} STATE`;
-  $("sfsc-code").textContent = code; $("result-quote").textContent = `“${p.quote}”`;
+  $("result-state").textContent = isTwin ? `${p.state} × ${s.state}` : `${p.state} · ${p.colorName}`;
+  $("result-english").textContent = isTwin ? `${p.english} × ${s.english}` : `${p.english} STATE`;
+  $("sfsc-code").textContent = code; $("result-quote").textContent = isTwin ? `“你正处在 ${p.state} 与 ${s.state} 两种状态之间。”` : `“${p.quote}”`;
   $("primary-fragrance").textContent = p.fragrance; $("primary-copy").textContent = p.copy; $("primary-family").textContent = p.family; $("primary-keywords").textContent = p.keywords; $("primary-season").textContent = p.season;
   $("scent-tier-map").innerHTML = scentTierCards(p.code);
   $("secondary-fragrance").textContent = `你的副香：${s.fragrance}`; $("secondary-copy").textContent = `你的副香是「${s.fragrance}」。\n\n这股能量可能没有被你放在最前面，却一直在影响你的选择、关系和感受方式。\n\n${sd.selfView}`;
   $("next-fragrance").textContent = `你的下一站香：${n.fragrance}`; $("next-copy").textContent = `${p.state}之后是${n.state}。\n\n${nextCopy(p.code)}\n\n下一站香：${n.fragrance}\n香气关键词：${n.keywords}`;
   $("action-title").textContent = p.action; $("action-copy").textContent = p.actionCopy;
-  $("code-breakdown").innerHTML = [[p, "主香 · 此刻的你"], [s, "副香 · 隐藏的你"], [n, "下一站 · 正在生长的你"]].map(([x, label]) => `<div class="code-row"><b>${x.code}</b><span>${label}：${x.fragrance}</span></div>`).join("");
+  $("code-breakdown").innerHTML = [[p, isTwin ? "双主之一 · 此刻的你" : "主香 · 此刻的你"], [s, isTwin ? "双主之一 · 同样强烈的你" : "副香 · 隐藏的你"], [n, "下一站 · 正在生长的你"]].map(([x, label]) => `<div class="code-row"><b>${x.code}</b><span>${label}：${x.fragrance}</span></div>`).join("");
   $("cycle-path").innerHTML = `
     <div class="cycle-orbit" aria-hidden="true"></div>
     <div class="cycle-flow" aria-hidden="true">
@@ -433,15 +817,14 @@ function fieldList(items) {
   return items.map(([title, text]) => `<div class="field-row"><span>${title}</span><strong>${text}</strong></div>`).join("");
 }
 function scentTierCards(code) {
-  return (SCENT_TIER_DETAILS[code] || []).map(([tier, notes, symbol, metaphor], index) => `
+  return (SCENT_TIER_DETAILS[code] || []).map((item, index) => `
     <article class="scent-tier-card tier-${index + 1}">
       <i>${["Ⅰ", "Ⅱ", "Ⅲ"][index]}</i>
       <div>
-        <span>${tier}</span>
-        <strong>${notes}</strong>
+        <span>${item.tier}｜${item.title}</span>
+        <strong>${item.notes.map(note => note.name).join("、")}</strong>
       </div>
-      <p>${symbol}</p>
-      <em>${metaphor}</em>
+      <ul>${item.notes.map(note => `<li><b>${note.name}</b><em>${note.meaning}</em></li>`).join("")}</ul>
     </article>`).join("");
 }
 function nextCopy(code) {
@@ -475,8 +858,8 @@ function drawHexagon(primary) {
   });
 }
 function reportPayload() {
-  const { primary, secondary, next, code, rawScores } = lastResult;
-  return { primary, secondary, next, code, rawScores };
+  const { primary, secondary, next, code, rawScores, boundaryType } = lastResult;
+  return { primary, secondary, next, code, rawScores, boundaryType };
 }
 function encodeReport(payload = reportPayload()) {
   return btoa(unescape(encodeURIComponent(JSON.stringify(payload))));

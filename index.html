@@ -78,8 +78,11 @@
           </div>
           <p class="section-kicker hero-kicker" data-icon="✦">你的香气状态</p>
           <p class="eyebrow">照狸六色循环测试结果</p>
-          <p class="hero-label">你的当前状态</p>
-          <div id="result-icon" class="result-icon"></div>
+          <p class="hero-label">你的专属照狸</p>
+          <div class="hero-guardian">
+            <img id="guardian-image" src="" alt="" />
+          </div>
+          <h2 id="guardian-title" class="hero-guardian-title"></h2>
           <h1 id="result-state"></h1>
           <p id="result-english" class="result-english"></p>
           <div class="sfsc-card">
@@ -87,48 +90,41 @@
             <strong id="sfsc-code"></strong>
           </div>
           <p id="result-quote" class="result-quote"></p>
+          <p id="guardian-copy" class="hero-guardian-copy"></p>
           <p class="hero-explain">这不是一个固定标签。<br />这是你此刻的香气状态码。</p>
         </div>
 
         <div class="result-body">
           <section class="result-section result-module code-section" data-module="02">
-            <div class="section-kicker" data-icon="⌁">状态码解读</div>
+            <div class="section-kicker" data-icon="⌁">六色状态总览</div>
             <h2>读懂你的 SFSC 状态码</h2>
             <p class="feature-copy">你的 SFSC 状态码由三部分组成：第一位是主香，第二位是副香，第三位是下一站香。</p>
             <div id="code-breakdown" class="code-breakdown"></div>
-            <p class="muted">人不是一种固定答案，而是一张正在生长的六边形。今天的状态不是终点，它只是你此刻最需要被看见的一面。</p>
-          </section>
-
-          <section class="result-section result-module" data-module="03">
-            <div class="section-kicker" data-icon="↻">六色循环</div>
             <h2>你走到的这一站</h2>
             <div id="cycle-path" class="cycle-path"></div>
             <p id="cycle-copy" class="feature-copy"></p>
-            <p class="muted">在东方文化里，真正的生命力不在于停留，而在于流转。此刻所在的这一站，正是你生命节律的一部分。</p>
-          </section>
-
-          <section class="result-section result-module chart-section" data-module="04">
-            <div class="section-kicker" data-icon="⬡">状态图谱</div>
             <h2>你的六边形复眼状态图</h2>
             <canvas id="radar-chart" width="680" height="540"></canvas>
-            <p class="muted">某一角更突出，不代表其他颜色消失了。它只是说明，此刻的你更需要这一种香气提醒。</p>
+            <p class="muted">人不是一种固定答案，而是一张正在生长的六边形。今天的状态不是终点，它只是你此刻最需要被看见的一面。</p>
           </section>
 
-          <section class="result-section result-module" data-module="13">
-            <div class="section-kicker" data-icon="♢">专属照狸</div>
-            <h2 id="guardian-title"></h2>
-            <div class="guardian-showcase">
-              <div class="guardian-figure">
-                <img id="guardian-image" src="" alt="" />
-              </div>
-              <p id="guardian-copy" class="feature-copy"></p>
-            </div>
+          <section class="result-section result-module" data-module="08">
+            <div class="section-kicker" data-icon="◐">照狸看见的你</div>
+            <h2>照狸看见的你</h2>
+            <p class="muted">照狸看见的，不只是你表现出来的样子。</p>
+            <div id="three-view" class="info-grid"></div>
+            <h2>你的心理特质图谱</h2>
+            <div id="trait-map" class="field-list"></div>
+            <h2>你的能量从哪里来，又在哪里被消耗</h2>
+            <div id="energy-map" class="info-grid"></div>
+            <h2>你的明亮面，也有需要被照顾的地方</h2>
+            <div id="bright-reminder" class="info-grid"></div>
           </section>
 
           <section class="result-section result-module scent-section" data-module="05">
-            <div class="section-kicker" data-icon="◈">你的主香</div>
+            <div class="section-kicker" data-icon="◈">我的三重香气结构</div>
             <h2 id="primary-fragrance"></h2>
-            <p class="muted">主香代表此刻的你。它不是给你贴标签，而是提醒你今天更靠近哪一种状态。</p>
+            <p class="muted">主香代表此刻的你。副香代表隐藏的你。下一站香代表正在生长的你。</p>
             <p id="primary-copy" class="feature-copy"></p>
             <div id="scent-tier-map" class="scent-tier-map" aria-label="前中后调香型解析"></div>
             <div class="scent-notes">
@@ -136,58 +132,25 @@
               <div><span>关键词</span><strong id="primary-keywords"></strong></div>
               <div><span>适穿季节</span><strong id="primary-season"></strong></div>
             </div>
-          </section>
-
-          <section class="result-section result-module" data-module="06">
-            <div class="section-kicker" data-icon="◌">隐藏的香气</div>
-            <h2 id="secondary-fragrance"></h2>
-            <p class="muted">副香代表隐藏的你。它不是最外显的状态，却是你身体里一直存在的另一股能量。</p>
-            <p id="secondary-copy" class="feature-copy"></p>
-          </section>
-
-          <section class="result-section result-module" data-module="07">
-            <div class="section-kicker" data-icon="→">正在靠近的下一站</div>
-            <h2 id="next-fragrance"></h2>
-            <p class="muted">下一站香代表正在生长的你。它不是要求你立刻改变，而是给你一个温柔的方向。</p>
-            <p id="next-copy" class="feature-copy"></p>
-          </section>
-
-          <section class="result-section result-module" data-module="08">
-            <div class="section-kicker" data-icon="◐">自我认知</div>
-            <h2>照狸看见的你</h2>
-            <p class="muted">照狸看见的，不只是你表现出来的样子。</p>
-            <div id="three-view" class="info-grid"></div>
-          </section>
-
-          <section class="result-section result-module" data-module="09">
-            <div class="section-kicker" data-icon="✧">心理特质</div>
-            <h2>你的心理特质图谱</h2>
-            <p class="muted">这不是性格定型，而是对你此刻状态的温柔整理。</p>
-            <div id="trait-map" class="field-list"></div>
-          </section>
-
-          <section class="result-section result-module" data-module="10">
-            <div class="section-kicker" data-icon="▣">能量地图</div>
-            <h2>你的能量从哪里来，又在哪里被消耗</h2>
-            <p class="muted">每一种状态都有自己的能量来源，也有需要被温柔照顾的地方。</p>
-            <div id="energy-map" class="info-grid"></div>
-          </section>
-
-          <section class="result-section result-module" data-module="11">
-            <div class="section-kicker" data-icon="☼">明亮面与提醒</div>
-            <h2>你的明亮面，也有需要被照顾的地方</h2>
-            <div id="bright-reminder" class="info-grid"></div>
+            <div class="scent-pair-grid">
+              <article>
+                <span>副香</span>
+                <h3 id="secondary-fragrance"></h3>
+                <p id="secondary-copy"></p>
+              </article>
+              <article>
+                <span>下一站香</span>
+                <h3 id="next-fragrance"></h3>
+                <p id="next-copy"></p>
+              </article>
+            </div>
           </section>
 
           <section class="result-section result-module action-section" data-module="12">
-            <div class="section-kicker" data-icon="✓">今日行动</div>
+            <div class="section-kicker" data-icon="✓">给今天的你一句话</div>
             <h2 id="action-title"></h2>
             <p class="muted">觉察不需要很大。一个很小的动作，也可以让今天开始不同。</p>
             <p id="action-copy" class="feature-copy"></p>
-          </section>
-
-          <section class="result-section result-module" data-module="14">
-            <div class="section-kicker" data-icon="〃">诗词共鸣</div>
             <h2>一首词，写给此刻的你</h2>
             <div id="poem-card" class="quote-card"></div>
           </section>
@@ -276,9 +239,9 @@
       </section>
     </main>
     <div id="toast" class="toast" role="status"></div>
-    <script src="./questions.js?v=19.1"></script>
-    <script src="./vendor/qrcode-generator.js?v=19.1"></script>
-    <script src="./app.js?v=19.1"></script>
+    <script src="./questions.js?v=21.0"></script>
+    <script src="./vendor/qrcode-generator.js?v=21.0"></script>
+    <script src="./app.js?v=21.0"></script>
     <script src="./result-copy-overrides.js?v=20.1"></script>
   </body>
 </html>

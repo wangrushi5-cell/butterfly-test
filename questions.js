@@ -1,5 +1,5 @@
-// Generated from 蝴蝶坞六色人格测试_优化300题题库.docx
-// Structured bank for stable weighted 18-question algorithm
+// Generated from 蝴蝶坞六色循环测试_稳定算法与完整题库合并版.docx
+// Structured bank for V2.1 locked-paper weighted algorithm
 // Valid questions: 300; excluded during validation: 0
 window.QUESTION_BANK = [
   {
@@ -63,11 +63,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "旅行",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -136,16 +136,16 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
-      "共生",
-      "蝶变"
+      "蝶变",
+      "共生"
     ]
   },
   {
@@ -209,16 +209,16 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
+    "scene": "审美生活",
     "depth": "support",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
-      "觉醒",
-      "绽放",
       "邂逅",
-      "蝶变"
+      "觉醒",
+      "蝶变",
+      "绽放"
     ]
   },
   {
@@ -282,48 +282,48 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "关系",
-    "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "scene": "生活方式",
+    "depth": "support",
+    "is_anchor": false,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
-      "蝶变",
-      "绽放",
       "邂逅",
-      "觉醒"
+      "觉醒",
+      "蝶变",
+      "绽放"
     ]
   },
   {
     "id": 5,
     "sourceId": 5,
-    "question": "面对人生变化，你通常会？",
-    "q": "面对人生变化，你通常会？",
+    "question": "临时被打乱出行计划",
+    "q": "临时被打乱出行计划",
     "options": [
       {
         "key": "A",
-        "text": "先感受，等心里有答案",
+        "text": "随缘摆烂，换个玩法随心逛",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "先沉下去，慢慢重组",
+        "text": "独自宅家，趁空档沉淀自己",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "分析利弊，重新判断",
+        "text": "快速复盘，重新规划最优路线",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "D",
-        "text": "尽量稳住身边重要的人和事",
+        "text": "安抚同伴，照顾所有人情绪",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -332,38 +332,38 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "先感受，等心里有答案",
+        "t": "随缘摆烂，换个玩法随心逛",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "先沉下去，慢慢重组",
+        "t": "独自宅家，趁空档沉淀自己",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "分析利弊，重新判断",
+        "t": "快速复盘，重新规划最优路线",
         "d": 1,
         "score": 1
       },
       {
         "l": "D",
-        "t": "尽量稳住身边重要的人和事",
+        "t": "安抚同伴，照顾所有人情绪",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "守护"
     ]
   },
@@ -428,16 +428,16 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "scene": "生活方式",
+    "depth": "support",
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
+      "邂逅",
       "觉醒",
       "蝶变",
-      "共生",
-      "邂逅"
+      "共生"
     ]
   },
   {
@@ -505,11 +505,11 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "共生"
     ]
   },
@@ -578,12 +578,12 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "守护",
       "觉醒",
-      "绽放"
+      "绽放",
+      "守护"
     ]
   },
   {
@@ -647,11 +647,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -722,46 +722,46 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
+      "邂逅",
       "觉醒",
       "蝶变",
-      "邂逅",
       "共生"
     ]
   },
   {
     "id": 11,
     "sourceId": 11,
-    "question": "你最想对过去的自己说？",
-    "q": "你最想对过去的自己说？",
+    "question": "想和从前的自己说句心里话，你选？",
+    "q": "想和从前的自己说句心里话，你选？",
     "options": [
       {
         "key": "A",
-        "text": "你值得被温柔对待",
+        "text": "别为难自己，要好好被偏爱",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "你可以把自己也算进去",
+        "text": "多偏爱自己，别总委屈让步",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "你不是坏掉了，你是在重组",
+        "text": "低谷不算垮，你正在蜕变",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "谢谢你一直守住了重要的人和事",
+        "text": "辛苦啦，好好守住所爱",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -770,34 +770,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "你值得被温柔对待",
+        "t": "别为难自己，要好好被偏爱",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "你可以把自己也算进去",
+        "t": "多偏爱自己，别总委屈让步",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "你不是坏掉了，你是在重组",
+        "t": "低谷不算垮，你正在蜕变",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "谢谢你一直守住了重要的人和事",
+        "t": "辛苦啦，好好守住所爱",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -866,48 +866,48 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "价值观",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
+      "邂逅",
       "觉醒",
       "蝶变",
-      "共生",
-      "邂逅"
+      "共生"
     ]
   },
   {
     "id": 13,
     "sourceId": 13,
-    "question": "当别人夸你时，你最希望听到？",
-    "q": "当别人夸你时，你最希望听到？",
+    "question": "被人夸奖，最戳你的评价是？",
+    "q": "被人夸奖，最戳你的评价是？",
     "options": [
       {
         "key": "A",
-        "text": "你让人觉得很舒服",
+        "text": "和你相处超舒服",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "你真的很清醒",
+        "text": "遇事拎得清，头脑清醒",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "你变化很大，但更像自己了",
+        "text": "历经变化，活成专属自己",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "你很有光",
+        "text": "自带气场，闪闪发光☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -916,34 +916,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "你让人觉得很舒服",
+        "t": "和你相处超舒服",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "你真的很清醒",
+        "t": "遇事拎得清，头脑清醒",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "你变化很大，但更像自己了",
+        "t": "历经变化，活成专属自己",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "你很有光",
+        "t": "自带气场，闪闪发光☀",
         "d": 3,
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "价值观",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -1012,16 +1012,16 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
-      "绽放",
-      "蝶变"
+      "蝶变",
+      "绽放"
     ]
   },
   {
@@ -1089,12 +1089,12 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
-      "共生",
-      "蝶变"
+      "蝶变",
+      "共生"
     ]
   },
   {
@@ -1160,14 +1160,14 @@ window.QUESTION_BANK = [
     ],
     "scene": "价值观",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
+      "觉醒",
       "绽放",
-      "守护",
-      "觉醒"
+      "守护"
     ]
   },
   {
@@ -1231,11 +1231,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "独处",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -1304,11 +1304,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -1381,7 +1381,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -1450,11 +1450,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -1525,9 +1525,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "情绪",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -1598,9 +1598,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "情绪",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -1611,33 +1611,33 @@ window.QUESTION_BANK = [
   {
     "id": 23,
     "sourceId": 23,
-    "question": "你觉得自己最大的\"软肋\"是？",
-    "q": "你觉得自己最大的\"软肋\"是？",
+    "question": "你的致命短板是？",
+    "q": "你的致命短板是？",
     "options": [
       {
         "key": "A",
-        "text": "太容易被打动，有时候不够\"坚硬\"",
+        "text": "心软感性，很容易被戳破防",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "过于理性，有时候让别人觉得冷",
+        "text": "遇事太理智，看着不好相处",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "不允许自己\"不够好\"，给自己太大压力",
+        "text": "完美主义，总逼自己做到顶尖☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "太习惯先照顾别人，忘了自己也有需求",
+        "text": "习惯性迁就别人，总忽略自己",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -1646,34 +1646,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "太容易被打动，有时候不够\"坚硬\"",
+        "t": "心软感性，很容易被戳破防",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "过于理性，有时候让别人觉得冷",
+        "t": "遇事太理智，看着不好相处",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "不允许自己\"不够好\"，给自己太大压力",
+        "t": "完美主义，总逼自己做到顶尖☀",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "太习惯先照顾别人，忘了自己也有需求",
+        "t": "习惯性迁就别人，总忽略自己",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "情绪",
-    "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "scene": "生活方式",
+    "depth": "support",
+    "is_anchor": false,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -1746,7 +1746,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -1819,7 +1819,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -1890,9 +1890,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "工作",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -1961,11 +1961,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "关系",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2034,11 +2034,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2109,9 +2109,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -2253,11 +2253,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2326,11 +2326,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -2399,11 +2399,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "香气隐喻",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -2472,11 +2472,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2549,7 +2549,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2618,11 +2618,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -2695,7 +2695,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -2764,11 +2764,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -2841,7 +2841,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -2910,11 +2910,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -2987,7 +2987,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -3056,11 +3056,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -3133,7 +3133,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -3206,7 +3206,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -3275,11 +3275,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -3352,7 +3352,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -3425,7 +3425,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -3494,11 +3494,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -3567,11 +3567,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -3640,11 +3640,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -3713,11 +3713,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -3786,11 +3786,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -3859,11 +3859,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -3932,11 +3932,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -3947,33 +3947,33 @@ window.QUESTION_BANK = [
   {
     "id": 55,
     "sourceId": 55,
-    "question": "你如何区分\"真正的需要\"和\"社会告诉你该需要\"？",
-    "q": "你如何区分\"真正的需要\"和\"社会告诉你该需要\"？",
+    "question": "怎么分清想要，还是跟风刚需？",
+    "q": "怎么分清想要，还是跟风刚需？",
     "options": [
       {
         "key": "A",
-        "text": "闭上眼睛感受——什么让你心跳加速？",
+        "text": "跟着心动直觉选",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "问自己：如果没有人会知道，我还会做吗？",
+        "text": "没人看见，还想要才算真需要",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "看看你离开舒适区以后，什么仍然在召唤你",
+        "text": "跳出舒适圈，依旧惦记的才是本心",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "什么让你发自内心感到骄傲？不是炫耀的那种",
+        "text": "发自内心自豪，不为攀比☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -3982,34 +3982,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "闭上眼睛感受——什么让你心跳加速？",
+        "t": "跟着心动直觉选",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "问自己：如果没有人会知道，我还会做吗？",
+        "t": "没人看见，还想要才算真需要",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "看看你离开舒适区以后，什么仍然在召唤你",
+        "t": "跳出舒适圈，依旧惦记的才是本心",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "什么让你发自内心感到骄傲？不是炫耀的那种",
+        "t": "发自内心自豪，不为攀比☀",
         "d": 3,
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -4078,11 +4078,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -4155,7 +4155,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -4224,11 +4224,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -4297,11 +4297,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -4370,11 +4370,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -4443,11 +4443,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -4516,11 +4516,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -4589,11 +4589,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -4666,7 +4666,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -4739,7 +4739,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -4750,33 +4750,33 @@ window.QUESTION_BANK = [
   {
     "id": 66,
     "sourceId": 66,
-    "question": "你觉得什么是\"有边界的温柔\"？",
-    "q": "你觉得什么是\"有边界的温柔\"？",
+    "question": "相处时你的处事底线？",
+    "q": "相处时你的处事底线？",
     "options": [
       {
         "key": "A",
-        "text": "我可以对你温柔——但你不能因此以为我没有底线",
+        "text": "平常超好说话，踩线直接疏远",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "我理解你——但不代表我同意你",
+        "text": "能包容观点，但别强行绑架我",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "我的光可以照亮你——但你不能用它来烧我",
+        "text": "乐于帮忙，但拒绝无休止索取☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "我可以照顾你——但我也需要被照顾",
+        "text": "习惯性付出，一味消耗就止损",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -4785,34 +4785,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "我可以对你温柔——但你不能因此以为我没有底线",
+        "t": "平常超好说话，踩线直接疏远",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "我理解你——但不代表我同意你",
+        "t": "能包容观点，但别强行绑架我",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "我的光可以照亮你——但你不能用它来烧我",
+        "t": "乐于帮忙，但拒绝无休止索取☀",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "我可以照顾你——但我也需要被照顾",
+        "t": "习惯性付出，一味消耗就止损",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -4881,11 +4881,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -4958,7 +4958,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -5027,11 +5027,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -5100,11 +5100,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -5173,11 +5173,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -5250,7 +5250,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -5323,7 +5323,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -5392,11 +5392,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -5469,7 +5469,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -5542,7 +5542,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -5611,11 +5611,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -5688,7 +5688,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -5761,7 +5761,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -5832,9 +5832,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -5905,9 +5905,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -5976,11 +5976,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -6049,11 +6049,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6126,7 +6126,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6195,11 +6195,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -6272,7 +6272,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -6341,11 +6341,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6416,9 +6416,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "工作",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6491,7 +6491,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -6560,11 +6560,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -6633,11 +6633,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6710,7 +6710,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -6783,7 +6783,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -6852,11 +6852,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -6925,11 +6925,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7002,7 +7002,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -7071,11 +7071,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -7148,7 +7148,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -7221,7 +7221,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7294,7 +7294,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7367,7 +7367,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -7440,7 +7440,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -7513,7 +7513,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -7586,7 +7586,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7659,7 +7659,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -7728,11 +7728,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -7801,11 +7801,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7874,11 +7874,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -7951,7 +7951,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -8020,11 +8020,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -8097,7 +8097,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -8168,9 +8168,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "独处",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -8239,11 +8239,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -8316,7 +8316,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -8389,7 +8389,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -8458,11 +8458,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -8535,7 +8535,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -8608,7 +8608,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -8681,7 +8681,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -8750,11 +8750,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -8823,11 +8823,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -8896,11 +8896,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "旅行",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -8911,33 +8911,33 @@ window.QUESTION_BANK = [
   {
     "id": 123,
     "sourceId": 123,
-    "question": "如果只能带三样东西去一个荒岛？",
-    "q": "如果只能带三样东西去一个荒岛？",
+    "question": "与世隔绝住小屋，只囤一类好物？",
+    "q": "与世隔绝住小屋，只囤一类好物？",
     "options": [
       {
         "key": "A",
-        "text": "一本诗集、一本画册、相机",
+        "text": "画册零食，到处发掘小美好",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "日记本和笔——你需要和自己对话",
+        "text": "纸笔随笔，自己慢慢消化情绪",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "你最喜欢的配饰和化妆品——即使荒岛也要好看",
+        "text": "穿搭彩妆，天天精致打扮☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "急救包、通讯设备、多功能工具",
+        "text": "米面厨具，吃饱踏实过日子",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -8946,34 +8946,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "一本诗集、一本画册、相机",
+        "t": "画册零食，到处发掘小美好",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "日记本和笔——你需要和自己对话",
+        "t": "纸笔随笔，自己慢慢消化情绪",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "你最喜欢的配饰和化妆品——即使荒岛也要好看",
+        "t": "穿搭彩妆，天天精致打扮☀",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "急救包、通讯设备、多功能工具",
+        "t": "米面厨具，吃饱踏实过日子",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -9042,11 +9042,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "旅行",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -9115,11 +9115,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
-    "depth": "support",
+    "scene": "价值观",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -9188,11 +9188,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -9261,11 +9261,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9334,11 +9334,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "旅行",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9407,11 +9407,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -9480,11 +9480,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "旅行",
-    "depth": "support",
+    "scene": "独处",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9555,9 +9555,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "价值观",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9626,11 +9626,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -9699,11 +9699,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -9772,11 +9772,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9845,11 +9845,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9918,11 +9918,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -9991,11 +9991,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "香气隐喻",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -10068,7 +10068,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -10137,11 +10137,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -10210,11 +10210,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
+    "scene": "审美生活",
     "depth": "support",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -10287,7 +10287,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -10356,11 +10356,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
+    "scene": "审美生活",
     "depth": "support",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -10429,11 +10429,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -10506,7 +10506,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -10575,11 +10575,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "价值观",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -10648,11 +10648,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -10723,9 +10723,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "价值观",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -10794,11 +10794,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -10867,11 +10867,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -10940,11 +10940,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
-    "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "scene": "关系",
+    "depth": "core",
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -11013,11 +11013,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -11090,7 +11090,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -11159,11 +11159,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -11232,11 +11232,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -11305,11 +11305,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -11378,11 +11378,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -11451,11 +11451,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "香气隐喻",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -11524,11 +11524,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -11597,11 +11597,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -11670,11 +11670,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -11743,11 +11743,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -11816,11 +11816,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -11893,7 +11893,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -11962,11 +11962,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12035,11 +12035,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -12112,7 +12112,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12185,7 +12185,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -12254,11 +12254,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -12331,7 +12331,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12400,11 +12400,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12477,7 +12477,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12546,11 +12546,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -12619,11 +12619,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -12696,7 +12696,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -12765,11 +12765,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -12842,7 +12842,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -12915,7 +12915,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -12984,11 +12984,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -13061,7 +13061,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -13132,9 +13132,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "价值观",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -13207,7 +13207,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -13276,11 +13276,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13349,11 +13349,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13426,7 +13426,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13495,11 +13495,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13568,11 +13568,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "scene": "生活方式",
+    "depth": "support",
+    "is_anchor": false,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13583,33 +13583,33 @@ window.QUESTION_BANK = [
   {
     "id": 187,
     "sourceId": 187,
-    "question": "当你独自行走时，脑子里最多出现的是什么画面？",
-    "q": "当你独自行走时，脑子里最多出现的是什么画面？",
+    "question": "旅行选目的地，你的偏好？",
+    "q": "旅行选目的地，你的偏好？",
     "options": [
       {
         "key": "A",
-        "text": "一片开满花的原野——有人经过就开得更盛",
+        "text": "小众冷门小城，随性偶遇惊喜",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "老城区的旧巷子——有些地方需要慢慢走才能发现",
+        "text": "安静古镇村落，独处放空疗愈自己",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "一条通向灯火的回家路——熟悉、安稳、有人在意",
+        "text": "亲友一起打卡热门城市，重在陪伴",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
       },
       {
         "key": "D",
-        "text": "通勤路上的窗边——看风景的人也在别人的风景里",
+        "text": "热闹烟火都市，沉浸式感受当地人文",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -13618,34 +13618,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "一片开满花的原野——有人经过就开得更盛",
+        "t": "小众冷门小城，随性偶遇惊喜",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "老城区的旧巷子——有些地方需要慢慢走才能发现",
+        "t": "安静古镇村落，独处放空疗愈自己",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "一条通向灯火的回家路——熟悉、安稳、有人在意",
+        "t": "亲友一起打卡热门城市，重在陪伴",
         "d": 4,
         "score": 1
       },
       {
         "l": "D",
-        "t": "通勤路上的窗边——看风景的人也在别人的风景里",
+        "t": "热闹烟火都市，沉浸式感受当地人文",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -13791,7 +13791,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -13860,11 +13860,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -13933,11 +13933,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -14006,11 +14006,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14079,11 +14079,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -14156,7 +14156,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14229,7 +14229,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14302,7 +14302,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14371,11 +14371,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14446,9 +14446,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -14517,11 +14517,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -14590,11 +14590,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "scene": "生活方式",
+    "depth": "support",
+    "is_anchor": false,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -14665,9 +14665,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -14740,7 +14740,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14809,11 +14809,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14882,11 +14882,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -14959,7 +14959,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -15032,7 +15032,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -15101,11 +15101,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -15178,7 +15178,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -15249,9 +15249,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -15324,7 +15324,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -15397,7 +15397,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -15470,7 +15470,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -15543,7 +15543,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -15616,7 +15616,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -15689,7 +15689,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -15762,7 +15762,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -15831,11 +15831,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -15908,7 +15908,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -15981,7 +15981,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -16054,7 +16054,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -16127,7 +16127,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16200,7 +16200,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -16273,7 +16273,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -16342,11 +16342,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "工作",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16419,7 +16419,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16490,9 +16490,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "工作",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16561,11 +16561,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -16638,7 +16638,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -16649,33 +16649,33 @@ window.QUESTION_BANK = [
   {
     "id": 229,
     "sourceId": 229,
-    "question": "你觉得自己更擅长执行还是策划？",
-    "q": "你觉得自己更擅长执行还是策划？",
+    "question": "团队分工你更喜欢？",
+    "q": "团队分工你更喜欢？",
     "options": [
       {
         "key": "A",
-        "text": "执行——落地能力是我的强项",
+        "text": "外出对接对接，随缘发掘新点子",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "策划——我能看到别人看不到的全局",
+        "text": "埋头梳理方案，敲定整体框架",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "两个都还行——看具体任务",
+        "text": "哪边缺人补哪边，灵活适配",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "都不是——我更擅长协调和沟通",
+        "text": "调和组员矛盾，照顾所有人节奏",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -16684,34 +16684,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "执行——落地能力是我的强项",
+        "t": "外出对接对接，随缘发掘新点子",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "策划——我能看到别人看不到的全局",
+        "t": "埋头梳理方案，敲定整体框架",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "两个都还行——看具体任务",
+        "t": "哪边缺人补哪边，灵活适配",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "都不是——我更擅长协调和沟通",
+        "t": "调和组员矛盾，照顾所有人节奏",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16784,7 +16784,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -16853,11 +16853,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -16926,11 +16926,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -17003,7 +17003,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -17014,33 +17014,33 @@ window.QUESTION_BANK = [
   {
     "id": 234,
     "sourceId": 234,
-    "question": "如果让你重新选一次大学专业，你会选什么？",
-    "q": "如果让你重新选一次大学专业，你会选什么？",
+    "question": "重新填报志愿，优先 pick 热门专业？",
+    "q": "重新填报志愿，优先 pick 热门专业？",
     "options": [
       {
         "key": "A",
-        "text": "心理学——对人的理解比什么都值钱",
+        "text": "新媒体运营，在不断试错中突破自我",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "B",
-        "text": "考古或历史——不为赚钱，只为兴趣",
+        "text": "人工智能，深耕前沿领域活出闪光点☀",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "C",
-        "text": "设计——有些东西会了才知道世界不一样",
+        "text": "临床医学，凭专业守护身边人与生活",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
       },
       {
         "key": "D",
-        "text": "全选——大学的意义不只是专业",
+        "text": "工商管理，接触各色人脉适应多元环境",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -17049,25 +17049,25 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "心理学——对人的理解比什么都值钱",
+        "t": "新媒体运营，在不断试错中突破自我",
         "d": 2,
         "score": 1
       },
       {
         "l": "B",
-        "t": "考古或历史——不为赚钱，只为兴趣",
+        "t": "人工智能，深耕前沿领域活出闪光点☀",
         "d": 3,
         "score": 1
       },
       {
         "l": "C",
-        "t": "设计——有些东西会了才知道世界不一样",
+        "t": "临床医学，凭专业守护身边人与生活",
         "d": 4,
         "score": 1
       },
       {
         "l": "D",
-        "t": "全选——大学的意义不只是专业",
+        "t": "工商管理，接触各色人脉适应多元环境",
         "d": 5,
         "score": 1
       }
@@ -17076,7 +17076,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -17145,11 +17145,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "香气隐喻",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -17218,11 +17218,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
-    "depth": "support",
+    "scene": "价值观",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -17291,14 +17291,14 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "情绪",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
-      "觉醒",
       "邂逅",
+      "觉醒",
       "绽放",
       "共生"
     ]
@@ -17368,7 +17368,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -17437,11 +17437,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "觉醒",
       "绽放",
@@ -17510,11 +17510,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
+    "scene": "旅行",
     "depth": "support",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -17583,11 +17583,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "独处",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -17656,11 +17656,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -17729,11 +17729,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -17802,11 +17802,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -17875,11 +17875,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -17952,7 +17952,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -18021,11 +18021,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
-    "depth": "support",
+    "scene": "香气隐喻",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -18094,11 +18094,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "空间",
-    "depth": "support",
+    "scene": "独处",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -18167,11 +18167,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -18240,11 +18240,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "独处",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "蝶变",
       "绽放",
@@ -18260,28 +18260,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "算了，既然已经这样，不如慢条斯理地洗漱，享受一个迟到的早晨",
+        "text": "算了，既然已经这样，不如慢条斯理地洗漱，享受一个迟到的早晨*(心理学依据：积极重构倾向，对偶然性持开放态度)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "肾上腺素瞬间飙升，大脑迅速在大脑中计算最快通勤路线和补救方案",
+        "text": "肾上腺素瞬间飙升，大脑迅速在大脑中计算最快通勤路线和补救方案*(心理学依据：高控制欲与逻辑防御，清醒应对危机)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "既然注定迟到，索性换上最亮眼的那套衣服，化个精致的妆大方走进公司",
+        "text": "既然注定迟到，索性换上最亮眼的那套衣服，化个精致的妆大方走进公司*(心理学依据：反向形成，用高能量姿态掩饰焦虑)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "闭上眼睛深呼吸三秒，接受事实，发个消息向主管诚实说明情况",
+        "text": "闭上眼睛深呼吸三秒，接受事实，发个消息向主管诚实说明情况*(心理学依据：正念接纳，不与既定事实对抗)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -18290,34 +18290,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "算了，既然已经这样，不如慢条斯理地洗漱，享受一个迟到的早晨",
+        "t": "算了，既然已经这样，不如慢条斯理地洗漱，享受一个迟到的早晨*(心理学依据：积极重构倾向，对偶然性持开放态度)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "肾上腺素瞬间飙升，大脑迅速在大脑中计算最快通勤路线和补救方案",
+        "t": "肾上腺素瞬间飙升，大脑迅速在大脑中计算最快通勤路线和补救方案*(心理学依据：高控制欲与逻辑防御，清醒应对危机)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "既然注定迟到，索性换上最亮眼的那套衣服，化个精致的妆大方走进公司",
+        "t": "既然注定迟到，索性换上最亮眼的那套衣服，化个精致的妆大方走进公司*(心理学依据：反向形成，用高能量姿态掩饰焦虑)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "闭上眼睛深呼吸三秒，接受事实，发个消息向主管诚实说明情况",
+        "t": "闭上眼睛深呼吸三秒，接受事实，发个消息向主管诚实说明情况*(心理学依据：正念接纳，不与既定事实对抗)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "工作",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18333,28 +18333,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "穿过果园的晨光，带着一丝酸甜的惊喜",
+        "text": "穿过果园的晨光，带着一丝酸甜的惊喜*(对应香材：香柠檬/荔枝；心理隐喻：愿意靠近的明亮)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "长夜尽头突然亮起的一束微光，刺眼但让人清醒",
+        "text": "长夜尽头突然亮起的一束微光，刺眼但让人清醒*(对应香材：藏红花；心理隐喻：意识苏醒)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "舞台中央聚焦的强光，所有细节无处遁形",
+        "text": "舞台中央聚焦的强光，所有细节无处遁形*(对应香材：白花/橘子；心理隐喻：生命盛放)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "壁炉里跳跃的炭火光，温柔而持久地包裹着房间",
+        "text": "壁炉里跳跃的炭火光，温柔而持久地包裹着房间*(对应香材：安息香/麝香；心理隐喻：安全感与疗愈)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -18363,34 +18363,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "穿过果园的晨光，带着一丝酸甜的惊喜",
+        "t": "穿过果园的晨光，带着一丝酸甜的惊喜*(对应香材：香柠檬/荔枝；心理隐喻：愿意靠近的明亮)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "长夜尽头突然亮起的一束微光，刺眼但让人清醒",
+        "t": "长夜尽头突然亮起的一束微光，刺眼但让人清醒*(对应香材：藏红花；心理隐喻：意识苏醒)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "舞台中央聚焦的强光，所有细节无处遁形",
+        "t": "舞台中央聚焦的强光，所有细节无处遁形*(对应香材：白花/橘子；心理隐喻：生命盛放)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "壁炉里跳跃的炭火光，温柔而持久地包裹着房间",
+        "t": "壁炉里跳跃的炭火光，温柔而持久地包裹着房间*(对应香材：安息香/麝香；心理隐喻：安全感与疗愈)*",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18413,21 +18413,21 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "感到一种剥离的痛感，但我知道旧的壳必须破开",
+        "text": "感到一种剥离的痛感，但我知道旧的壳必须破开*(对应香材：甘草；心理隐喻：作茧自沉)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "内心平静如水，因为我已经承担得起选择的所有后果",
+        "text": "内心平静如水，因为我已经承担得起选择的所有后果*(心理学依据：内部控制点确立，真实的自我)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "D",
-        "text": "尽量去安抚身边受伤或担忧的人，向他们证明我很好",
+        "text": "尽量去安抚身边受伤或担忧的人，向他们证明我很好*(心理学依据：高共情关怀，守住重要关系)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -18442,32 +18442,32 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "感到一种剥离的痛感，但我知道旧的壳必须破开",
+        "t": "感到一种剥离的痛感，但我知道旧的壳必须破开*(对应香材：甘草；心理隐喻：作茧自沉)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "内心平静如水，因为我已经承担得起选择的所有后果",
+        "t": "内心平静如水，因为我已经承担得起选择的所有后果*(心理学依据：内部控制点确立，真实的自我)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "D",
-        "t": "尽量去安抚身边受伤或担忧的人，向他们证明我很好",
+        "t": "尽量去安抚身边受伤或担忧的人，向他们证明我很好*(心理学依据：高共情关怀，守住重要关系)*",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "守护"
     ]
   },
@@ -18479,28 +18479,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "喧闹而陌生的市集，偶然听到一首好听的歌",
+        "text": "喧闹而陌生的市集，偶然听到一首好听的歌*(对应香材：西柚；心理隐喻：清醒的悸动)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "整洁、极简、没有一丝杂物的深夜书房",
+        "text": "整洁、极简、没有一丝杂物的深夜书房*(对应香材：二氢茉莉酮酸甲酯；心理隐喻：意识扩张)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "暴风雨正在发生的大自然，或是无人的深夜海边",
+        "text": "暴风雨正在发生的大自然，或是无人的深夜海边*(对应香材：黑胡椒；心理隐喻：生命张力与被击中的瞬间)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "充满烟火气的厨房，看着锅里的汤咕嘟咕嘟冒热气",
+        "text": "充满烟火气的厨房，看着锅里的汤咕嘟咕嘟冒热气*(对应香材：麝香；心理隐喻：情感归属与安定)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -18509,34 +18509,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "喧闹而陌生的市集，偶然听到一首好听的歌",
+        "t": "喧闹而陌生的市集，偶然听到一首好听的歌*(对应香材：西柚；心理隐喻：清醒的悸动)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "整洁、极简、没有一丝杂物的深夜书房",
+        "t": "整洁、极简、没有一丝杂物的深夜书房*(对应香材：二氢茉莉酮酸甲酯；心理隐喻：意识扩张)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "暴风雨正在发生的大自然，或是无人的深夜海边",
+        "t": "暴风雨正在发生的大自然，或是无人的深夜海边*(对应香材：黑胡椒；心理隐喻：生命张力与被击中的瞬间)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "充满烟火气的厨房，看着锅里的汤咕嘟咕嘟冒热气",
+        "t": "充满烟火气的厨房，看着锅里的汤咕嘟咕嘟冒热气*(对应香材：麝香；心理隐喻：情感归属与安定)*",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18559,21 +18559,21 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "我拒绝你，只是基于事情本身和我的边界，不代表我否定你",
+        "text": "我拒绝你，只是基于事情本身和我的边界，不代表我否定你*(心理学依据：心理边界的课题分离)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "拒绝就拒绝了，我不需要为了显得温柔而折损自己的能量",
+        "text": "拒绝就拒绝了，我不需要为了显得温柔而折损自己的能量*(心理学依据：高自我效能，不迎合他人)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "拒绝别人会让我内疚很久，总觉得自己是不是太冷血了",
+        "text": "拒绝别人会让我内疚很久，总觉得自己是不是太冷血了*(心理学依据：依恋风格中的过度反思倾向)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -18588,28 +18588,28 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "我拒绝你，只是基于事情本身和我的边界，不代表我否定你",
+        "t": "我拒绝你，只是基于事情本身和我的边界，不代表我否定你*(心理学依据：心理边界的课题分离)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "拒绝就拒绝了，我不需要为了显得温柔而折损自己的能量",
+        "t": "拒绝就拒绝了，我不需要为了显得温柔而折损自己的能量*(心理学依据：高自我效能，不迎合他人)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "拒绝别人会让我内疚很久，总觉得自己是不是太冷血了",
+        "t": "拒绝别人会让我内疚很久，总觉得自己是不是太冷血了*(心理学依据：依恋风格中的过度反思倾向)*",
         "d": 4,
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "价值观",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18620,33 +18620,33 @@ window.QUESTION_BANK = [
   {
     "id": 256,
     "sourceId": 256,
-    "question": "如果要把你最近的生活状态比作“雨后森林的呼吸”，你会联想到什么？",
-    "q": "如果要把你最近的生活状态比作“雨后森林的呼吸”，你会联想到什么？",
+    "question": "用夏夜晚风形容当下状态",
+    "q": "用夏夜晚风形容当下状态",
     "options": [
       {
         "key": "A",
-        "text": "刚下完雨，空气里有一点酸涩和新鲜的泥土味",
+        "text": "闲逛吹风，偶遇新鲜趣事",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "踩在厚厚的合成橡苔上，脚踏实地，从漂浮回到真实人生",
+        "text": "独自乘凉，静下心琢磨自己",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "被折断的树枝散发出辛辣而沉稳的木质香，正在默默自愈",
+        "text": "风吹云散，慢慢走出低谷",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "森林深处万物静默，不需要向阳光证明什么",
+        "text": "随风自在，和周遭融洽相处",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -18655,34 +18655,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "刚下完雨，空气里有一点酸涩和新鲜的泥土味",
+        "t": "闲逛吹风，偶遇新鲜趣事",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "踩在厚厚的合成橡苔上，脚踏实地，从漂浮回到真实人生",
+        "t": "独自乘凉，静下心琢磨自己",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "被折断的树枝散发出辛辣而沉稳的木质香，正在默默自愈",
+        "t": "风吹云散，慢慢走出低谷",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "森林深处万物静默，不需要向阳光证明什么",
+        "t": "随风自在，和周遭融洽相处",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "情绪",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18698,28 +18698,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "哇，太厉害了！真心为她高兴，顺便在评论区热情祝贺",
+        "text": "哇，太厉害了！真心为她高兴，顺便在评论区热情祝贺*(心理学依据：向光性心理，丰盛的心态)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "B",
-        "text": "表面点赞，内心默默退回自己的世界，重新审视自己的进度",
+        "text": "表面点赞，内心默默退回自己的世界，重新审视自己的进度*(心理学依据：自我完善机制，清醒观照)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "感到一丝焦虑或失落，但很快安抚自己：每个人有自己的花期",
+        "text": "感到一丝焦虑或失落，但很快安抚自己：每个人有自己的花期*(心理学依据：认知重构，接纳蜕变过程)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "默默划过去，这些热闹与我无关，我只想过好我的一日三餐",
+        "text": "默默划过去，这些热闹与我无关，我只想过好我的一日三餐*(心理学依据：高防御/高自足的内倾心态)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -18728,38 +18728,38 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "哇，太厉害了！真心为她高兴，顺便在评论区热情祝贺",
+        "t": "哇，太厉害了！真心为她高兴，顺便在评论区热情祝贺*(心理学依据：向光性心理，丰盛的心态)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "B",
-        "t": "表面点赞，内心默默退回自己的世界，重新审视自己的进度",
+        "t": "表面点赞，内心默默退回自己的世界，重新审视自己的进度*(心理学依据：自我完善机制，清醒观照)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "感到一丝焦虑或失落，但很快安抚自己：每个人有自己的花期",
+        "t": "感到一丝焦虑或失落，但很快安抚自己：每个人有自己的花期*(心理学依据：认知重构，接纳蜕变过程)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "默默划过去，这些热闹与我无关，我只想过好我的一日三餐",
+        "t": "默默划过去，这些热闹与我无关，我只想过好我的一日三餐*(心理学依据：高防御/高自足的内倾心态)*",
         "d": 5,
         "score": 1
       }
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
-      "绽放",
       "觉醒",
       "蝶变",
+      "绽放",
       "共生"
     ]
   },
@@ -18771,28 +18771,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "冰层在春天咔哒一声裂开细缝、溪水开始流动的声音",
+        "text": "冰层在春天咔哒一声裂开细缝、溪水开始流动的声音*(对应意境：苏醒与重组)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "B",
-        "text": "风吹过风铃，若有若无，清脆干净的声音",
+        "text": "风吹过风铃，若有若无，清脆干净的声音*(对应香材：青柠；心理隐喻：清透与活力)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "远处的雨声，沉闷而规律地砸在屋顶上",
+        "text": "远处的雨声，沉闷而规律地砸在屋顶上*(对应香材：雪松；心理隐喻：安心陪伴)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
       },
       {
         "key": "D",
-        "text": "没有任何杂音，那种接近宇宙万物同频的绝对安静",
+        "text": "没有任何杂音，那种接近宇宙万物同频的绝对安静*(对应香材：乳香；心理隐喻：内在平和)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -18801,37 +18801,37 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "冰层在春天咔哒一声裂开细缝、溪水开始流动的声音",
+        "t": "冰层在春天咔哒一声裂开细缝、溪水开始流动的声音*(对应意境：苏醒与重组)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "B",
-        "t": "风吹过风铃，若有若无，清脆干净的声音",
+        "t": "风吹过风铃，若有若无，清脆干净的声音*(对应香材：青柠；心理隐喻：清透与活力)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "远处的雨声，沉闷而规律地砸在屋顶上",
+        "t": "远处的雨声，沉闷而规律地砸在屋顶上*(对应香材：雪松；心理隐喻：安心陪伴)*",
         "d": 4,
         "score": 1
       },
       {
         "l": "D",
-        "t": "没有任何杂音，那种接近宇宙万物同频的绝对安静",
+        "t": "没有任何杂音，那种接近宇宙万物同频的绝对安静*(对应香材：乳香；心理隐喻：内在平和)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
-      "蝶变",
       "觉醒",
+      "蝶变",
       "守护",
       "共生"
     ]
@@ -18844,28 +18844,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "恰到好处的柔软与让人想靠近的磁场",
+        "text": "恰到好处的柔软与让人想靠近的磁场*(对应香材：荔枝；心理隐喻：柔软被回应)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "清醒的自知之明，和不活在别人眼光里的克制",
+        "text": "清醒的自知之明，和不活在别人眼光里的克制*(对应香材：龙涎香；心理隐喻：内在稳定)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "经历过低谷与破碎后，身上沉淀下来的故事感",
+        "text": "经历过低谷与破碎后，身上沉淀下来的故事感*(对应香材：广藿香；心理隐喻：自我扎根的成熟)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "由内而生、不带有任何攻击性的舒展与自在",
+        "text": "由内而生、不带有任何攻击性的舒展与自在*(对应香材：白花；心理隐喻：盛放感)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -18874,34 +18874,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "恰到好处的柔软与让人想靠近的磁场",
+        "t": "恰到好处的柔软与让人想靠近的磁场*(对应香材：荔枝；心理隐喻：柔软被回应)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "清醒的自知之明，和不活在别人眼光里的克制",
+        "t": "清醒的自知之明，和不活在别人眼光里的克制*(对应香材：龙涎香；心理隐喻：内在稳定)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "经历过低谷与破碎后，身上沉淀下来的故事感",
+        "t": "经历过低谷与破碎后，身上沉淀下来的故事感*(对应香材：广藿香；心理隐喻：自我扎根的成熟)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "由内而生、不带有任何攻击性的舒展与自在",
+        "t": "由内而生、不带有任何攻击性的舒展与自在*(对应香材：白花；心理隐喻：盛放感)*",
         "d": 3,
         "score": 1
       }
     ],
-    "scene": "独处",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -18917,7 +18917,7 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "隔着很远的人海，我的眼神突然与你撞在一起",
+        "text": "隔着很远的人海，我的眼神突然与你撞在一起*(对应意境：人海中认出彼此)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
@@ -18931,14 +18931,14 @@ window.QUESTION_BANK = [
       },
       {
         "key": "C",
-        "text": "我们都带着满身伤痕遇见，却奇迹般地治愈了彼此",
+        "text": "我们都带着满身伤痕遇见，却奇迹般地治愈了彼此*(对应意境：成长中的温暖包裹)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "不需要长篇大论的解释，你身上有一种让我彻底放松的温度",
+        "text": "不需要长篇大论的解释，你身上有一种让我彻底放松的温度*(对应香材：降龙涎香醚/麝香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -18947,7 +18947,7 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "隔着很远的人海，我的眼神突然与你撞在一起",
+        "t": "隔着很远的人海，我的眼神突然与你撞在一起*(对应意境：人海中认出彼此)*",
         "d": 0,
         "score": 1
       },
@@ -18959,22 +18959,22 @@ window.QUESTION_BANK = [
       },
       {
         "l": "C",
-        "t": "我们都带着满身伤痕遇见，却奇迹般地治愈了彼此",
+        "t": "我们都带着满身伤痕遇见，却奇迹般地治愈了彼此*(对应意境：成长中的温暖包裹)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "不需要长篇大论的解释，你身上有一种让我彻底放松的温度",
+        "t": "不需要长篇大论的解释，你身上有一种让我彻底放松的温度*(对应香材：降龙涎香醚/麝香)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "香气隐喻",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19045,9 +19045,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "香气隐喻",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -19063,28 +19063,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "寻找可以信任的肩膀，通过温柔的回应来修复情绪",
+        "text": "寻找可以信任的肩膀，通过温柔的回应来修复情绪*(心理学依据：安全依恋风格的社交寻求)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "换个发型、扔掉旧物，用物理仪式的改变来宣告重新生长",
+        "text": "换个发型、扔掉旧物，用物理仪式的改变来宣告重新生长*(心理学依据：行为转换，作茧蜕变)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "疯狂投入工作或学习，不允许自己沉溺在软弱里",
+        "text": "疯狂投入工作或学习，不允许自己沉溺在软弱里*(心理学依据：理智化防御机制)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "D",
-        "text": "彻底摆烂和接纳：坏掉就坏掉吧，这也是我的一部分",
+        "text": "彻底摆烂和接纳：坏掉就坏掉吧，这也是我的一部分*(心理学依据：完形心理学之接纳自我碎片)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -19093,38 +19093,38 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "寻找可以信任的肩膀，通过温柔的回应来修复情绪",
+        "t": "寻找可以信任的肩膀，通过温柔的回应来修复情绪*(心理学依据：安全依恋风格的社交寻求)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "换个发型、扔掉旧物，用物理仪式的改变来宣告重新生长",
+        "t": "换个发型、扔掉旧物，用物理仪式的改变来宣告重新生长*(心理学依据：行为转换，作茧蜕变)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "疯狂投入工作或学习，不允许自己沉溺在软弱里",
+        "t": "疯狂投入工作或学习，不允许自己沉溺在软弱里*(心理学依据：理智化防御机制)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "D",
-        "t": "彻底摆烂和接纳：坏掉就坏掉吧，这也是我的一部分",
+        "t": "彻底摆烂和接纳：坏掉就坏掉吧，这也是我的一部分*(心理学依据：完形心理学之接纳自我碎片)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "工作",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "共生"
     ]
   },
@@ -19193,12 +19193,12 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
+      "觉醒",
       "绽放",
       "守护",
-      "共生",
-      "觉醒"
+      "共生"
     ]
   },
   {
@@ -19209,7 +19209,7 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "在喜欢的人面前，展露出不加防备、傻乎乎的笑",
+        "text": "在喜欢的人面前，展露出不加防备、傻乎乎的笑*(对应香材：梨；关系中的自然靠近)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
@@ -19223,7 +19223,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "C",
-        "text": "不再压低自己的光芒，坦然接受自己的美和优秀",
+        "text": "不再压低自己的光芒，坦然接受自己的美和优秀*(对应香材：牡丹/大马士革玫瑰；盛放感)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -19239,7 +19239,7 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "在喜欢的人面前，展露出不加防备、傻乎乎的笑",
+        "t": "在喜欢的人面前，展露出不加防备、傻乎乎的笑*(对应香材：梨；关系中的自然靠近)*",
         "d": 0,
         "score": 1
       },
@@ -19251,7 +19251,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "C",
-        "t": "不再压低自己的光芒，坦然接受自己的美和优秀",
+        "t": "不再压低自己的光芒，坦然接受自己的美和优秀*(对应香材：牡丹/大马士革玫瑰；盛放感)*",
         "d": 3,
         "score": 1
       },
@@ -19262,11 +19262,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19289,14 +19289,14 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "浓郁、略带苦涩但在口中回甘的黑巧克力",
+        "text": "浓郁、略带苦涩但在口中回甘的黑巧克力*(对应香材：甘草；长时间积累的力量)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "刚刚出炉、带着焦糖香气的温热松饼",
+        "text": "刚刚出炉、带着焦糖香气的温热松饼*(对应香材：焦糖/香草；情感包裹感)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -19318,13 +19318,13 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "浓郁、略带苦涩但在口中回甘的黑巧克力",
+        "t": "浓郁、略带苦涩但在口中回甘的黑巧克力*(对应香材：甘草；长时间积累的力量)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "刚刚出炉、带着焦糖香气的温热松饼",
+        "t": "刚刚出炉、带着焦糖香气的温热松饼*(对应香材：焦糖/香草；情感包裹感)*",
         "d": 4,
         "score": 1
       },
@@ -19335,11 +19335,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -19355,21 +19355,21 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "内心戏爆发，反复反思是不是自己做错了什么、说错了话",
+        "text": "内心戏爆发，反复反思是不是自己做错了什么、说错了话*(心理学依据：高敏感人群的情绪反刍)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "保持体面和边界，你冷我也冷，清醒地拉开彼此的距离",
+        "text": "保持体面和边界，你冷我也冷，清醒地拉开彼此的距离*(心理学依据：回避型依恋/清醒边界)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "直接找到对方，用坦诚甚至有些热烈的方式问清楚",
+        "text": "直接找到对方，用坦诚甚至有些热烈的方式问清楚*(心理学依据：安全型/主导型人格表达)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -19385,19 +19385,19 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "内心戏爆发，反复反思是不是自己做错了什么、说错了话",
+        "t": "内心戏爆发，反复反思是不是自己做错了什么、说错了话*(心理学依据：高敏感人群的情绪反刍)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "保持体面和边界，你冷我也冷，清醒地拉开彼此的距离",
+        "t": "保持体面和边界，你冷我也冷，清醒地拉开彼此的距离*(心理学依据：回避型依恋/清醒边界)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "直接找到对方，用坦诚甚至有些热烈的方式问清楚",
+        "t": "直接找到对方，用坦诚甚至有些热烈的方式问清楚*(心理学依据：安全型/主导型人格表达)*",
         "d": 3,
         "score": 1
       },
@@ -19408,11 +19408,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
-    "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "is_anchor": true,
+    "reliability": 0.92,
+    "discrimination": 0.88,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19428,14 +19428,14 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "眼神里少了一丝慌张，多了一种成熟后的安静力量",
+        "text": "眼神里少了一丝慌张，多了一种成熟后的安静力量*(对应香材：龙涎香)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "B",
-        "text": "身体和皮肤不再紧绷，但内在的韧性却比二十岁时更坚硬",
+        "text": "身体和皮肤不再紧绷，但内在的韧性却比二十岁时更坚硬*(对应香材：广藿香)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
@@ -19449,7 +19449,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "D",
-        "text": "拥有一颗更柔和的心，学会了如何温暖归属，与世界同频",
+        "text": "拥有一颗更柔和的心，学会了如何温暖归属，与世界同频*(对应香材：安息香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -19458,13 +19458,13 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "眼神里少了一丝慌张，多了一种成熟后的安静力量",
+        "t": "眼神里少了一丝慌张，多了一种成熟后的安静力量*(对应香材：龙涎香)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "B",
-        "t": "身体和皮肤不再紧绷，但内在的韧性却比二十岁时更坚硬",
+        "t": "身体和皮肤不再紧绷，但内在的韧性却比二十岁时更坚硬*(对应香材：广藿香)*",
         "d": 2,
         "score": 1
       },
@@ -19476,16 +19476,16 @@ window.QUESTION_BANK = [
       },
       {
         "l": "D",
-        "t": "拥有一颗更柔和的心，学会了如何温暖归属，与世界同频",
+        "t": "拥有一颗更柔和的心，学会了如何温暖归属，与世界同频*(对应香材：安息香)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "觉醒",
       "蝶变",
@@ -19554,11 +19554,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -19631,7 +19631,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19700,11 +19700,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "绽放",
@@ -19777,7 +19777,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19793,7 +19793,7 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "感到心跳加速、有一种强烈的心动与命运流动感",
+        "text": "感到心跳加速、有一种强烈的心动与命运流动感*(对应意境：命运感开始流动)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
@@ -19823,7 +19823,7 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "感到心跳加速、有一种强烈的心动与命运流动感",
+        "t": "感到心跳加速、有一种强烈的心动与命运流动感*(对应意境：命运感开始流动)*",
         "d": 0,
         "score": 1
       },
@@ -19846,11 +19846,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
-    "depth": "core",
+    "scene": "生活方式",
+    "depth": "support",
     "is_anchor": false,
-    "reliability": 0.86,
-    "discrimination": 0.82,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -19873,7 +19873,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "枯叶从树上决绝地落下来，落进土地，变成养分等待新生",
+        "text": "枯叶从树上决绝地落下来，落进土地，变成养分等待新生*(对应香材：愈创木/广藿香)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
@@ -19902,7 +19902,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "枯叶从树上决绝地落下来，落进土地，变成养分等待新生",
+        "t": "枯叶从树上决绝地落下来，落进土地，变成养分等待新生*(对应香材：愈创木/广藿香)*",
         "d": 2,
         "score": 1
       },
@@ -19919,15 +19919,15 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "共生"
     ]
   },
@@ -19939,7 +19939,7 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "想象一汪清凉的薄荷水浇在紧绷的神经上，强制给情绪降温",
+        "text": "想象一汪清凉的薄荷水浇在紧绷的神经上，强制给情绪降温*(对应香材：薄荷)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -19969,7 +19969,7 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "想象一汪清凉的薄荷水浇在紧绷的神经上，强制给情绪降温",
+        "t": "想象一汪清凉的薄荷水浇在紧绷的神经上，强制给情绪降温*(对应香材：薄荷)*",
         "d": 4,
         "score": 1
       },
@@ -19992,15 +19992,15 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
-      "守护",
       "觉醒",
       "绽放",
+      "守护",
       "共生"
     ]
   },
@@ -20012,14 +20012,14 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "它在某一瞬间散发出的微甜，像极了心动时被珍视的柔软",
+        "text": "它在某一瞬间散发出的微甜，像极了心动时被珍视的柔软*(对应香材：荔枝)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "它的结构极其罕见、甚至有一点点不讨好大众的“药感”与神秘",
+        "text": "它的结构极其罕见、甚至有一点点不讨好大众的“药感”与神秘*(对应香材：黑胡椒/甘草)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
@@ -20033,7 +20033,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "D",
-        "text": "它极其耐看、舒服，像穿了很久的棉麻衣服一样踏实、不用解释",
+        "text": "它极其耐看、舒服，像穿了很久的棉麻衣服一样踏实、不用解释*(对应香材：雪松/麝香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -20042,13 +20042,13 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "它在某一瞬间散发出的微甜，像极了心动时被珍视的柔软",
+        "t": "它在某一瞬间散发出的微甜，像极了心动时被珍视的柔软*(对应香材：荔枝)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "它的结构极其罕见、甚至有一点点不讨好大众的“药感”与神秘",
+        "t": "它的结构极其罕见、甚至有一点点不讨好大众的“药感”与神秘*(对应香材：黑胡椒/甘草)*",
         "d": 2,
         "score": 1
       },
@@ -20060,7 +20060,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "D",
-        "t": "它极其耐看、舒服，像穿了很久的棉麻衣服一样踏实、不用解释",
+        "t": "它极其耐看、舒服，像穿了很久的棉麻衣服一样踏实、不用解释*(对应香材：雪松/麝香)*",
         "d": 5,
         "score": 1
       }
@@ -20069,7 +20069,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -20085,21 +20085,21 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "前调明亮多汁，中调盛放浪漫，后调留下难以解释的灵魂张力",
+        "text": "前调明亮多汁，中调盛放浪漫，后调留下难以解释的灵魂张力*(邂逅系列风格)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "前调带着辛辣的刺痛感，中调长时间沉淀，后调在木质光芒里重生",
+        "text": "前调带着辛辣的刺痛感，中调长时间沉淀，后调在木质光芒里重生*(蝶变系列风格)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "前调纯净通透，中调不争不抢，后调散发着时间沉淀的温暖归属",
+        "text": "前调纯净通透，中调不争不抢，后调散发着时间沉淀的温暖归属*(守护/共生系列风格)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
@@ -20115,19 +20115,19 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "前调明亮多汁，中调盛放浪漫，后调留下难以解释的灵魂张力",
+        "t": "前调明亮多汁，中调盛放浪漫，后调留下难以解释的灵魂张力*(邂逅系列风格)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "前调带着辛辣的刺痛感，中调长时间沉淀，后调在木质光芒里重生",
+        "t": "前调带着辛辣的刺痛感，中调长时间沉淀，后调在木质光芒里重生*(蝶变系列风格)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "前调纯净通透，中调不争不抢，后调散发着时间沉淀的温暖归属",
+        "t": "前调纯净通透，中调不争不抢，后调散发着时间沉淀的温暖归属*(守护/共生系列风格)*",
         "d": 4,
         "score": 1
       },
@@ -20142,7 +20142,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -20165,7 +20165,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "挺好的，边界感是给内心的屋子装上锁，只有对的人才能进来",
+        "text": "挺好的，边界感是给内心的屋子装上锁，只有对的人才能进来*(心理学依据：高功能自我防御，边界感清晰)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -20194,7 +20194,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "挺好的，边界感是给内心的屋子装上锁，只有对的人才能进来",
+        "t": "挺好的，边界感是给内心的屋子装上锁，只有对的人才能进来*(心理学依据：高功能自我防御，边界感清晰)*",
         "d": 1,
         "score": 1
       },
@@ -20211,11 +20211,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "关系",
+    "scene": "价值观",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20231,28 +20231,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "在受过伤之后，依然拥有“愿意靠近”和被生活打动的能量",
+        "text": "在受过伤之后，依然拥有“愿意靠近”和被生活打动的能量*(邂逅课题：认出彼此)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "从漫长的社会催眠中清醒过来，真正认清并看见真实的自己",
+        "text": "从漫长的社会催眠中清醒过来，真正认清并看见真实的自己*(觉醒课题：意识打开)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "忍受旧的自我被击碎、重组时，那段中间赤裸、漫长的痛苦",
+        "text": "忍受旧的自我被击碎、重组时，那段中间赤裸、漫长的痛苦*(蝶变课题：破茧蜕变)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "学会完全松开紧绷的神经，不再和自己、和世界对抗",
+        "text": "学会完全松开紧绷的神经，不再和自己、和世界对抗*(共生课题：和谐流动)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -20261,34 +20261,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "在受过伤之后，依然拥有“愿意靠近”和被生活打动的能量",
+        "t": "在受过伤之后，依然拥有“愿意靠近”和被生活打动的能量*(邂逅课题：认出彼此)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "从漫长的社会催眠中清醒过来，真正认清并看见真实的自己",
+        "t": "从漫长的社会催眠中清醒过来，真正认清并看见真实的自己*(觉醒课题：意识打开)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "忍受旧的自我被击碎、重组时，那段中间赤裸、漫长的痛苦",
+        "t": "忍受旧的自我被击碎、重组时，那段中间赤裸、漫长的痛苦*(蝶变课题：破茧蜕变)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "学会完全松开紧绷的神经，不再和自己、和世界对抗",
+        "t": "学会完全松开紧绷的神经，不再和自己、和世界对抗*(共生课题：和谐流动)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "价值观",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20357,15 +20357,15 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "守护",
       "觉醒",
+      "守护",
       "共生"
     ]
   },
@@ -20434,7 +20434,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20457,7 +20457,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "“我可以理解你的局限，但我绝对不同意你越过我的底线”",
+        "text": "“我可以理解你的局限，但我绝对不同意你越过我的底线”*(心理隐喻：有边界的温柔)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -20486,7 +20486,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "“我可以理解你的局限，但我绝对不同意你越过我的底线”",
+        "t": "“我可以理解你的局限，但我绝对不同意你越过我的底线”*(心理隐喻：有边界的温柔)*",
         "d": 1,
         "score": 1
       },
@@ -20507,7 +20507,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20530,14 +20530,14 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "读到一段带着神秘感、能瞬间点亮精神觉知的睿智文字",
+        "text": "读到一段带着神秘感、能瞬间点亮精神觉知的睿智文字*(对应香材：藏红花)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "看着镜子里的满身裂缝，对自己说：“你不是坏掉了，你是在重组”",
+        "text": "看着镜子里的满身裂缝，对自己说：“你不是坏掉了，你是在重组”*(对应隐喻：沉淀与作茧)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
@@ -20559,13 +20559,13 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "读到一段带着神秘感、能瞬间点亮精神觉知的睿智文字",
+        "t": "读到一段带着神秘感、能瞬间点亮精神觉知的睿智文字*(对应香材：藏红花)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "看着镜子里的满身裂缝，对自己说：“你不是坏掉了，你是在重组”",
+        "t": "看着镜子里的满身裂缝，对自己说：“你不是坏掉了，你是在重组”*(对应隐喻：沉淀与作茧)*",
         "d": 2,
         "score": 1
       },
@@ -20576,11 +20576,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "情绪",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20649,11 +20649,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20669,28 +20669,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "对周围的一切事物突然丧失了兴趣，感受不到心动和生活乐趣",
+        "text": "对周围的一切事物突然丧失了兴趣，感受不到心动和生活乐趣*(高敏感型能量枯竭)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "大脑开始过度分析每一件无聊的小事，精神内耗严重停不下来",
+        "text": "大脑开始过度分析每一件无聊的小事，精神内耗严重停不下来*(理智型防御过载)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "感到一种说不清的空洞，身体沉重，像被困在厚厚的旧壳里",
+        "text": "感到一种说不清的空洞，身体沉重，像被困在厚厚的旧壳里*(蜕变前的蓄力警报)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "变得异常亢奋或过度消费，试图通过狂欢来逃避内心的空虚",
+        "text": "变得异常亢奋或过度消费，试图通过狂欢来逃避内心的空虚*(补偿心理激活)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -20699,34 +20699,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "对周围的一切事物突然丧失了兴趣，感受不到心动和生活乐趣",
+        "t": "对周围的一切事物突然丧失了兴趣，感受不到心动和生活乐趣*(高敏感型能量枯竭)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "大脑开始过度分析每一件无聊的小事，精神内耗严重停不下来",
+        "t": "大脑开始过度分析每一件无聊的小事，精神内耗严重停不下来*(理智型防御过载)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "感到一种说不清的空洞，身体沉重，像被困在厚厚的旧壳里",
+        "t": "感到一种说不清的空洞，身体沉重，像被困在厚厚的旧壳里*(蜕变前的蓄力警报)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "变得异常亢奋或过度消费，试图通过狂欢来逃避内心的空虚",
+        "t": "变得异常亢奋或过度消费，试图通过狂欢来逃避内心的空虚*(补偿心理激活)*",
         "d": 3,
         "score": 1
       }
     ],
-    "scene": "生活方式",
+    "scene": "审美生活",
     "depth": "support",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.78,
+    "discrimination": 0.76,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20742,28 +20742,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "像阳光第一次落进冰封的关系里，温度开始缓缓流动",
+        "text": "像阳光第一次落进冰封的关系里，温度开始缓缓流动*(对应香材：香柠檬)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "像光线穿过纯净的空气，带着灵性，让意识无限扩张",
+        "text": "像光线穿过纯净的空气，带着灵性，让意识无限扩张*(对应香材：二氢茉莉酮酸甲酯)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "像夏日雨后暴涨的潮水，充满自由和无拘无束的呼吸感",
+        "text": "像夏日雨后暴涨的潮水，充满自由和无拘无束的呼吸感*(对应香材：水生调)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "像清晨海面上升起的薄雾，安静、深远，边界渐渐柔和",
+        "text": "像清晨海面上升起的薄雾，安静、深远，边界渐渐柔和*(对应香材：干龙涎香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -20772,34 +20772,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "像阳光第一次落进冰封的关系里，温度开始缓缓流动",
+        "t": "像阳光第一次落进冰封的关系里，温度开始缓缓流动*(对应香材：香柠檬)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "像光线穿过纯净的空气，带着灵性，让意识无限扩张",
+        "t": "像光线穿过纯净的空气，带着灵性，让意识无限扩张*(对应香材：二氢茉莉酮酸甲酯)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "像夏日雨后暴涨的潮水，充满自由和无拘无束的呼吸感",
+        "t": "像夏日雨后暴涨的潮水，充满自由和无拘无束的呼吸感*(对应香材：水生调)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "像清晨海面上升起的薄雾，安静、深远，边界渐渐柔和",
+        "t": "像清晨海面上升起的薄雾，安静、深远，边界渐渐柔和*(对应香材：干龙涎香)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20870,9 +20870,9 @@ window.QUESTION_BANK = [
     ],
     "scene": "关系",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20941,11 +20941,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "关系",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -20968,7 +20968,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "确立绝对独立的精神世界与物理边界，不向任何人解释我的反常",
+        "text": "确立绝对独立的精神世界与物理边界，不向任何人解释我的反常*(心理学依据：建立自我认同统一性)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -20997,7 +20997,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "确立绝对独立的精神世界与物理边界，不向任何人解释我的反常",
+        "t": "确立绝对独立的精神世界与物理边界，不向任何人解释我的反常*(心理学依据：建立自我认同统一性)*",
         "d": 1,
         "score": 1
       },
@@ -21018,7 +21018,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21091,7 +21091,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21114,7 +21114,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "理解他们的局限和愚昧，但不代表我会给他们第二次伤害我的机会",
+        "text": "理解他们的局限和愚昧，但不代表我会给他们第二次伤害我的机会*(心理学依据：高阶宽恕与清醒分离)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -21143,7 +21143,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "理解他们的局限和愚昧，但不代表我会给他们第二次伤害我的机会",
+        "t": "理解他们的局限和愚昧，但不代表我会给他们第二次伤害我的机会*(心理学依据：高阶宽恕与清醒分离)*",
         "d": 1,
         "score": 1
       },
@@ -21160,11 +21160,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "情绪",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21237,7 +21237,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21267,7 +21267,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "C",
-        "text": "盛大、热烈、充满庆祝感地活出自己的自在，大方展示我的美和成就",
+        "text": "盛大、热烈、充满庆祝感地活出自己的自在，大方展示我的美和成就*(对应香材：大马士革玫瑰/牡丹)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
@@ -21295,7 +21295,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "C",
-        "t": "盛大、热烈、充满庆祝感地活出自己的自在，大方展示我的美和成就",
+        "t": "盛大、热烈、充满庆祝感地活出自己的自在，大方展示我的美和成就*(对应香材：大马士革玫瑰/牡丹)*",
         "d": 3,
         "score": 1
       },
@@ -21306,11 +21306,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21326,14 +21326,14 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "容易受同理心和现场氛围的牵动，跟着大家一起感慨或心疼",
+        "text": "容易受同理心和现场氛围的牵动，跟着大家一起感慨或心疼*(易受共情污染的高敏感人格)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "理性比较多方论据，在没有看清事情全貌和事实逻辑前绝不下结论",
+        "text": "理性比较多方论据，在没有看清事情全貌和事实逻辑前绝不下结论*(清醒理智型人格)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -21347,7 +21347,7 @@ window.QUESTION_BANK = [
       },
       {
         "key": "D",
-        "text": "认为每个人基于自己的局限有不同的观点很正常，不同不代表对错，尊重差异",
+        "text": "认为每个人基于自己的局限有不同的观点很正常，不同不代表对错，尊重差异*(高整合包容力)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -21356,13 +21356,13 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "容易受同理心和现场氛围的牵动，跟着大家一起感慨或心疼",
+        "t": "容易受同理心和现场氛围的牵动，跟着大家一起感慨或心疼*(易受共情污染的高敏感人格)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "理性比较多方论据，在没有看清事情全貌和事实逻辑前绝不下结论",
+        "t": "理性比较多方论据，在没有看清事情全貌和事实逻辑前绝不下结论*(清醒理智型人格)*",
         "d": 1,
         "score": 1
       },
@@ -21374,7 +21374,7 @@ window.QUESTION_BANK = [
       },
       {
         "l": "D",
-        "t": "认为每个人基于自己的局限有不同的观点很正常，不同不代表对错，尊重差异",
+        "t": "认为每个人基于自己的局限有不同的观点很正常，不同不代表对错，尊重差异*(高整合包容力)*",
         "d": 5,
         "score": 1
       }
@@ -21383,7 +21383,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21452,11 +21452,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "消费",
-    "depth": "support",
+    "scene": "关系",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21472,28 +21472,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "一大片开满阳光的多汁柑橘林，鸟鸣清透，每一口呼吸都让人想笑",
+        "text": "一大片开满阳光的多汁柑橘林，鸟鸣清透，每一口呼吸都让人想笑*(对应前调：橘子/青柠)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "B",
-        "text": "爬满老墙的甘草藤蔓，深处有一间堆满旧书、散发愈创木香气的木屋",
+        "text": "爬满老墙的甘草藤蔓，深处有一间堆满旧书、散发愈创木香气的木屋*(对应中后调：愈创木/广藿香)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "烤火的壁炉旁铺着厚厚软软的绒毯，有食物的香气，回来就知道安全了",
+        "text": "烤火的壁炉旁铺着厚厚软软的绒毯，有食物的香气，回来就知道安全了*(对应后调：安息香/麝香)*",
         "dimension": "守护",
         "dimensionCode": "G",
         "score": 1
       },
       {
         "key": "D",
-        "text": "一座禅意的枯山水庭院，只有白沙、青苔和一壶慢慢变凉的茶",
+        "text": "一座禅意的枯山水庭院，只有白沙、青苔和一壶慢慢变凉的茶*(对应中后调：檀香/乳香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -21502,37 +21502,37 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "一大片开满阳光的多汁柑橘林，鸟鸣清透，每一口呼吸都让人想笑",
+        "t": "一大片开满阳光的多汁柑橘林，鸟鸣清透，每一口呼吸都让人想笑*(对应前调：橘子/青柠)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "B",
-        "t": "爬满老墙的甘草藤蔓，深处有一间堆满旧书、散发愈创木香气的木屋",
+        "t": "爬满老墙的甘草藤蔓，深处有一间堆满旧书、散发愈创木香气的木屋*(对应中后调：愈创木/广藿香)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "烤火的壁炉旁铺着厚厚软软的绒毯，有食物的香气，回来就知道安全了",
+        "t": "烤火的壁炉旁铺着厚厚软软的绒毯，有食物的香气，回来就知道安全了*(对应后调：安息香/麝香)*",
         "d": 4,
         "score": 1
       },
       {
         "l": "D",
-        "t": "一座禅意的枯山水庭院，只有白沙、青苔和一壶慢慢变凉的茶",
+        "t": "一座禅意的枯山水庭院，只有白沙、青苔和一壶慢慢变凉的茶*(对应中后调：檀香/乳香)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
-      "绽放",
       "蝶变",
+      "绽放",
       "守护",
       "共生"
     ]
@@ -21545,28 +21545,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "表面保持得体温和的微笑，内心却忍不住怀疑是不是自己最近不够好",
+        "text": "表面保持得体温和的微笑，内心却忍不住怀疑是不是自己最近不够好*(过度反思倾向)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "表面风平浪静，会后默默重新审视自己的方案，有则改之无则加勉",
+        "text": "表面风平浪静，会后默默重新审视自己的方案，有则改之无则加勉*(客观测查)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
       },
       {
         "key": "C",
-        "text": "绝对不急着去辩解或迎合，嘴在别人身上，我的价值不需要他来帮我做进度报告",
+        "text": "绝对不急着去辩解或迎合，嘴在别人身上，我的价值不需要他来帮我做进度报告*(自我同一性巩固)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "D",
-        "text": "不在那个充满指责的逻辑框架里思考，有些事情时间自会证明",
+        "text": "不在那个充满指责的逻辑框架里思考，有些事情时间自会证明*(不对抗智慧)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -21575,25 +21575,25 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "表面保持得体温和的微笑，内心却忍不住怀疑是不是自己最近不够好",
+        "t": "表面保持得体温和的微笑，内心却忍不住怀疑是不是自己最近不够好*(过度反思倾向)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "表面风平浪静，会后默默重新审视自己的方案，有则改之无则加勉",
+        "t": "表面风平浪静，会后默默重新审视自己的方案，有则改之无则加勉*(客观测查)*",
         "d": 1,
         "score": 1
       },
       {
         "l": "C",
-        "t": "绝对不急着去辩解或迎合，嘴在别人身上，我的价值不需要他来帮我做进度报告",
+        "t": "绝对不急着去辩解或迎合，嘴在别人身上，我的价值不需要他来帮我做进度报告*(自我同一性巩固)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "D",
-        "t": "不在那个充满指责的逻辑框架里思考，有些事情时间自会证明",
+        "t": "不在那个充满指责的逻辑框架里思考，有些事情时间自会证明*(不对抗智慧)*",
         "d": 5,
         "score": 1
       }
@@ -21602,7 +21602,7 @@ window.QUESTION_BANK = [
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21671,11 +21671,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "生活方式",
-    "depth": "support",
+    "scene": "情绪",
+    "depth": "core",
     "is_anchor": false,
-    "reliability": 0.76,
-    "discrimination": 0.74,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21698,14 +21698,14 @@ window.QUESTION_BANK = [
       },
       {
         "key": "B",
-        "text": "原生家庭只是我的起点和底层信念，但它绝对不是我人生的终点",
+        "text": "原生家庭只是我的起点和底层信念，但它绝对不是我人生的终点*(自我超越)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "我理解并感恩他们做出了当时最大的努力，但我不需要成为他们",
+        "text": "我理解并感恩他们做出了当时最大的努力，但我不需要成为他们*(清醒和解)*",
         "dimension": "觉醒",
         "dimensionCode": "A",
         "score": 1
@@ -21727,13 +21727,13 @@ window.QUESTION_BANK = [
       },
       {
         "l": "B",
-        "t": "原生家庭只是我的起点和底层信念，但它绝对不是我人生的终点",
+        "t": "原生家庭只是我的起点和底层信念，但它绝对不是我人生的终点*(自我超越)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "我理解并感恩他们做出了当时最大的努力，但我不需要成为他们",
+        "t": "我理解并感恩他们做出了当时最大的努力，但我不需要成为他们*(清醒和解)*",
         "d": 1,
         "score": 1
       },
@@ -21746,13 +21746,13 @@ window.QUESTION_BANK = [
     ],
     "scene": "价值观",
     "depth": "core",
-    "is_anchor": true,
-    "reliability": 0.92,
-    "discrimination": 0.88,
+    "is_anchor": false,
+    "reliability": 0.86,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
-      "蝶变",
       "觉醒",
+      "蝶变",
       "共生"
     ]
   },
@@ -21817,11 +21817,11 @@ window.QUESTION_BANK = [
         "score": 1
       }
     ],
-    "scene": "工作",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "觉醒",
@@ -21837,28 +21837,28 @@ window.QUESTION_BANK = [
     "options": [
       {
         "key": "A",
-        "text": "梨树上刚刚结出的、不加任何防备和攻击性的纯净果实",
+        "text": "梨树上刚刚结出的、不加任何防备和攻击性的纯净果实*(对应香材：梨)*",
         "dimension": "邂逅",
         "dimensionCode": "E",
         "score": 1
       },
       {
         "key": "B",
-        "text": "经历过干旱与雷击后，依然向地底深处疯狂自我扎根的愈创木",
+        "text": "经历过干旱与雷击后，依然向地底深处疯狂自我扎根的愈创木*(对应香材：愈创木/广藿香)*",
         "dimension": "蝶变",
         "dimensionCode": "M",
         "score": 1
       },
       {
         "key": "C",
-        "text": "在晨光里将花瓣开到最大，拼命吸收周围所有的关注和女性柔光的牡丹",
+        "text": "在晨光里将花瓣开到最大，拼命吸收周围所有的关注和女性柔光的牡丹*(对应香材：牡丹/白花)*",
         "dimension": "绽放",
         "dimensionCode": "B",
         "score": 1
       },
       {
         "key": "D",
-        "text": "幽深古庙旁历经千年的老檀香，不需要喧嚣，但一缕轻烟便能让人安静",
+        "text": "幽深古庙旁历经千年的老檀香，不需要喧嚣，但一缕轻烟便能让人安静*(对应香材：檀香)*",
         "dimension": "共生",
         "dimensionCode": "C",
         "score": 1
@@ -21867,34 +21867,34 @@ window.QUESTION_BANK = [
     "o": [
       {
         "l": "A",
-        "t": "梨树上刚刚结出的、不加任何防备和攻击性的纯净果实",
+        "t": "梨树上刚刚结出的、不加任何防备和攻击性的纯净果实*(对应香材：梨)*",
         "d": 0,
         "score": 1
       },
       {
         "l": "B",
-        "t": "经历过干旱与雷击后，依然向地底深处疯狂自我扎根的愈创木",
+        "t": "经历过干旱与雷击后，依然向地底深处疯狂自我扎根的愈创木*(对应香材：愈创木/广藿香)*",
         "d": 2,
         "score": 1
       },
       {
         "l": "C",
-        "t": "在晨光里将花瓣开到最大，拼命吸收周围所有的关注和女性柔光的牡丹",
+        "t": "在晨光里将花瓣开到最大，拼命吸收周围所有的关注和女性柔光的牡丹*(对应香材：牡丹/白花)*",
         "d": 3,
         "score": 1
       },
       {
         "l": "D",
-        "t": "幽深古庙旁历经千年的老檀香，不需要喧嚣，但一缕轻烟便能让人安静",
+        "t": "幽深古庙旁历经千年的老檀香，不需要喧嚣，但一缕轻烟便能让人安静*(对应香材：檀香)*",
         "d": 5,
         "score": 1
       }
     ],
-    "scene": "价值观",
+    "scene": "香气隐喻",
     "depth": "core",
     "is_anchor": false,
     "reliability": 0.86,
-    "discrimination": 0.82,
+    "discrimination": 0.84,
     "dimensions_covered": [
       "邂逅",
       "蝶变",
@@ -21904,33 +21904,32 @@ window.QUESTION_BANK = [
   }
 ];
 window.QUESTION_BANK_META = {
-  "source": "蝴蝶坞六色人格测试_优化300题题库.docx",
+  "source": "蝴蝶坞六色循环测试_稳定算法与完整题库合并版.docx",
   "parsed": 300,
   "valid": 300,
   "excluded": [],
   "sceneCounts": {
-    "旅行": 4,
-    "情绪": 15,
-    "空间": 6,
-    "关系": 42,
-    "价值观": 157,
-    "香气隐喻": 12,
-    "生活方式": 13,
-    "工作": 21,
-    "独处": 22,
-    "消费": 8
+    "关系": 82,
+    "审美生活": 4,
+    "生活方式": 35,
+    "香气隐喻": 43,
+    "独处": 24,
+    "情绪": 26,
+    "价值观": 52,
+    "工作": 32,
+    "旅行": 2
   },
   "depthCounts": {
-    "support": 31,
-    "core": 269
+    "core": 259,
+    "support": 41
   },
   "anchorCounts": {
-    "蝶变": 26,
-    "绽放": 17,
-    "邂逅": 24,
-    "觉醒": 25,
-    "守护": 14,
-    "共生": 26
+    "觉醒": 9,
+    "蝶变": 9,
+    "共生": 8,
+    "邂逅": 10,
+    "绽放": 6,
+    "守护": 6
   },
   "optionCounts": {
     "邂逅": 218,
@@ -21940,5 +21939,5 @@ window.QUESTION_BANK_META = {
     "共生": 208,
     "蝶变": 198
   },
-  "algorithmVersion": "stable-weighted-v1.7"
+  "algorithmVersion": "stable-locked-boundary-v2.1"
 };
